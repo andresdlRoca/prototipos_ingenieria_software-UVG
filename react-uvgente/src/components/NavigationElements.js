@@ -5,7 +5,7 @@ const NavigationElements = (props) => {
     const image = props.image
     const last_element = props.last_element
 
-    if(image=== 'none')
+    if({image}== 'none')
     {
         return (
             <div>
