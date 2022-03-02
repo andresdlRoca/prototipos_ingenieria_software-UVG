@@ -8,6 +8,7 @@ function App() {
       <Header navSet="ON"/>
       <div className="flex_container_sidebar_and_content">
         <BarraLateral />
+        <MiPerfil />
       </div>
   
     </div>
