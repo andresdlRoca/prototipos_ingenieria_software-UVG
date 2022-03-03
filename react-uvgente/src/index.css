@@ -130,7 +130,7 @@ footer {
   width: 25%;
   height: 100%;
   text-align: center;
-  overflow: none;
+  overflow: hidden;
 }
 #main_content_profile_page_main{
   width: 75%;
