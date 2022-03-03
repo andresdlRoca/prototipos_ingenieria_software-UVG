@@ -192,3 +192,37 @@ footer {
 .container_main_content{
   
 }
+
+.pfp_Bandeja_Entrada{
+  position: relative;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 5px;
+  width: 250px;
+  height: 250px;
+  top: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+#inboxpage #profileinfo{
+  text-align: justify;
+  position: relative;
+  font-size: 19px;
+  left: 350px;
+  bottom: 225px;
+}
+
+#inboxpage #profileinfo #Descripcion {
+  inline-size: 750px;
+  overflow-wrap: break-word;
+}
+
+#inboxpage #inbox {
+  position: relative;
+  width: 1120px;
+  height: 150px;
+  outline: solid 1px black;
+  bottom: 200px;
+  margin: 50px;
+}
