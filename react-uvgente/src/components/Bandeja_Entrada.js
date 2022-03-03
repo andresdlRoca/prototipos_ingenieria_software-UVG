@@ -1,4 +1,5 @@
 import profile_pic from '../media/cat_pp.jpg'
+import mail_icon from '../media/mail_icon.png'
 const Bandeja_Entrada = () => {
     return(
         <div id="inboxpage">
@@ -14,7 +15,9 @@ const Bandeja_Entrada = () => {
                 </div>
             </div>
             <div id="inbox">
-                <div className="inboxMessages"></div>
+                <div className="inboxMessages">
+                    <img src={mail_icon} alt="mailiconinbox" className='inboxIcon' />
+                </div>
             </div>
         </div>
     )
