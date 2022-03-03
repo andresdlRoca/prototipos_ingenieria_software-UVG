@@ -192,6 +192,12 @@ footer {
 .container_main_content{
   
 }
+
+#inboxpage {
+    display: flex;
+    position: relative;
+}
+
 .pfp_Bandeja_Entrada{
     position: relative;
     height: 100%;
@@ -204,28 +210,86 @@ footer {
     margin-left: 40px;
   }
   
-  #inboxpage #profileinfo{
+#inboxpage #profileinfo{
     text-align: justify;
     position: relative;
     font-size: 19px;
-    left: 350px;
-    bottom: 225px;
-  }
-  
-  #inboxpage #profileinfo #Descripcion {
+    margin-top: 1%;
+}
+
+#inboxpage #profileinfo #Descripcion {
     inline-size: 750px;
     overflow-wrap: break-word;
-  }
-  
-  #inboxpage #inbox {
+}
+
+#inboxpage #inbox {
     position: relative;
     width: 1120px;
-    height: 150px;
+    height: auto;
     outline: solid 1px black;
-    bottom: 200px;
-    margin: 50px;
-  }
-  
-  .inboxMessages {
+    right: 1000px;
+    top: 350px;
+}
+
+.Messages p{
+    text-align: justify;
+    position: relative;
+    inline-size: 900px;
+    overflow-wrap: break-word;
+    margin-left: 120px;
+    margin-right: 20px;
+    bottom: 50px;
+}
+
+.Messages img{
+    position: relative;
+    height: 100%;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    top: 40px;
+
+}
+
+.Messages {
+    position: relative;
+    outline: solid 2px black;
+    margin: 2%;
+    height: auto;
+    width: auto;
+    bottom: 90px;
+    background-color: #a2e29c99;
+}
+
+#headerinbox {
+    position: relative;
+    align-items: center;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: rgb(95, 180, 88);
+}
+
+.inboxIcon {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.inboxMessages {
+    position: relative;
+    margin-top: 10%;
+    height: auto;
+    width: auto;
     
-  }
+}
+
+.mail_pfp {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin-left: 10px;
+}
