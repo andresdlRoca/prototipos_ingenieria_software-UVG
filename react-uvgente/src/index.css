@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+.last_element_in_header {
+  margin-right: 10px;
+}
+.container {
+  max-width: 100%;
+  overflow: auto;
+  min-height: 700px;
+  min-width: 700px;
+  border: 1px solid steelblue;
+}
+.header h3{
+  color: white;
+
+}
+.header h3:hover{
+  text-shadow: 0 0 30px #fff;
+
+}
+.header .logo{
+  position: relative;
+  height: 100%;
+  margin-bottom: 10px;
+
+}
+.header div .logo{
+  position: relative;
+  height: 10px;
+  margin-bottom: 10px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 200px;
+  background-color: rgb(95, 180, 88);
+  height: 120px;
+}
+
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.task {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.task.reminder {
+  border-left: 5px solid green;
+}
+
+.task h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-form {
+  margin-bottom: 40px;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+
+#sidebar {
+  position: relative;
+  width: 200px;
+  height: 580px;
+  background: whitesmoke;
+  left: 0px;
+  transition: all 500ms linear;
+  padding: 0px;
+}
+
+#sidebar.active {
+  left: 0px;
+}
+
+#sidebar ul li {
+  color: black;
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgb(95, 180, 88, 0.6);
+  text-align: center;
+}
+
+
+
+#sidebar .toggle-btn {
+  position: absolute;
+  left: 200px;
+  cursor: pointer;
+}
+
+.card_into_side_bar {
+    margin:0px ;
+    padding: 0px;
+    width: 100%;
+    height: 80px;
+}
+.pp_into_side_bar_card{
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.flexbox_pp_name{
+  display: flex;
+  width: 100%;
+  height: 50px;
+}
+.flexbox_pp_name p{
+  font-size: small;
+}
+.div_five_stars{
+  height: 50px;
+  width: auto;
+
+}
+footer {
+  margin-top: 30px;
+  text-align: center;
+}
+.flex_container_sidebar_and_content{
+  display: flex;
+}
+
+#problem_container {
+  display: flex;
+  position: relative;
+}
+
+
+#report_problem_text {
+  position: relative;
+  font-size: 20px;
+  margin-top: 15%;
+  text-align: center;
+  left: 600px;
+}
+
+
+#question_text {
+  position: relative;
+  font-size: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: left;
+  left: 40px;
+
+}
+
+#scroll_down {
+  position: absolute;
+  width: 1500px;
+  height: 50px;
+  background: #bfbfbf;
+  left:240px;
+  color: grey;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#triangle {
+  position: relative;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid black;
+  top: -20px;
+  left: 1425px;
+}
+
+#details_text {
+  position: relative;
+  width: 400px;
+  font-size: 20px;
+  margin-top: 20%;
+  margin-bottom: 5%;
+  text-align: left;
+  left: 40px;
+
+}
+
+#input_problem {
+  position: absolute;
+  font-size: 20px;
+  text-align: left;
+  background: #bfbfbf;
+  left:240px;
+  color: grey;
+  width: 1500px;
+  height: 200px;
+  border-color: transparent;
+  
+}
+
+#problem_btn {
+  position: relative;
+  font-size: 20px;
+  margin-top: 60%;
+  text-align: center;
+  left: 750px;
+  background: rgb(95, 180, 88);
+  height: 40px;
+  width: 120px;
+  border-color: transparent;
+}
