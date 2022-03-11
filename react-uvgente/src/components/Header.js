@@ -10,7 +10,6 @@ const Header = (props) => {
         {/*Este componente es temporal, en lo que averiguo como pasar direccion de imagen como paramentro al cmpnente */}
         <div >
             <h3> Vender 
-            <img src={signo_mas_img} alt='Mas' className='logo'></img>
             </h3>
         </div>       
         <NavigationElements title='Top Ventas'/>
