@@ -7,7 +7,7 @@ function App() {
     <div className="container">
       <Header navSet="OFF"/>{/** navSet = "ON" para mostrar opcinones en la barra de navegacion; OFF para no mostroarla */}
       <div className="flex_container_sidebar_and_content">
-        <BarraLateral />
+        <Login />
       </div>
   
     </div>
