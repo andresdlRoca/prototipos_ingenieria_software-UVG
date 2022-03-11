@@ -1,5 +1,5 @@
 # Prototipos de Proyecto
-Integrantes:  
+Integrantes: 
 Andrés de la Roca, 20332  
 Roberto Rios, 20979  
 Jun Woo Lee, 20358  
