@@ -48,6 +48,10 @@ const Crear_publicacion = () => {
                 </div>
                 
             </div>
+
+            <div id="boton">
+                <div id="botonname">Publicar</div>
+            </div>
         </div>
     )
 }

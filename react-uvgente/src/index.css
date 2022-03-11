@@ -293,3 +293,11 @@ footer {
     width: 80px;
     margin-left: 10px;
 }
+
+.botton {
+    position: relative;
+    margin-top: 10%;
+    height: auto;
+    width: auto;
+}
+
