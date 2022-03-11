@@ -476,4 +476,86 @@ footer {
   right: -140px;
   color: blue;
   text-decoration: underline;
+
+#problem_container {
+  display: flex;
+  position: relative;
+}
+
+
+#report_problem_text {
+  position: relative;
+  font-size: 20px;
+  margin-top: 15%;
+  text-align: center;
+  left: 600px;
+}
+
+
+#question_text {
+  position: relative;
+  font-size: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: left;
+  left: 40px;
+
+}
+
+#scroll_down {
+  position: absolute;
+  width: 1500px;
+  height: 50px;
+  background: #bfbfbf;
+  left:240px;
+  color: grey;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#triangle {
+  position: relative;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid black;
+  top: -20px;
+  left: 1425px;
+}
+
+#details_text {
+  position: relative;
+  width: 400px;
+  font-size: 20px;
+  margin-top: 20%;
+  margin-bottom: 5%;
+  text-align: left;
+  left: 40px;
+
+}
+
+#input_problem {
+  position: absolute;
+  font-size: 20px;
+  text-align: left;
+  background: #bfbfbf;
+  left:240px;
+  color: grey;
+  width: 1500px;
+  height: 200px;
+  border-color: transparent;
+  
+}
+
+#problem_btn {
+  position: relative;
+  font-size: 20px;
+  margin-top: 60%;
+  text-align: center;
+  left: 750px;
+  background: rgb(95, 180, 88);
+  height: 40px;
+  width: 120px;
+  border-color: transparent;
 }
