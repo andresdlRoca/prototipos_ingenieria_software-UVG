@@ -1,8 +1,9 @@
 import add_image from '../media/agregar_img.jpg'
 import lista_icono from '../media/lista_icono.png'
-import precio_pfp from '../media/precio.jpg'
+import precio_pfp from '../media/precio_icon.jpg'
 import categoria_pfp from '../media/categoria_icon.jpg'
 import estado_pfp from '../media/estado_icon.jpg'
+import destacado_pfp from '../media/destacado_icon.jpg'
 
 const Bandeja_Entrada = () => {
     return(
@@ -39,7 +40,7 @@ const Bandeja_Entrada = () => {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
                     </div>
                     <div className="Messages">
-                        <img src={estado_pfp} alt="pfp3" className='mail_pfp' />
+                        <img src={destacado_pfp} alt="pfp3" className='mail_pfp' />
                         <p>Destacar Publicación  ᐁ</p>
                         <p> </p>
                         <p>Si/no </p>
