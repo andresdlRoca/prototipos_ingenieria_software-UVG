@@ -5,11 +5,11 @@ import categoria_pfp from '../media/categoria_icon.jpg'
 import estado_pfp from '../media/estado_icon.jpg'
 import destacado_pfp from '../media/destacado_icon.jpg'
 
-const Bandeja_Entrada = () => {
+const Crear_publicacion = () => {
     return(
         <div id="inboxpage">
             <div id="pfp">
-                <img src={add_image} alt="picadd_image" className='pfp_Bandeja_Entrada' />
+                <img src={add_image} alt="picadd_image" className='pfp_Crear_publicacion' />
             </div>
             <div id="profileinfo">
                 <div id="Productname">*Título:____________________*</div>
@@ -52,8 +52,8 @@ const Bandeja_Entrada = () => {
     )
 }
 
-Bandeja_Entrada.defaultProps = {
+Crear_publicacion.defaultProps = {
    
 }
 
-export default Bandeja_Entrada
+export default Crear_publicacion

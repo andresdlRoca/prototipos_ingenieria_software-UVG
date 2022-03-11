@@ -1,6 +1,6 @@
 import BarraLateral from "./components/BarraLateral";
 import Header from "./components/Header";
-import Bandeja_Entrada from "./components/Bandeja_Entrada";
+import Crear_publicacion from "./components/Crear_publicacion";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Header navSet="ON"/>{/** navSet = "ON" para mostrar opcinones en la barra de navegacion; OFF para no mostroarla */}
       <div className="flex_container_sidebar_and_content">
         <BarraLateral />
-        <Bandeja_Entrada />
+        <Crear_publicacion />
       </div>
   
     </div>
