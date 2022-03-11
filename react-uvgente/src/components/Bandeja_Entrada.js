@@ -1,43 +1,48 @@
-import profile_pic from '../media/cat_pp.jpg'
-import mail_icon from '../media/mail_icon.png'
-import fulano_pfp from '../media/fulano.jpg'
-import gato_pfp from '../media/gatopfpinbox.jpg'
-import ferrari_pfp from '../media/ferraripfp.jpg'
+import add_image from '../media/agregar_img.jpg'
+import lista_icono from '../media/lista_icono.png'
+import precio_pfp from '../media/precio.jpg'
+import categoria_pfp from '../media/categoria_icon.jpg'
+import estado_pfp from '../media/estado_icon.jpg'
 
 const Bandeja_Entrada = () => {
     return(
         <div id="inboxpage">
             <div id="pfp">
-                <img src={profile_pic} alt="profilepicbandejaentrada" className='pfp_Bandeja_Entrada' />
+                <img src={add_image} alt="picadd_image" className='pfp_Bandeja_Entrada' />
             </div>
             <div id="profileinfo">
-                <div id="Username">Luis Pedro Gonzalez Aldana</div>
-                <div id="Tipouser">Estudiante UVG</div>
+                <div id="Productname">*Título:____________________*</div>
                 <div id="Descripcion">
-                    <p>Sobre mi:</p>
+                    <p>Descripción:</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. Nam ultricies pellentesque elementum. Aliquam iaculis mauris diam, sed volutpat elit porta quis. Ut efficitur vulputate dictum. Morbi aliquam vehicula molestie. Fusce lacinia dapibus ante non luctus.</p>
                 </div>
             </div>
             <div id="inbox">
                 <div id="headerinbox">
-                    <p id="tituloinbox">Bandeja de entrada</p>
-                    <img src={mail_icon} alt="mailiconinbox" className='inboxIcon' />
+                    <p id="tituloinbox">Datos de venta</p>
+                    <img src={lista_icono} alt="listaiconbox" className='inboxIcon' />
                 </div>
                 <div className="inboxMessages">
                     <div className="Messages">
-                        <img src={fulano_pfp} alt="pfp1" className='mail_pfp' />
-                        <p>Fulanito Fulano</p>
+                        <img src={precio_pfp} alt="pfp1" className='mail_pfp' />
+                        <p>Precio</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
                     </div>
                     <div className="Messages">
-                        <img src={gato_pfp} alt="pfp2" className='mail_pfp' />
-                        <p>Maria Elisa</p>
+                        <img src={categoria_pfp} alt="pfp2" className='mail_pfp' />
+                        <p>Categoría  ᐁ</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
                     </div>
                     <div className="Messages">
-                        <img src={ferrari_pfp} alt="pfp3" className='mail_pfp' />
-                        <p>Jose Hernandez</p>
+                        <img src={estado_pfp} alt="pfp3" className='mail_pfp' />
+                        <p>Estado  ᐁ</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
+                    </div>
+                    <div className="Messages">
+                        <img src={estado_pfp} alt="pfp3" className='mail_pfp' />
+                        <p>Destacar Publicación  ᐁ</p>
+                        <p> </p>
+                        <p>Si/no </p>
                     </div>
                 </div>
                 
