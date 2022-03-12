@@ -27,8 +27,8 @@ const Cards_Ventas = () => {
           <div className="uvgente_box">
             <img src={libro} alt="tutorias" className="tutorios"/>
             <div className="text-center">
-              <h2>Q. 60</h2>
-              <p>Tutorias Calculo 1</p>
+              <h2>Q. 200</h2>
+              <p>Libro: Calculo 1</p>
             </div>
             <img src={dots} alt="dots" className="dot"/>
           </div>
