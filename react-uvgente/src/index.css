@@ -227,6 +227,7 @@ footer {
     margin-top: 30px;
     text-align: center;
 }
+
 .flex_container_sidebar_and_content{
     display: flex;
 }
@@ -559,3 +560,126 @@ footer {
   width: 120px;
   border-color: transparent;
 }
+
+/* .container_main_content{
+  
+} */
+
+/*---------------------------------------------------------------------------*/
+
+.buscador {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(184, 184, 184);
+}
+
+.buscadorinput {
+  padding: 10px 10px 10px 50px;
+  width: 75%;
+  border-radius: 25px;
+  border: solid black 2px;
+  background-color: rgb(184, 184, 184);
+  font-size: 16px;
+}
+
+.lupa {
+  left: 125px;
+}
+
+.buscador>label {
+  padding: 10px;
+}
+
+.buscador>img  {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  position: relative;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.container4buscador {
+  background-color: rgb(184, 184, 184);
+  width: 100%;
+}
+
+.maincontainer {
+  background-color: white;
+  width: 95%;
+  height: fit-content;
+  float: right;
+  padding: 50px;
+}
+
+.mc_column {
+  float: left;
+  min-height: fit-content;
+  height: fit-content;
+  width: 50%;
+}
+
+.two_columns_buscador {
+  min-height: fit-content;
+  height: fit-content;
+  width: 100%;
+} 
+
+.two_columns_buscador:after {
+  box-sizing: border-box;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.space {
+  padding: 20px;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.venta {
+  background-color: rgb(196, 196, 196);
+  width: min-content;
+  padding: 30px;
+  text-align: center;
+}
+
+.venta label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.imagenesarriba {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ventastar {
+  float: right;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.tutobg {
+  background-color: rgb(196, 196, 196);
+  grid-template-columns: 260px 230px;
+  display: grid;
+  max-width: max-content;
+  padding: 20px;
+  width: fit-content;
+}
+
+.tutomaterias {
+  display: inline;
+  float: left;
+}
+
+.tutoright img {
+  float: right;
+}
+
+/*---------------------------------------------------------------------------*/
