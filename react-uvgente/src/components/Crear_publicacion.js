@@ -1,9 +1,9 @@
-import add_image from '../media/agregar_img.jpg'
+import add_image from '../media/agregar_Img.png'
 import lista_icono from '../media/lista_icono.png'
-import precio_pfp from '../media/precio_icon.jpg'
-import categoria_pfp from '../media/categoria_icon.jpg'
-import estado_pfp from '../media/estado_icon.jpg'
-import destacado_pfp from '../media/destacado_icon.jpg'
+import precio_pfp from '../media/precio_icon.png'
+import categoria_pfp from '../media/categoria_icon.png'
+import estado_pfp from '../media/estado_icon.png'
+import destacado_pfp from '../media/destacado_icon.png'
 
 const Crear_publicacion = () => {
     return(
