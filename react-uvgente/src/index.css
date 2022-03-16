@@ -189,9 +189,8 @@ footer {
 .flex_container_sidebar_and_content{
     display: flex;
 }
-.container_main_content{
-  
-}
+
+/*****************************************************************************/
 
 #inboxpage {
     display: flex;
@@ -201,103 +200,202 @@ footer {
 .pfp_Crear_publicacion{
     position: relative;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 20% ;
     margin-right: 5px;
     width: 250px;
     height: 250px;
-    top: 30px;
-    margin-right: 40px;
-    margin-left: 40px;
-  }
-  
-#inboxpage #profileinfo{
-    text-align: justify;
-    position: relative;
-    font-size: 19px;
-    margin-top: 1%;
+    top: 105px;
+    margin-right: 50px;
+    margin-left: 50px;
 }
 
-#inboxpage #profileinfo #Descripcion {
-    inline-size: 750px;
-    overflow-wrap: break-word;
-}
-
-#inboxpage #inbox {
-    position: relative;
-    width: 1120px;
-    height: auto;
-    outline: solid 1px black;
-    right: 1000px;
-    top: 350px;
-}
-
-.Messages p{
-    text-align: justify;
-    position: relative;
-    inline-size: 900px;
-    overflow-wrap: break-word;
-    margin-left: 120px;
-    margin-right: 20px;
-    bottom: 50px;
-}
-
-.Messages img{
+.pfp_picture_publicacion {
     position: relative;
     height: 100%;
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    top: 40px;
+    border-bottom-left-radius: 40% ;
+    margin-right: 5px;
+    width: 250px;
+    height: 250px;
+    top: 385px;
+    margin-right: 50px;
+    margin-left: -300px;
+    border: 4px solid  black;
 
 }
 
-.Messages {
+/***Formulario****/
+
+#problem_container {
+    display: flex;
     position: relative;
-    outline: solid 2px black;
-    margin: 2%;
-    height: auto;
-    width: auto;
-    bottom: 90px;
-    background-color: #a2e29c99;
+}
+  
+  
+#crear_publicacion_text {
+    position: relative;
+    font-size: 40px;
+    margin-top: 5%;
+    text-align:center;
+    left: 495px;
 }
 
-#headerinbox {
+#titulo_text {
     position: relative;
-    align-items: center;
+    font-size: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: left;
+    left: 40px;
+  
+}
+
+#all_text {
+    position: relative;
+    width: 400px;
+    font-size: 20px;
+    margin-top: 20%;
+    margin-bottom: 5%;
+    text-align: left;
+    left: 40px;
+  
+}
+
+#input {
+    position: absolute;
+    font-size: 20px;
+    text-align: left;
+    background: #bfbfbf;
+    left:240px;
+    color: grey;
+    width: 1300px;
+    height: 50px;
+    border-color: transparent;
+    margin-left: 150px;
+}
+
+#scroll_down {
+    position: absolute;
+    width: 1300px;
+    height: 50px;
+    background: #bfbfbf;
+    left:240px;
+    color: grey;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-left: 150px;
+
+}
+  
+#triangle {
+    position: relative;
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid black;
+    top: -20px;
+    left: 1225px;
+}
+  
+#details_text {
+    position: relative;
+    width: 400px;
+    font-size: 20px;
+    margin-top: 20%;
+    margin-bottom: 5%;
+    text-align: left;
+    left: 40px;
+  
+}
+  
+#input_descr {
+    position: absolute;
+    font-size: 20px;
+    text-align: left;
+    background: #bfbfbf;
+    left:240px;
+    color: grey;
+    width: 1300px;
+    height: 200px;
+    border-color: transparent;
+    margin-left: 150px;
+}
+  
+#publicacion_btn {
+    position: relative;
+    font-size: 20px;
+    margin-top: 60%;
     text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    margin-bottom: 10px;
-    background-color: rgb(95, 180, 88);
+    left: 630px;
+    background: rgb(95, 180, 88);
+    height: 40px;
+    width: 120px;
+    border-color: transparent;
 }
-
-.inboxIcon {
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
+  
+/****Boton Deslizable***/
+:root {
+    --color-green: #00a878;
+    --color-red: #fe5e41;
+    --color-button: #fdffff;
+    --color-black: #000;
 }
-
-.inboxMessages {
+.switch-button {
     position: relative;
-    margin-top: 10%;
-    height: auto;
-    width: auto;
+    margin-top: -40%;
+    margin-bottom: 50%;
+    left: -300px;
     
 }
-
-.mail_pfp {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    margin-left: 10px;
+.switch-button .switch-button__checkbox {
+    display: none;
 }
-
-.botton {
+.switch-button .switch-button__label {
+    background-color: var(--color-red);
+    width: 5rem;
+    height: 3rem;
+    border-radius: 3rem;
+    display: inline-block;
     position: relative;
-    margin-top: 10%;
-    height: auto;
-    width: auto;
+}
+.switch-button .switch-button__label:before {
+    transition: .2s;
+    display: block;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--color-button);
+    content: '';
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0px 1px var(--color-black);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label {
+    background-color: var(--color-green);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label:before {
+    transform: translateX(2rem);
 }
 
+#switch_text{
+    position: relative;
+    width: 400px;
+    font-size: 15px;
+    margin-top: -10.5%;
+    margin-bottom: 5%;
+    text-align: left;
+    left: 90px;
+  
+}
+
+.pfp_destacado{
+    position: relative;
+    height: 100%;
+    border-radius: 20% ;
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    top: -48px;
+    margin-right: 50px;
+    margin-left: 50px;
+    left: 205px;
+}

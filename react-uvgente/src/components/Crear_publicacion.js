@@ -1,56 +1,40 @@
 import add_image from '../media/agregar_Img.png'
-import lista_icono from '../media/lista_icono.png'
-import precio_pfp from '../media/precio_icon.png'
-import categoria_pfp from '../media/categoria_icon.png'
-import estado_pfp from '../media/estado_icon.png'
 import destacado_pfp from '../media/destacado_icon.png'
+import picture_pfp from '../media/picture.png'
 
 const Crear_publicacion = () => {
     return(
         <div id="inboxpage">
+
             <div id="pfp">
                 <img src={add_image} alt="picadd_image" className='pfp_Crear_publicacion' />
+                <img src={picture_pfp} alt="picadd_image" className='pfp_picture_publicacion' />
             </div>
-            <div id="profileinfo">
-                <div id="Productname">*Título:____________________*</div>
-                <div id="Descripcion">
-                    <p>Descripción:</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. Nam ultricies pellentesque elementum. Aliquam iaculis mauris diam, sed volutpat elit porta quis. Ut efficitur vulputate dictum. Morbi aliquam vehicula molestie. Fusce lacinia dapibus ante non luctus.</p>
+            
+            <div id="titles">
+                <div id="crear_publicacion_text">Agregar Producto</div>
+                <div id="titulo_text">Título</div>
+                <input type ="text" id="input"></input>
+                <div id="all_text">Precio</div>
+                <input type ="text" id="input"></input>
+                <div id="all_text">Categoría</div>
+                <div id="scroll_down">Elige una categoría
+                    <div id="triangle"></div>
                 </div>
-            </div>
-            <div id="inbox">
-                <div id="headerinbox">
-                    <p id="tituloinbox">Datos de venta</p>
-                    <img src={lista_icono} alt="listaiconbox" className='inboxIcon' />
+                <div id="all_text">Estado</div>
+                <div id="scroll_down">Elija el estado del producto
+                    <div id="triangle"></div>
                 </div>
-                <div className="inboxMessages">
-                    <div className="Messages">
-                        <img src={precio_pfp} alt="pfp1" className='mail_pfp' />
-                        <p>Precio</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
-                    </div>
-                    <div className="Messages">
-                        <img src={categoria_pfp} alt="pfp2" className='mail_pfp' />
-                        <p>Categoría  ᐁ</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
-                    </div>
-                    <div className="Messages">
-                        <img src={estado_pfp} alt="pfp3" className='mail_pfp' />
-                        <p>Estado  ᐁ</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
-                    </div>
-                    <div className="Messages">
-                        <img src={destacado_pfp} alt="pfp3" className='mail_pfp' />
-                        <p>Destacar Publicación  ᐁ</p>
-                        <p> </p>
-                        <p>Si/no </p>
-                    </div>
-                </div>
-                
-            </div>
+                <div id="all_text">Descripción</div>
+                <input type ="text" id="input_descr"></input>
+                <button id="publicacion_btn">Publicar</button>
 
-            <div id="boton">
-                <div id="botonname">Publicar</div>
+                <div class="switch-button">
+                    <input type="checkbox" name="switch-button" id="switch-label" class="switch-button__checkbox"></input>
+                    <label for="switch-label" class="switch-button__label"></label>
+                    <div id="switch_text">Destacar Publicación</div>
+                    <img src={destacado_pfp} alt="picadd_image" className='pfp_destacado' />
+                </div>
             </div>
         </div>
     )
