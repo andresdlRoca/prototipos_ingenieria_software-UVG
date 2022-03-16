@@ -32,7 +32,7 @@ const Crear_publicacion = () => {
                 <div class="switch-button">
                     <input type="checkbox" name="switch-button" id="switch-label" class="switch-button__checkbox"></input>
                     <label for="switch-label" class="switch-button__label"></label>
-                    <div id="switch_text">Destacar Publicación</div>
+                    <div id="switch_text">Destacar Producto</div>
                     <img src={destacado_pfp} alt="picadd_image" className='pfp_destacado' />
                 </div>
             </div>
