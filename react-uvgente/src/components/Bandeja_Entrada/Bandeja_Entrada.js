@@ -1,12 +1,15 @@
-import profile_pic from '../media/cat_pp.jpg'
-import mail_icon from '../media/mail_icon.png'
-import fulano_pfp from '../media/fulano.jpg'
-import gato_pfp from '../media/gatopfpinbox.jpg'
-import ferrari_pfp from '../media/ferraripfp.jpg'
+import profile_pic from '../../media/cat_pp.jpg'
+import mail_icon from '../../media/mail_icon.png'
+import fulano_pfp from '../../media/fulano.jpg'
+import gato_pfp from '../../media/gatopfpinbox.jpg'
+import ferrari_pfp from '../../media/ferraripfp.jpg'
+import MensajeUI from './MensajeUI.js'
 
 const Bandeja_Entrada = () => {
     return(
+        
         <div id="inboxpage">
+            <MensajeUI />
             <div id="pfp">
                 <img src={profile_pic} alt="profilepicbandejaentrada" className='pfp_Bandeja_Entrada' />
             </div>
@@ -50,4 +53,4 @@ Bandeja_Entrada.defaultProps = {
    
 }
 
-export default Bandeja_Entrada
+export default Bandeja_Entrada;
