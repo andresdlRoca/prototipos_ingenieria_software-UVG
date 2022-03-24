@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import profile_pic from '../../media/cat_pp.jpg'
 import mail_icon from '../../media/mail_icon.png'
 import fulano_pfp from '../../media/fulano.jpg'
@@ -9,18 +11,6 @@ const Bandeja_Entrada = () => {
     return(
         
         <div id="inboxpage">
-            <MensajeUI />
-            <div id="pfp">
-                <img src={profile_pic} alt="profilepicbandejaentrada" className='pfp_Bandeja_Entrada' />
-            </div>
-            <div id="profileinfo">
-                <div id="Username">Luis Pedro Gonzalez Aldana</div>
-                <div id="Tipouser">Estudiante UVG</div>
-                <div id="Descripcion">
-                    <p>Sobre mi:</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. Nam ultricies pellentesque elementum. Aliquam iaculis mauris diam, sed volutpat elit porta quis. Ut efficitur vulputate dictum. Morbi aliquam vehicula molestie. Fusce lacinia dapibus ante non luctus.</p>
-                </div>
-            </div>
             <div id="inbox">
                 <div id="headerinbox">
                     <p id="tituloinbox">Bandeja de entrada</p>
@@ -28,19 +18,20 @@ const Bandeja_Entrada = () => {
                 </div>
                 <div className="inboxMessages">
                     <div className="Messages">
-                        <img src={fulano_pfp} alt="pfp1" className='mail_pfp' />
-                        <p>Fulanito Fulano</p>
+
+                        <img id="profileImg" src={fulano_pfp} alt="pfp1" className='mail_pfp' />
+                        <p id="profileName">Fulanito Fulano</p>
+                        <p id="sentMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
+                    </div>
+                    <div className="Messages">
+                        <img id="profileImg" src={gato_pfp} alt="pfp2" className='mail_pfp' />
+                        <p id="profileName" >Maria Elisa</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
                     </div>
                     <div className="Messages">
-                        <img src={gato_pfp} alt="pfp2" className='mail_pfp' />
-                        <p>Maria Elisa</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
-                    </div>
-                    <div className="Messages">
-                        <img src={ferrari_pfp} alt="pfp3" className='mail_pfp' />
-                        <p>Jose Hernandez</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
+                        <img id="profileImg" src={ferrari_pfp} alt="pfp3" className='mail_pfp' />
+                        <p id="profileName" >Jose Hernandez</p>
+                        <p id="sentMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra mi a fringilla posuere. Aenean pulvinar, dui nec ultrices cursus, tellus lectus fermentum lacus, sed finibus enim mauris ut sapien. Phasellus vulputate nulla ac sollicitudin ultricies. </p>
                     </div>
                 </div>
                 
