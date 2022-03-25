@@ -1,12 +1,15 @@
 import logo from '../media/UVGente_Logo_white.png' 
 import signo_mas_img from '../media/signo_mas_blanco.png' 
 import NavigationElements from './NavigationElements'
+import { Link } from 'react-router-dom'
 const Header = (props) => {
   console.log(props.navSet)
   if(props.navSet=='ON'){
   return (
     <header className='header'>
-        <img src={logo} alt='Logo UVGente' className='logo'/>
+        <Link to="/">
+          <img src={logo} alt='Logo UVGente' id='logo_uvgente'/>
+        </Link>
         {/*Este componente es temporal, en lo que averiguo como pasar direccion de imagen como paramentro al cmpnente */}
         <div >
             <h3> Vender 

@@ -34,10 +34,10 @@ body {
     text-shadow: 0 0 30px #fff;
 
 }
-.header .logo{
+#logo_uvgente{
     position: relative;
-    height: 100%;
-    margin-bottom: 10px;
+    height: 130px;
+    margin: 10px;
 
 }
 .header div .logo{
