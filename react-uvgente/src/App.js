@@ -10,14 +10,6 @@ import MiPerfil from  "./components/MiPerfil"
 import Login from "./components/Login"
 function App() {
   return (
-<<<<<<< HEAD
-    <div className="container">
-      <Header navSet="ON"/>{/** navSet = "ON" para mostrar opcinones en la barra de navegacion; OFF para no mostroarla */}
-      <div className="flex_container_sidebar_and_content">
-        <BarraLateral />
-        <Bandeja_Entrada />
-
-=======
     <Router>
       <div className="container">
         <Header navSet="ON"/>{/** navSet = "ON" para mostrar opcinones en la barra de navegacion; OFF para no mostroarla */}
@@ -31,7 +23,6 @@ function App() {
 
           </Routes>
         </div>
->>>>>>> 2dfefa997e13ba42cc7b4cd5c46f0164c609d176
       </div>
     </Router>
   );
