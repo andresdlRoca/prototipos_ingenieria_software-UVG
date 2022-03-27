@@ -5,8 +5,8 @@ import Bandeja_Entrada from "./components/Bandeja_Entrada";
 import Reportar_Problema from "./components/Reportar_Problema"
 import TutoriaInfo from "./components/TutoriaInfo";
 import VentaInfo from "./components/VentaInfo";
-
 import Login from "./components/Login"
+
 function App() {
   return (
     <div className="container">
