@@ -9,8 +9,10 @@ import MensajeUI from './MensajeUI.js'
 
 const Bandeja_Entrada = () => {
     return(
-        
+        <>
+        <MensajeUI/>
         <div id="inboxpage">
+            
             <div id="inbox">
                 <div id="headerinbox">
                     <p id="tituloinbox">Bandeja de entrada</p>
@@ -37,6 +39,7 @@ const Bandeja_Entrada = () => {
                 
             </div>
         </div>
+        </>
     )
 }
 
