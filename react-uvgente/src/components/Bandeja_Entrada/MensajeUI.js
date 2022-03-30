@@ -8,7 +8,14 @@ const MensajeUI = () => {
         </div>
        
         <div className="mainMessageUI">
-            <div className='internalMSG'></div>
+            <button>Cerrar</button>
+            <h1>Usuario</h1>
+            <div className='internalMSG'>
+                
+                <div className='MSGBubble'>Mensaje prueba</div>
+            </div>
+            <input type="text" id="inputMSG"></input>
+            
         </div>  
         </>
 
