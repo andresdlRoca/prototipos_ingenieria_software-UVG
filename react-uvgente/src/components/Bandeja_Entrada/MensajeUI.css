@@ -1,4 +1,4 @@
-.mainMessageUI {
+#mainMessageUI {
     height: 500px;
     width: 1000px;
     background-color: #a2e29c;
@@ -25,7 +25,7 @@
     overflow: auto;
 }
 
-.message_container {
+#message_container {
     position: absolute;
     z-index: 1;
     height: 100%;
@@ -74,3 +74,15 @@ button {
     margin: 1%;
 }
 
+.chatVisible {
+    visibility: visible;
+}
+
+.chatInvisible {
+    visibility: hidden;
+}
+
+::placeholder {
+    color: white;
+    opacity: 0.5;
+}
