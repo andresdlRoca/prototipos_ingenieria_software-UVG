@@ -1,36 +1,46 @@
-//imports
 //<div></div>
-// nombre, precio, descripcion, foto
 
 const Producto_Form = () => {
-    <div>
-        <form>
-            <label>
-                Nombre:
-                <input type="text" name="name" />
-            </label>
-            <input type="submit" value="Submit" />
-        
-            <label>
-                Descripcion del producto:
-                <input type="text" name="name" />
-            </label>
-            <input type="submit" value="Submit" />
-        
-            <label>
-                Precio:
-                <input type="text" name="name" />
-            </label>
-            <input type="submit" value="Submit" />
-        
-            <label>
-                Foto del producto:
-                <input type="text" name="name" />
-            </label>
-            <input type="submit" value="Submit" />
+    return (
+        <div className="productoForm">
+            <form>
+                <div className="productoFormOpcion  ">
+                    <label>
+                        Nombre:
+                        <input type="text" name="name" className=""/>
+                    </label>
+                </div> 
+                
+                <div className="productoFormOpcion  ">
+                    <label>
+                        Descripcion del producto:
+                        <input type="text" name="name" />
+                    </label>
+                </div>
+                
             
-        </form>
-    </div>
+                <div className="productoFormOpcion  ">
+                    <label>
+                        Precio:
+                        <input type="text" name="name" />
+                    </label>
+                </div>
+                
+                <div className="productoFormOpcion  ">
+                    <label>
+                        Foto del producto:
+                    </label>
+                    <input type="submit" value="Subir archivo" />
+                </div>
+
+                <div className="productoFormOpcion">
+                    <input type="submit" value="Cancelar" className="botonCancelar"/>
+                    <input type="submit" value="Siguiente" className="botonPublicar"/>
+                </div>
+                
+            </form>
+        </div>
+    );
 }
 
 Producto_Form.props = {

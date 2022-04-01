@@ -683,3 +683,50 @@ footer {
 }
 
 /*---------------------------------------------------------------------------*/
+/*para opciones de venta de producto*/
+.opcionesDeVenta {
+  position: absolute;
+  background-color: rgb(196, 196, 196);
+}
+
+/*---------------------------------------------------------------------------*/
+/*para el form de venta de producto*/
+
+.productoForm {
+  position: absolute;
+  background-color: rgb(184, 184, 184);
+  padding: 10px 10px 20px 10px;
+  box-shadow: 2px 2px 2px rgb(126, 126, 126);
+  left: 40%;
+}
+
+.productoFormOpcion {
+  display: flex;
+  align-content: space-between;
+  padding: 10px;
+}
+
+.productoFormOpcion input {
+  padding: 10px 10px 10px 10px;
+  width: 70%;
+  border-radius: 25px;
+  border: solid black 2px;
+  background-color: rgb(184, 184, 184);
+  font-size: 16px;
+}
+
+.productoFormOpcion input[type="submit"]{
+  background-color: rgb(156, 156, 156);
+  width: fit-content;
+  border-color: rgb(156, 156, 156);
+  box-shadow: 2px 2px 2px rgb(126, 126, 126);
+}
+
+.productoFormOpcion input[type="submit"]:hover{
+  border-color: rgb(128, 128, 128);
+  background-color: rgb(128, 128, 128) ;
+}
+
+.productoFormOpcion input[type="submit"] {
+  align-items: center;
+}
