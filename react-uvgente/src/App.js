@@ -21,7 +21,7 @@ function App() {
             <Route path="/profile" element = {<MiPerfil />}/>
             <Route path="/report" element = {<Reportar_Problema />}/>
             <Route path="/bandeja-de-entrada" element = {<Bandeja_Entrada />}/>
-            <Singup />
+           
           </Routes>
         </div>
       </div>
