@@ -43,12 +43,12 @@ body {
 .header div .logo{
     position: relative;
     height: 10px;
-    margin-bottom: 10px;
-  max-width: 100%;
-  min-height: 753px;
-  min-width: 700px;
-  border: 1px solid steelblue;
-  overflow: hidden;
+    margin-bottom: 20px;
+    max-width: 100%;
+    min-height: 753px;
+    min-width: 700px;
+    border: 1px solid steelblue;
+    overflow: hidden;
 }
 .header h3 {
   color: white;
@@ -242,8 +242,11 @@ footer {
 }
 
 #inboxpage {
-    display: flex;
-    position: relative;
+    max-width: 100%;
+    overflow: auto;
+    margin: 5%;
+    height: 100%;
+    width: 100%;
 }
 
 .pfp_Bandeja_Entrada{
@@ -260,29 +263,25 @@ footer {
   
 #inboxpage #profileinfo{
     text-align: justify;
-    position: relative;
     font-size: 19px;
     margin-top: 1%;
 }
 
-#inboxpage #profileinfo #Descripcion {
+#inboxpage #Descripcion {
     inline-size: 750px;
     overflow-wrap: break-word;
 }
 
 #inboxpage #inbox {
-    position: relative;
-    width: 1120px;
+    width: 100%;
     height: auto;
-    outline: solid 1px black;
-    right: 1000px;
-    top: 350px;
+
 }
 
 .Messages p{
     text-align: justify;
     position: relative;
-    inline-size: 900px;
+    inline-size: 70%;
     overflow-wrap: break-word;
     margin-left: 120px;
     margin-right: 20px;
@@ -310,7 +309,7 @@ footer {
 }
 
 #headerinbox {
-    position: relative;
+    
     align-items: center;
     text-align: center;
     display: block;
@@ -328,8 +327,7 @@ footer {
 }
 
 .inboxMessages {
-    position: relative;
-    margin-top: 10%;
+    margin-top: 100px;
     height: auto;
     width: auto;
     
@@ -341,6 +339,13 @@ footer {
     width: 80px;
     margin-left: 10px;
 }
+
+#clickableMessage {
+  height: 100%;
+  width: 100%;
+  
+}
+
 .flex_container_sidebar_and_content {
   display: flex;
 }
