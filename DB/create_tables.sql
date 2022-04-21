@@ -64,6 +64,7 @@ CREATE TABLE Producto(
     id  BIGSERIAL PRIMARY KEY,
     precio FLOAT, 
     disponible BOOLEAN,
+    descripcion TEXT,
     src_img VARCHAR(255),
     id_vendedor BIGINT,
     id_comprador BIGINT,
