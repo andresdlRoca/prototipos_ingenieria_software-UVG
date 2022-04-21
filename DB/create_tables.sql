@@ -93,11 +93,18 @@ CREATE TABLE Producto(
     src_img VARCHAR(255),
     id_vendedor BIGINT,
     id_comprador BIGINT,
-    id_categoria BIGINT,
     FOREIGN KEY (id_categoria) REFERENCES Categoria(id) ON DELETE CASCADE, 
     FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comprador) REFERENCES Usuario(id) ON DELETE CASCADE
 );
+CREATE TABLE Producto_Categoria(
+    id BIGSERIAL PRIMARY KEY, 
+    id_categoria BIGINT, 
+    id_producto BIGINT, 
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_producto) REFERENCES Producto(id) ON DELETE CASCADE
+);
+ALTER TABLE Producto_Categoria ADD CONSTRAINT unique_cruce UNIQUE(id_categoria, id_producto);
 CREATE TABLE Venta(
     id BIGSERIAL PRIMARY KEY,
     id_vendedor BIGINT,
