@@ -86,6 +86,7 @@ CREATE TABLE Categoria_Categoria(
 );
 CREATE TABLE Producto(
     id  BIGSERIAL PRIMARY KEY,
+    nombre TEXT, 
     precio FLOAT, 
     disponible BOOLEAN,
     descripcion TEXT,
