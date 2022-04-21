@@ -93,7 +93,6 @@ CREATE TABLE Producto(
     src_img VARCHAR(255),
     id_vendedor BIGINT,
     id_comprador BIGINT,
-    FOREIGN KEY (id_categoria) REFERENCES Categoria(id) ON DELETE CASCADE, 
     FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comprador) REFERENCES Usuario(id) ON DELETE CASCADE
 );
