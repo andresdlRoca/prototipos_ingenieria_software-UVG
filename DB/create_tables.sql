@@ -20,13 +20,13 @@ CREATE TABLE Usuario(
 );
 CREATE TABLE Vendedor(
     id BIGSERIAL PRIMARY KEY, 
-    id_usuario BIGINT,
+    id_usuario BIGINT UNIQUE,
     calificacion FLOAT,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
 );
 CREATE TABLE Tutor(
     id BIGSERIAL PRIMARY KEY, 
-    id_usuario BIGINT,
+    id_usuario BIGINT UNIQUE,
     calificacion FLOAT,
     isCertificado BOOLEAN,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
