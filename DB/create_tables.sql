@@ -1,24 +1,3 @@
-CREATE TABLE Vendedor(
-    id BIGSERIAL PRIMARY KEY, 
-    calificacion FLOAT
-);
-CREATE TABLE Tutor(
-    id BIGSERIAL PRIMARY KEY, 
-    calificacion FLOAT,
-    isCertificado BOOLEAN
-);
-CREATE TABLE Clase(
-    id BIGSERIAL PRIMARY KEY, 
-    nombre VARCHAR(30),
-    descripcion TEXT
-);
-CREATE TABLE Tutor_Clase(
-    id BIGSERIAL PRIMARY KEY, 
-    id_clase BIGINT, 
-    id_tutor BIGINT, 
-    FOREIGN KEY (id_clase) REFERENCES Clase(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_tutor) REFERENCES Tutor(id) ON DELETE CASCADE
-);
 CREATE TABLE Usuario(
     id BIGSERIAL PRIMARY KEY, 
     userName VARCHAR(250),
@@ -29,16 +8,48 @@ CREATE TABLE Usuario(
     profile_pic VARCHAR(250),
     nombre VARCHAR(250),
     apellido VARCHAR(250),
+    carrera VARCHAR(250),
     carne INTEGER, 
     id_tutor BIGINT, 
     id_vendedor BIGINT, 
     github VARCHAR(250),
     linkedin VARCHAR(250),
     descripcion TEXT,
-    isActive BOOLEAN, 
-    FOREIGN KEY (id_tutor) REFERENCES Tutor(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id) ON DELETE CASCADE
+    isActive BOOLEAN
 );
+CREATE TABLE Vendedor(
+    id BIGSERIAL PRIMARY KEY, 
+    id_usuario BIGINT,
+    calificacion FLOAT,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
+);
+CREATE TABLE Tutor(
+    id BIGSERIAL PRIMARY KEY, 
+    id_usuario BIGINT,
+    calificacion FLOAT,
+    isCertificado BOOLEAN,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
+);
+CREATE TABLE Departamento(
+    id BIGSERIAL PRIMARY KEY, 
+    nombre VARCHAR(250),
+    descripcion TEXT
+);
+CREATE TABLE Clase(
+    id BIGSERIAL PRIMARY KEY, 
+    nombre VARCHAR(30),
+    descripcion TEXT,
+    id_departamento BIGINT, 
+    FOREIGN KEY (id_departamento) REFERENCES Departamento(id) ON DELETE CASCADE
+);
+CREATE TABLE Tutor_Clase(
+    id BIGSERIAL PRIMARY KEY, 
+    id_clase BIGINT, 
+    id_tutor BIGINT, 
+    FOREIGN KEY (id_clase) REFERENCES Clase(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_tutor) REFERENCES Tutor(id) ON DELETE CASCADE
+);
+
 CREATE TABLE Tutor_guardado(
     id BIGSERIAL PRIMARY KEY, 
     id_usuario BIGINT,
@@ -60,6 +71,18 @@ CREATE TABLE Tutoria(
     FOREIGN KEY (id_cliente) REFERENCES Usuario(id) ON DELETE CASCADE, 
     FOREIGN KEY (id_tutor) REFERENCES Tutor(id) ON DELETE CASCADE
 );
+CREATE TABLE Categoria(
+    id BIGSERIAL PRIMARY KEY, 
+    nombre VARCHAR(250),
+    descripcion TEXT 
+);
+CREATE TABLE Categoria_Categoria(
+    id BIGSERIAL PRIMARY KEY, 
+    id_categoria_1 BIGINT,
+    id_categoria_2 BIGINT,
+    FOREIGN KEY (id_categoria_1) REFERENCES Categoria(id) ON DELETE CASCADE, 
+    FOREIGN KEY (id_categoria_2) REFERENCES Categoria(id) ON DELETE CASCADE
+);
 CREATE TABLE Producto(
     id  BIGSERIAL PRIMARY KEY,
     precio FLOAT, 
@@ -68,6 +91,8 @@ CREATE TABLE Producto(
     src_img VARCHAR(255),
     id_vendedor BIGINT,
     id_comprador BIGINT,
+    id_categoria BIGINT,
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id) ON DELETE CASCADE, 
     FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comprador) REFERENCES Usuario(id) ON DELETE CASCADE
 );
