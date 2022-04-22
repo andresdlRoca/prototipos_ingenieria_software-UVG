@@ -19,21 +19,21 @@ function App() {
         <Cards_Ventas /> 
         <Formulario_Ventas trigger={false}>
           <h3 id="nombre-form">Formulario de venta</h3><br />
-          <p>Formulario de la venta a publicar</p><br />
-          <label>Nombre del producto o servicio: </label><br />
-          <input id="nombre-prod" name="nombre-prod" value={nombre} ></input> 
+          <p>Formulario de la venta a publicar: Servicio (i.e tutorias)</p><br />
+          <label>Nombre del servicio: </label><br />
+          <input id="nombre-serv" name="nombre-serv" value={nombre} ></input> 
           <br /><br />
-          <label>Descripcion del producto o servicio: </label><br />
-          <input id="desc-prod" name="desc-prod" value="Añade descripcion del producto o servicio"></input>
+          <label>Descripcion del servicio: </label><br />
+          <input id="desc-serv" name="desc-serv" value="Añade descripcion del servicio"></input>
           <br /><br />
           <label>Categoria: </label><br />         
-          <input id="categoria-prod" name="categoria-prod" value="Ingresa una categoria"></input>
+          <input id="categoria-serv" name="categoria-serv" value="Ingresa una categoria"></input>
           <br /><br />
           <label>Archivos multimedia: </label><br />         
-          <input id="archivos-prod" name="archivos-prod" value="Adjunta archivos, i.e imagenes"></input>
+          <input id="archivos-serv" name="archivos-serv" value="Adjunta archivos, i.e imagenes"></input>
           <br /><br />
           <label>Valor (GTQ): </label><br />         
-          <input id="valor-prod" name="valor-prod" value="Valor del producto o servicio (en GTQ)"></input>
+          <input id="valor-serv" name="valor-serv" value="Valor del servicio (en GTQ)"></input>
         </Formulario_Ventas>
       </div>
   
