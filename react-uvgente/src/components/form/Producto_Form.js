@@ -1,50 +1,29 @@
 //<div></div>
+//import React, { useState } from "react";
 
 const Producto_Form = () => {
-    return (
-        <div className="productoForm">
-            <form>
-                <div className="productoFormOpcion  ">
-                    <label>
-                        Nombre:
-                        <input type="text" name="name" className=""/>
-                    </label>
-                </div> 
-                
-                <div className="productoFormOpcion  ">
-                    <label>
-                        Descripcion del producto:
-                        <input type="text" name="name" />
-                    </label>
-                </div>
-                
-            
-                <div className="productoFormOpcion  ">
-                    <label>
-                        Precio:
-                        <input type="text" name="name" />
-                    </label>
-                </div>
-                
-                <div className="productoFormOpcion  ">
-                    <label>
-                        Foto del producto:
-                    </label>
-                    <input type="submit" value="Subir archivo" />
-                </div>
+  //const [show, setShow] = useState(true);
 
-                <div className="productoFormOpcion">
-                    <input type="submit" value="Cancelar" className="botonCancelar"/>
-                    <input type="submit" value="Siguiente" className="botonPublicar"/>
-                </div>
-                
-            </form>
+  return (
+    <div className="productoForm">
+      <form>
+        <label>Nombre:</label>
+        <input type="text" name="name" />
+        <label>Descripcion del producto:</label>
+        <input type="text" name="name" />
+        <label>Precio:</label>
+        <input type="text" name="name" />
+        <label>Foto del producto:</label>
+        <input type="button" value="Subir archivo" />
+        <div className="botonesForm">
+          <input type="button" value="Cancelar" className="botonCancelar" />
+          <input type="submit" value="Siguiente" className="botonPublicar" />
         </div>
-    );
-}
+      </form>
+    </div>
+  );
+};
 
-Producto_Form.props = {
+Producto_Form.props = {};
 
-}
-
-export default Producto_Form
+export default Producto_Form;

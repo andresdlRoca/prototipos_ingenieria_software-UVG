@@ -1,49 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
 body {
-  font-family: 'Poppins', sans-serif;
-    margin: 0px;
-    padding: 0px;
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  padding: 0px;
   font-family: "Poppins", sans-serif;
   margin: 0px;
   padding: 0px;
   background: #ffffff;
 }
 .last_element_in_header {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .container {
-    max-width: 100%;
-    overflow: auto;
-    min-height: 700px;
-    min-width: 700px;
-    border: 1px solid steelblue;
+  max-width: 100%;
+  overflow: auto;
+  min-height: 700px;
+  min-width: 700px;
+  border: 1px solid steelblue;
 }
-.header h3{
-    color: white;
-
+.header h3 {
+  color: white;
 }
-.header h3:hover{
-    text-shadow: 0 0 30px #fff;
-
+.header h3:hover {
+  text-shadow: 0 0 30px #fff;
 }
-.header .logo{
-    position: relative;
-    height: 100%;
-    margin-bottom: 10px;
-
+.header .logo {
+  position: relative;
+  height: 100%;
+  margin-bottom: 10px;
 }
-.header div .logo{
-    position: relative;
-    height: 10px;
-    margin-bottom: 10px;
+.header div .logo {
+  position: relative;
+  height: 10px;
+  margin-bottom: 10px;
   max-width: 100%;
   min-height: 753px;
   min-width: 700px;
@@ -68,119 +64,119 @@ body {
   margin-bottom: 10px;
 }
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 200px;
-    background-color: rgb(95, 180, 88);
-    height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 200px;
+  background-color: rgb(95, 180, 88);
+  height: 120px;
 }
 
 .btn {
-    display: inline-block;
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 15px;
-    font-family: inherit;
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
 }
 
 .btn:focus {
-    outline: none;
+  outline: none;
 }
 
 .btn:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .btn-block {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .task {
-    background: #f4f4f4;
-    margin: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .task.reminder {
-    border-left: 5px solid green;
+  border-left: 5px solid green;
 }
 
 .task h3 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .add-form {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .form-control {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .form-control label {
-    display: block;
+  display: block;
 }
 
 .form-control input {
-    width: 100%;
-    height: 40px;
-    margin: 5px;
-    padding: 3px 7px;
-    font-size: 17px;
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
 }
 
 .form-control-check {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .form-control-check label {
-    flex: 1;
+  flex: 1;
 }
 
 .form-control-check input {
-    flex: 2;
-    height: 20px;
+  flex: 2;
+  height: 20px;
 }
 
 #sidebar {
-    position: relative;
-    width: 200px;
-    height: 580px;
-    background: whitesmoke;
-    left: 0px;
-    transition: all 500ms linear;
-    padding: 0px;
+  position: relative;
+  width: 200px;
+  height: 580px;
+  background: whitesmoke;
+  left: 0px;
+  transition: all 500ms linear;
+  padding: 0px;
 }
 
 #sidebar.active {
-    left: 0px;
+  left: 0px;
 }
 
 #sidebar ul li {
-    color: black;
-    list-style: none;
-    padding: 15px 10px;
-    border-bottom: 1px solid rgb(95, 180, 88, 0.6);
-    text-align: center;
+  color: black;
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgb(95, 180, 88, 0.6);
+  text-align: center;
 }
 
 #sidebar .toggle-btn {
-    position: absolute;
-    left: 200px;
-    cursor: pointer;
+  position: absolute;
+  left: 200px;
+  cursor: pointer;
 }
 
 .card_into_side_bar {
@@ -189,22 +185,22 @@ body {
   width: 100%;
   height: 80px;
 }
-.pp_into_side_bar_card{
-    height: 100%;
-    border-radius: 50%;
-    margin-right: 5px;
+.pp_into_side_bar_card {
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 5px;
 }
-.flexbox_pp_name{
-    display: flex;
-    width: 100%;
-    height: 50px;
+.flexbox_pp_name {
+  display: flex;
+  width: 100%;
+  height: 50px;
 }
-.flexbox_pp_name p{
-    font-size: small;
+.flexbox_pp_name p {
+  font-size: small;
 }
-.div_five_stars{
-    height: 50px;
-    width: auto;
+.div_five_stars {
+  height: 50px;
+  width: auto;
 }
 .pp_into_side_bar_card {
   height: 100%;
@@ -224,122 +220,119 @@ body {
   width: auto;
 }
 footer {
-    margin-top: 30px;
-    text-align: center;
+  margin-top: 30px;
+  text-align: center;
 }
 
-.flex_container_sidebar_and_content{
-    display: flex;
+.flex_container_sidebar_and_content {
+  display: flex;
 }
-.container_main_content{
+.container_main_content {
   height: 580px;
   width: 1200px;
-  margin: 0px; 
+  margin: 0px;
   margin-left: 20px;
   padding: 0px;
   background: whitesmoke;
-  
 }
 
 #inboxpage {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
-.pfp_Bandeja_Entrada{
-    position: relative;
-    height: 100%;
-    border-radius: 50%;
-    margin-right: 5px;
-    width: 250px;
-    height: 250px;
-    top: 30px;
-    margin-right: 40px;
-    margin-left: 40px;
-  }
-  
-#inboxpage #profileinfo{
-    text-align: justify;
-    position: relative;
-    font-size: 19px;
-    margin-top: 1%;
+.pfp_Bandeja_Entrada {
+  position: relative;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 5px;
+  width: 250px;
+  height: 250px;
+  top: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+#inboxpage #profileinfo {
+  text-align: justify;
+  position: relative;
+  font-size: 19px;
+  margin-top: 1%;
 }
 
 #inboxpage #profileinfo #Descripcion {
-    inline-size: 750px;
-    overflow-wrap: break-word;
+  inline-size: 750px;
+  overflow-wrap: break-word;
 }
 
 #inboxpage #inbox {
-    position: relative;
-    width: 1120px;
-    height: auto;
-    outline: solid 1px black;
-    right: 1000px;
-    top: 350px;
+  position: relative;
+  width: 1120px;
+  height: auto;
+  outline: solid 1px black;
+  right: 1000px;
+  top: 350px;
 }
 
-.Messages p{
-    text-align: justify;
-    position: relative;
-    inline-size: 900px;
-    overflow-wrap: break-word;
-    margin-left: 120px;
-    margin-right: 20px;
-    bottom: 50px;
+.Messages p {
+  text-align: justify;
+  position: relative;
+  inline-size: 900px;
+  overflow-wrap: break-word;
+  margin-left: 120px;
+  margin-right: 20px;
+  bottom: 50px;
 }
 
-.Messages img{
-    position: relative;
-    height: 100%;
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    top: 40px;
-
+.Messages img {
+  position: relative;
+  height: 100%;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  top: 40px;
 }
 
 .Messages {
-    position: relative;
-    outline: solid 2px black;
-    margin: 2%;
-    height: auto;
-    width: auto;
-    bottom: 90px;
-    background-color: #a2e29c99;
+  position: relative;
+  outline: solid 2px black;
+  margin: 2%;
+  height: auto;
+  width: auto;
+  bottom: 90px;
+  background-color: #a2e29c99;
 }
 
 #headerinbox {
-    position: relative;
-    align-items: center;
-    text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    margin-bottom: 10px;
-    background-color: rgb(95, 180, 88);
+  position: relative;
+  align-items: center;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: rgb(95, 180, 88);
 }
 
 .inboxIcon {
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
 }
 
 .inboxMessages {
-    position: relative;
-    margin-top: 10%;
-    height: auto;
-    width: auto;
-    
+  position: relative;
+  margin-top: 10%;
+  height: auto;
+  width: auto;
 }
 
 .mail_pfp {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    margin-left: 10px;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  margin-left: 10px;
 }
 .flex_container_sidebar_and_content {
   display: flex;
@@ -483,7 +476,6 @@ footer {
   position: relative;
 }
 
-
 #report_problem_text {
   position: relative;
   font-size: 20px;
@@ -492,7 +484,6 @@ footer {
   left: 600px;
 }
 
-
 #question_text {
   position: relative;
   font-size: 20px;
@@ -500,7 +491,6 @@ footer {
   margin-bottom: 5%;
   text-align: left;
   left: 40px;
-
 }
 
 #scroll_down {
@@ -508,7 +498,7 @@ footer {
   width: 1500px;
   height: 50px;
   background: #bfbfbf;
-  left:240px;
+  left: 240px;
   color: grey;
   box-sizing: border-box;
   padding: 10px;
@@ -516,8 +506,8 @@ footer {
 
 #triangle {
   position: relative;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-top: 20px solid black;
@@ -533,7 +523,6 @@ footer {
   margin-bottom: 5%;
   text-align: left;
   left: 40px;
-
 }
 
 #input_problem {
@@ -541,12 +530,11 @@ footer {
   font-size: 20px;
   text-align: left;
   background: #bfbfbf;
-  left:240px;
+  left: 240px;
   color: grey;
   width: 1500px;
   height: 200px;
   border-color: transparent;
-  
 }
 
 #problem_btn {
@@ -588,11 +576,11 @@ footer {
   left: 125px;
 }
 
-.buscador>label {
+.buscador > label {
   padding: 10px;
 }
 
-.buscador>img  {
+.buscador > img {
   width: 50px;
   height: 50px;
   padding: 10px;
@@ -625,7 +613,7 @@ footer {
   min-height: fit-content;
   height: fit-content;
   width: 100%;
-} 
+}
 
 .two_columns_buscador:after {
   box-sizing: border-box;
@@ -694,39 +682,52 @@ footer {
 
 .productoForm {
   position: absolute;
-  background-color: rgb(184, 184, 184);
+  background-color: rgb(95, 180, 88);
   padding: 10px 10px 20px 10px;
-  box-shadow: 2px 2px 2px rgb(126, 126, 126);
-  left: 40%;
+  box-shadow: 2px 2px 2px rgb(36, 36, 36);
+  left: 17%;
+  color: white;
+  display: block;
+  max-width: 510px;
+  min-width: min-content;
 }
 
-.productoFormOpcion {
+.productoForm label {
+  display: inline-block;
+  width: 270px;
+}
+
+.botonesForm {
+  margin: 0;
+  list-style: none;
   display: flex;
-  align-content: space-between;
-  padding: 10px;
+  justify-content: space-between;
 }
 
-.productoFormOpcion input {
+.productoForm input {
   padding: 10px 10px 10px 10px;
-  width: 70%;
   border-radius: 25px;
-  border: solid black 2px;
-  background-color: rgb(184, 184, 184);
+  border: solid rgb(255, 255, 255) 2px;
+  background-color: rgb(95, 180, 88);
   font-size: 16px;
+  color: white;
+  margin-bottom: 10px;
 }
 
-.productoFormOpcion input[type="submit"] {
-  background-color: rgb(156, 156, 156);
+.botonesForm input {
+  margin: 0;
+}
+
+.productoForm input[type="submit"],
+input[type="button"] {
+  background-color: rgb(57, 155, 49);
   width: fit-content;
-  border-color: rgb(156, 156, 156);
-  box-shadow: 2px 2px 2px rgb(126, 126, 126);
+  border-color: rgb(57, 155, 49);
+  box-shadow: 2px 2px 2px rgb(95, 180, 88);
 }
 
-.productoFormOpcion input[type="submit"]:hover {
-  border-color: rgb(128, 128, 128);
-  background-color: rgb(128, 128, 128) ;
-}
-
-.productoFormOpcion input[type="submit"] {
-  align-items: center;
+.productoForm input[type="submit"]:hover,
+input[type="button"]:hover {
+  border-color: rgb(48, 126, 40);
+  background-color: rgb(48, 126, 40);
 }
