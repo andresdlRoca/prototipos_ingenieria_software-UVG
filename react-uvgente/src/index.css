@@ -715,14 +715,14 @@ footer {
   font-size: 16px;
 }
 
-.productoFormOpcion input[type="submit"]{
+.productoFormOpcion input[type="submit"] {
   background-color: rgb(156, 156, 156);
   width: fit-content;
   border-color: rgb(156, 156, 156);
   box-shadow: 2px 2px 2px rgb(126, 126, 126);
 }
 
-.productoFormOpcion input[type="submit"]:hover{
+.productoFormOpcion input[type="submit"]:hover {
   border-color: rgb(128, 128, 128);
   background-color: rgb(128, 128, 128) ;
 }
