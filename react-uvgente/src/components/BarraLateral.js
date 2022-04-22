@@ -19,10 +19,10 @@ const BarraLateral = () => {
             </div>
       </div>
       </li>
-      <Link to="profile">
+      <Link to="/profile">
       <li>Mi Perfil</li>
       </Link>
-      <Link to="bandeja-de-entrada">
+      <Link to="/bandeja-de-entrada">
       <li>Bandeja de entrada</li>
       </Link>
       <li>Mis compras y pedidos</li>
