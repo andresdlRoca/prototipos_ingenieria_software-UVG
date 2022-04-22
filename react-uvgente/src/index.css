@@ -424,35 +424,7 @@ footer {
   top: 200px;
 }
 
-#correo {
-  position: relative;
-  top: 70px;
-  right: -15px;
-}
 
-#email {
-  position: relative;
-  background-color: #d1d1d1;
-  top: 30px;
-  right: -175px;
-  width: 300px;
-  height: 40px;
-}
-
-#contrasena {
-  position: relative;
-  top: 70px;
-  right: -15px;
-}
-
-#password {
-  position: relative;
-  background-color: #d1d1d1;
-  top: 30px;
-  right: -175px;
-  width: 300px;
-  height: 40px;
-}
 
 #Entrada {
   position: relative;
