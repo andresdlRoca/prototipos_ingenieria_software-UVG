@@ -239,3 +239,74 @@ footer {
     color: #5FB458;
     border-bottom: 2px solid;
 }
+
+.formulario{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario-inner{
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    height: 800px;
+    max-width: 600px;
+    background-color: whitesmoke;
+}
+
+.formulario-inner .close-btn{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.formulario-footer .accept-btn{
+    position: absolute;
+    bottom: 90px;
+    left: 1160px;
+    height: 40px;
+    width: 80px;
+    color: white;
+    background-color: rgb(95, 180, 88);
+}
+
+#nombre-form{
+    font-size: 30pt;
+}
+
+#nombre-prod{
+    width: 500px;
+    height: 40px;
+    font-size:11pt;
+}
+
+#desc-prod{
+    width: 500px;
+    height: 200px;
+    font-size:11pt;
+}
+
+#categoria-prod{
+    width: 500px;
+    height: 40px;
+    font-size:11pt;
+}
+
+#archivos-prod{
+    width: 500px;
+    height: 40px;
+    font-size:11pt;
+}
+
+#valor-prod{
+    width: 200px;
+    height: 40px;
+    font-size:8pt;
+}
