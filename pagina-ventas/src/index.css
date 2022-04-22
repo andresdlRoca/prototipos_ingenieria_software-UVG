@@ -281,31 +281,31 @@ footer {
     font-size: 30pt;
 }
 
-#nombre-prod{
+#nombre-serv{
     width: 500px;
     height: 40px;
     font-size:11pt;
 }
 
-#desc-prod{
+#desc-serv{
     width: 500px;
     height: 200px;
     font-size:11pt;
 }
 
-#categoria-prod{
+#categoria-serv{
     width: 500px;
     height: 40px;
     font-size:11pt;
 }
 
-#archivos-prod{
+#archivos-serv{
     width: 500px;
     height: 40px;
     font-size:11pt;
 }
 
-#valor-prod{
+#valor-serv{
     width: 200px;
     height: 40px;
     font-size:8pt;
