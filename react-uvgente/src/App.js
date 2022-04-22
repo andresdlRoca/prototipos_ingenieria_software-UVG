@@ -16,13 +16,13 @@ function App() {
           <Routes>
           <Route path="/signup" element = {
             <div>
-              <Header navSet="OFF"/>
+              <Header navSet="ON"/>
               <Singup />
             </div>
             }/>
             <Route path="/login" element = {
               <div>
-                <Header navSet="OFF"/>
+                <Header navSet="ON"/>
                 <Login />
               </div>
             }/>

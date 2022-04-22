@@ -3,6 +3,7 @@ import  './sign_up_style.css'
 import banner from '../../media/register_banner.png'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import  { Navigate, Link } from 'react-router-dom'
 
 const MySwal = withReactContent(Swal)
 
@@ -64,8 +65,17 @@ class Singup extends Component {
         referrerPolicy: "no-referrer",
       })
         .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error("ERROR:", error));
+        .then((data) => {
+          console.log(data)
+          if(data.msg==="El usuario fue registrado correctamente!!"){
+            MySwal.fire({
+              icon: 'success',
+              title: 'Registro',
+              text: data.msg,
+              footer: 'ok'
+            })
+          }
+        })
     } else {
       MySwal.fire({
         icon: 'warning',
@@ -74,6 +84,7 @@ class Singup extends Component {
         footer: 'Por favor llene todos los campos'
       })
     }
+
   }
 
   render() {
