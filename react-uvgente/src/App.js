@@ -17,7 +17,6 @@ function App() {
       <div className="flex_container_sidebar_and_content">
         <BarraLateral />
         <BuscadorMain />
-        <Producto_Form />
       </div>
     </div>
   );

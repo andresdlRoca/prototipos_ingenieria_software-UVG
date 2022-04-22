@@ -1,8 +1,8 @@
 //<div></div>
-//import React, { useState } from "react";
+import React, { useState } from "react";
 
 const Producto_Form = () => {
-  //const [show, setShow] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   return (
     <div className="productoForm">
