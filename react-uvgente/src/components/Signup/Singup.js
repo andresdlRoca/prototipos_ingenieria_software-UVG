@@ -1,6 +1,10 @@
 import { Component } from "react";
 import  './sign_up_style.css'
 import banner from '../../media/register_banner.png'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 class Singup extends Component {
   constructor() {
@@ -63,7 +67,12 @@ class Singup extends Component {
         .then((data) => console.log(data))
         .catch((error) => console.error("ERROR:", error));
     } else {
-      alert("Asegure que los inputs esten bien");
+      MySwal.fire({
+        icon: 'warning',
+        title: 'Ups...',
+        text: 'Parece que olvido llenar todos los campos',
+        footer: 'Por favor llene todos los campos'
+      })
     }
   }
 
