@@ -1,29 +1,29 @@
 const Login = () => {
   return (
     <div className="App">
-      <div class="Logo">
-        <div class="email">
+      <div className="Logo">
+        <div className="email">
           <h2 id="correo">Correo UVG</h2>
           <input id="email" type="text"></input>
         </div>
-        <div class="password">
+        <div className="password">
           <h2 id="contrasena">Contraseña</h2>
           <input type="password" id="password"></input>
         </div>
-        <div class="Enter">
+        <div className="Enter">
           <button id="Entrada">Iniciar Sesión </button>
         </div>
-        <div class="Nuevo">
+        <div className="Nuevo">
           <p>¿Aun no estas registrado?</p>
         </div>
-        <div class="Olvido">
+        <div className="Olvido">
           <p>¿Olvidaste tu contraseña?</p>
         </div>
       </div>
-      <div class="input">
+      <div className="input">
         <h1>UVGente</h1>
       </div>
-      <div class="slogan">
+      <div className="slogan">
         <h1>El lugar para encontrar todo lo que <br>
         </br>necisitas para tu educación</h1>
       </div>
