@@ -14,7 +14,7 @@ function App() {
     <Router>
                   
           <Routes>
-          <Route path="/singup" element = {
+          <Route path="/signup" element = {
             <div>
               <Header navSet="OFF"/>
               <Singup />
