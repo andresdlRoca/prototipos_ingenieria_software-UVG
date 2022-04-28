@@ -17,7 +17,6 @@ const Header = (props) => {
         </Link>
 
         <NavigationElements title="Vender" />
-
         <NavigationElements title="Top Ventas" />
         <NavigationElements title="Top Servicios" />
         <NavigationElements title="Productos" />
