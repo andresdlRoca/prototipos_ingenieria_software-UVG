@@ -3,7 +3,7 @@ import  './sign_up_style.css'
 import banner from '../../media/register_banner.png'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import  { Navigate, Link } from 'react-router-dom'
+//import  { Navigate, Link } from 'react-router-dom'
 
 const MySwal = withReactContent(Swal)
 

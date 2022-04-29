@@ -2,6 +2,7 @@ import BarraLateral from "./components/BarraLateral";
 import BuscadorMain from "./components/BuscadorMain";
 import Header from "./components/Header";
 import Bandeja_Entrada from "./components/Bandeja_Entrada/Bandeja_Entrada";
+import Ajustes from "./components/Ajustes/Ajustes";
 import Reportar_Problema from "./components/Reportar_Problema";
 import Singup from "./components/Signup/Singup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -79,6 +80,18 @@ function App() {
             </div>
           }
         />
+        <Route
+          path="/ayuda"
+          element={
+            <div>
+            <Header navSet="ON" />
+            <div className="flex_container_sidebar_and_content">
+              <BarraLateral />
+              <Ajustes />
+            </div>
+          </div>
+          }
+          />
       </Routes>
     </Router>
   );
