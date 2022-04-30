@@ -63,12 +63,15 @@ body {
   margin-bottom: 10px;
 }
 .header {
+  position: sticky;
+  top: -1px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-width: 200px;
   background-color: rgb(95, 180, 88);
   height: 120px;
+  z-index: 50;
 }
 
 .btn {
@@ -151,13 +154,15 @@ body {
 }
 
 #sidebar {
-  position: relative;
+  position: sticky;
+  top: 120px;
   width: 200px;
-  height: 580px;
+  height: 500px;
   background: whitesmoke;
   left: 0px;
   transition: all 500ms linear;
   padding: 0px;
+  z-index: 50;
 }
 
 #sidebar.active {
