@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
 import Login from "./components/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Producto_Form from "./components/form/Producto_Form";
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
           }
         />
       </Routes>
+      <Producto_Form />
     </Router>
   );
 }
