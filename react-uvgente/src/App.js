@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
 import Login from "./components/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Ayuda from "./components/Ayuda/Ayuda";
 
 function App() {
   return (
@@ -81,13 +82,25 @@ function App() {
           }
         />
         <Route
-          path="/ayuda"
+          path="/ajustes"
           element={
             <div>
             <Header navSet="ON" />
             <div className="flex_container_sidebar_and_content">
               <BarraLateral />
               <Ajustes />
+            </div>
+          </div>
+          }
+          />
+        <Route
+          path="/ayuda"
+          element={
+            <div>
+            <Header navSet="ON" />
+            <div className="flex_container_sidebar_and_content">
+              <BarraLateral />
+              <Ayuda />
             </div>
           </div>
           }
