@@ -28,8 +28,11 @@ const BarraLateral = () => {
       <li>Mis compras y pedidos</li>
       <li>Artículos publicados</li>
       <li>Favoritos/Guardados</li>
-      <Link to="/Ayuda">
+      <Link to="/ajustes">
         <li>Ajustes</li>
+      </Link>
+      <Link to="/ayuda">
+        <li>Ayuda</li>
       </Link>
       
 
