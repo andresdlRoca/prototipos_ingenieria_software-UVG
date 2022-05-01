@@ -10,6 +10,7 @@ import MiPerfil from "./components/MiPerfil";
 import Login from "./components/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Ayuda from "./components/Ayuda/Ayuda";
+import NavBar from "./components/new-nav-bar/NavBar";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           path="/signup"
           element={
             <div>
-              <Header navSet="ON" />
+              <NavBar />
               <Singup />
             </div>
           }
@@ -28,7 +29,7 @@ function App() {
           path="/login"
           element={
             <div>
-              <Header navSet="ON" />
+              <NavBar />
               <Login />
             </div>
           }
@@ -37,7 +38,7 @@ function App() {
           path="/"
           element={
             <div>
-              <Header navSet="ON" />
+              <NavBar />
               <div className="flex_container_sidebar_and_content">
                 <BarraLateral />
                 <BuscadorMain />
@@ -49,7 +50,7 @@ function App() {
           path="/profile"
           element={
             <div>
-              <Header navSet="ON" />
+              <NavBar />
               <div className="flex_container_sidebar_and_content">
                 <BarraLateral />
                 <MiPerfil />
@@ -61,7 +62,7 @@ function App() {
           path="/report"
           element={
             <div>
-              <Header navSet="ON" />
+              <NavBar />
               <div className="flex_container_sidebar_and_content">
                 <BarraLateral />
                 <Reportar_Problema />
@@ -73,7 +74,7 @@ function App() {
           path="/bandeja-de-entrada"
           element={
             <div>
-              <Header navSet="ON" />
+              <NavBar />
               <div className="flex_container_sidebar_and_content">
                 <BarraLateral />
                 <Bandeja_Entrada />
@@ -85,7 +86,7 @@ function App() {
           path="/ajustes"
           element={
             <div>
-            <Header navSet="ON" />
+            <NavBar />
             <div className="flex_container_sidebar_and_content">
               <BarraLateral />
               <Ajustes />
@@ -97,7 +98,7 @@ function App() {
           path="/ayuda"
           element={
             <div>
-            <Header navSet="ON" />
+            <NavBar />
             <div className="flex_container_sidebar_and_content">
               <BarraLateral />
               <Ayuda />
