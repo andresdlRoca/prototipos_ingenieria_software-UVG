@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import './nav-bar-style.css'
 import logo from '../../media/UVGente_Logo_white.png'
 import { Link } from 'react-router-dom'
-import { Button } from 'bootstrap'
 import {FaFilter, FaSearch} from 'react-icons/fa'
 import DefaultImageUser from '../../media/cat_pp.jpg'
 import NewNavBarItem from './NewNavBarItem'
 const NavBar = () => {
-    const {userLogged, setUserLogged} = useState(null)
+    const [userLogged, setUserLogged] = useState(null)
     return (
         <div id="main-container-nav-bar">
             <div id="dark-green-section">
@@ -15,7 +14,7 @@ const NavBar = () => {
                     <img src={logo} id="logo-in-navbar" alt='UVGente logo'/>
                 </Link>
                 <div id="nav-bar-searcher-container">
-                    <input className="new-input" id='nav-bar-input-search' placeholder='Busca un producto o servicio de tutoria'/>            
+                    <input className="new-input" id='nav-bar-input-search' placeholder='Busca un producto o servicio de tutoria :p'/>            
                     <button id="nav-bar-filtr-button" className='new-button'>
                         <FaFilter/> 
                     </button>
@@ -32,15 +31,11 @@ const NavBar = () => {
                 </div>
             </div>
             <ul id="light-green-section">
-                <NewNavBarItem TypeOfItem="Link" text="Registrarse" PageReference="/signup"/>
-                <NewNavBarItem TypeOfItem="Link" text="Log in" PageReference="/login"/>
                 <NewNavBarItem TypeOfItem="Link" text="Vender" />
                 <NewNavBarItem TypeOfItem="Link" text="Comprar" PageReference="/"/>
                 <NewNavBarItem TypeOfItem="Link" text="Lo mas vendido" />
                 <NewNavBarItem TypeOfItem="Link" text="Servicios" />
                 <NewNavBarItem TypeOfItem="Link" text="Top Servicios" />
-
-
             </ul>
         </div>
     ) 

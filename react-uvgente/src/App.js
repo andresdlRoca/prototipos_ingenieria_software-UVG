@@ -7,10 +7,11 @@ import Reportar_Problema from "./components/Reportar_Problema";
 import Singup from "./components/Signup/Singup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Ayuda from "./components/Ayuda/Ayuda";
 import NavBar from "./components/new-nav-bar/NavBar";
+import NewSideBar from "./components/new-side-bar/NewSideBar";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route
           path="/signup"
           element={
-            <div>
+            <div className="all-wrapper">
               <NavBar />
               <Singup />
             </div>
@@ -28,7 +29,7 @@ function App() {
         <Route
           path="/login"
           element={
-            <div>
+            <div className="all-wrapper">
               <NavBar />
               <Login />
             </div>
@@ -37,11 +38,11 @@ function App() {
         <Route
           path="/"
           element={
-            <div>
+            <div className="all-wrapper">
               <NavBar />
-              <div className="flex_container_sidebar_and_content">
-                <BarraLateral />
-                <BuscadorMain />
+              <div>
+                <BuscadorMain/>
+                <NewSideBar/>
               </div>
             </div>
           }
@@ -49,60 +50,55 @@ function App() {
         <Route
           path="/profile"
           element={
-            <div>
+            <div className="all-wrapper">
               <NavBar />
-              <div className="flex_container_sidebar_and_content">
-                <BarraLateral />
-                <MiPerfil />
-              </div>
+              <MiPerfil/>
+              <NewSideBar/>
+
             </div>
           }
         />
         <Route
           path="/report"
           element={
-            <div>
+            <div className="all-wrapper">
               <NavBar />
-              <div className="flex_container_sidebar_and_content">
-                <BarraLateral />
-                <Reportar_Problema />
-              </div>
+              <Reportar_Problema/>
+              <NewSideBar/>
+
             </div>
           }
         />
         <Route
           path="/bandeja-de-entrada"
           element={
-            <div>
+            <div className="all-wrapper">
               <NavBar />
-              <div className="flex_container_sidebar_and_content">
-                <BarraLateral />
-                <Bandeja_Entrada />
-              </div>
+              <Bandeja_Entrada />
+              <NewSideBar />
+
             </div>
           }
         />
         <Route
           path="/ajustes"
           element={
-            <div>
+            <div className="all-wrapper">
             <NavBar />
-            <div className="flex_container_sidebar_and_content">
-              <BarraLateral />
-              <Ajustes />
-            </div>
+            <Ajustes />
+            <NewSideBar/>
+
           </div>
           }
           />
         <Route
           path="/ayuda"
           element={
-            <div>
+            <div className="all-wrapper">
             <NavBar />
-            <div className="flex_container_sidebar_and_content">
-              <BarraLateral />
-              <Ayuda />
-            </div>
+            <Ayuda/>
+            <NewSideBar/>
+
           </div>
           }
           />

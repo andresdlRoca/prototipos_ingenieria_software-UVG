@@ -15,6 +15,9 @@ body {
   padding: 0px;
   background: #ffffff;
 }
+.all-wrapper{
+  overflow: hidden;
+}
 .last_element_in_header {
   margin-right: 10px;
 }

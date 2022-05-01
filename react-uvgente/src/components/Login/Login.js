@@ -2,6 +2,7 @@ import { Component } from "react";
 import './Login_style.css'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { Link } from "react-router-dom";
 
 const MySwal = withReactContent(Swal)
 
@@ -84,7 +85,7 @@ class Login extends Component {
             <button type= "button" id="Entrada" onClick={this.enviar}>Iniciar Sesión </button>
           </div>
           <div className="Nuevo">
-            <p>¿Aun no estas registrado?</p>
+            <Link to="/signup">¿Aun no estas registrado?</Link>
           </div>
           <div className="Olvido">
             <p>¿Olvidaste tu contraseña?</p>
