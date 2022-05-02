@@ -1,0 +1,23 @@
+* [32m(HEAD detached from 104317e)                [m 0e39abc xd
+  bandeja_entrada-branch                      [m 2ba8e02 Merge pull request #5 from andresdlRoca/bandeja_entrada-branch
+  main                                        [m 4ac9bfc [behind 93] Update App.js
+  master                                      [m 4ac9bfc Update App.js
+  [31mremotes/origin/Ajustes                      [m 0e39abc xd
+  [31mremotes/origin/DB_AND_DB_CONNECTION_TO_BACK [m 86edc86 register back, login verify and token generation, register new product
+  [31mremotes/origin/bandeja_entrada-branch       [m 0e528e1 Funcionamiento de mensajes de chat localmente
+  [31mremotes/origin/bandeja_entrada_branch       [m e647637 Implementacion bandeja de entrada inicial
+  [31mremotes/origin/crear_publicacion            [m e929f81 act
+  [31mremotes/origin/dev-different-pages-mangment [m 8efbce6 Merge branch 'pagina-inicial'
+  [31mremotes/origin/dev-manger-routes            [m 2dfefa9 Enrutamiento: Pagina principal, perfil y bandeja de entrada
+  [31mremotes/origin/login_page                   [m 84613d5 Arreglo Login
+  [31mremotes/origin/luispe_profil_page           [m 104317e Updated readmd
+  [31mremotes/origin/main                         [m 0e39abc xd
+  [31mremotes/origin/mis_ventas                   [m 80ad438 Update index.css
+  [31mremotes/origin/origin/bandeja_entrada_branch[m e647637 Implementacion bandeja de entrada inicial
+  [31mremotes/origin/pagina-inicial               [m 6616d2f modificacion a nav
+  [31mremotes/origin/profile_page                 [m a365926 overflow of init bar hidden
+  [31mremotes/origin/reportar_problema            [m 0d24d11 Agregar vista de reportar problema
+  [31mremotes/origin/robertov_login               [m 4ff28d6 Nuevo LogIn
+  [31mremotes/origin/sing_up                      [m bf56fe0 act
+  [31mremotes/origin/sing_up_backend              [m 3660d78 act
+  [31mremotes/origin/templates                    [m 104317e Updated readmd
