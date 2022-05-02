@@ -2,7 +2,7 @@ import BarraLateral from "./BarraLateral";
 import Header from "./Header";
 import React, { useState } from "react";
 
-function App() {
+function Reportar_Problema() {
   return (
     <div className="problemas">
       <br />
@@ -37,4 +37,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Reportar_Problema;
