@@ -17,6 +17,8 @@ body {
 }
 .all-wrapper{
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 .last_element_in_header {
   margin-right: 10px;
@@ -699,7 +701,8 @@ footer {
 
 .productoForm input[type="submit"],
 input[type="button"] {
-  background-color: rgb(57, 155, 49);
+  background-color: 
+  rgb(57, 155, 49);
   width: fit-content;
   border-color: rgb(57, 155, 49);
   box-shadow: 2px 2px 2px rgb(95, 180, 88);
@@ -709,4 +712,9 @@ input[type="button"] {
 input[type="button"]:hover {
   border-color: rgb(48, 126, 40);
   background-color: rgb(48, 126, 40);
+}
+.page-main-content{
+  width: 100%;
+  height: 100%;
+  position: relative;
 }

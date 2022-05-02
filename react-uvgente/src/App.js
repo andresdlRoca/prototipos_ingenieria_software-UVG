@@ -12,11 +12,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Ayuda from "./components/Ayuda/Ayuda";
 import NavBar from "./components/new-nav-bar/NavBar";
 import NewSideBar from "./components/new-side-bar/NewSideBar";
+import NewVentas from "./components/Ventas/NewVentas";
 
 function App() {
   return (
-    <Router>
-      <Routes>
+    <Router >
+      <Routes >
         <Route
           path="/signup"
           element={
@@ -40,10 +41,9 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <div>
                 <BuscadorMain/>
                 <NewSideBar/>
-              </div>
+           
             </div>
           }
         />
@@ -102,6 +102,18 @@ function App() {
           </div>
           }
           />
+          <Route
+          path="/top-ventas"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <div id="page-main-content">
+                <NewVentas/>
+              </div>
+              <NewSideBar/>
+            </div>
+          }
+        />
       </Routes>
     </Router>
   );
