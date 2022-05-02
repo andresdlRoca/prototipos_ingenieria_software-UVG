@@ -14,6 +14,8 @@ body {
 }
 .all-wrapper{
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 .last_element_in_header {
   margin-right: 10px;
@@ -317,4 +319,157 @@ textarea{
   height: 50px;
   left: 300px;
 
+  padding: 10px;
+  position: relative;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.container4buscador {
+  background-color: rgb(184, 184, 184);
+  width: 100%;
+}
+
+.maincontainer {
+  background-color: white;
+  width: 95%;
+  height: fit-content;
+  float: right;
+  padding: 50px;
+}
+
+.mc_column {
+  float: left;
+  min-height: fit-content;
+  height: fit-content;
+  width: 50%;
+}
+
+.two_columns_buscador {
+  min-height: fit-content;
+  height: fit-content;
+  width: 100%;
+}
+
+.two_columns_buscador:after {
+  box-sizing: border-box;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.space {
+  padding: 20px;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.venta {
+  background-color: rgb(196, 196, 196);
+  width: min-content;
+  padding: 30px;
+  text-align: center;
+}
+
+.venta label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.imagenesarriba {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ventastar {
+  float: right;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.tutobg {
+  background-color: rgb(196, 196, 196);
+  grid-template-columns: 260px 230px;
+  display: grid;
+  max-width: max-content;
+  padding: 20px;
+  width: fit-content;
+}
+
+.tutomaterias {
+  display: inline;
+  float: left;
+}
+
+.tutoright img {
+  float: right;
+}
+
+/*---------------------------------------------------------------------------*/
+/*para opciones de venta de producto*/
+.opcionesDeVenta {
+  position: absolute;
+  background-color: rgb(196, 196, 196);
+}
+
+/*---------------------------------------------------------------------------*/
+/*para el form de venta de producto*/
+
+.productoForm {
+  position: absolute;
+  background-color: rgb(95, 180, 88);
+  padding: 10px 10px 20px 10px;
+  box-shadow: 2px 2px 2px rgb(36, 36, 36);
+  left: 17%;
+  color: white;
+  display: block;
+  max-width: 510px;
+  min-width: min-content;
+}
+
+.productoForm label {
+  display: inline-block;
+  width: 270px;
+}
+
+.botonesForm {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.productoForm input {
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+  border: solid rgb(255, 255, 255) 2px;
+  background-color: rgb(95, 180, 88);
+  font-size: 16px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.botonesForm input {
+  margin: 0;
+}
+
+.productoForm input[type="submit"],
+input[type="button"] {
+  background-color: 
+  rgb(57, 155, 49);
+  width: fit-content;
+  border-color: rgb(57, 155, 49);
+  box-shadow: 2px 2px 2px rgb(95, 180, 88);
+}
+
+.productoForm input[type="submit"]:hover,
+input[type="button"]:hover {
+  border-color: rgb(48, 126, 40);
+  background-color: rgb(48, 126, 40);
+}
+.page-main-content{
+  width: 100%;
+  height: 100%;
+  position: relative;
 }

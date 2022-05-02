@@ -33,7 +33,7 @@ const NavBar = () => {
             <ul id="light-green-section">
                 <NewNavBarItem TypeOfItem="Link" text="Vender" />
                 <NewNavBarItem TypeOfItem="Link" text="Comprar" PageReference="/"/>
-                <NewNavBarItem TypeOfItem="Link" text="Lo mas vendido" />
+                <NewNavBarItem TypeOfItem="Link" text="Lo mas vendido" PageReference="/top-ventas"/>
                 <NewNavBarItem TypeOfItem="Link" text="Servicios" />
                 <NewNavBarItem TypeOfItem="Link" text="Top Servicios" />
             </ul>
