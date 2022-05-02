@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import profile_pic from '../media/cat_pp.jpg'
 import five_stars_image from '../media/five_stars_rate.png'
 const BarraLateral = () => {
@@ -19,12 +18,8 @@ const BarraLateral = () => {
             </div>
       </div>
       </li>
-      <Link to="/profile">
       <li>Mi Perfil</li>
-      </Link>
-      <Link to="/bandeja-de-entrada">
       <li>Bandeja de entrada</li>
-      </Link>
       <li>Mis compras y pedidos</li>
       <li>Artículos publicados</li>
       <li>Favoritos/Guardados</li>
