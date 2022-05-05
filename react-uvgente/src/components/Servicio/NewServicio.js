@@ -28,7 +28,7 @@ const NewServicio = () => {
         {
             id: 2, 
             name: 'MariLuz', 
-            calification: 4, 
+            calification: 2, 
             isVerified: true,
             topPerformance: {
                 "Matemática": 5, 

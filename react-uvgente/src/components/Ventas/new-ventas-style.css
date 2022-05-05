@@ -47,6 +47,7 @@
     padding: 20px 10px;
     column-gap: 50px;
     row-gap: 20px;
+    overflow: scroll;
 
 }
 .title-and-filters-wrapper{
