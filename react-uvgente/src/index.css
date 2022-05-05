@@ -126,6 +126,7 @@ footer {
 }
 #profile_page_main {
   display: flex;
+  padding-left: 40px;
 }
 #lateral_profile_page_main {
   position: relative;
