@@ -173,7 +173,7 @@ const NewPaginaPrincipal = () => {
             <Link to="/top-servicios">
             <button className='titulo-new-pagina-principal-productos'>
                 
-                <p className='new-p'>Tutores</p>
+                <p className='new-p title-size-main-page'>Tutores</p>
             </button>
             </Link>
         </div>
@@ -187,7 +187,7 @@ const NewPaginaPrincipal = () => {
         <div className='title-and-filters-wrapper'>
             <Link to="/top-ventas">
                 <button className='titulo-new-pagina-principal-productos'>
-                    <p className='new-p'>Productos</p>
+                    <p className='new-p title-size-main-page'>Productos</p>
                 </button>
             </Link>
         </div>

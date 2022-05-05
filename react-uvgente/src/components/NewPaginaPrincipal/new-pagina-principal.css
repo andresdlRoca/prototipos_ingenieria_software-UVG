@@ -20,7 +20,7 @@
     padding-top: 40px;
     padding-bottom: 100px;
     display: grid;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 15% 85%;
     background-color: #EAEDED;
     border: 1px solid gainsboro;
     position: relative;
@@ -28,6 +28,7 @@
 }
 .titulo-new-pagina-principal-productos{
     font-family: 'Bebas Neue', cursive;
+    font-size: large;
     padding: 5px 5px;
     width: 20%;
     gap: 3px;
@@ -113,4 +114,7 @@
     left: 0px;
     top: 20%;
     height: 200px;
+}
+.title-size-main-page{
+    font-size: x-large;
 }
