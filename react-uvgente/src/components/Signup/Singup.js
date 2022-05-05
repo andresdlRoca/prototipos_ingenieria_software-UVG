@@ -90,7 +90,7 @@ class Singup extends Component {
   render() {
     return (
       <section className="vh-100" id="main_section">
-      <div className="container h-100">
+      <div className="container h-100 " id="form-signup-wrapper">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
             <div className="card text-black" id="special_card">
@@ -116,7 +116,7 @@ class Singup extends Component {
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
-                          <input type="email" id="email" className="form-control"
+                          <input type="email" id="email-r" className="form-control"
                                   value={this.state.email}
                                   onChange={this.changeEmail}
                               />
@@ -127,7 +127,7 @@ class Singup extends Component {
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
-                          <input type="password" id="password" className="form-control"
+                          <input type="password" id="password-r" className="form-control"
                                 value={this.state.password}
                                 onChange={this.changePassword} />
                           <label className="form-label" htmlFor="password">Contraseña</label>

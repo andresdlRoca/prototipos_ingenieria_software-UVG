@@ -26,3 +26,6 @@ height: 100%;
 #special_card{
     border-radius: 25px;
 }
+#form-signup-wrapper{
+    border: none;
+}
