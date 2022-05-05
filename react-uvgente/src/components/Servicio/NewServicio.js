@@ -14,7 +14,8 @@ const NewServicio = () => {
     const tutores = [
         {
             id: 1, 
-            name: 'Juan', 
+            name: 'Juan',
+            carne: 2012, 
             calification: 5, 
             isVerified: true,
             topPerformance: {
@@ -28,6 +29,7 @@ const NewServicio = () => {
         {
             id: 2, 
             name: 'MariLuz', 
+            carne: 2011,
             calification: 2, 
             isVerified: true,
             topPerformance: {
@@ -40,9 +42,10 @@ const NewServicio = () => {
         },
         {
             id: 3, 
-            name: 'Juana', 
+            name: 'Juana',
+            carne: 20007, 
             calification: 4, 
-            isVerified: true,
+            isVerified: false,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 
@@ -54,8 +57,9 @@ const NewServicio = () => {
         {
             id: 4, 
             name: 'Gerardo', 
+            carne: 2012,
             calification: 4, 
-            isVerified: true,
+            isVerified: false,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 
@@ -68,7 +72,7 @@ const NewServicio = () => {
             id: 5, 
             name: 'MariLuz', 
             calification: 4, 
-            isVerified: true,
+            isVerified: false,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 

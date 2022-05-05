@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import DefaultImageUser from '../../media/fulano.jpg'
 import {TiStarFullOutline, TiStarHalfOutline, TiStarOutline} from 'react-icons/ti'
 const CardServicios = (props) => {
@@ -14,7 +14,7 @@ const CardServicios = (props) => {
    }
     
     return (
-      <div className='card-item-servicio'>
+      <div className='card-item-servicio' style={(isVerified)?{border: "4px solid #efdb00"}:{}}>
           <div className='left-side-card-servicio'>
             <div className='card-item-image-space-service' style={(image)?{backgroundImage: `url(${image})`, backgroundSize: 'cover'}: {backgroundImage: `url(${DefaultImageUser})`, backgroundSize: 'cover'}}/>
             <div className='performances-bars-containers'>
