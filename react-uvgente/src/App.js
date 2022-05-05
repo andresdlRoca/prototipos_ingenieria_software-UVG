@@ -7,13 +7,14 @@ import Reportar_Problema from "./components/Reportar_Problema";
 import Singup from "./components/Signup/Singup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Ayuda from "./components/Ayuda/Ayuda";
 import NavBar from "./components/new-nav-bar/NavBar";
 import NewSideBar from "./components/new-side-bar/NewSideBar";
 import NewVentas from "./components/Ventas/NewVentas";
 import NewServicio from "./components/Servicio/NewServicio";
+import NewPaginaPrincipal from "./components/NewPaginaPrincipal/NewPaginaPrincipal";
 function App() {
   return (
     <Router >
@@ -52,7 +53,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-                <BuscadorMain/>
+                <NewPaginaPrincipal/>
                 <NewSideBar/>
            
             </div>
