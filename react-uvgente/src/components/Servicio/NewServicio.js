@@ -16,6 +16,7 @@ const NewServicio = () => {
             id: 1, 
             name: 'Juan', 
             calification: 5, 
+            isVerified: true,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 
@@ -28,6 +29,7 @@ const NewServicio = () => {
             id: 2, 
             name: 'MariLuz', 
             calification: 4, 
+            isVerified: true,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 
@@ -40,6 +42,7 @@ const NewServicio = () => {
             id: 3, 
             name: 'Juana', 
             calification: 4, 
+            isVerified: true,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 
@@ -52,6 +55,7 @@ const NewServicio = () => {
             id: 4, 
             name: 'Gerardo', 
             calification: 4, 
+            isVerified: true,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 
@@ -64,6 +68,7 @@ const NewServicio = () => {
             id: 5, 
             name: 'MariLuz', 
             calification: 4, 
+            isVerified: true,
             topPerformance: {
                 "Matemática": 5, 
                 "Física":  4, 
@@ -76,6 +81,7 @@ const NewServicio = () => {
             id: 6, 
             name: 'Lourdes', 
             calification: 5, 
+            isVerified: true,
             topPerformance: {
               "Matemática": 5, 
               "Física":  4, 
@@ -98,7 +104,7 @@ const NewServicio = () => {
                 {tutores.map((tutor)=>{
                     return <CardServicios tutor={tutor}/>
                     
-                })
+                })  
 
                 }
             </div></div>
