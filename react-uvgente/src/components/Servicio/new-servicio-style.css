@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
 .new-button{
     border-radius: auto;
     text-decoration: auto;
@@ -89,8 +90,8 @@
 
 .card-item-servicio{
     font-family: 'Cabin', sans-serif;
-    width: 330px;
-    height: 25%;
+    width: 30%;
+    height: 250px;
     border-radius: 20px;
     padding: 5px;
     gap: 0;
@@ -148,6 +149,7 @@
     display: flex;
     justify-content: center;
     font-size: x-large;
+    flex-direction: column;
     width: 100%;
     height: 80px;
     
@@ -159,4 +161,16 @@
 .star{
     color: #274527;
     border-color: #274527;
+}
+.name-item-on-card-item-service{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.carne-item-on-card-item-service{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: medium;
+    opacity: 70%;
 }

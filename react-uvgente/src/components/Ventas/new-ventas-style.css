@@ -95,8 +95,8 @@
 
 .card-item-on-venta{
     font-family: 'Cabin', sans-serif;
-    width: 330px;
-    height: 25%;
+    width: 30%;
+    height: 245px;
     border-radius: 20px;
     padding: 5px;
     gap: 0;
@@ -228,4 +228,15 @@
     width: 100%;
     border-radius: 50%;
     transform: translate(0px, -2px);
+}
+.card-item-on-main{
+    font-family: 'Cabin', sans-serif;
+    width: 350px;
+    height: 245px;
+    border-radius: 20px;
+    padding: 5px;
+    gap: 0;
+    background-color: gainsboro;
+    display: flex;
+    position: relative;
 }

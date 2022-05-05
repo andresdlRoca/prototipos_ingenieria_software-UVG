@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaFilter } from 'react-icons/fa'
 import CardServicios from './CardServicios'
-
 import './new-servicio-style.css'
 import cat1 from '../../media/cat_pp.jpg'
 import cat2 from '../../media/cat2.png'
@@ -15,7 +14,7 @@ const NewServicio = () => {
         {
             id: 1, 
             name: 'Juan',
-            carne: 2012, 
+            carne: 20012, 
             calification: 5, 
             isVerified: true,
             topPerformance: {
@@ -24,12 +23,12 @@ const NewServicio = () => {
                 "Química G.": 3
             },
             cobro: ["Horas Beca"],
-            image: cat1
+            image: cat1,
         },
         {
             id: 2, 
             name: 'MariLuz', 
-            carne: 2011,
+            carne: 18011,
             calification: 2, 
             isVerified: true,
             topPerformance: {
@@ -57,7 +56,7 @@ const NewServicio = () => {
         {
             id: 4, 
             name: 'Gerardo', 
-            carne: 2012,
+            carne: 19012,
             calification: 4, 
             isVerified: false,
             topPerformance: {
@@ -70,7 +69,8 @@ const NewServicio = () => {
         },
         {
             id: 5, 
-            name: 'MariLuz', 
+            name: 'MariLuz',
+            carne: 20003, 
             calification: 4, 
             isVerified: false,
             topPerformance: {
@@ -83,7 +83,8 @@ const NewServicio = () => {
         },
         {
             id: 6, 
-            name: 'Lourdes', 
+            name: 'Lourdes',
+            carne: 20017, 
             calification: 5, 
             isVerified: true,
             topPerformance: {
@@ -97,21 +98,23 @@ const NewServicio = () => {
     ]
     return (
             <div id="main-container-new-servicios">
-            <div className='title-and-filters-wrapper'>
-                <button className='titulo-pagina-new-servicios'>
-                        <p className='new-p'>Mejores servicios</p>
-                        <FaFilter/>
-                </button>
-            </div>
+                <div className='title-and-filters-wrapper'>
+                    <button className='titulo-pagina-new-servicios'>
+                            <p className='new-p'>Mejores servicios</p>
+                            <FaFilter/>
+                    </button>
+                </div>
 
-            <div id="servicios-main-container-wrapper"><div id='servicios-main-container'>
-                {tutores.map((tutor)=>{
-                    return <CardServicios tutor={tutor}/>
-                    
-                })  
+                    <div id="servicios-main-container-wrapper"><div id='servicios-main-container'>
 
-                }
-            </div></div>
+                        {tutores.map((tutor)=>{
+                            return <CardServicios tutor={tutor}/>
+                            
+                        })  
+
+                        }
+                        
+                    </div></div>
             </div>
     )
 }

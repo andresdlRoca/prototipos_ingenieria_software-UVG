@@ -2,7 +2,7 @@ import React from 'react'
 import DefaultImageUser from '../../media/fulano.jpg'
 import {TiStarFullOutline, TiStarHalfOutline, TiStarOutline} from 'react-icons/ti'
 const CardServicios = (props) => {
-    const {name, calification, isVerified, topPerformance, cobro, image} = props.tutor
+    const {name, calification, isVerified, topPerformance, cobro, image, carne} = props.tutor
     const starsCalificationItems = []
     let cal = calification
     console.log(name)
@@ -30,7 +30,10 @@ const CardServicios = (props) => {
             </div>
           </div>
           <div className='right-side-card-servicio'>
-            <div className='name-space-on-card-item-service'>{name}</div>
+            <div className='name-space-on-card-item-service'>
+              <div className='name-item-on-card-item-service'>{name}</div>
+              <div className='carne-item-on-card-item-service'>#{carne}</div>
+            </div>
             <div className='calification-space'>
               {starsCalificationItems.map((icon)=> {return icon})}
             </div>

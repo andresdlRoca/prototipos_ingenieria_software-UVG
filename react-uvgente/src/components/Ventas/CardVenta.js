@@ -7,7 +7,7 @@ const CardVenta = (props) => {
   const { id, name, rate } = props.user
   const {title, description,  prod_rate,price,state} = props.product
   return (
-    <div className='card-item-on-venta'>
+    <div className={(props.onTopVentas)?'card-item-on-venta':'card-item-on-main'}>
       <div className='left-side-card-item'>
         <div className='card-item-image-space' style={(props.productImage)?{backgroundImage: `url(${props.productImage})`, backgroundSize: 'cover'}: {}}>
           {!props.productImage&&(

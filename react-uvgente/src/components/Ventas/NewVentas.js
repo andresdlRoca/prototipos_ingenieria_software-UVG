@@ -126,7 +126,7 @@ const NewVentas = () => {
                 {productosInfo.map((venta)=>{
                     if(venta.user && venta.product){
                         let src = (venta.user.id===10)?BookExample:null
-                        return <CardVenta product={venta.product} user={venta.user} productImage={src}/>
+                        return <CardVenta onTopVentas = {true}product={venta.product} user={venta.user} productImage={src}/>
                     }
                 })
 
