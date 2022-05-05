@@ -33,7 +33,18 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <NewServicio />
+              <NewServicio title="Top tutores"/>
+              <NewSideBar/>
+
+            </div>
+          }
+        />
+        <Route
+          path="/servicios"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <NewServicio title="Tutores"/>
               <NewSideBar/>
 
             </div>
@@ -120,7 +131,19 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <div id="page-main-content">
-                <NewVentas/>
+                <NewVentas title="Productos mas vendidos"/>
+              </div>
+              <NewSideBar/>
+            </div>
+          }
+        />
+        <Route
+          path="/ventas"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <div id="page-main-content">
+                <NewVentas title="Productos"/>
               </div>
               <NewSideBar/>
             </div>

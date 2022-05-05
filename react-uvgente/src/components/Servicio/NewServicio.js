@@ -9,7 +9,7 @@ import cat4 from '../../media/cat4.jpg'
 import cat5 from '../../media/cat5.jpg'
 import cat6 from '../../media/cat6.jpg'
 
-const NewServicio = () => {
+const NewServicio = (props) => {
     const tutores = [
         {
             id: 1, 
@@ -100,7 +100,7 @@ const NewServicio = () => {
             <div id="main-container-new-servicios">
                 <div className='title-and-filters-wrapper'>
                     <button className='titulo-pagina-new-servicios'>
-                            <p className='new-p'>Mejores servicios</p>
+                            <p className='new-p'>{props.title}</p>
                             <FaFilter/>
                     </button>
                 </div>

@@ -4,7 +4,7 @@ import './new-ventas-style.css'
 import CardVenta from './CardVenta'
 import BookExample from '../../media/book_example.jpg'
 
-const NewVentas = () => {
+const NewVentas = (props) => {
     const [isTopVentas, setIsTopVentas] = useState(false)
     const [productosInfo, setProductosInfo] = useState([
         {
@@ -117,7 +117,7 @@ const NewVentas = () => {
         <div id="main-container-new-ventas">
             <div className='title-and-filters-wrapper'>
                 <button className='titulo-pagina-new-ventas'>
-                        <p className='new-p'>Productos mas vendidos</p>
+                        <p className='new-p'>{props.title}</p>
                         <FaFilter/>
                 </button>
             </div>
