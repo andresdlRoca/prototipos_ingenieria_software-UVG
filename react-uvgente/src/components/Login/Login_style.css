@@ -6,7 +6,7 @@
 .email, .password {
     justify-content: center;
     display:flex;
-    padding: 10px;
+
 }
 
 #Entrada:active {
@@ -16,4 +16,15 @@
 #correo, #contrasena {
     padding: 10px;
     margin-right: 5px;
+}
+#login-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+#login-input-password{
+    margin: 0;
+    padding: 0;
 }

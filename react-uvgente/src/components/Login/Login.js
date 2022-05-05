@@ -74,11 +74,11 @@ class Login extends Component {
       <form className="App" onSubmit = {this.handleSubmit}>
         <div className="Logo">
           <div className="email">
-            <h2 id="correo">Correo UVG</h2>
+            <label id="correo" for="email">Correo UVG</label>
             <input id="email" type="text" value={this.state.email} onChange={this.changeEmail}></input>
           </div>
           <div className="password">
-            <h2 id="contrasena">Contraseña</h2>
+            <label id="contrasena" for="password">Contraseña</label>
             <input type="password" id="password" value={this.state.password} onChange={this.changePassword}></input>
           </div>
           <div className="Enter">
@@ -94,10 +94,7 @@ class Login extends Component {
         <div className="input">
           <h1>UVGente</h1>
         </div>
-        <div className="slogan">
-          <h1>El lugar para encontrar todo lo que <br>
-          </br>necisitas para tu educación</h1>
-        </div>
+
       </form>
     );
   }
