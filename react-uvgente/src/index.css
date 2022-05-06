@@ -473,3 +473,106 @@ input[type="button"]:hover {
   height: 100%;
   position: relative;
 }
+#inboxpage {
+  max-width: 100%;
+  overflow: auto;
+  margin: 5%;
+  height: 100%;
+  width: 100%;
+}
+
+.pfp_Bandeja_Entrada {
+  position: relative;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 5px;
+  width: 250px;
+  height: 250px;
+  top: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+#inboxpage #profileinfo {
+  text-align: justify;
+  font-size: 19px;
+  margin-top: 1%;
+}
+
+#inboxpage #Descripcion {
+  inline-size: 750px;
+  overflow-wrap: break-word;
+}
+
+#inboxpage #inbox {
+  width: 100%;
+  height: auto;
+}
+
+.Messages p {
+  text-align: justify;
+  position: relative;
+  inline-size: 70%;
+  overflow-wrap: break-word;
+  margin-left: 120px;
+  margin-right: 20px;
+  bottom: 50px;
+}
+
+.Messages img {
+  position: relative;
+  height: 100%;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  top: 40px;
+}
+
+.Messages {
+  position: relative;
+  outline: solid 2px black;
+  margin: 2%;
+  height: auto;
+  width: auto;
+  bottom: 90px;
+  background-color: #a2e29c99;
+}
+
+#headerinbox {
+  align-items: center;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: rgb(95, 180, 88);
+}
+
+.inboxIcon {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+.inboxMessages {
+  margin-top: 100px;
+  height: auto;
+  width: auto;
+}
+
+.mail_pfp {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  margin-left: 10px;
+}
+
+#clickableMessage {
+  height: 100%;
+  width: 100%;
+}
+
+.flex_container_sidebar_and_content {
+  display: flex;
+}

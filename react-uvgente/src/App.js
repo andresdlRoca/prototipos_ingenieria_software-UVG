@@ -13,6 +13,7 @@ import NavBar from "./components/new-nav-bar/NavBar";
 import NewSideBar from "./components/new-side-bar/NewSideBar";
 import NewVentas from "./components/Ventas/NewVentas";
 import NewCompra from "./components/Compras/NewCompra";
+import NewServicio from "./components/Servicio/NewServicio";
 
 function App() {
   return (
@@ -24,6 +25,17 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <Singup />
+            </div>
+          }
+        />
+        <Route
+          path="/top-servicios"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <NewServicio />
+              <NewSideBar/>
+
             </div>
           }
         />

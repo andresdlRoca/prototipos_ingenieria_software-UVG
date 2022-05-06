@@ -35,7 +35,7 @@ const NavBar = () => {
                 <NewNavBarItem TypeOfItem="Link" text="Comprar" PageReference="/"/>
                 <NewNavBarItem TypeOfItem="Link" text="Lo mas vendido" PageReference="/top-ventas"/>
                 <NewNavBarItem TypeOfItem="Link" text="Servicios" />
-                <NewNavBarItem TypeOfItem="Link" text="Top Servicios" />
+                <NewNavBarItem TypeOfItem="Link" text="Top Servicios" PageReference="/top-servicios" />
             </ul>
         </div>
     ) 
