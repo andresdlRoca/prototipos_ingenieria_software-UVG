@@ -8,15 +8,16 @@ import Singup from "./components/Signup/Singup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
 import Login from "./components/Login";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Ayuda from "./components/Ayuda/Ayuda";
 import NavBar from "./components/new-nav-bar/NavBar";
 import NewSideBar from "./components/new-side-bar/NewSideBar";
 import NewVentas from "./components/Ventas/NewVentas";
+import NewCompra from "./components/Compras/NewCompra";
+
 function App() {
   return (
-    <Router >
-      <Routes >
+    <Router>
+      <Routes>
         <Route
           path="/signup"
           element={
@@ -40,9 +41,8 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-                <BuscadorMain/>
-                <NewSideBar/>
-           
+              <BuscadorMain />
+              <NewSideBar />
             </div>
           }
         />
@@ -51,9 +51,8 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <MiPerfil/>
-              <NewSideBar/>
-
+              <MiPerfil />
+              <NewSideBar />
             </div>
           }
         />
@@ -62,9 +61,8 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Reportar_Problema/>
-              <NewSideBar/>
-
+              <Reportar_Problema />
+              <NewSideBar />
             </div>
           }
         />
@@ -75,7 +73,16 @@ function App() {
               <NavBar />
               <Bandeja_Entrada />
               <NewSideBar />
-
+            </div>
+          }
+        />
+        <Route
+          path="/mis-compras"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <NewCompra />
+              <NewSideBar />
             </div>
           }
         />
@@ -83,33 +90,31 @@ function App() {
           path="/ajustes"
           element={
             <div className="all-wrapper">
-            <NavBar />
-            <Ajustes />
-            <NewSideBar/>
-
-          </div>
+              <NavBar />
+              <Ajustes />
+              <NewSideBar />
+            </div>
           }
-          />
+        />
         <Route
           path="/ayuda"
           element={
             <div className="all-wrapper">
-            <NavBar />
-            <Ayuda/>
-            <NewSideBar/>
-
-          </div>
+              <NavBar />
+              <Ayuda />
+              <NewSideBar />
+            </div>
           }
-          />
-          <Route
+        />
+        <Route
           path="/top-ventas"
           element={
             <div className="all-wrapper">
               <NavBar />
               <div id="page-main-content">
-                <NewVentas/>
+                <NewVentas />
               </div>
-              <NewSideBar/>
+              <NewSideBar />
             </div>
           }
         />
