@@ -8,13 +8,12 @@ import Singup from "./components/Signup/Singup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
 import Login from "./components/Login";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Ayuda from "./components/Ayuda/Ayuda";
 import NavBar from "./components/new-nav-bar/NavBar";
 import NewSideBar from "./components/new-side-bar/NewSideBar";
 import NewVentas from "./components/Ventas/NewVentas";
 import NewCompra from "./components/Compras/NewCompra";
-import NewServicio from "./components/Servicio/NewServicio";
-import Favorites from "./components/Favoritos/Favorites";
 
 function App() {
   return (
@@ -26,17 +25,6 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <Singup />
-            </div>
-          }
-        />
-        <Route
-          path="/top-servicios"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <NewServicio />
-              <NewSideBar/>
-
             </div>
           }
         />
@@ -130,18 +118,7 @@ function App() {
               <NewSideBar />
             </div>
           }
-          />
-          <Route
-          path="/favorites"
-          element={
-            <div className="all-wrapper">
-            <NavBar />
-            <Favorites />
-            <NewSideBar/>
-
-          </div>
-          }
-          />  
+        />
       </Routes>
     </Router>
   );
