@@ -14,6 +14,7 @@ import NewSideBar from "./components/new-side-bar/NewSideBar";
 import NewVentas from "./components/Ventas/NewVentas";
 import NewCompra from "./components/Compras/NewCompra";
 import NewServicio from "./components/Servicio/NewServicio";
+import Favorites from "./components/Favoritos/Favorites";
 
 function App() {
   return (
@@ -129,7 +130,18 @@ function App() {
               <NewSideBar />
             </div>
           }
-        />
+          />
+          <Route
+          path="/favorites"
+          element={
+            <div className="all-wrapper">
+            <NavBar />
+            <Favorites />
+            <NewSideBar/>
+
+          </div>
+          }
+          />  
       </Routes>
     </Router>
   );
