@@ -43,6 +43,7 @@ export default function MensajeUI({ chequearVisibilidad, cerrarChat }) {
                     className='inputMensajes' 
                     placeholder='Escribe un mensaje' 
                     onKeyPress={enviar}
+                    maxLength="120"
                     >
                     </input>
             

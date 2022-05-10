@@ -5,7 +5,6 @@ import VentaInfo from "./VentaInfo";
 function BuscadorMain() {
     return (
         <div className='container4buscador'>
-            <BarraBuscadora/>
             <div className="maincontainer">
                 <div className="two_columns_buscador">
                     <div className="mc_column">

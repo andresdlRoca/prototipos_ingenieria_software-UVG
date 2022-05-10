@@ -42,11 +42,11 @@ router.get('/class', (req, res)=>{
         else res.status(200).json(results.rows)
     })
 })
-router.get('/login', (req, res)=>{
-    let { username, password } = req.body
-    if(!username) return res.status(404).json({msg:"No se ingreso un usuario"});
+router.post('/login', (req, res)=>{
+    let { email, password } = req.body
+    if(!email) return res.status(404).json({msg:"No se ingreso un usuario"});
     if(!password) return res.status(404).json({msg:"No se ingreso contraseña"});
-    pool.query('SELECT * FROM Usuario WHERE username = $1', [username], (err, result)=>{
+    pool.query('SELECT * FROM Usuario WHERE email = $1', [email], (err, result)=>{
         if (err) return res.status(500).json({msg:"Error interno en la busqueda del usuario"})
         if(result.rows.length){
             user = result.rows[0]
@@ -54,14 +54,14 @@ router.get('/login', (req, res)=>{
                 if (err) return res.status(500).json('An error ocurred while decripting password. Try later. ', error)
                 if(same) {
                     psswrd = user.password
-                    jwt.sign({ username,psswrd }, secretKey, { expiresIn: '2 days' }, (err, token) => {
+                    jwt.sign({ email,psswrd }, secretKey, { expiresIn: '2 days' }, (err, token) => {
                         if (err) return res.status(500).send(err);
                         return res.status(200).json({msg: 'Login Succes', token});
                       }); 
                 } else return res.status(401).send('Usuario o contraseña incorrecta')
             }) 
-        }else res.status(401).send('Usuario o contraseña incorrecta')    
-        
+        }else res.status(401).send('Usuario o contraseña incorrecta')
+
         })
 })
 /* 

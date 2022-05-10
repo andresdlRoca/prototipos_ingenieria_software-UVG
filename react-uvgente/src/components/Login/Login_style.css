@@ -1,0 +1,19 @@
+.input, .slogan {
+    justify-content: left;
+    margin-right: 80vw;
+}
+
+.email, .password {
+    justify-content: center;
+    display:flex;
+    padding: 10px;
+}
+
+#Entrada:active {
+    background-color: rgb(25, 151, 25);
+}
+
+#correo, #contrasena {
+    padding: 10px;
+    margin-right: 5px;
+}
