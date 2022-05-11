@@ -1,0 +1,99 @@
+.uvgente_right_section_border {
+    border-left: 15px solid #C4C4C4;
+}
+
+.uvgente_right_section {
+    padding: 40px 150px;
+}
+
+.uvgente_right_section h1 {
+    font-weight: 400;
+}
+
+.uvgente_box {
+    position: relative;
+    overflow: auto;
+    padding: 11px;
+    width: 25%;
+    background-color: rgb(237, 235, 235);
+    margin-bottom: 30px;
+    border-radius: 20px;
+}
+
+.uvgente_box img.tutorios {
+    background-color: rgb(237, 235, 235);
+    padding: 15px 20px;
+    width: 50%;
+    float: left;
+    border-radius: 15px;
+}
+
+.uvgente_box h2 {
+    margin-top: 15px;
+    font-size: 25px;
+}
+
+.uvgente_box img.dot {
+    bottom: 10px;
+    position: absolute;
+    right: 5px;
+    width: 34px;
+}
+
+.text-center {
+    font-size: 25px;
+}
+
+.articulo_desc {
+    font-size: 12px;
+    color: #000000;
+}
+
+.tab_links {
+    margin: 15px 0 30px 0;
+}
+
+.tab_links a {
+    color: #000000;
+    font-size: 20px;
+    margin-right: 100px;
+}
+
+.tab_links a.active {
+    color: #5FB458;
+    border-bottom: 2px solid;
+}
+
+#nombre-form {
+    font-size: 30pt;
+}
+
+#nombre-serv {
+    width: 500px;
+    height: 40px;
+    font-size: 11pt;
+}
+
+#desc-serv {
+    width: 500px;
+    height: 200px;
+    font-size: 11pt;
+}
+
+#categoria-serv {
+    width: 500px;
+    height: 40px;
+    font-size: 11pt;
+}
+
+#archivos-serv {
+    width: 500px;
+    height: 40px;
+    font-size: 11pt;
+}
+
+#valor-serv {
+    width: 200px;
+    height: 40px;
+    font-size: 8pt;
+}
