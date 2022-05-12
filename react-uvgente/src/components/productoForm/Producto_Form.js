@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 
 const Producto_Form = (props) => {
+  const [data, setData] = useState({});
+
   const [visible, setVisible] = useState(false);
 
   const handleCancel = () => {
@@ -49,12 +51,7 @@ const Producto_Form = (props) => {
           required
         />
         <label htmlFor="nombre_del_producto">Foto del producto:</label>
-        <input
-          type="button"
-          value="Subir archivo"
-          required
-          onClick={handleFile}
-        />
+        <input type="file" required accept="image/png, image/jpeg" />
         <div className="botonesForm">
           <input
             type="button"

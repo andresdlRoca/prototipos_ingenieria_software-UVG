@@ -3,7 +3,7 @@ import BuscadorMain from "./components/BuscadorMain";
 import Header from "./components/Header";
 import Bandeja_Entrada from "./components/Bandeja_Entrada/Bandeja_Entrada";
 import Ajustes from "./components/Ajustes/Ajustes";
-import Reportar_Problema from "./components/Reportar_Problema";
+import Reportar_Problema from "./components/ReportarProblema/Reportar_Problema";
 import Singup from "./components/Signup/Singup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
@@ -15,7 +15,7 @@ import NewVentas from "./components/Ventas/NewVentas";
 import NewCompra from "./components/Compras/NewCompra";
 import NewServicio from "./components/Servicio/NewServicio";
 import Favorites from "./components/Favoritos/Favorites";
-import ProductoForm from "./components/form/Producto_Form"
+import ProductoForm from "./components/productoForm/Producto_Form";
 
 function App() {
   return (
@@ -36,8 +36,7 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <NewServicio />
-              <NewSideBar/>
-
+              <NewSideBar />
             </div>
           }
         />
@@ -131,18 +130,17 @@ function App() {
               <NewSideBar />
             </div>
           }
-          />
-          <Route
+        />
+        <Route
           path="/favorites"
           element={
             <div className="all-wrapper">
-            <NavBar />
-            <Favorites />
-            <NewSideBar/>
-
-          </div>
+              <NavBar />
+              <Favorites />
+              <NewSideBar />
+            </div>
           }
-          />  
+        />
       </Routes>
       <ProductoForm />
     </Router>
