@@ -152,6 +152,16 @@ function App() {
             </div>
           }
         />
+        <Route
+          path="/vender"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <OpcionesDeVenta />
+              <NewSideBar />
+            </div>
+          }
+        />
       </Routes>
     </Router>
   );
