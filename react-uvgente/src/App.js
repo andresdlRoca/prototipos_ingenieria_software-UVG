@@ -16,6 +16,7 @@ import NewCompra from "./components/Compras/NewCompra";
 import NewServicio from "./components/Servicio/NewServicio";
 import Favorites from "./components/Favoritos/Favorites";
 import ProductoForm from "./components/productoForm/Producto_Form";
+import OpcionesDeVenta from "./components/opciones_de_venta/OpcionesDeVenta";
 
 function App() {
   return (
@@ -141,8 +142,18 @@ function App() {
             </div>
           }
         />
+        <Route
+          path="/vender"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <OpcionesDeVenta />
+              <NewSideBar />
+            </div>
+          }
+        />
       </Routes>
-      <ProductoForm />
+      {/* <ProductoForm /> */}
     </Router>
   );
 }

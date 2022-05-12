@@ -7,11 +7,7 @@ const Producto_Form = (props) => {
   const [visible, setVisible] = useState(false);
 
   const handleCancel = () => {
-    console.log("funcionando!");
-  };
-
-  const handleFile = () => {
-    console.log("file");
+    setVisible(!visible);
   };
 
   return (

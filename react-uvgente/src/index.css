@@ -405,14 +405,30 @@ textarea {
 /*para opciones de venta de producto*/
 .opcionesDeVenta {
   position: absolute;
-  background-color: rgb(196, 196, 196);
+  height: 100%;
+  width: 100%;
+  background-color: #eaeded;
+}
+
+.opcionDeVenta {
+  background-color: #dcdcdc;
+  border-radius: 25px;
+  height: 200px;
+  position: relative;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-around;
+  align-content: center;
 }
 
 /*---------------------------------------------------------------------------*/
 /*para el form de venta de producto*/
 
 .productoForm {
-  position: absolute;
+  position: relative;
+  top: 0;
   background-color: #5ccb5f;
   padding: 10px 10px 20px 10px;
   box-shadow: 2px 2px 2px rgb(36, 36, 36);
@@ -485,7 +501,16 @@ input[type="button"]:hover {
   background-color: rgb(57, 155, 49);
   width: fit-content;
   border-color: rgb(57, 155, 49);
-  box-shadow: 2px 2px 2px rgb(95, 180, 88);
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+}
+
+.productoOpcion {
+  background-color: rgb(57, 155, 49);
+  width: fit-content;
+  border: 0;
+  color: white;
+  box-shadow: 2px 2px 2px rgb(10, 17, 9);
   padding: 10px 10px 10px 10px;
   border-radius: 25px;
 }
