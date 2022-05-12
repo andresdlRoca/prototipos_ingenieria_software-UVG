@@ -12,7 +12,7 @@ body {
   padding: 0px;
   background: #ffffff;
 }
-.all-wrapper{
+.all-wrapper {
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -263,20 +263,19 @@ footer {
   text-decoration: underline;
 }
 
-h1{
+h1 {
   font-family: "Poppins", sans-serif;
 }
 
-h2{
+h2 {
   font-family: "Poppins", sans-serif;
 }
 
-.problemas{
+.problemas {
   position: relative;
 
   text-align: left;
-  left: 200px
-
+  left: 200px;
 }
 
 #opciones {
@@ -290,7 +289,6 @@ h2{
   display: none; /*hide original SELECT element: */
 }
 
-
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
@@ -303,15 +301,12 @@ h2{
   border-color: #fff transparent transparent transparent;
 }
 
-
-textarea{
+textarea {
   background-color: lightgray;
   width: 800px;
   height: 180px;
-
-
 }
-#Enviar{
+#Enviar {
   position: absolute;
 
   background-color: rgb(95, 180, 88);
@@ -411,15 +406,31 @@ textarea{
 /*para opciones de venta de producto*/
 .opcionesDeVenta {
   position: absolute;
-  background-color: rgb(196, 196, 196);
+  height: 100%;
+  width: 100%;
+  background-color: #eaeded;
+}
+
+.opcionDeVenta {
+  background-color: #dcdcdc;
+  border-radius: 25px;
+  height: 200px;
+  position: relative;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-around;
+  align-content: center;
 }
 
 /*---------------------------------------------------------------------------*/
 /*para el form de venta de producto*/
 
 .productoForm {
-  position: absolute;
-  background-color: rgb(95, 180, 88);
+  position: relative;
+  top: 0;
+  background-color: #5ccb5f;
   padding: 10px 10px 20px 10px;
   box-shadow: 2px 2px 2px rgb(36, 36, 36);
   left: 17%;
@@ -445,20 +456,24 @@ textarea{
   padding: 10px 10px 10px 10px;
   border-radius: 25px;
   border: solid rgb(255, 255, 255) 2px;
-  background-color: rgb(95, 180, 88);
+  background-color: #5ccb5f;
   font-size: 16px;
   color: white;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .botonesForm input {
   margin: 0;
 }
 
+.productoForm input[type="file"] {
+  border: 0;
+}
+
 .productoForm input[type="submit"],
 input[type="button"] {
-  background-color: 
-  rgb(57, 155, 49);
+  background-color: rgb(57, 155, 49);
   width: fit-content;
   border-color: rgb(57, 155, 49);
   box-shadow: 2px 2px 2px rgb(95, 180, 88);
@@ -469,7 +484,41 @@ input[type="button"]:hover {
   border-color: rgb(48, 126, 40);
   background-color: rgb(48, 126, 40);
 }
-.page-main-content{
+
+.productoForm input::placeholder {
+  color: rgb(48, 126, 40);
+}
+
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Elegir foto";
+  color: white;
+  display: inline-block;
+  background-color: rgb(57, 155, 49);
+  width: fit-content;
+  border-color: rgb(57, 155, 49);
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+}
+
+.productoOpcion {
+  background-color: rgb(57, 155, 49);
+  width: fit-content;
+  border: 0;
+  color: white;
+  box-shadow: 2px 2px 2px rgb(10, 17, 9);
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.page-main-content {
   width: 100%;
   height: 100%;
   position: relative;
@@ -576,4 +625,11 @@ input[type="button"]:hover {
 
 .flex_container_sidebar_and_content {
   display: flex;
+}
+
+/*---------------------------------------------------------------------------
+para arreglar un titulo*/
+
+.reportar-fix-titulo {
+  margin: 0 0;
 }

@@ -33,7 +33,7 @@ const NewSideBar = () => {
                 </Link>
             </li>
             <li className='item-side-bar-container'>
-                <Link className='item-on-side-bar' to="/">
+                <Link className='item-on-side-bar' to="/favorites">
                     <p>Guardados</p>
                     <FaBookmark className='icon-on-item-side-bar'/>
                 </Link>
