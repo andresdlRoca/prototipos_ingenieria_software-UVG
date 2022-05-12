@@ -51,7 +51,12 @@ const Producto_Form = (props) => {
           required
         />
         <label htmlFor="nombre_del_producto">Foto del producto:</label>
-        <input type="file" required accept="image/png, image/jpeg" />
+        <input
+          type="file"
+          required
+          accept="image/png, image/jpeg"
+          className="custom-file-input"
+        />
         <div className="botonesForm">
           <input
             type="button"

@@ -443,6 +443,7 @@ textarea {
   font-size: 16px;
   color: white;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .botonesForm input {
@@ -450,12 +451,11 @@ textarea {
 }
 
 .productoForm input[type="file"] {
-  display: inline;
+  border: 0;
 }
 
 .productoForm input[type="submit"],
-input[type="button"],
-input[type="file"] {
+input[type="button"] {
   background-color: rgb(57, 155, 49);
   width: fit-content;
   border-color: rgb(57, 155, 49);
@@ -463,14 +463,31 @@ input[type="file"] {
 }
 
 .productoForm input[type="submit"]:hover,
-input[type="button"]:hover,
-input[type="file"]:hover {
+input[type="button"]:hover {
   border-color: rgb(48, 126, 40);
   background-color: rgb(48, 126, 40);
 }
 
 .productoForm input::placeholder {
   color: rgb(48, 126, 40);
+}
+
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Elegir foto";
+  color: white;
+  display: inline-block;
+  background-color: rgb(57, 155, 49);
+  width: fit-content;
+  border-color: rgb(57, 155, 49);
+  box-shadow: 2px 2px 2px rgb(95, 180, 88);
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
 }
 
 /*---------------------------------------------------------------------------*/
