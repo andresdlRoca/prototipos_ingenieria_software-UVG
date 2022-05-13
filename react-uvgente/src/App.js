@@ -1,6 +1,7 @@
 import BarraLateral from "./components/BarraLateral";
 import Header from "./components/Header";
 //import MiPerfil from "./components/MiPerfil";
+import Login from './components/Login';
 
 function App() {
   return (
