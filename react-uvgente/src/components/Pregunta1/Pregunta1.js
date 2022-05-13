@@ -8,17 +8,12 @@ export default function Pregunta1() {
         <>
             <div className="AyudaWrap">
                 <div className="FAQ">
-                    Preguntas Frecuentes
+                    ¿Cómo vender un articulo?    
                     <ul className="FAQList">
-                        <li>¿Como vender un articulo?</li>
-                        <li>¿Como comprar un articulo?</li>
-                        <li>Como ver el perfil de otro usuario?</li>
-                        <li>Como edito mi perfil?</li>
-                        <li>¿Como cambio mi foto de perfil?</li>
-                        <li>¿Como ver detalles de un producto/servicio?</li>
-                        <li>¿Como reinicio mi contraseña?</li>
-                        <li>¿Como cambio mi tipo de contacto principal?</li>
-                        <li>¿Como puedo filtrar mis busquedas?</li>
+                        <span class="ref">Para poner en venta un artículo y/o servicio, debe dirigirse a la pestaña "Vender" 
+                        en la barra superior, seguidamente elegir entre articulo y servicio y llenar el formulario con la 
+                        informacion necesaria para realizar una publicacion en la página 
+                        </span>
                     </ul>
                 </div>
                 <div className="ContactSupport">
