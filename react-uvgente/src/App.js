@@ -1,6 +1,9 @@
 import BarraLateral from "./components/BarraLateral";
 import BuscadorMain from "./components/BuscadorMain";
 import Header from "./components/Header";
+//import MiPerfil from "./components/MiPerfil";
+import Login from './components/Login';
+
 import Bandeja_Entrada from "./components/Bandeja_Entrada/Bandeja_Entrada";
 import Ajustes from "./components/Ajustes/Ajustes";
 import Reportar_Problema from "./components/ReportarProblema/Reportar_Problema";
