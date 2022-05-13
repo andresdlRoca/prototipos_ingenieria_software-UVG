@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
-.new-button{
+
+.new-button {
     border-radius: auto;
     text-decoration: auto;
     position: relative;
 }
-.new-p{
+
+.new-p {
     padding: 0;
     margin: 0;
     font-size: 100%;
 
 }
-#main-container-new-ventas{
+
+#main-container-new-ventas {
     width: 100%;
     height: 1200px;
     padding-left: 100px;
@@ -19,13 +22,14 @@
     padding-top: 40px;
     padding-bottom: 100px;
     display: grid;
-    grid-template-rows: 3% 97%;
+    grid-template-rows: 5% 95%;
     background-color: #EAEDED;
     border: 1px solid gainsboro;
     position: relative;
 
 }
-#flex-product-carrousel-container{
+
+#flex-product-carrousel-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +37,7 @@
     gap: 30px;
 }
 
-#productos-main-container{
+#productos-main-container {
     margin-top: 20px;
     width: 100%;
     height: 100%;
@@ -50,7 +54,8 @@
     overflow: scroll;
 
 }
-.title-and-filters-wrapper{
+
+.title-and-filters-wrapper {
     display: flex;
     position: relative;
     width: 100%;
@@ -60,32 +65,34 @@
     border-radius: 40px;
 }
 
-.titulo-pagina-new-ventas{
+.titulo-pagina-new-ventas {
     font-family: 'Bebas Neue', cursive;
+    font-size: x-large;
     padding: 5px 5px;
     width: 20%;
     gap: 3px;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     background-color: whitesmoke;
-    border: 1px solid gainsboro;    
+    border: 1px solid gainsboro;
     color: #274527;
-    border-radius: 40px ;
+    border-radius: 40px;
     height: 100%;
     overflow: hidden;
     white-space: nowrap;
 }
 
-.titulo-pagina-new-ventas:hover{
+.titulo-pagina-new-ventas:hover {
     background-color: #274527;
     color: whitesmoke;
-    border-radius: 40px ;
+    border-radius: 40px;
 
 
 
 }
-.filter-button{
+
+.filter-button {
     width: 25px;
     position: relative;
     color: #274527;
@@ -93,10 +100,10 @@
     border-radius: 50%;
 }
 
-.card-item-on-venta{
+.card-item-on-venta {
     font-family: 'Cabin', sans-serif;
-    width: 330px;
-    height: 25%;
+    width: 30%;
+    height: 245px;
     border-radius: 20px;
     padding: 5px;
     gap: 0;
@@ -104,7 +111,8 @@
     display: flex;
     position: relative;
 }
-.card-item-image-space{
+
+.card-item-image-space {
     position: relative;
     display: flex;
     justify-content: center;
@@ -115,7 +123,8 @@
     border-radius: 5px;
     background-color: rgb(237, 235, 235);
 }
-.price-item-card-space{
+
+.price-item-card-space {
     height: 30%;
     width: 100%;
     display: flex;
@@ -124,7 +133,8 @@
     font-size: x-large;
 
 }
-.left-side-card-item{
+
+.left-side-card-item {
     position: relative;
     width: 35%;
     height: 100%;
@@ -134,13 +144,15 @@
     align-items: center;
     padding: 10px 0px;
 }
-.question-mark-no-image{
+
+.question-mark-no-image {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
-.right-side-card-item{
+
+.right-side-card-item {
     width: 70%;
     padding-left: 20px;
     padding-right: 20px;
@@ -149,12 +161,13 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding-top: 12px ;
-    padding-bottom: 12px ;
+    padding-top: 12px;
+    padding-bottom: 12px;
 
 
 }
-.item-product-title{
+
+.item-product-title {
     position: relative;
     width: 100%;
     height: 20%;
@@ -164,26 +177,31 @@
     font-weight: bolder;
     overflow: hidden;
     white-space: nowrap;
-    
-    
+
+
 
 }
-.item-product-description{
+
+.item-product-description {
     position: relative;
     width: 100%;
     height: 50%;
     font-size: small;
     overflow: scroll;
-    -ms-overflow-style: none;  /* IE and Edge -->https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp*/
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge -->https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp*/
+    scrollbar-width: none;
+    /* Firefox */
 }
+
 .item-product-description::-webkit-scrollbar {
     display: none;
-  }
-.item-product-rate{
+}
+
+.item-product-rate {
     width: 100%;
     height: 10%;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -192,25 +210,28 @@
     border-radius: 50px;
 
 }
-.seller-info-wrapper4{
+
+.seller-info-wrapper4 {
     width: 100%;
     height: 15%;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     padding: 0;
 }
-.pp-for-seller-space{
+
+.pp-for-seller-space {
     height: 100%;
     width: 20%;
-    
+
     position: relative;
     padding: 2px;
 
 }
-.name-space-for-seller{
+
+.name-space-for-seller {
     width: 80%;
     height: 100%;
     overflow: hidden;
@@ -220,12 +241,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    
+
+
 
 }
-.seller-profile-pic-on-card-sell{
+
+.seller-profile-pic-on-card-sell {
     width: 100%;
     border-radius: 50%;
     transform: translate(0px, -2px);
+}
+
+.card-item-on-main {
+    font-family: 'Cabin', sans-serif;
+    width: 350px;
+    height: 245px;
+    border-radius: 20px;
+    padding: 5px;
+    gap: 0;
+    background-color: gainsboro;
+    display: flex;
+    position: relative;
 }

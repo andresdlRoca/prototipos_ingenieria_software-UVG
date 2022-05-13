@@ -12,14 +12,17 @@ body {
   padding: 0px;
   background: #ffffff;
 }
-.all-wrapper{
+
+.all-wrapper {
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
+
 .last_element_in_header {
   margin-right: 10px;
 }
+
 .container {
   max-width: 100%;
   min-height: 753px;
@@ -27,23 +30,28 @@ body {
   border: 1px solid steelblue;
   overflow: hidden;
 }
+
 .header h3 {
   color: white;
 }
+
 .header h3:hover {
   text-shadow: 0 0 30px #fff;
   cursor: pointer;
 }
+
 .header .logo {
   height: 100%;
   margin-bottom: 10px;
   cursor: pointer;
 }
+
 .header div .logo {
   position: relative;
   height: 10px;
   margin-bottom: 10px;
 }
+
 .header {
   position: sticky;
   top: -1px;
@@ -92,30 +100,37 @@ body {
   width: 100%;
   height: 80px;
 }
+
 .pp_into_side_bar_card {
   height: 100%;
   border-radius: 50%;
   margin-right: 5px;
 }
+
 .flexbox_pp_name {
   display: flex;
   width: 100%;
   height: 50px;
 }
+
 .flexbox_pp_name p {
   font-size: small;
 }
+
 .div_five_stars {
   height: 50px;
   width: auto;
 }
+
 footer {
   margin-top: 30px;
   text-align: center;
 }
+
 .flex_container_sidebar_and_content {
   display: flex;
 }
+
 .container_main_content {
   height: 580px;
   width: 1200px;
@@ -124,9 +139,12 @@ footer {
   padding: 0px;
   background: whitesmoke;
 }
+
 #profile_page_main {
   display: flex;
+  padding-left: 40px;
 }
+
 #lateral_profile_page_main {
   position: relative;
   width: 25%;
@@ -134,33 +152,40 @@ footer {
   text-align: center;
   overflow: hidden;
 }
+
 #main_content_profile_page_main {
   width: 75%;
   height: 580px;
   padding: 20px;
 }
+
 .pp_into_side_bar_card_main_content {
   border-radius: 50%;
   width: 50%;
   height: auto;
   margin: 10px;
 }
+
 .five_start_into_main_content {
   width: 50%;
   height: auto;
 }
+
 #text_into_bar {
   text-align: left;
   margin: 0px 20px;
   overflow: none;
 }
+
 #btn_div {
   text-align: center;
   padding: 20px;
 }
+
 .btn {
   background-color: rgb(95, 180, 88);
 }
+
 #btn_edit_profile {
   height: 20px;
   width: 5px;
@@ -262,20 +287,19 @@ footer {
   text-decoration: underline;
 }
 
-h1{
+h1 {
   font-family: "Poppins", sans-serif;
 }
 
-h2{
+h2 {
   font-family: "Poppins", sans-serif;
 }
 
-.problemas{
+.problemas {
   position: relative;
 
   text-align: left;
-  left: 200px
-
+  left: 200px;
 }
 
 #opciones {
@@ -285,10 +309,11 @@ h2{
   width: 800px;
   height: 50px;
 }
-#opciones select {
-  display: none; /*hide original SELECT element: */
-}
 
+#opciones select {
+  display: none;
+  /*hide original SELECT element: */
+}
 
 /* Style the arrow inside the select element: */
 .select-selected:after {
@@ -302,15 +327,13 @@ h2{
   border-color: #fff transparent transparent transparent;
 }
 
-
-textarea{
+textarea {
   background-color: lightgray;
   width: 800px;
   height: 180px;
-
-
 }
-#Enviar{
+
+#Enviar {
   position: absolute;
 
   background-color: rgb(95, 180, 88);
@@ -410,15 +433,31 @@ textarea{
 /*para opciones de venta de producto*/
 .opcionesDeVenta {
   position: absolute;
-  background-color: rgb(196, 196, 196);
+  height: 100%;
+  width: 100%;
+  background-color: #eaeded;
+}
+
+.opcionDeVenta {
+  background-color: #dcdcdc;
+  border-radius: 25px;
+  height: 200px;
+  position: relative;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-around;
+  align-content: center;
 }
 
 /*---------------------------------------------------------------------------*/
 /*para el form de venta de producto*/
 
 .productoForm {
-  position: absolute;
-  background-color: rgb(95, 180, 88);
+  position: relative;
+  top: 0;
+  background-color: #5ccb5f;
   padding: 10px 10px 20px 10px;
   box-shadow: 2px 2px 2px rgb(36, 36, 36);
   left: 17%;
@@ -444,20 +483,24 @@ textarea{
   padding: 10px 10px 10px 10px;
   border-radius: 25px;
   border: solid rgb(255, 255, 255) 2px;
-  background-color: rgb(95, 180, 88);
+  background-color: #5ccb5f;
   font-size: 16px;
   color: white;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .botonesForm input {
   margin: 0;
 }
 
+.productoForm input[type="file"] {
+  border: 0;
+}
+
 .productoForm input[type="submit"],
 input[type="button"] {
-  background-color: 
-  rgb(57, 155, 49);
+  background-color: rgb(57, 155, 49);
   width: fit-content;
   border-color: rgb(57, 155, 49);
   box-shadow: 2px 2px 2px rgb(95, 180, 88);
@@ -468,11 +511,48 @@ input[type="button"]:hover {
   border-color: rgb(48, 126, 40);
   background-color: rgb(48, 126, 40);
 }
-.page-main-content{
+
+.productoForm input::placeholder {
+  color: rgb(48, 126, 40);
+}
+
+.custom-file-input {
+  color: transparent;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Elegir foto";
+  color: white;
+  display: inline-block;
+  background-color: rgb(57, 155, 49);
+  width: fit-content;
+  border-color: rgb(57, 155, 49);
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+}
+
+.productoOpcion {
+  background-color: rgb(57, 155, 49);
+  width: fit-content;
+  border: 0;
+  color: white;
+  box-shadow: 2px 2px 2px rgb(10, 17, 9);
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.page-main-content {
   width: 100%;
   height: 100%;
   position: relative;
 }
+
 #inboxpage {
   max-width: 100%;
   overflow: auto;
@@ -575,4 +655,11 @@ input[type="button"]:hover {
 
 .flex_container_sidebar_and_content {
   display: flex;
+}
+
+/*---------------------------------------------------------------------------
+para arreglar un titulo*/
+
+.reportar-fix-titulo {
+  margin: 0 0;
 }

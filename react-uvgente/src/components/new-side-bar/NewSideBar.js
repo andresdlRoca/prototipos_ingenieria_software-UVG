@@ -20,15 +20,14 @@ const NewSideBar = () => {
                         <FaInbox className='icon-on-item-side-bar' />
                     </Link>
                 </li>
-
                 <li className='item-side-bar-container'>
-                    <Link className='item-on-side-bar' to="/">
+                    <Link className='item-on-side-bar' to="/mis-compras">
                         <p>Mis compras</p>
                         <FaShoppingBag className='icon-on-item-side-bar' />
                     </Link>
                 </li>
                 <li className='item-side-bar-container'>
-                    <Link className='item-on-side-bar' to="/articulos-publicados">
+                    <Link className='item-on-side-bar' to="/">
                         <p>Artículos publicados</p>
                         <FaBriefcase className='icon-on-item-side-bar' />
                     </Link>
@@ -44,6 +43,10 @@ const NewSideBar = () => {
                 <Link to="/ajustes" className='new-link'><FaCog /> </Link>
                 <Link to="/ayuda" className='new-link'><FaQuestion /> </Link>
                 <Link to="/report" className='new-link'><FaExclamationTriangle /></Link>
+
+
+
+
             </div>
         </div>
     )
