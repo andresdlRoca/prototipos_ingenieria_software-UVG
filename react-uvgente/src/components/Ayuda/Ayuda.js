@@ -16,12 +16,18 @@ export default function Ayuda() {
                         <Link to="/Pregunta2">¿Como comprar un articulo?</Link>
                         <li> </li>
                         <Link to="/Pregunta3">¿Como ver el perfil de otro usuario?</Link>
-                        <li>¿Como edito mi perfil?</li>
-                        <li>¿Como cambio mi foto de perfil?</li>
-                        <li>¿Como ver detalles de un producto/servicio?</li>
-                        <li>¿Como reinicio mi contraseña?</li>
-                        <li>¿Como cambio mi tipo de contacto principal?</li>
-                        <li>¿Como puedo filtrar mis busquedas?</li>
+                        <li> </li>
+                        <Link to="/Pregunta4">¿Como edito mi perfil?</Link>
+                        <li> </li>
+                        <Link to="/Pregunta5">¿Como cambio mi foto de perfil?</Link>
+                        <li> </li>
+                        <Link to="/Pregunta6">¿Como ver detalles de un producto/servicio?</Link>
+                        <li> </li>
+                        <Link to="/Pregunta7">¿Como reinicio mi contraseña?</Link>
+                        <li> </li>
+                        <Link to="/Pregunta8">¿Como cambio mi tipo de contacto principal?</Link>
+                        <li> </li>
+                        <Link to="/Pregunta9">¿Como puedo filtrar mis busquedas?</Link>
                     </ul>
                 </div>
                 <div className="ContactSupport">
