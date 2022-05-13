@@ -1,14 +1,8 @@
 //<div></div>
 import React, { useState } from "react";
 
-const Producto_Form = (props) => {
+const ProductoForm = (handleCancel) => {
   const [data, setData] = useState({});
-
-  const [visible, setVisible] = useState(false);
-
-  const handleCancel = () => {
-    setVisible(!visible);
-  };
 
   return (
     <div className="productoForm">
@@ -72,6 +66,6 @@ const Producto_Form = (props) => {
   );
 };
 
-Producto_Form.props = {};
+ProductoForm.props = {};
 
-export default Producto_Form;
+export default ProductoForm;

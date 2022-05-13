@@ -15,7 +15,6 @@ import NewVentas from "./components/Ventas/NewVentas";
 import NewCompra from "./components/Compras/NewCompra";
 import NewServicio from "./components/Servicio/NewServicio";
 import Favorites from "./components/Favoritos/Favorites";
-import ProductoForm from "./components/productoForm/Producto_Form";
 import OpcionesDeVenta from "./components/opciones_de_venta/OpcionesDeVenta";
 
 function App() {
@@ -153,7 +152,6 @@ function App() {
           }
         />
       </Routes>
-      {/* <ProductoForm /> */}
     </Router>
   );
 }
