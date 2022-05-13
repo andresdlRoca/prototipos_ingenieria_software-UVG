@@ -141,18 +141,18 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <div id="page-main-content">
-                <NewVentas />
+                <NewVentas title="Top Ventas"/>
               </div>
               <NewSideBar />
             </div>
           }
         />
         <Route
-          path="/vender"
+          path="/ventas"
           element={
             <div className="all-wrapper">
               <NavBar />
-              <OpcionesDeVenta />
+              <NewVentas title="Ventas"/>
               <NewSideBar />
             </div>
           }

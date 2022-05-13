@@ -48,13 +48,13 @@ const NavBar = () => {
           text="Vender"
           PageReference="/vender"
         />
-        <NewNavBarItem TypeOfItem="Link" text="Comprar" PageReference="/" />
+        <NewNavBarItem TypeOfItem="Link" text="Comprar" PageReference="/ventas" />
         <NewNavBarItem
           TypeOfItem="Link"
           text="Lo mas vendido"
           PageReference="/top-ventas"
         />
-        <NewNavBarItem TypeOfItem="Link" text="Servicios" />
+        <NewNavBarItem TypeOfItem="Link" text="Servicios" PageReference="/servicios"/>
         <NewNavBarItem
           TypeOfItem="Link"
           text="Top Servicios"
