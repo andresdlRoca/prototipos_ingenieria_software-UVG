@@ -22,6 +22,9 @@ import NewPaginaPrincipal from "./components/NewPaginaPrincipal/NewPaginaPrincip
 import Favorites from "./components/Favoritos/Favorites";
 import ProductoForm from "./components/productoForm/Producto_Form";
 import OpcionesDeVenta from "./components/opciones_de_venta/OpcionesDeVenta";
+import Pregunta1 from "./components/Preguntas/Pregunta1";
+import Pregunta2 from "./components/Preguntas/Pregunta2";
+import Pregunta3 from "./components/Preguntas/Pregunta3";
 
 function App() {
   return (
@@ -176,6 +179,36 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <OpcionesDeVenta />
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/Pregunta1"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <Pregunta1 />
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/Pregunta2"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <Pregunta2 />
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/Pregunta3"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <Pregunta3 />
               <NewSideBar />
             </div>
           }
