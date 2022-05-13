@@ -89,6 +89,16 @@ function App() {
           }
         />
         <Route
+          path="/articulos-publicados"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <Cards_Ventas />
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
           path="/ajustes"
           element={
             <div className="all-wrapper">
