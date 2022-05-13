@@ -33,9 +33,9 @@ const CardServicios = (props) => {
             image
               ? { backgroundImage: `url(${image})`, backgroundSize: "cover" }
               : {
-                backgroundImage: `url(${DefaultImageUser})`,
-                backgroundSize: "cover",
-              }
+                  backgroundImage: `url(${DefaultImageUser})`,
+                  backgroundSize: "cover",
+                }
           }
         />
         <div className="performances-bars-containers">

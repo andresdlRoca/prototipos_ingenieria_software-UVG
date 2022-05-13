@@ -1,20 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 
-.new-button {
+.new-button{
     border-radius: auto;
     text-decoration: auto;
     position: relative;
 }
-
-.new-p {
+.new-p{
     padding: 0;
     margin: 0;
     font-size: 100%;
 
 }
-
-#main-container-new-servicios {
+#main-container-new-servicios{
     width: 100%;
     height: 1200px;
     padding-left: 100px;
@@ -30,7 +28,7 @@
 }
 
 
-#servicios-main-container {
+#servicios-main-container{
     margin-top: 20px;
     width: 100%;
     height: 100%;
@@ -47,8 +45,7 @@
     overflow: scroll;
 
 }
-
-.title-and-filters-wrapper {
+.title-and-filters-wrapper{
     display: flex;
     position: relative;
     width: 100%;
@@ -58,7 +55,7 @@
     border-radius: 40px;
 }
 
-.titulo-pagina-new-servicios {
+.titulo-pagina-new-servicios{
     font-family: 'Bebas Neue', cursive;
     font-size: x-large;
     padding: 5px 5px;
@@ -66,26 +63,25 @@
     gap: 3px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content:space-around;
     background-color: whitesmoke;
-    border: 1px solid gainsboro;
+    border: 1px solid gainsboro;    
     color: #274527;
-    border-radius: 40px;
+    border-radius: 40px ;
     height: 100%;
     overflow: hidden;
     white-space: nowrap;
 }
 
-.titulo-pagina-new-servicios:hover {
+.titulo-pagina-new-servicios:hover{
     background-color: #274527;
     color: whitesmoke;
-    border-radius: 40px;
+    border-radius: 40px ;
 
 
 
 }
-
-.filter-button {
+.filter-button{
     width: 25px;
     position: relative;
     color: #274527;
@@ -93,7 +89,7 @@
     border-radius: 50%;
 }
 
-.card-item-servicio {
+.card-item-servicio{
     font-family: 'Cabin', sans-serif;
     width: 30%;
     height: 250px;
@@ -104,23 +100,20 @@
     display: flex;
     position: relative;
 }
-
-.left-side-card-servicio {
+.left-side-card-servicio{
     height: 100%;
     width: 120px;
     display: flex;
     flex-direction: column;
 
 }
-
-.card-item-image-space-service {
+.card-item-image-space-service{
     width: 100%;
     height: 50%;
     border-radius: 50%;
     border: 3px solid #8ac68c;
 }
-
-.performances-bars-containers {
+.performances-bars-containers{
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -129,18 +122,15 @@
     padding: 10px;
 
 }
-
-.text-into-progressbar {
+.text-into-progressbar{
     position: absolute;
-    font-size: small;
-    bottom: 5px;
+    font-size: small; 
+    bottom: 5px;   
 }
-
-.progress-fill {
+.progress-fill{
     background-color: #5CCB5F;
 }
-
-.progress-bar-container {
+.progress-bar-container{
     position: relative;
     border: 1px solid grey;
     width: 100%;
@@ -148,43 +138,37 @@
     border-radius: 10px;
     overflow: hidden;
 }
-
-.right-side-card-servicio {
+.right-side-card-servicio{
     width: 200px;
     height: 100%;
     padding: 10px;
-
+    
     display: flex;
     flex-direction: column;
 }
-
-.name-space-on-card-item-service {
+.name-space-on-card-item-service{
     display: flex;
     justify-content: center;
     font-size: x-large;
     flex-direction: column;
     width: 100%;
     height: 80px;
-
+    
 }
-
-.calification-space {
+.calification-space{
     display: flex;
     justify-content: center;
 }
-
-.star {
+.star{
     color: #274527;
     border-color: #274527;
 }
-
-.name-item-on-card-item-service {
+.name-item-on-card-item-service{
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
-.carne-item-on-card-item-service {
+.carne-item-on-card-item-service{
     width: 100%;
     display: flex;
     justify-content: center;

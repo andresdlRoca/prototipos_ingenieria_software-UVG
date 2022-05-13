@@ -12,110 +12,110 @@ import cat6 from '../../media/cat6.jpg'
 const NewServicio = (props) => {
     const tutores = [
         {
-            id: 1,
+            id: 1, 
             name: 'Juan',
-            carne: 20012,
-            calification: 5,
+            carne: 20012, 
+            calification: 5, 
             isVerified: true,
             topPerformance: {
-                "Matemática": 5,
-                "Física": 4,
+                "Matemática": 5, 
+                "Física":  4, 
                 "Química G.": 3
             },
             cobro: ["Horas Beca"],
             image: cat1,
         },
         {
-            id: 2,
-            name: 'MariLuz',
+            id: 2, 
+            name: 'MariLuz', 
             carne: 18011,
-            calification: 2,
+            calification: 2, 
             isVerified: true,
             topPerformance: {
-                "Matemática": 5,
-                "Física": 4,
+                "Matemática": 5, 
+                "Física":  4, 
                 "Química G.": 3
             },
             cobro: ["Horas Beca"],
             image: cat2
         },
         {
-            id: 3,
+            id: 3, 
             name: 'Juana',
-            carne: 20007,
-            calification: 4,
+            carne: 20007, 
+            calification: 4, 
             isVerified: false,
             topPerformance: {
-                "Matemática": 5,
-                "Física": 4,
+                "Matemática": 5, 
+                "Física":  4, 
                 "Química G.": 3
             },
             cobro: ["Horas Beca"],
             image: cat3
         },
         {
-            id: 4,
-            name: 'Gerardo',
+            id: 4, 
+            name: 'Gerardo', 
             carne: 19012,
-            calification: 4,
+            calification: 4, 
             isVerified: false,
             topPerformance: {
-                "Matemática": 5,
-                "Física": 4,
+                "Matemática": 5, 
+                "Física":  4, 
                 "Química G.": 3
             },
             cobro: ["Horas Beca"],
             image: cat4
         },
         {
-            id: 5,
+            id: 5, 
             name: 'MariLuz',
-            carne: 20003,
-            calification: 4,
+            carne: 20003, 
+            calification: 4, 
             isVerified: false,
             topPerformance: {
-                "Matemática": 5,
-                "Física": 4,
+                "Matemática": 5, 
+                "Física":  4, 
                 "Química G.": 3
             },
             cobro: ["Horas Beca"],
             image: cat5
         },
         {
-            id: 6,
+            id: 6, 
             name: 'Lourdes',
-            carne: 20017,
-            calification: 5,
+            carne: 20017, 
+            calification: 5, 
             isVerified: true,
             topPerformance: {
-                "Matemática": 5,
-                "Física": 4,
-                "Química G.": 3
+              "Matemática": 5, 
+              "Física":  4, 
+              "Química G.": 3
             },
             cobro: ["Horas Beca"],
             image: cat6
         }
     ]
     return (
-        <div id="main-container-new-servicios">
-            <div className='title-and-filters-wrapper'>
-                <button className='titulo-pagina-new-servicios'>
-                    <p className='new-p'>{props.title}</p>
-                    <FaFilter />
-                </button>
+            <div id="main-container-new-servicios">
+                <div className='title-and-filters-wrapper'>
+                    <button className='titulo-pagina-new-servicios'>
+                            <p className='new-p'>{props.title}</p>
+                            <FaFilter/>
+                    </button>
+                </div>
+
+                    <div id="servicios-main-container-wrapper"><div id='servicios-main-container'>
+
+                        {tutores.map((tutor)=>{
+                            return <CardServicios tutor={tutor}/>
+                            
+                        })  
+
+                        }
+                        
+                    </div></div>
             </div>
-
-            <div id="servicios-main-container-wrapper"><div id='servicios-main-container'>
-
-                {tutores.map((tutor) => {
-                    return <CardServicios tutor={tutor} />
-
-                })
-
-                }
-
-            </div></div>
-        </div>
     )
 }
 

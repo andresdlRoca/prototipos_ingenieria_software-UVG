@@ -35,7 +35,7 @@ class Login extends Component {
       this.state.email !== "" &&
       this.state.password !== ""
     ) {
-
+      
       let message = JSON.stringify(this.state);
       fetch("http://localhost:8080/login", {
         method: "POST",
@@ -49,7 +49,7 @@ class Login extends Component {
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
-          if (data.msg === "Login Succes") {
+          if(data.msg==="Login Succes"){
             MySwal.fire({
               icon: 'success',
               title: 'Registro',
@@ -71,7 +71,7 @@ class Login extends Component {
 
   render() {
     return (
-      <form className="App" onSubmit={this.handleSubmit}>
+      <form className="App" onSubmit = {this.handleSubmit}>
         <div className="Logo">
           <div className="email">
             <label id="correo" for="email">Correo UVG</label>
@@ -82,7 +82,7 @@ class Login extends Component {
             <input type="password" id="password" value={this.state.password} onChange={this.changePassword}></input>
           </div>
           <div className="Enter">
-            <button type="button" id="Entrada" onClick={this.enviar}>Iniciar Sesión </button>
+            <button type= "button" id="Entrada" onClick={this.enviar}>Iniciar Sesión </button>
           </div>
           <div className="Nuevo">
             <Link to="/signup">¿Aun no estas registrado?</Link>

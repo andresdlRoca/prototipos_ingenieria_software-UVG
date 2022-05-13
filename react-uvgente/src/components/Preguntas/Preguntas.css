@@ -1,0 +1,72 @@
+.AyudaWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+.FAQ {
+    position: relative;
+    height: auto;
+    width: 600px;
+    display: inline-block;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: top;
+    margin-inline: 12.5%;
+}
+
+.FAQList {
+    justify-content: center;
+    font-size: 20px;
+    text-align: justify;
+    margin-top: 5%;
+    padding: 0;
+}
+
+.FAQList li {
+    margin-block: 8%;
+    cursor: pointer;
+    display: block;
+    color: rgb(0, 191, 255);
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+.ContactSupport {
+    position: relative;
+    height: auto;
+    width: fit-content;
+    display: inline-block;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: top;
+    margin-inline: 0%;
+}
+
+.EmailSupport {
+    margin-top: 30%;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.PhoneSupport {
+    margin-top: 30%;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.highlighted {
+    color: rgb(0, 191, 255);
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.EmailSupport img {
+    width: 50%;
+}
