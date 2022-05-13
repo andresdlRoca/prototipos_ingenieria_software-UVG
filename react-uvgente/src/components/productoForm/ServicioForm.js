@@ -1,48 +1,58 @@
 //<div></div>
 
-const ProductoForm = ({ handleClick }) => {
+const ServicioForm = ({ handleClick }) => {
   return (
     <div className="productoForm">
       <form>
-        <label htmlFor="nombre_del_producto">Nombre del producto:</label>
+        <label htmlFor="nombre_del_Servicio">Nombre del Servicio:</label>
         <input
           type="text"
-          id="nombre_del_producto"
-          name="nombre_del_producto"
+          id="nombre_del_Servicio"
+          name="nombre_del_Servicio"
           minLength="5"
           maxLength="20"
           placeholder="Agregue un nombre"
           required
         />
-        <label htmlFor="descripcion_del_producto">
-          Descripcion del producto:
+        <label htmlFor="descripcion_del_Servicio">
+          Descripcion del Servicio:
         </label>
         <input
           type="text"
-          id="descripcion_del_producto"
-          name="descripcion_del_producto"
+          id="descripcion_del_Servicio"
+          name="descripcion_del_Servicio"
           minLength="10"
           maxLength="50"
           placeholder="Agregue una descripcion"
           required
         />
-        <label htmlFor="precio_del_producto">Precio: (en quetzales)</label>
+        <label htmlFor="precio_del_Servicio">Precio: (en quetzales)</label>
         <input
           type="number"
           name="name"
-          id="precio_del_producto"
+          id="precio_del_Servicio"
           min="0.01"
           max="9999.99"
           step="0.01"
           placeholder="100.00"
           required
         />
-        <label htmlFor="nombre_del_producto">Foto del producto:</label>
+        {/* <label htmlFor="nombre_del_Servicio">Foto del Servicio:</label>
         <input
           type="file"
           required
           accept="image/png, image/jpeg"
           className="custom-file-input"
+        /> */}
+        <label htmlFor="descripcion_del_Servicio">Categoría:</label>
+        <input
+          type="text"
+          id="descripcion_del_Servicio"
+          name="descripcion_del_Servicio"
+          minLength="10"
+          maxLength="20"
+          placeholder="Agregue una descripcion"
+          required
         />
         <div className="botonesForm">
           <input
@@ -53,7 +63,7 @@ const ProductoForm = ({ handleClick }) => {
           />
           <input
             type="submit"
-            id="submitProductoForm"
+            id="submitServicioForm"
             value="Siguiente"
             className="botonPublicar"
           />
@@ -63,6 +73,6 @@ const ProductoForm = ({ handleClick }) => {
   );
 };
 
-ProductoForm.props = {};
+ServicioForm.props = {};
 
-export default ProductoForm;
+export default ServicioForm;

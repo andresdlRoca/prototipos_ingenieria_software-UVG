@@ -5,9 +5,9 @@ const OpcionDeVenta = ({ opcion, icono, handleClick }) => {
   const getIcon = (icon) => {
     switch (icon) {
       case "FaChalkboardTeacher":
-        return <FaChalkboardTeacher size={70} color="black" />;
+        return <FaChalkboardTeacher size={70} color="#2e412e" />;
       case "FaBoxOpen":
-        return <FaBoxOpen size={70} color="black" />;
+        return <FaBoxOpen size={70} color="#2e412e" />;
       default:
         break;
     }
