@@ -21,7 +21,7 @@ const NewSideBar = () => {
                 </Link>
             </li>
             <li className='item-side-bar-container'>
-                <Link className='item-on-side-bar' to="/">
+                <Link className='item-on-side-bar' to="/mis-compras">
                     <p>Mis compras</p>
                     <FaShoppingBag className='icon-on-item-side-bar'/>
                 </Link>
