@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import './Ayuda.css';
+import './Pregunta1.css';
 import emailicon from "../../media/mail_icon.png";
-import { Link } from 'react-router-dom';
 
-export default function Ayuda() {
+export default function Pregunta1() {
 
     return (
         <>
@@ -11,7 +10,7 @@ export default function Ayuda() {
                 <div className="FAQ">
                     Preguntas Frecuentes
                     <ul className="FAQList">
-                        <Link to="/Pregunta1">¿Como vender un articulo?</Link>
+                        <li>¿Como vender un articulo?</li>
                         <li>¿Como comprar un articulo?</li>
                         <li>Como ver el perfil de otro usuario?</li>
                         <li>Como edito mi perfil?</li>

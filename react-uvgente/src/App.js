@@ -19,6 +19,7 @@ import NewPaginaPrincipal from "./components/NewPaginaPrincipal/NewPaginaPrincip
 import Favorites from "./components/Favoritos/Favorites";
 import ProductoForm from "./components/productoForm/Producto_Form";
 import OpcionesDeVenta from "./components/opciones_de_venta/OpcionesDeVenta";
+import Pregunta1  from "./components/Pregunta1/Pregunta1";
 
 function App() {
   return (
@@ -173,6 +174,16 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <OpcionesDeVenta />
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/Pregunta1"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <Pregunta1 />
               <NewSideBar />
             </div>
           }
