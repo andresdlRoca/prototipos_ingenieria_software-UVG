@@ -1,0 +1,578 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background: #ffffff;
+}
+.all-wrapper{
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.last_element_in_header {
+  margin-right: 10px;
+}
+.container {
+  max-width: 100%;
+  min-height: 753px;
+  min-width: 700px;
+  border: 1px solid steelblue;
+  overflow: hidden;
+}
+.header h3 {
+  color: white;
+}
+.header h3:hover {
+  text-shadow: 0 0 30px #fff;
+  cursor: pointer;
+}
+.header .logo {
+  height: 100%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.header div .logo {
+  position: relative;
+  height: 10px;
+  margin-bottom: 10px;
+}
+.header {
+  position: sticky;
+  top: -1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 200px;
+  background-color: rgb(95, 180, 88);
+  height: 120px;
+  z-index: 50;
+}
+
+#sidebar {
+  position: sticky;
+  top: 120px;
+  width: 200px;
+  height: 500px;
+  background: whitesmoke;
+  left: 0px;
+  transition: all 500ms linear;
+  padding: 0px;
+  z-index: 50;
+}
+
+#sidebar.active {
+  left: 0px;
+}
+
+#sidebar ul li {
+  color: black;
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgb(95, 180, 88, 0.6);
+  text-align: center;
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  left: 200px;
+  cursor: pointer;
+}
+
+.card_into_side_bar {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 80px;
+}
+.pp_into_side_bar_card {
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.flexbox_pp_name {
+  display: flex;
+  width: 100%;
+  height: 50px;
+}
+.flexbox_pp_name p {
+  font-size: small;
+}
+.div_five_stars {
+  height: 50px;
+  width: auto;
+}
+footer {
+  margin-top: 30px;
+  text-align: center;
+}
+.flex_container_sidebar_and_content {
+  display: flex;
+}
+.container_main_content {
+  height: 580px;
+  width: 1200px;
+  margin: 0px;
+  margin-left: 20px;
+  padding: 0px;
+  background: whitesmoke;
+}
+#profile_page_main {
+  display: flex;
+}
+#lateral_profile_page_main {
+  position: relative;
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+#main_content_profile_page_main {
+  width: 75%;
+  height: 580px;
+  padding: 20px;
+}
+.pp_into_side_bar_card_main_content {
+  border-radius: 50%;
+  width: 50%;
+  height: auto;
+  margin: 10px;
+}
+.five_start_into_main_content {
+  width: 50%;
+  height: auto;
+}
+#text_into_bar {
+  text-align: left;
+  margin: 0px 20px;
+  overflow: none;
+}
+#btn_div {
+  text-align: center;
+  padding: 20px;
+}
+.btn {
+  background-color: rgb(95, 180, 88);
+}
+#btn_edit_profile {
+  height: 20px;
+  width: 5px;
+}
+
+.Logo {
+  position: absolute;
+  background-color: #e0e0e0;
+  left: 900px;
+  width: 500px;
+  height: 500px;
+  top: 160px;
+}
+
+.input {
+  position: relative;
+  background-color: #ffffff;
+  color: #0fba1a;
+  font-size: 40px;
+  left: 100px;
+  top: 200px;
+}
+
+.slogan {
+  position: relative;
+  background-color: #ffffff;
+  left: 100px;
+  top: 200px;
+}
+
+#correo {
+  position: relative;
+  top: 40px;
+  right: -15px;
+  font-size: 22px;
+}
+
+#email {
+  position: relative;
+  background-color: #d1d1d1;
+  top: -1px;
+  right: -175px;
+  width: 300px;
+  height: 40px;
+}
+
+#contrasena {
+  position: relative;
+  top: 40px;
+  right: -15px;
+  font-size: 22px;
+}
+
+#password {
+  position: relative;
+  background-color: #d1d1d1;
+  top: -1px;
+  right: -175px;
+  width: 300px;
+  height: 40px;
+}
+
+#password1 {
+  position: relative;
+  background-color: #d1d1d1;
+  top: -20px;
+  right: -175px;
+  width: 300px;
+  height: 40px;
+}
+
+#Entrada {
+  position: relative;
+  top: 50px;
+  right: -150px;
+  height: 7%;
+  width: 200px;
+  color: #000000;
+  background-color: #0fba1a;
+  border: 0px;
+  justify-content: center;
+  line-height: 160%;
+  font-size: 30px;
+}
+
+.Olvido {
+  position: relative;
+  top: 70px;
+  right: -175px;
+  color: blue;
+  text-decoration: underline;
+}
+
+.Nuevo {
+  position: relative;
+  top: 220px;
+  right: -140px;
+  color: blue;
+  text-decoration: underline;
+}
+
+h1{
+  font-family: "Poppins", sans-serif;
+}
+
+h2{
+  font-family: "Poppins", sans-serif;
+}
+
+.problemas{
+  position: relative;
+
+  text-align: left;
+  left: 200px
+
+}
+
+#opciones {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  background-color: lightgray;
+  width: 800px;
+  height: 50px;
+}
+#opciones select {
+  display: none; /*hide original SELECT element: */
+}
+
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+
+textarea{
+  background-color: lightgray;
+  width: 800px;
+  height: 180px;
+
+
+}
+#Enviar{
+  position: absolute;
+
+  background-color: rgb(95, 180, 88);
+  border-color: rgb(95, 180, 88);
+  width: 150px;
+  height: 50px;
+  left: 300px;
+
+  padding: 10px;
+  position: relative;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.container4buscador {
+  background-color: rgb(184, 184, 184);
+  width: 100%;
+}
+
+.maincontainer {
+  background-color: white;
+  width: 95%;
+  height: fit-content;
+  float: right;
+  padding: 50px;
+}
+
+.mc_column {
+  float: left;
+  min-height: fit-content;
+  height: fit-content;
+  width: 50%;
+}
+
+.two_columns_buscador {
+  min-height: fit-content;
+  height: fit-content;
+  width: 100%;
+}
+
+.two_columns_buscador:after {
+  box-sizing: border-box;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.space {
+  padding: 20px;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.venta {
+  background-color: rgb(196, 196, 196);
+  width: min-content;
+  padding: 30px;
+  text-align: center;
+}
+
+.venta label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.imagenesarriba {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ventastar {
+  float: right;
+}
+
+/*---------------------------------------------------------------------------*/
+
+.tutobg {
+  background-color: rgb(196, 196, 196);
+  grid-template-columns: 260px 230px;
+  display: grid;
+  max-width: max-content;
+  padding: 20px;
+  width: fit-content;
+}
+
+.tutomaterias {
+  display: inline;
+  float: left;
+}
+
+.tutoright img {
+  float: right;
+}
+
+/*---------------------------------------------------------------------------*/
+/*para opciones de venta de producto*/
+.opcionesDeVenta {
+  position: absolute;
+  background-color: rgb(196, 196, 196);
+}
+
+/*---------------------------------------------------------------------------*/
+/*para el form de venta de producto*/
+
+.productoForm {
+  position: absolute;
+  background-color: rgb(95, 180, 88);
+  padding: 10px 10px 20px 10px;
+  box-shadow: 2px 2px 2px rgb(36, 36, 36);
+  left: 17%;
+  color: white;
+  display: block;
+  max-width: 510px;
+  min-width: min-content;
+}
+
+.productoForm label {
+  display: inline-block;
+  width: 270px;
+}
+
+.botonesForm {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.productoForm input {
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+  border: solid rgb(255, 255, 255) 2px;
+  background-color: rgb(95, 180, 88);
+  font-size: 16px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.botonesForm input {
+  margin: 0;
+}
+
+.productoForm input[type="submit"],
+input[type="button"] {
+  background-color: 
+  rgb(57, 155, 49);
+  width: fit-content;
+  border-color: rgb(57, 155, 49);
+  box-shadow: 2px 2px 2px rgb(95, 180, 88);
+}
+
+.productoForm input[type="submit"]:hover,
+input[type="button"]:hover {
+  border-color: rgb(48, 126, 40);
+  background-color: rgb(48, 126, 40);
+}
+.page-main-content{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#inboxpage {
+  max-width: 100%;
+  overflow: auto;
+  margin: 5%;
+  height: 100%;
+  width: 100%;
+}
+
+.pfp_Bandeja_Entrada {
+  position: relative;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 5px;
+  width: 250px;
+  height: 250px;
+  top: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+#inboxpage #profileinfo {
+  text-align: justify;
+  font-size: 19px;
+  margin-top: 1%;
+}
+
+#inboxpage #Descripcion {
+  inline-size: 750px;
+  overflow-wrap: break-word;
+}
+
+#inboxpage #inbox {
+  width: 100%;
+  height: auto;
+}
+
+.Messages p {
+  text-align: justify;
+  position: relative;
+  inline-size: 70%;
+  overflow-wrap: break-word;
+  margin-left: 120px;
+  margin-right: 20px;
+  bottom: 50px;
+}
+
+.Messages img {
+  position: relative;
+  height: 100%;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  top: 40px;
+}
+
+.Messages {
+  position: relative;
+  outline: solid 2px black;
+  margin: 2%;
+  height: auto;
+  width: auto;
+  bottom: 90px;
+  background-color: #a2e29c99;
+}
+
+#headerinbox {
+  align-items: center;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: rgb(95, 180, 88);
+}
+
+.inboxIcon {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+.inboxMessages {
+  margin-top: 100px;
+  height: auto;
+  width: auto;
+}
+
+.mail_pfp {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  margin-left: 10px;
+}
+
+#clickableMessage {
+  height: 100%;
+  width: 100%;
+}
+
+.flex_container_sidebar_and_content {
+  display: flex;
+}
