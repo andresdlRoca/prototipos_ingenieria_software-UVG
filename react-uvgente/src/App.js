@@ -20,6 +20,7 @@ import NewCompra from "./components/Compras/NewCompra";
 import NewServicio from "./components/Servicio/NewServicio";
 import NewPaginaPrincipal from "./components/NewPaginaPrincipal/NewPaginaPrincipal";
 import Favorites from "./components/Favoritos/Favorites";
+import Cards_Ventas from "./components/Mis_Ventas/Cards_Ventas";
 import OpcionesDeVenta from "./components/opciones_de_venta/OpcionesDeVenta";
 import Pregunta1 from "./components/Preguntas/Pregunta1";
 import Pregunta2 from "./components/Preguntas/Pregunta2";
@@ -50,8 +51,8 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <NewServicio title="Top tutores"/>
-              <NewSideBar/>
+              <NewServicio title="Top tutores" />
+              <NewSideBar />
 
             </div>
           }
@@ -61,8 +62,8 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <NewServicio title="Tutores"/>
-              <NewSideBar/>
+              <NewServicio title="Tutores" />
+              <NewSideBar />
 
             </div>
           }
@@ -81,9 +82,9 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-                <NewPaginaPrincipal/>
-                <NewSideBar/>
-           
+              <NewPaginaPrincipal />
+              <NewSideBar />
+
             </div>
           }
         />
@@ -153,7 +154,7 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <div id="page-main-content">
-                <NewVentas title="Top Ventas"/>
+                <NewVentas title="Top Ventas" />
               </div>
               <NewSideBar />
             </div>
@@ -164,7 +165,17 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <NewVentas title="Ventas"/>
+              <NewVentas title="Ventas" />
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/articulos-publicados"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <Cards_Ventas title="Articulos" />
               <NewSideBar />
             </div>
           }
