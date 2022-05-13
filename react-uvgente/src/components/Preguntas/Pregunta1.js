@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import './Pregunta1.css';
+import './Preguntas.css';
 import emailicon from "../../media/mail_icon.png";
 
 export default function Pregunta1() {
