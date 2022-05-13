@@ -20,7 +20,6 @@ import NewCompra from "./components/Compras/NewCompra";
 import NewServicio from "./components/Servicio/NewServicio";
 import NewPaginaPrincipal from "./components/NewPaginaPrincipal/NewPaginaPrincipal";
 import Favorites from "./components/Favoritos/Favorites";
-import ProductoForm from "./components/productoForm/Producto_Form";
 import OpcionesDeVenta from "./components/opciones_de_venta/OpcionesDeVenta";
 import Pregunta1 from "./components/Preguntas/Pregunta1";
 import Pregunta2 from "./components/Preguntas/Pregunta2";

@@ -418,31 +418,43 @@ textarea {
   position: relative;
   width: 30%;
   display: flex;
-  flex-direction: row;
-  margin: auto;
+  flex-direction: column;
+  margin: 50px auto;
   justify-content: space-around;
-  align-content: center;
+  border: 0;
+  color: #000000;
+}
+
+.opcionDeVenta:hover {
+  background-color: #b1b1b1;
+  cursor: pointer;
+}
+
+.opcionDeVenta > h3,
+div {
+  margin: 0 auto 0 auto;
 }
 
 /*---------------------------------------------------------------------------*/
 /*para el form de venta de producto*/
 
 .productoForm {
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
   background-color: #5ccb5f;
-  padding: 10px 10px 20px 10px;
+  padding: 10px 10px 10px 10px;
   box-shadow: 2px 2px 2px rgb(36, 36, 36);
-  left: 17%;
   color: white;
   display: block;
-  max-width: 510px;
-  min-width: min-content;
+  max-width: 490px;
 }
 
 .productoForm label {
   display: inline-block;
-  width: 270px;
+  width: 50%;
 }
 
 .botonesForm {
@@ -454,7 +466,7 @@ textarea {
 
 .productoForm input {
   padding: 10px 10px 10px 10px;
-  border-radius: 25px;
+  border-radius: 20px;
   border: solid rgb(255, 255, 255) 2px;
   background-color: #5ccb5f;
   font-size: 16px;
@@ -514,6 +526,10 @@ input[type="button"]:hover {
   box-shadow: 2px 2px 2px rgb(10, 17, 9);
   padding: 10px 10px 10px 10px;
   border-radius: 25px;
+}
+
+.opcionDeVenta > h3 {
+  color: #2e412e;
 }
 
 /*---------------------------------------------------------------------------*/
