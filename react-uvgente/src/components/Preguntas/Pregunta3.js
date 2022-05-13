@@ -1,27 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import './Ayuda.css';
+import './Preguntas.css';
 import emailicon from "../../media/mail_icon.png";
-import { Link } from 'react-router-dom';
 
-export default function Ayuda() {
+export default function Pregunta3() {
 
     return (
         <>
             <div className="AyudaWrap">
                 <div className="FAQ">
-                    Preguntas Frecuentes
+                    ¿Cómo ver el perfil de otro usuario?    
                     <ul className="FAQList">
-                        <Link to="/Pregunta1">¿Como vender un articulo?</Link>
-                        <li> </li>
-                        <Link to="/Pregunta2">¿Como comprar un articulo?</Link>
-                        <li> </li>
-                        <Link to="/Pregunta3">¿Como ver el perfil de otro usuario?</Link>
-                        <li>¿Como edito mi perfil?</li>
-                        <li>¿Como cambio mi foto de perfil?</li>
-                        <li>¿Como ver detalles de un producto/servicio?</li>
-                        <li>¿Como reinicio mi contraseña?</li>
-                        <li>¿Como cambio mi tipo de contacto principal?</li>
-                        <li>¿Como puedo filtrar mis busquedas?</li>
+                        <span class="ref">Estando en la publicación de un producto o servicio, al hacer click en el ícono
+                        del usuario que creo la publicación se podrá acceder a su perfil, así como la opción de agregarlo
+                        a su lista de favoritos.
+                        </span>
                     </ul>
                 </div>
                 <div className="ContactSupport">
