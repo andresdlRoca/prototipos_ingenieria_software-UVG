@@ -463,7 +463,7 @@ textarea {
   cursor: pointer;
 }
 
-.opcionDeVenta>h3,
+.opcionDeVenta > h3,
 div {
   margin: 0 auto 0 auto;
 }
@@ -563,7 +563,7 @@ input[type="button"]:hover {
   border-radius: 25px;
 }
 
-.opcionDeVenta>h3 {
+.opcionDeVenta > h3 {
   color: #2e412e;
 }
 
