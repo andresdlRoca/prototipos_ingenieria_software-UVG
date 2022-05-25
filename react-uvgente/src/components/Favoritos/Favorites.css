@@ -43,6 +43,10 @@
     margin-top: 20px;
 }
 
+.card-item-servicio {
+    width: 100%;
+}
+
 h3 {
     text-align: center;
 }
