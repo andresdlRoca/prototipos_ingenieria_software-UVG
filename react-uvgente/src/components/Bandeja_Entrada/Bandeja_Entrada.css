@@ -1,0 +1,127 @@
+#inboxpage {
+    position:relative;
+    display: block;
+    max-width: 1250px;
+    overflow: auto;
+    margin-left: auto;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    max-height: 500px;
+  }
+  
+  .pfp_Bandeja_Entrada {
+    position: relative;
+    height: 100%;
+    border-radius: 50%;
+    margin-right: 5px;
+    width: 250px;
+    height: 250px;
+    top: 30px;
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+  
+  #inboxpage #profileinfo {
+    text-align: justify;
+    font-size: 19px;
+    margin-top: 1%;
+  }
+  
+  #inboxpage #Descripcion {
+    inline-size: 750px;
+    overflow-wrap: break-word;
+  }
+  
+  #inboxpage #inbox {
+    width: 100%;
+    height: auto;
+  }
+  
+  .Messages p {
+    text-align: justify;
+    position: relative;
+    overflow-wrap: auto;
+    margin-left: 120px;
+    margin-right: 20px;
+    bottom: 50px;
+    font-family: "Poppins";
+  }
+  
+  .Messages img {
+    position: relative;
+    height: 100%;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    top: 40px;
+    border: solid 2px green;
+  }
+  
+  .Messages {
+    position: relative;
+    border: 1px solid gainsboro;
+    margin: auto;
+    padding: 10px;
+    height: auto;
+    width: fit-content;
+    max-width: 1000px;
+    max-height: 200px;
+    bottom: 90px;
+    background-color: whitesmoke;
+    border-radius: 50px;
+    margin-bottom: 25px;
+  }
+  
+  #headerinbox {
+    align-items: center;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
+    width: 100%;
+    background-color: #5CCB5F;
+    border-radius: 25px;
+    border: 1px solid gainsboro;
+    font-weight: bold;
+    font-family: "Bebas Neue";
+    font-size: 25px;
+  }
+  
+  .inboxIcon {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+  .inboxMessages {
+    margin-top: 100px;
+    height: auto;
+    width: auto;
+  }
+  
+  .mail_pfp {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin-left: 10px;
+  }
+  
+  #clickableMessage {
+    height: 100%;
+    width: 100%;
+  }
+
+  #profileName {
+      font-weight: bold;
+      font-family: "Bebas Neue";
+      font-size: 20px;
+  }
+
+  
+  .flex_container_sidebar_and_content {
+    display: flex;
+  }
