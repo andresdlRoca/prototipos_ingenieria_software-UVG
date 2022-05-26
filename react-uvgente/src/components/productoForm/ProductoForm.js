@@ -1,9 +1,24 @@
 //<div></div>
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductoForm = ({ handleClick }) => {
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [precio, setPrecio] = useState(0.01);
+  const [foto, setFoto] = useState("");
+
+  const handleSubmit = ($event) => {
+    $event.preventDefault();
+    console.log(nombre);
+    console.log(descripcion);
+    console.log(precio);
+    console.log(typeof foto);
+  };
+
   return (
     <div className="productoForm">
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="nombre_del_producto">Nombre del producto:</label>
         <input
           type="text"
@@ -13,6 +28,10 @@ const ProductoForm = ({ handleClick }) => {
           maxLength="20"
           placeholder="Agregue un nombre"
           required
+          value={nombre}
+          onChange={($event) => {
+            setNombre($event.target.value);
+          }}
         />
         <label htmlFor="descripcion_del_producto">
           Descripcion del producto:
@@ -25,6 +44,10 @@ const ProductoForm = ({ handleClick }) => {
           maxLength="50"
           placeholder="Agregue una descripcion"
           required
+          value={descripcion}
+          onChange={($event) => {
+            setDescripcion($event.target.value);
+          }}
         />
         <label htmlFor="precio_del_producto">Precio: (en quetzales)</label>
         <input
@@ -36,13 +59,22 @@ const ProductoForm = ({ handleClick }) => {
           step="0.01"
           placeholder="100.00"
           required
+          value={precio}
+          onChange={($event) => {
+            setPrecio($event.target.value);
+          }}
         />
-        <label htmlFor="nombre_del_producto">Foto del producto:</label>
+        <label htmlFor="foto_del_producto">Foto del producto:</label>
         <input
+          name="foto_del_producto"
           type="file"
           required
           accept="image/png, image/jpeg"
           className="custom-file-input"
+          value={foto}
+          onChange={($event) => {
+            setFoto($event.target.value);
+          }}
         />
         <div className="botonesForm">
           <input
