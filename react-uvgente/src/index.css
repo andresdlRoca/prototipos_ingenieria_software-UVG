@@ -387,6 +387,61 @@ footer {
   
 }
 
+
+/****Boton Deslizable***/
+:root {
+    --color-green: #00a878;
+    --color-red: #fe5e41;
+    --color-button: #fdffff;
+    --color-black: #000;
+}
+.switch-button2 {
+    position: relative;
+    margin-top: -40%;
+    margin-bottom: 50%;
+    left: -300px;
+    
+}
+.switch-button2 .switch-button__checkbox {
+    display: none;
+}
+.switch-button2 .switch-button__label {
+    background-color: var(--color-red);
+    width: 5rem;
+    height: 3rem;
+    border-radius: 3rem;
+    display: inline-block;
+    position: relative;
+}
+.switch-button2 .switch-button__label:before {
+    transition: .2s;
+    display: block;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--color-button);
+    content: '';
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0px 1px var(--color-black);
+}
+.switch-button2 .switch-button__checkbox:checked + .switch-button__label {
+    background-color: var(--color-green);
+}
+.switch-button2 .switch-button__checkbox:checked + .switch-button__label:before {
+    transform: translateX(2rem);
+}
+
+#switch_text{
+    position: relative;
+    width: 400px;
+    font-size: 15px;
+    margin-top: -10.5%;
+    margin-bottom: 5%;
+    text-align: left;
+    left: 90px;
+  
+}
+
 .pfp_destacado{
     position: relative;
     height: 100%;

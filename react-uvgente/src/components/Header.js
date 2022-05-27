@@ -1,4 +1,4 @@
-import logo from '../media/UVGente_Logo_white.png' 
+import logo from '../media/RecaspitaLogo.jpeg' 
 import signo_mas_img from '../media/signo_mas_blanco.png' 
 import NavigationElements from './NavigationElements'
 const Header = (props) => {
@@ -9,14 +9,14 @@ const Header = (props) => {
         <img src={logo} alt='Logo UVGente' className='logo'/>
         {/*Este componente es temporal, en lo que averiguo como pasar direccion de imagen como paramentro al cmpnente */}
         <div >
-            <h3> Vender 
+            <h3> General 
             <img src={signo_mas_img} alt='Mas' className='logo'></img>
             </h3>
         </div>       
-        <NavigationElements title='Top Ventas'/>
-        <NavigationElements title='Top Servicios'/>
-        <NavigationElements title='Productos'/>
-        <NavigationElements title='Servicios' last_element = "True"/><div></div>
+        <NavigationElements title='Sala '/>
+        <NavigationElements title='Comedor'/>
+        <NavigationElements title='Cuarto 1'/>
+        <NavigationElements title='Cuarto 2' last_element = "True"/><div></div>
     </header>
   )
   }

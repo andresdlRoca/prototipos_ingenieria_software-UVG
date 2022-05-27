@@ -20,8 +20,7 @@ const BarraLateral = () => {
       </li>
       <li>Mi Perfil</li>
       <li>Bandeja de entrada</li>
-      <li>Mis compras y pedidos</li>
-      <li>Artículos publicados</li>
+      <li>Mis Dispositivos</li>
       <li>Favoritos/Guardados</li>
 
     </ul>
