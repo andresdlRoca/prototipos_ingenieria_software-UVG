@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from 'react-dom';
 import './MensajeUI.css';
 
-export default function MensajeUI({ chequearVisibilidad, cerrarChat }) {
+export default function MensajeUI({ chequearVisibilidad, cerrarChat, nombre_usuario }) {
 
-    const [username, setUsername] = useState('Usuario');
     const [messages, setMessages] = useState([]);
     const internalUI = useRef();
 
-    let msgsource = messages
+    let msgsource = messages;
 
     const enviar = (event) => {
         if(event.key === 'Enter' && event.target.value != '') {
@@ -24,14 +23,18 @@ export default function MensajeUI({ chequearVisibilidad, cerrarChat }) {
         }
     }
 
+    const cerrar = () => {
+        setMessages([]);
+        cerrarChat();
+        
+    }
+
     return (
         <>
-        <div id='message_container' className={chequearVisibilidad ?  "chatVisible" : "chatInvisible" }>
-        </div>
 
         <div id="mainMessageUI" className={chequearVisibilidad ? "chatVisible" : "chatInvisible" }>
-            <button onClick={cerrarChat}>Cerrar</button>
-            <h1>{username}</h1>
+            <button className="closeButton" onClick={cerrar}>Cerrar</button>
+            <h1 className="nombreUsuario">{nombre_usuario}</h1>
             <div className='internalMSG' ref={internalUI}>
                 {messages.map(message =>(
                     <div className="MSGBubble" >{message.MSGs}</div>

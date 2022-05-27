@@ -1,27 +1,27 @@
 #mainMessageUI {
-    height: 500px;
-    width: 1000px;
-    background-color: #a2e29c;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(224, 224, 224);
     position: absolute;
     overflow: auto;
-    border: 2px solid white;
-    border-radius: 5px;
+    border: 2px solid gainsboro;
+    border-radius: 25px;
     z-index: 2;
     
     margin: auto;
-    top: 15%;
-    left: 15%;
+    margin-top: 40px;
+    top: 0;
+    left: 0;
 }
 
 .internalMSG {
-    height: 80%;
+    height: 70%;
     width: 90%;
-    top: 10%;
-    left: 5%;
-    position: inherit;
-    background-color: #7cb477;
+    margin-left: 6%;
+    padding: 10px;
+    position: absolute;
+    background-color: #5CCB5F;
     border-radius: 5px;
-    margin: auto;
     overflow: auto;
 }
 
@@ -29,49 +29,60 @@
     position: absolute;
     z-index: 1;
     height: 100%;
-    width: 2000px;
+    width: 100%;
     right: 0.1%;
     top: 17%;
-    background-color: #6b9c67d7;
+    background-color: #5CCB5F;
 
 }
 
-h1 {
-    margin-left: 40%;
+.nombreUsuario {
+    text-align: center;
+    font-family: "Bebas Neue";
 }
 
 #inputMSG {
+    position: relative;
+    display: block;
+    margin-top: 375px;
+    margin-left: 75px;
     z-index: 3;
-    margin-top: 40%;
-    margin-left: 25%;
     height: 10%;
-    width: 50%;
-    border: 2px solid black;
-    background-color: #7cb477;
+    max-width: 1115px;
+    width: 100%;
+    border: 2px solid gainsboro;
+    background-color: #5CCB5F;
     color: white;
+    font-family: "Poppins";
+    border-radius: 25px;
+    padding: 10px;
+    overflow: auto;
 }
 
 .MSGBubble {
     width: 300px;
     height: 100px;
     z-index: 3;
-    background-color: cadetblue;
+    background-color: whitesmoke;
     font-size: 15px;
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: solid 3px black;
+    color: black;
+    font-family: "Poppins";
+    border: solid 3px gainsboro;
     text-align: justify;
     word-wrap: break-word;
     margin: 2%;
-    border-radius: 10px;
+    border-radius: 20px;
     text-indent: 3%;
 }
 
-button {
+.closeButton {
+    border-radius: 10px;
+    margin: 15px;
+    max-width: 50px;
+    width: 100%;
     position: absolute;
-    background-color: #4a8644;
+    background-color: #5CCB5F;
     color: white;
-    margin: 1%;
 }
 
 .chatVisible {
