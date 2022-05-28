@@ -154,7 +154,7 @@ footer {
 
 #lateral_profile_page_main {
   position: relative;
-  width: 25%;
+  width: 30%;
   height: 100%;
   text-align: center;
   overflow: hidden;
@@ -162,26 +162,67 @@ footer {
 
 #main_content_profile_page_main {
   width: 75%;
-  height: 580px;
+  max-height: 580px;
+  height: 100%;
   padding: 20px;
+  background-color: rgb(226, 226, 226);
+  border-radius: 50px;
+  overflow: auto;
+}
+
+
+.valoracion-container {
+  background-color: rgb(226, 226, 226);
+  width: 90%;
+  max-width: 300px;
+  border-radius: 25px;
+  border: solid 3px gainsboro;
 }
 
 .pp_into_side_bar_card_main_content {
   border-radius: 50%;
-  width: 50%;
+  width: 90%;
   height: auto;
-  margin: 10px;
+  margin: 5px;
+  border: solid 8px gainsboro
 }
 
 .five_start_into_main_content {
-  width: 50%;
-  height: auto;
+  width: 70%;
+  margin-top: -50px;
+  transition: 1s;
+  margin-bottom: -15px;
+}
+
+.five_start_into_main_content:hover {
+  transform: scale(1.2)
+}
+
+.titleValoracion {
+  font-family: "Bebas Neue";
+  font-size: 30px;
+}
+
+.userProfileInfo {
+  font-family: "Popper";
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+}
+
+.userProfileDesc {
+  font-family: "Popper";
 }
 
 #text_into_bar {
   text-align: left;
-  margin: 0px 20px;
   overflow: none;
+  font-family: "Popper";
+  font-weight: 800;
+}
+
+.contacts_Profile {
+  font-size: 25px;
 }
 
 #btn_div {
