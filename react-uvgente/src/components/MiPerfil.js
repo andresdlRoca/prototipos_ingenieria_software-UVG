@@ -16,7 +16,7 @@ const MiPerfil = () => {
             Geralt Hernandez <br />
             Estudiante UVG <br />
             Ingeniería en Ciencias de la Computacion y TI <br/>
-            <br /> Sobre mi...
+            <br /> Sobre mi:
             <br />
             </h4>
             <p className='userProfileDesc'>
@@ -24,7 +24,10 @@ const MiPerfil = () => {
             </p>
             <div id='text_into_bar'>
                 <p>
-                            Contactos: <br /><br />
+                    <div className='contacts_Profile'>
+                        Contactos:
+                    </div>
+                            <br />
                             Correo electronico: <br />hern19856@uvg.edu.gt
                             <br />Telefono celular: <br />+502 6942 0502 
                             <br /><br />Enlaces Externos:<br /> 

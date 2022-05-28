@@ -170,6 +170,7 @@ footer {
   overflow: auto;
 }
 
+
 .valoracion-container {
   background-color: rgb(226, 226, 226);
   width: 90%;
@@ -215,8 +216,13 @@ footer {
 
 #text_into_bar {
   text-align: left;
-  margin: 0px 20px;
   overflow: none;
+  font-family: "Popper";
+  font-weight: 800;
+}
+
+.contacts_Profile {
+  font-size: 25px;
 }
 
 #btn_div {
