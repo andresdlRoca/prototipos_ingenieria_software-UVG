@@ -7,16 +7,16 @@ export default function Pregunta3() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo ver el perfil de otro usuario?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">Estando en la publicación de un producto o servicio, al hacer click en el ícono
                         del usuario que creo la publicación se podrá acceder a su perfil, así como la opción de agregarlo
                         a su lista de favoritos.
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>

@@ -7,16 +7,16 @@ export default function Pregunta6() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo filtar mis busquedas?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">Del lado izquierdo a la par de la barra de busqueda encontrarás el botón de filtros,
                         el cual te desplegará los filtros disponibles y pordrás seleccionar los que desees, y cuando relices
                         tu próxima busqueda serán aplicados en tus resultados.
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>

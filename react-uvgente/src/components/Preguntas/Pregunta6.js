@@ -7,9 +7,9 @@ export default function Pregunta6() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo ver detalles de un produto/servicio?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">Desde la página principal y las pestañas de productos, servicios y Tops 
                         prodás visualizar las publicaciones de los produtos/servicios disponibles, así como hacer uso 
                         de la barra de busqueda, basta con ingresar a una publicación de tu interes para ver la 
@@ -17,7 +17,7 @@ export default function Pregunta6() {
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>

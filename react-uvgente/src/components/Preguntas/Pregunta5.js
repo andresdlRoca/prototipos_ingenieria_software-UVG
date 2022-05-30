@@ -7,16 +7,16 @@ export default function Pregunta5() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo cambio mi foto de perfil?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">desde la página Mi perfil, encontarás la opción de cambia foto de perfil 
                         al lado de tu foto actual, luego deberás seleccionar tu nueva foto y confirmarla para que
                         sea visible.
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>
