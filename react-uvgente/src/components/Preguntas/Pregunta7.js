@@ -7,9 +7,9 @@ export default function Pregunta7() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo reinicio mi contraseña?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">Desde la página de configuraciones, la cual se puede acceder desde la 
                         barra lateral en la parte inferior, encontrarás la información de tu cuenta, como tu correo, contraseña,
                         contacto principal y correo de contacto, ahí encontrarás la opción de editar tu contraseña, así como la 
@@ -17,7 +17,7 @@ export default function Pregunta7() {
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>

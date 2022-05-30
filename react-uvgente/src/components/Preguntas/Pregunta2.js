@@ -7,16 +7,16 @@ export default function Pregunta2() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo comprar un articulo?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">Para comprar un artículo, primero debe seleccionar la publicación del articulo de
                         su interes, la cual tendrá la opcion de contactarse mediante UVGente con el vendedor para realizar
                         la transacción del produto y/o servicio
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>

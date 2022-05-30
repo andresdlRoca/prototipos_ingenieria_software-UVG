@@ -7,15 +7,15 @@ export default function Pregunta4() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo editar mi perfil?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">Ingresando a la página de tu perfil, encontrarás las opciones para editar
                         tu foto de perfil, descripción, contactos y enlaces externos.
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>

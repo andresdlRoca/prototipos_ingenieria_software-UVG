@@ -7,16 +7,16 @@ export default function Pregunta1() {
     return (
         <>
             <div className="AyudaWrap">
-                <div className="FAQ">
+                <div className="faq">
                     ¿Cómo vender un articulo?    
-                    <ul className="FAQList">
+                    <ul className="faqlist">
                         <span class="ref">Para poner en venta un artículo y/o servicio, debe dirigirse a la pestaña "Vender" 
                         en la barra superior, seguidamente elegir entre articulo y servicio y llenar el formulario con la 
                         informacion necesaria para realizar una publicacion en la página 
                         </span>
                     </ul>
                 </div>
-                <div className="ContactSupport">
+                <div className="consupport">
                     Contactar a Soporte
                     <div className="EmailSupport">
                         <p>Correo Electronico</p>
