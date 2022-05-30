@@ -17,6 +17,7 @@ export default function Ajustes() {
     return (
         <>
             <div className="Ajusteswrap">
+                <p className="tituloAjustes">Ajustes de cuenta</p>
                 <div className="DataEntryWrap">
                     <div className="InfoSection">
                         <p className="infotextAyuda">Correo Electronico: </p>
