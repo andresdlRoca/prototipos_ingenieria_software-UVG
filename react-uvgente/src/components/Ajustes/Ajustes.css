@@ -2,11 +2,17 @@
     position: relative;
     display: inline;
     width: 100%;
-
+    padding-left: -50px;
 }
 
 .DataEntryWrap {
     position: relative;
+    background-color: whitesmoke;
+    border: solid 3px gainsboro;
+    max-width: 850px;
+    border-radius: 50px;   
+    margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .infotextAyuda {
@@ -57,8 +63,16 @@
 .deletingWrap {
     position: relative;
     display: block;
-    left: 40%;
-    margin-top: 5%;
+    margin: auto;
+    padding: 0;
+    font-family: "Bebas Neue";
+}
+
+.tituloAjustes {
+    font-size: 25px;
+    font-family: "Bebas Neue";
+    text-align: center;
+    margin-top: 5px;
 }
 
 .DisableAccount {
@@ -67,20 +81,25 @@
     margin-bottom: 2%;
     width: fit-content;
     background-color: rgb(95, 180, 88);
-    padding: 1.5%;
+    padding: 15px;
     cursor: pointer;
     transition: 0.3s;
+    border-radius: 50px;
+    border: solid 3px gainsboro;
 }
 
 .DeleteAccount {
     position: relative;
     background-color: red;
     width: fit-content;
-    left: 1%;
-    padding: 1.5%;  
+    padding: 15px;
     cursor: pointer;
     transition: 0.3s;
+    border-radius: 50px;
+    border: solid 3px gainsboro;
+
 }
+
 
 .DisableAccount:active {
     background-color: rgb(70, 132, 64);
