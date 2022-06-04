@@ -1,50 +1,50 @@
-import { Component } from "react";
-import "./sign_up_style.css";
-import banner from "../../media/register_banner.png";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import { Component } from "react"
+import "./sign_up_style.css"
+import banner from "../../media/register_banner.png"
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
 //import  { Navigate, Link } from 'react-router-dom'
 
-const MySwal = withReactContent(Swal);
+const MySwal = withReactContent(Swal)
 
 class Singup extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       username: "",
       email: "",
       password: "",
       text4: "",
-    };
-    this.changeUsername = this.changeUsername.bind(this);
-    this.changeEmail = this.changeEmail.bind(this);
-    this.changePassword = this.changePassword.bind(this);
-    this.changeText4 = this.changeText4.bind(this);
-    this.enviar = this.enviar.bind(this);
+    }
+    this.changeUsername = this.changeUsername.bind(this)
+    this.changeEmail = this.changeEmail.bind(this)
+    this.changePassword = this.changePassword.bind(this)
+    this.changeText4 = this.changeText4.bind(this)
+    this.enviar = this.enviar.bind(this)
   }
 
   changeUsername($event) {
-    const newValue = $event.target.value;
-    this.setState({ username: newValue });
+    const newValue = $event.target.value
+    this.setState({ username: newValue })
   }
 
   changeEmail($event) {
-    const newValue = $event.target.value;
-    this.setState({ email: newValue });
+    const newValue = $event.target.value
+    this.setState({ email: newValue })
   }
 
   changePassword($event) {
-    const newValue = $event.target.value;
-    this.setState({ password: newValue });
+    const newValue = $event.target.value
+    this.setState({ password: newValue })
   }
 
   changeText4($event) {
-    const newValue = $event.target.value;
-    this.setState({ text4: newValue });
+    const newValue = $event.target.value
+    this.setState({ text4: newValue })
   }
 
   enviar($event) {
-    $event.preventDefault();
+    $event.preventDefault()
 
     if (
       this.state.username !== "" &&
@@ -52,7 +52,7 @@ class Singup extends Component {
       this.state.password !== "" &&
       this.state.text4 !== ""
     ) {
-      let message = JSON.stringify(this.state);
+      let message = JSON.stringify(this.state)
       fetch("http://localhost:8080/register", {
         method: "POST",
         mode: "cors",
@@ -64,23 +64,24 @@ class Singup extends Component {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          console.log(data)
           if (data.msg === "El usuario fue registrado correctamente!!") {
             MySwal.fire({
               icon: "success",
               title: "Registro",
               text: data.msg,
               footer: "ok",
-            });
+            })
+            window.location = "/"
           }
-        });
+        })
     } else {
       MySwal.fire({
         icon: "warning",
         title: "Ups...",
         text: "Parece que olvido llenar todos los campos",
         footer: "Por favor llene todos los campos",
-      });
+      })
     }
   }
 
@@ -187,8 +188,8 @@ class Singup extends Component {
           </div>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default Singup;
+export default Singup
