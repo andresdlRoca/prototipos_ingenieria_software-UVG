@@ -73,6 +73,13 @@ class Singup extends Component {
               footer: "ok",
             })
             window.location = "/"
+          } else {
+            MySwal.fire({
+              icon: "warning",
+              title: "Usuario ya registrado",
+              text: "Este nombre ya esta usado. Ingrese otro nombre",
+              footer: "Revise sus datos",
+            })
           }
         })
     } else {
