@@ -14,7 +14,7 @@
 }
 #main-container-new-pagina-principal-productos{
     width: 100%;
-    height: 430px;
+    height: 450px;
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 40px;
@@ -26,28 +26,7 @@
     position: relative;
     overflow-x: scroll;
 }
-.titulo-new-pagina-principal-productos{
-    font-family: 'Bebas Neue', cursive;
-    font-size: large;
-    padding: 5px 5px;
-    width: 20%;
-    gap: 3px;
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
-    background-color: whitesmoke;
-    border: 1px solid gainsboro;    
-    color: #274527;
-    border-radius: 40px ;
-    height: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
-.titulo-new-pagina-principal-productos:hover{
-    background-color: #274527;
-    color: whitesmoke;
-    border-radius: 40px ;
-}
+
 .title-and-filters-wrapper{
     display: flex;
     position: relative;
@@ -60,7 +39,7 @@
 .titulo-new-pagina-principal-productos{
     font-family: 'Bebas Neue', cursive;
     padding: 5px 5px;
-    width: 20%;
+    width: 100%;
     gap: 3px;
     display: flex;
     align-items: center;
@@ -78,15 +57,12 @@
     background-color: #274527;
     color: whitesmoke;
     border-radius: 40px ;
-
-
-
 }
 .carrousel-tutores-pagina-principal{
     position: relative;
     margin-top: 20px;
-    width: 1500px;
-    height: 300px;
+    width: 100%;
+    height: fit-content;
     border: 1px solid gainsboro;
     background-color: whitesmoke;
     border-radius: 10px;
@@ -117,4 +93,8 @@
 }
 .title-size-main-page{
     font-size: x-large;
+}
+
+.title-and-filters-wrapper a {
+    text-decoration: none;
 }
