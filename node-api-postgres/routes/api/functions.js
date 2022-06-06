@@ -156,8 +156,26 @@ router.post("/login", (req, res) => {
         });
       } else res.status(401).json({ msg: "Usuario o Contraseña Incorrecta" });
     }
-  );
-});
+  )
+})
+router.post('/new-report', (req,res)=>{
+  let { tipo, mensaje } = req.body
+  if (!tipo) return res.status(404).json({ msg: "No se indico el tipo de mensaje" })
+  if (!mensaje)return res.status(404).json({ msg: "No se envio el contenido del mensaje" })
+
+  pool.query(
+    'INSERT INTO reporte(detalles, categoria) VALUES ($1, $2)',
+    [mensaje, tipo],
+    (err, result) => {
+      if(err) return res.status(500).json({msg: 'Error in query', err})
+      else
+      {
+        return res.status(200).json(result)
+      }
+    }
+  )
+})
+
 /* 
 
 Protected routes
