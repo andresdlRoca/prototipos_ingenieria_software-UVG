@@ -10,7 +10,6 @@ const CardServicios = (props) => {
     props.tutor
   const starsCalificationItems = []
   let cal = calification
-  console.log(name)
   for (var i = 1; i <= 5; i++) {
     if (cal >= 1)
       starsCalificationItems.push(<TiStarFullOutline className="star" />)
