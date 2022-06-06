@@ -38,7 +38,7 @@ CREATE TABLE Departamento(
 );
 CREATE TABLE Clase(
     id BIGSERIAL PRIMARY KEY, 
-    nombre VARCHAR(30),
+    nombre VARCHAR(255),
     descripcion TEXT,
     id_departamento BIGINT, 
     FOREIGN KEY (id_departamento) REFERENCES Departamento(id) ON DELETE CASCADE
@@ -47,6 +47,7 @@ CREATE TABLE Tutor_Clase(
     id BIGSERIAL PRIMARY KEY, 
     id_clase BIGINT, 
     id_tutor BIGINT, 
+    performance INT,
     FOREIGN KEY (id_clase) REFERENCES Clase(id) ON DELETE CASCADE,
     FOREIGN KEY (id_tutor) REFERENCES Tutor(id) ON DELETE CASCADE
 );
@@ -96,6 +97,7 @@ CREATE TABLE Producto(
     FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comprador) REFERENCES Usuario(id) ON DELETE CASCADE
 );
+ALTER TABLE producto ADD COLUMN calificacion INT;
 CREATE TABLE Producto_Categoria(
     id BIGSERIAL PRIMARY KEY, 
     id_categoria BIGINT, 
@@ -146,4 +148,17 @@ CREATE TABLE Reporte(
     categoria VARCHAR(200),
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     FOREIGN KEY (id_venta) REFERENCES Venta(id)
+);
+CREATE TABLE cobro (
+	id BIGSERIAL PRIMARY KEY,
+	forma_de_cobro VARCHAR(250)
+);
+
+CREATE TABLE rel_cobro_tutor(
+	id BIGSERIAL PRIMARY KEY,
+	id_cobro BIGINT,
+	id_tutor BIGINT, 
+	UNIQUE (id_cobro, id_tutor),
+	FOREIGN KEY (id_cobro) REFERENCES cobro(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_tutor) REFERENCES tutor(id) ON DELETE CASCADE
 );
