@@ -7,7 +7,7 @@ import Reportar_Problema from "./components/Reportar_Problema";
 import Singup from "./components/Signup/Singup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MiPerfil from "./components/MiPerfil";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Ayuda from "./components/Ayuda/Ayuda";
 import NavBar from "./components/new-nav-bar/NavBar";
