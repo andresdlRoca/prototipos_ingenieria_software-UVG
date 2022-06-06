@@ -143,6 +143,7 @@ CREATE TABLE Reporte(
     id_usuario BIGINT, 
     id_venta BIGINT, 
     detalles TEXT,
+    categoria VARCHAR(200),
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     FOREIGN KEY (id_venta) REFERENCES Venta(id)
 );
