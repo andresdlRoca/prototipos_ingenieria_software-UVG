@@ -9,7 +9,6 @@ const MySwal = withReactContent(Swal)
 
 function Reportar_Problema() {
   function sendReport(){
-
     let mensaje = document.getElementById("message").value
     let tipo = document.getElementById("opciones").value
     if(mensaje)
@@ -46,7 +45,7 @@ function Reportar_Problema() {
       })
     }
   }
-  function changeReport($event){}
+    
   return (
     <div className="problemas">
       <br />
