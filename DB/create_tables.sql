@@ -96,6 +96,7 @@ CREATE TABLE Producto(
     FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comprador) REFERENCES Usuario(id) ON DELETE CASCADE
 );
+ALTER TABLE producto ADD COLUMN calificacion INT;
 CREATE TABLE Producto_Categoria(
     id BIGSERIAL PRIMARY KEY, 
     id_categoria BIGINT, 
