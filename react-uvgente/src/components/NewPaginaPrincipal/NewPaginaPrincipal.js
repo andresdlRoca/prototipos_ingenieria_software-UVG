@@ -17,6 +17,7 @@ import BookExample from "../../media/book_example.jpg"
 
 const NewPaginaPrincipal = () => {
   const [products, setProduts] = useState( [])
+  const [tutors, setTutors] = useState([])
   const tutores = [
     {
       id: 1,
@@ -95,8 +96,32 @@ const NewPaginaPrincipal = () => {
     },
   ]
 
-  useEffect( ()=> axios.get('http://localhost:8080/get-products').then(res => setProduts(res.data))
-  )
+  useEffect(  ()=> {
+    axios.get('http://localhost:8080/get-products').then(res => setProduts(res.data))
+    axios.get('http://localhost:8080/get-tutors').then(res => {
+      setTutors(res.data)
+    }).then(console.log(tutors))
+    
+/*     const fetchData = async ()=>{
+      const tutoresFetch =  await axios.get('http://localhost:8080/get-tutors').then(async res => {
+        res.data.map(async tutor => {
+            await axios.get( `http://localhost:8080/get-tutor-cobro/${tutor.id}`).then(res =>{
+              tutor['cobro']=res.data.map(cobroObj => cobroObj.forma_de_cobro)
+            })
+            await axios.get( `http://localhost:8080/get-tutor-class/${tutor.id}`).then(resp =>{
+              tutor['topPerformance'] ={}
+              resp.data.forEach((element)=>{
+                tutor['topPerformance'][element.nombre] = element.performance 
+              })
+            })
+            return tutor
+        })
+        setTutors(res.data)
+      }
+      )
+    }
+    fetchData() */
+  }, [])
   return (
     <>
       <div id="main-container-new-pagina-principal-productos">
