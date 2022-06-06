@@ -1,38 +1,38 @@
-import { Component } from "react"
-import "./Login_style.css"
-import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
-import { Link } from "react-router-dom"
+import { Component } from "react";
+import "./Login_style.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { Link } from "react-router-dom";
 
-const MySwal = withReactContent(Swal)
+const MySwal = withReactContent(Swal);
 
 class Login extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: "",
       password: "",
-    }
-    this.changeEmail = this.changeEmail.bind(this)
-    this.changePassword = this.changePassword.bind(this)
-    this.enviar = this.enviar.bind(this)
+    };
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changePassword = this.changePassword.bind(this);
+    this.enviar = this.enviar.bind(this);
   }
 
   changeEmail($event) {
-    const newValue = $event.target.value
-    this.setState({ email: newValue })
+    const newValue = $event.target.value;
+    this.setState({ email: newValue });
   }
 
   changePassword($event) {
-    const newValue = $event.target.value
-    this.setState({ password: newValue })
+    const newValue = $event.target.value;
+    this.setState({ password: newValue });
   }
 
   enviar($event) {
-    $event.preventDefault()
+    $event.preventDefault();
 
     if (this.state.email !== "" && this.state.password !== "") {
-      let message = JSON.stringify(this.state)
+      let message = JSON.stringify(this.state);
       fetch("http://localhost:8080/login", {
         method: "POST",
         mode: "cors",
@@ -44,32 +44,32 @@ class Login extends Component {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          console.log(data);
           if (data.msg === "Login Succes") {
             MySwal.fire({
               icon: "success",
               title: "Registro",
               text: data.msg,
               footer: "ok",
-            })
+            });
             // eslint-disable-next-line no-restricted-globals
-            window.location = "/"
+            window.location = "/";
           } else {
             MySwal.fire({
               icon: "warning",
               title: "Ups...",
               text: data.msg,
               footer: "Revise que los campos esten bien",
-            })
+            });
           }
-        })
+        });
     } else {
       MySwal.fire({
         icon: "warning",
         title: "Ups...",
         text: "Parece que olvido llenar todos los campos",
         footer: "Por favor llene todos los campos",
-      })
+      });
     }
   }
 
@@ -115,8 +115,8 @@ class Login extends Component {
           <h1>UVGente</h1>
         </div>
       </form>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;

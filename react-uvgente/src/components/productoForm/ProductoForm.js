@@ -1,8 +1,10 @@
 //<div></div>
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 
 const ProductoForm = ({ handleClick }) => {
+  const MySwal = withReactContent(Swal);
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState(0.01);
@@ -10,10 +12,37 @@ const ProductoForm = ({ handleClick }) => {
 
   const handleSubmit = ($event) => {
     $event.preventDefault();
-    console.log(nombre);
-    console.log(descripcion);
-    console.log(precio);
-    console.log(typeof foto);
+    let product = JSON.stringify({
+      nombre: nombre,
+      descripcion: descripcion,
+      precio: precio,
+      form: "producto",
+    });
+    fetch("http://localhost:8080/vender", {
+      method: "POST",
+      mode: "cors",
+      body: product,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      referrerPolicy: "no-referrer",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.msg === "El producto fue registrado con exito") {
+          MySwal.fire({
+            icon: "success",
+            title: "Registro",
+            text: data.msg,
+          });
+        } else {
+          MySwal.fire({
+            icon: "warning",
+            title: "Ups...",
+            text: data.msg,
+          });
+        }
+      });
   };
 
   return (
