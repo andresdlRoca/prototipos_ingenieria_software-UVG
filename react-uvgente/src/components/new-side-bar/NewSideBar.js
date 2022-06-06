@@ -42,11 +42,7 @@ const NewSideBar = () => {
             <div id="app-ajustment-options">
                 <Link to="/ajustes" className='new-link'><FaCog /> </Link>
                 <Link to="/ayuda" className='new-link'><FaQuestion /> </Link>
-                <Link to="/report" className='new-link'><FaExclamationTriangle /></Link>
-
-
-
-
+                <Link to="/report" className='new-link'><FaExclamationTriangle /></Link> 
             </div>
         </div>
     )
