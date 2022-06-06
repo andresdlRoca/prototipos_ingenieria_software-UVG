@@ -5,25 +5,37 @@ Server's entry point
 //Constants
 const express = require('express')
 const bodyParser = require('body-parser')
-const app = express()
 const port = 8080
 const cors = require("cors")
-const jwt = require("jsonwebtoken")
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+
+const app = express()
 
 //Middlewares
-app.use(cors())
 
-app.use(bodyParser.json())
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  methods: ["GET", "POST"],
+  credentials: true,
+}))
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
-  bodyParser.urlencoded({
-    extended: true,
+  session({
+    key: "userId",
+    secret: "aaaa",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      expires: 60 * 60 * 24,
+    },
   })
-)
-//Index route
-app.get('/', async (req, res) => {
-    res.json({ StartApp: 'Welcome to uvgente api' })
-})
+);
+
 //Routes from functions
+app.use(cookieParser());
+app.use(express.json());
 app.use('/', require('./routes/api/functions'))
 
 
