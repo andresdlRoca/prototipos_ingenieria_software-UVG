@@ -2,9 +2,11 @@ const bcrypt = require("bcrypt")
 const pool = require("../../db-pg-config")
 const express = require("express")
 const router = express.Router()
+const cookieParser = require('cookie-parser')
 const jwt = require("jsonwebtoken")
 const secretKey = "wowMissawow"
 const saltRounds = 10
+const session = require('express-session')
 
 router.post("/register", (req, response) => {
   let { username, email, password } = req.body
@@ -69,8 +71,7 @@ router.get("/class", (req, res) => {
 router.post("/login", (req, res) => {
   let { email, password } = req.body
   if (!email) return res.status(404).json({ msg: "No se ingreso un usuario" })
-  if (!password)
-    return res.status(404).json({ msg: "No se ingreso contraseña" })
+  if (!password) return res.status(404).json({ msg: "No se ingreso contraseña" })
   pool.query(
     "SELECT * FROM Usuario WHERE email = $1",
     [email],
@@ -91,15 +92,27 @@ router.post("/login", (req, res) => {
               )
           if (same) {
             psswrd = user.password
-            jwt.sign(
-              { email, psswrd },
-              secretKey,
-              { expiresIn: "2 days" },
-              (err, token) => {
-                if (err) return res.status(500).send(err)
-                return res.status(200).json({ msg: "Login Succes", token })
+            req.session.user = user
+            req.session.save((err) => {
+              if (err) {
+                  return next(err);
+              }else{
+                console.log(req.session)
+                const token = jwt.sign(
+                  { email, psswrd },
+                  secretKey,
+                  { expiresIn: "27 days" },
+                  (err, token) => {
+                    if (err) return res.status(500).send(err)
+                    return res.status(200).json({ msg: "Login Succes", token })
+                  }
+                )
               }
-            )
+      
+            })
+
+
+
           } else
             return res
               .status(401)
@@ -108,6 +121,13 @@ router.post("/login", (req, res) => {
       } else res.status(401).json({ msg: "Usuario o Contraseña Incorrecta" })
     }
   )
+})
+router.get("/login", (req, res) => {
+  console.log(req.session.user)
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });}
 })
 /* 
 
@@ -119,6 +139,13 @@ router.get("/main", verifyLoginToken, (req, res) => {
     if (err) return res.sendStatus(403)
     return res.status(200).json({ msg: "Pagina principal", authData })
   })
+})
+router.get('/watch-session', async (req, res) => {
+  res.json({ StartApp:`${req.session.user}` })
+})
+router.get('/set-session', async (req, res) => {
+  req.session.user = 'usuario1'
+  res.json({ StartApp: 'Welcome to uvgente api' })
 })
 /* 
 FUNCTION

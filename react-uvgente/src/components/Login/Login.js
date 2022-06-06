@@ -3,6 +3,7 @@ import "./Login_style.css"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 import { Link } from "react-router-dom"
+import axios from 'axios';
 
 const MySwal = withReactContent(Swal)
 
@@ -116,6 +117,10 @@ class Login extends Component {
         </div>
       </form>
     )
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:8080/login').then( (response) => {console.log(response.data)})
   }
 }
 
