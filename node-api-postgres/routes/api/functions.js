@@ -109,6 +109,17 @@ router.post("/login", (req, res) => {
     }
   )
 })
+router.get('/get-products', (req, res)=>{
+  pool.query(
+    "SELECT producto.nombre AS title, producto.src_img, producto.descripcion AS description, producto.calificacion AS prod_rate, producto.precio AS price, usuario.username AS name FROM producto INNER JOIN vendedor ON vendedor.id = producto.id_vendedor INNER JOIN usuario ON vendedor.id_usuario = usuario.id"
+    , (error, results)=>{
+      if (error) return res.status(500).json({ msg: "An error ocurred while making the query", error })
+      else return res.status(200).json(results.rows)
+
+    }
+    )
+
+  })
 /* 
 
 Protected routes
