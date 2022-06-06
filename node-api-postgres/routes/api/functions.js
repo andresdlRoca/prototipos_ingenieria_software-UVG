@@ -120,6 +120,40 @@ router.get('/get-products', (req, res)=>{
     )
 
   })
+  router.get('/get-tutors', async (req, res)=>{
+    let response 
+    pool.query(
+      "SELECT tutor.id,usuario.username AS name, tutor.calificacion AS calification, tutor.iscertificado AS isVerified, profile_pic AS image, telefono AS tel FROM tutor LEFT JOIN usuario ON tutor.id_usuario = usuario.id"
+      , (error, results)=>{
+        if (error) return res.status(500).json({ msg: "An error ocurred while making the query", error })
+        else  return res.status(200).json(results.rows)      
+      }
+      )
+    })
+  router.get('/get-tutor-cobro/:id', (req, res)=>{
+    const id = parseInt(req.params.id)
+    pool.query(
+      'SELECT forma_de_cobro FROM rel_cobro_tutor LEFT JOIN cobro ON rel_cobro_tutor.id_cobro = cobro.id WHERE id_tutor = $1 ',
+      [id], 
+      (error, formas_de_cobro_results) =>{
+        if (error) return res.status(500).json({ msg: "An error ocurred while making the query", error })
+        else  return res.status(200).json(formas_de_cobro_results.rows)
+
+      }
+    )
+  })
+  router.get('/get-tutor-class/:id', (req, res)=>{
+    const id = parseInt(req.params.id)
+    pool.query(
+      'SELECT clase.nombre, performance FROM tutor_clase LEFT JOIN clase ON tutor_clase.id_clase = clase.id WHERE id_tutor = $1',
+      [id], 
+      (error, clases_results) => {
+        if (error) return res.status(500).json({ msg: "An error ocurred while making the query", error })
+        else return res.status(200).json(clases_results.rows)
+      }
+      
+    )
+  })
 /* 
 
 Protected routes
