@@ -30,6 +30,8 @@ import Pregunta6 from "./components/Preguntas/Pregunta6";
 import Pregunta7 from "./components/Preguntas/Pregunta7";
 import Pregunta8 from "./components/Preguntas/Pregunta8";
 import Pregunta9 from "./components/Preguntas/Pregunta9";
+import AgregarProducto from "./components/Mis_Ventas/AgregarProducto";
+import FloatingAgregar from "./components/Mis_Ventas/FloatingAgregar";
 
 
 function App() {
@@ -175,7 +177,18 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <Cards_Ventas title="Articulos" />
+              <FloatingAgregar/>
               <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/publicar-articulos"
+          element={
+            <div className="all-wrapper">
+              <NavBar/>
+              <AgregarProducto title="Agregar Producto"/>
+              <NewSideBar/>
             </div>
           }
         />

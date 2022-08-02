@@ -15,6 +15,20 @@
     position: relative;
 }
 
+.addproduct {
+    position: -webkit-sticky;
+    width: fit-content;
+    border-radius: 50%;
+  }
+
+.addproduct:hover {
+background-color: #262626;
+}
+  
+.addproduct img {
+    width: 50%;
+}
+
 #articulos-main-container {
     margin-top: 20px;
     width: 100%;
