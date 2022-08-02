@@ -16,8 +16,10 @@
 }
 
 .addproduct {
-    position: -webkit-sticky;
+    position: absolute;
     width: fit-content;
+    bottom: 0;
+    right: 75px;
     border-radius: 50%;
   }
 
@@ -26,7 +28,8 @@ background-color: #262626;
 }
   
 .addproduct img {
-    width: 50%;
+    width: 50px;
+    border-radius: 30%;
 }
 
 #articulos-main-container {
