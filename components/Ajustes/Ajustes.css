@@ -1,0 +1,114 @@
+.Ajusteswrap {
+    position: relative;
+    display: inline;
+    width: 100%;
+    padding-left: -50px;
+}
+
+.DataEntryWrap {
+    position: relative;
+    background-color: whitesmoke;
+    border: solid 3px gainsboro;
+    max-width: 850px;
+    border-radius: 50px;   
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.infotextAyuda {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    width: fit-content;
+    margin-right: 15%; 
+}
+
+.DataEntry {
+    position: relative;
+    display: inline-block;
+    color: rgba(77, 77, 77, 0.558);
+    width: auto;
+    margin-right: 5%;
+    max-width: 70ch;
+}
+
+.editentry {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    color: blue;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.editentry:hover {
+    color: darkblue;
+}
+
+.enabled {
+    cursor: pointer;
+    color: black;
+}
+
+.InfoSection {
+    position: relative;
+    display: block;
+    width: 100%;
+    left: 25%;
+    margin-block: 2%;
+    
+}
+
+.deletingWrap {
+    position: relative;
+    display: block;
+    margin: auto;
+    padding: 0;
+    font-family: "Bebas Neue";
+}
+
+.tituloAjustes {
+    font-size: 25px;
+    font-family: "Bebas Neue";
+    text-align: center;
+    margin-top: 5px;
+}
+
+.DisableAccount {
+    position: relative;
+    display: block;
+    margin-bottom: 2%;
+    width: fit-content;
+    background-color: rgb(95, 180, 88);
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 50px;
+    border: solid 3px gainsboro;
+}
+
+.DeleteAccount {
+    position: relative;
+    background-color: red;
+    width: fit-content;
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 50px;
+    border: solid 3px gainsboro;
+
+}
+
+
+.DisableAccount:active {
+    background-color: rgb(70, 132, 64);
+}
+
+.DeleteAccount:active {
+    background-color: rgb(173, 0, 0);
+}
+
+.passwordentry {
+    margin-left: 5.2%;
+}
