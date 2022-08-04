@@ -21,10 +21,13 @@
     bottom: 0;
     right: 75px;
     border-radius: 50%;
+    color: #002800;
+
   }
 
 .addproduct:hover {
-background-color: #262626;
+    background-color: #5CCB5F;
+    transition: 0.3s;
 }
   
 .addproduct img {
