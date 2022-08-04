@@ -4,7 +4,7 @@ import "./new-compras-style.css";
 import CardCompra from "./CardCompra";
 import BookExample from "../../media/book_example.jpg";
 
-const NewCompra = () => {
+function NewCompra() {
   const [isTopVentas, setIsTopVentas] = useState(false);
   const [productosInfo, setProductosInfo] = useState([
     {
@@ -51,13 +51,13 @@ const NewCompra = () => {
   ]);
   return (
     <div id="main-container-new-ventas">
-      <div className="title-and-filters-wrapper"></div>
+      <div className="title-and-filters-wrapper" />
 
       <div id="productos-main-container-wrapper">
         <div id="productos-main-container">
           {productosInfo.map((venta) => {
             if (venta.user && venta.product) {
-              let src = venta.user.id === 10 ? BookExample : null;
+              const src = venta.user.id === 10 ? BookExample : null;
               return (
                 <CardCompra
                   product={venta.product}
@@ -71,6 +71,6 @@ const NewCompra = () => {
       </div>
     </div>
   );
-};
+}
 
 export default NewCompra;
