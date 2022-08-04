@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Ajustes.css";
+import React, { useState, useEffect, useRef } from 'react';
+import './Ajustes.css';
 
 export default function Ajustes() {
-  const [entryState, setEntry] = useState("");
+  const [entryState, setEntry] = useState('');
 
-  const user = "placeholder123";
+  const user = 'placeholder123';
 
   const eliminarCuenta = (user) => {
     console.log(`Se elimino la cuenta ${user}`);
@@ -25,16 +25,16 @@ export default function Ajustes() {
         <div className="InfoSection">
           <p className="infotextAyuda">Contraseña: </p>
           <div
-            contentEditable={entryState === "contraseña"}
+            contentEditable={entryState === 'contraseña'}
             className={
-              entryState === "contraseña"
-                ? "DataEntry enabled passwordentry"
-                : "DataEntry passwordentry"
+              entryState === 'contraseña'
+                ? 'DataEntry enabled passwordentry'
+                : 'DataEntry passwordentry'
             }
           >
             123456789
           </div>
-          <div className="editentry" onClick={() => setEntry("contraseña")}>
+          <div className="editentry" onClick={() => setEntry('contraseña')}>
             Editar
           </div>
         </div>
@@ -42,28 +42,28 @@ export default function Ajustes() {
         <div className="InfoSection">
           <p className="infotextAyuda">Correo de contacto: </p>
           <div
-            contentEditable={entryState === "correocontact"}
+            contentEditable={entryState === 'correocontact'}
             className={
-              entryState === "correocontact" ? "DataEntry enabled" : "DataEntry"
+              entryState === 'correocontact' ? 'DataEntry enabled' : 'DataEntry'
             }
           >
             placeholder@gmail.com
           </div>
-          <div className="editentry" onClick={() => setEntry("correocontact")}>
+          <div className="editentry" onClick={() => setEntry('correocontact')}>
             Editar
           </div>
         </div>
         <div className="InfoSection">
           <p className="infotextAyuda">Contacto principal: </p>
           <div
-            contentEditable={entryState === "contactmain"}
+            contentEditable={entryState === 'contactmain'}
             className={
-              entryState === "contactmain" ? "DataEntry enabled" : "DataEntry"
+              entryState === 'contactmain' ? 'DataEntry enabled' : 'DataEntry'
             }
           >
             +502 1234 5678
           </div>
-          <div className="editentry" onClick={() => setEntry("contactmain")}>
+          <div className="editentry" onClick={() => setEntry('contactmain')}>
             Editar
           </div>
         </div>
