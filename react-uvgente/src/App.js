@@ -30,7 +30,7 @@ import Pregunta6 from "./components/Preguntas/Pregunta6";
 import Pregunta7 from "./components/Preguntas/Pregunta7";
 import Pregunta8 from "./components/Preguntas/Pregunta8";
 import Pregunta9 from "./components/Preguntas/Pregunta9";
-
+import PaginaOrganizaciones from "./components/PaginaOrganizaciones/PaginaOrganizaciones";
 
 function App() {
   return (
@@ -285,6 +285,16 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <Pregunta9 />
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/organizacion"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <PaginaOrganizaciones />
               <NewSideBar />
             </div>
           }
