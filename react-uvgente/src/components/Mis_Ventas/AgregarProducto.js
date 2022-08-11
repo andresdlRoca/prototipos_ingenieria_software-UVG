@@ -19,13 +19,16 @@ const AgregarProducto = (props) => {
 
     const handleSumbit = (event) => {
         event.preventDefault()
-        console.log("Datos: "+ productInfo.nombre)
+        console.log("Datos: \nNombre: "+ productInfo.nombre)
+        console.log("Precio: " + productInfo.precio)
+        console.log("Categoria: " + productInfo.categoria)
+        console.log("Descripcion: " + productInfo.descripcion)
     }
 
 
     return(
         <Fragment>
-            <h1>Vender producto</h1>
+            <h1 className='textVender'>Vender producto</h1>
             <form className='formProducto' onSubmit={handleSumbit}>
                 <div className='pregunta'>
                     <input type="text" placeholder="Nombre del producto" className="formInput" onChange={handleChange} name="nombre"></input>
@@ -41,12 +44,6 @@ const AgregarProducto = (props) => {
                 </div>
                 <button type="sumbit" className='buttonSumbit'>Continuar</button>
             </form>
-            <ul>
-                <li>{productInfo.nombre}</li>
-                <li>{productInfo.precio}</li>
-                <li>{productInfo.categoria}</li>
-                <li>{productInfo.descripcion}</li>
-            </ul>
         </Fragment>
     )
 
