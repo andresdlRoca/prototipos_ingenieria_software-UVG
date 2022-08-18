@@ -286,9 +286,8 @@ function App() {
             </div>
           }
         />
-
         <Route
-          path="/registroDeGrupos"
+          path="/registrar-organizaciones"
           element={
             <div className="all-wrapper">
               <NavBar />
