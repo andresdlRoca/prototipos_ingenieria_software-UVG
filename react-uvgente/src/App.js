@@ -280,9 +280,16 @@ function App() {
           path="/Pregunta9"
           element={
             <div className="all-wrapper">
-              {/* <NavBar />
+              <NavBar />
               <Pregunta9 />
-              <NewSideBar /> */}
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/registrar-organizaciones"
+          element={
+            <div className="all-wrapper">
               <NavBar />
               <RegistroOrg />
               <NewSideBar />
