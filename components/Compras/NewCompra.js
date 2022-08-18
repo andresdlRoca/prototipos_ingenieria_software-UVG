@@ -1,63 +1,63 @@
-import React, { useState } from 'react';
-import { FaFilter } from 'react-icons/fa';
-import './new-compras-style.css';
-import CardCompra from './CardCompra';
-import BookExample from '../../media/book_example.jpg';
+import React, { useState } from "react";
+import { FaFilter } from "react-icons/fa";
+import "./new-compras-style.css";
+import CardCompra from "./CardCompra";
+import BookExample from "../../media/book_example.jpg";
 
-function NewCompra() {
+const NewCompra = () => {
   const [isTopVentas, setIsTopVentas] = useState(false);
   const [productosInfo, setProductosInfo] = useState([
     {
       user: {
         id: 10,
-        name: 'Mauricio Gomez',
+        name: "Mauricio Gomez",
         rate: 5,
       },
       product: {
-        title: 'Libro 1',
-        status: 'En camino',
+        title: "Libro 1",
+        status: "En camino",
         price: 200,
-        state: 'Usado',
+        state: "Usado",
       },
     },
     {
       user: {
         id: 11,
-        name: 'Mario Gonzalez',
+        name: "Mario Gonzalez",
         rate: 5,
       },
       product: {
-        title: 'Libro 2',
-        status: 'En camino',
+        title: "Libro 2",
+        status: "En camino",
         price: 150,
-        state: 'Nuevo',
+        state: "Nuevo",
       },
     },
     {
       user: {
         id: 10,
-        name: 'Luis Alejo',
+        name: "Luis Alejo",
         rate: 5,
       },
       product: {
-        title: 'Libro 3',
+        title: "Libro 3",
         description:
-          'Este es el mejor libro de todos, por favor comprarlo pq esta mamadisimo si que si',
-        status: 'En camino',
+          "Este es el mejor libro de todos, por favor comprarlo pq esta mamadisimo si que si",
+        status: "En camino",
         price: 500,
-        state: 'Usado',
+        state: "Usado",
       },
     },
   ]);
   return (
     <div id="main-container-new-ventas">
-      <div className="title-and-filters-wrapper" />
+      <div className="title-and-filters-wrapper"></div>
 
       <div id="productos-main-container-wrapper">
         <div id="productos-main-container">
           {productosInfo.map((venta) => {
             if (venta.user && venta.product) {
-              const src = venta.user.id === 10 ? BookExample : null;
+              let src = venta.user.id === 10 ? BookExample : null;
               return (
                 <CardCompra
                   product={venta.product}
@@ -71,6 +71,6 @@ function NewCompra() {
       </div>
     </div>
   );
-}
+};
 
 export default NewCompra;

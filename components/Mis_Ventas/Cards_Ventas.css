@@ -15,61 +15,6 @@
     position: relative;
 }
 
-.addproduct {
-    position: absolute;
-    width: fit-content;
-    bottom: 0;
-    right: 75px;
-    border-radius: 50%;
-    color: #002800;
-
-  }
-
-.formProducto {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-    text-align: center;
-}
-
-.pregunta {
-    width: 50%;
-    padding: 20px;
-    margin-left: 25%;
-    transition: 0.3s;
-}
-
-.pregunta:hover {
-    background-color: #DCDCDC;
-}
-
-.buttonSumbit {
-    margin: auto;
-    width: 250px;
-    padding-block: 15px;
-    background-color: #5CCB5F;
-    transition: 0.3s;
-}
-
-.buttonSumbit:hover {
-    background-color: #438f45;
-}
-
-.textVender {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.addproduct:hover {
-    background-color: #5CCB5F;
-    transition: 0.3s;
-}
-  
-.addproduct img {
-    width: 50px;
-    border-radius: 30%;
-}
-
 #articulos-main-container {
     margin-top: 20px;
     width: 100%;
