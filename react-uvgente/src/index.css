@@ -1,13 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 body {
-  font-family: "Poppins", sans-serif;
   margin: 0px;
   padding: 0px;
   background: #ffffff;
@@ -19,22 +12,8 @@ body {
   height: 100%;
 }
 
-.all-wrapper {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
 .last_element_in_header {
   margin-right: 10px;
-}
-
-.container {
-  max-width: 100%;
-  min-height: 753px;
-  min-width: 700px;
-  border: 1px solid steelblue;
-  overflow: hidden;
 }
 
 .header h3 {
@@ -170,7 +149,6 @@ footer {
   overflow: auto;
 }
 
-
 .valoracion-container {
   background-color: rgb(226, 226, 226);
   width: 90%;
@@ -184,7 +162,7 @@ footer {
   width: 90%;
   height: auto;
   margin: 5px;
-  border: solid 8px gainsboro
+  border: solid 8px gainsboro;
 }
 
 .five_start_into_main_content {
@@ -195,29 +173,29 @@ footer {
 }
 
 .five_start_into_main_content:hover {
-  transform: scale(1.2)
+  transform: scale(1.2);
 }
 
 .titleValoracion {
-  font-family: "Bebas Neue";
+  font-family: 'Bebas Neue';
   font-size: 30px;
 }
 
 .userProfileInfo {
-  font-family: "Popper";
+  font-family: 'Popper';
   font-weight: bold;
   font-size: 30px;
   line-height: 45px;
 }
 
 .userProfileDesc {
-  font-family: "Popper";
+  font-family: 'Popper';
 }
 
 #text_into_bar {
   text-align: left;
   overflow: none;
-  font-family: "Popper";
+  font-family: 'Popper';
   font-weight: 800;
 }
 
@@ -336,11 +314,11 @@ footer {
 }
 
 h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 h2 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .problemas {
@@ -352,7 +330,7 @@ h2 {
 
 #opciones {
   position: relative;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: lightgray;
   width: 800px;
   height: 50px;
@@ -366,7 +344,7 @@ h2 {
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
-  content: "";
+  content: '';
   top: 14px;
   right: 10px;
   width: 0;
@@ -393,47 +371,6 @@ textarea {
   padding: 10px;
   position: relative;
 }
-
-/*---------------------------------------------------------------------------*/
-
-.container4buscador {
-  background-color: rgb(184, 184, 184);
-  width: 100%;
-}
-
-.maincontainer {
-  background-color: white;
-  width: 95%;
-  height: fit-content;
-  float: right;
-  padding: 50px;
-}
-
-.mc_column {
-  float: left;
-  min-height: fit-content;
-  height: fit-content;
-  width: 50%;
-}
-
-.two_columns_buscador {
-  min-height: fit-content;
-  height: fit-content;
-  width: 100%;
-}
-
-.two_columns_buscador:after {
-  box-sizing: border-box;
-  content: "";
-  display: table;
-  clear: both;
-}f
-
-.space {
-  padding: 20px;
-}
-
-/*---------------------------------------------------------------------------*/
 
 .venta {
   background-color: rgb(196, 196, 196);
@@ -554,20 +491,20 @@ div {
   margin: 0;
 }
 
-.productoForm input[type="file"] {
+.productoForm input[type='file'] {
   border: 0;
 }
 
-.productoForm input[type="submit"],
-input[type="button"] {
+.productoForm input[type='submit'],
+input[type='button'] {
   background-color: rgb(57, 155, 49);
   width: fit-content;
   border-color: rgb(57, 155, 49);
   box-shadow: 2px 2px 2px rgb(95, 180, 88);
 }
 
-.productoForm input[type="submit"]:hover,
-input[type="button"]:hover {
+.productoForm input[type='submit']:hover,
+input[type='button']:hover {
   border-color: rgb(48, 126, 40);
   background-color: rgb(48, 126, 40);
 }
@@ -585,7 +522,7 @@ input[type="button"]:hover {
 }
 
 .custom-file-input::before {
-  content: "Elegir foto";
+  content: 'Elegir foto';
   color: white;
   display: inline-block;
   background-color: rgb(57, 155, 49);
@@ -607,21 +544,4 @@ input[type="button"]:hover {
 
 .opcionDeVenta > h3 {
   color: #2e412e;
-}
-
-/*---------------------------------------------------------------------------*/
-
-.page-main-content {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-
-
-/*---------------------------------------------------------------------------
-para arreglar un titulo*/
-
-.reportar-fix-titulo {
-  margin: 0 0;
 }

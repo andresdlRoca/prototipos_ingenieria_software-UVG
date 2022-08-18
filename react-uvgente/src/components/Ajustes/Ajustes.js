@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Ajustes.css';
+import Container from 'react-bootstrap/esm/Container';
+import Button from 'react-bootstrap/esm/Button';
+import Form from 'react-bootstrap/esm/Form';
+import InputGroup from 'react-bootstrap/esm/InputGroup';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 
 export default function Ajustes() {
   const [entryState, setEntry] = useState('');
@@ -15,16 +21,17 @@ export default function Ajustes() {
   };
 
   return (
-    <div className="Ajusteswrap">
+    <Container className="Ajusteswrap">
       <p className="tituloAjustes">Ajustes de cuenta</p>
-      <div className="DataEntryWrap">
-        <div className="InfoSection">
+      <Container className="DataEntryWrap">
+        <Container className="container-fluid">
           <p className="infotextAyuda">Correo Electronico: </p>
-          <div className="DataEntry">hern19856@uvg.edu.gt</div>
-        </div>
-        <div className="InfoSection">
+          <Container className="DataEntry">placeholder123</Container>
+        </Container>
+
+        <Container className="container-fluid">
           <p className="infotextAyuda">Contraseña: </p>
-          <div
+          <Container
             contentEditable={entryState === 'contraseña'}
             className={
               entryState === 'contraseña'
@@ -33,53 +40,63 @@ export default function Ajustes() {
             }
           >
             123456789
-          </div>
-          <div className="editentry" onClick={() => setEntry('contraseña')}>
-            Editar
-          </div>
-        </div>
+          </Container>
 
-        <div className="InfoSection">
+          <Container
+            className="editentry"
+            onClick={() => setEntry('contraseña')}
+          >
+            Editar
+          </Container>
+        </Container>
+
+        <Container className="container-fluid">
           <p className="infotextAyuda">Correo de contacto: </p>
-          <div
+          <Container
             contentEditable={entryState === 'correocontact'}
             className={
               entryState === 'correocontact' ? 'DataEntry enabled' : 'DataEntry'
             }
           >
             placeholder@gmail.com
-          </div>
-          <div className="editentry" onClick={() => setEntry('correocontact')}>
+          </Container>
+
+          <Container
+            className="editentry"
+            onClick={() => setEntry('correocontact')}
+          >
             Editar
-          </div>
-        </div>
-        <div className="InfoSection">
+          </Container>
+        </Container>
+
+        <Container className="container-fluid">
           <p className="infotextAyuda">Contacto principal: </p>
-          <div
+          <Container
             contentEditable={entryState === 'contactmain'}
             className={
               entryState === 'contactmain' ? 'DataEntry enabled' : 'DataEntry'
             }
           >
             +502 1234 5678
-          </div>
-          <div className="editentry" onClick={() => setEntry('contactmain')}>
-            Editar
-          </div>
-        </div>
-      </div>
+          </Container>
 
-      <div className="deletingWrap">
-        <div
-          className="DisableAccount"
-          onClick={() => deshablilitarCuenta(user)}
-        >
+          <Container
+            className="editentry"
+            onClick={() => setEntry('contactmain')}
+          >
+            Editar
+          </Container>
+        </Container>
+      </Container>
+
+      <Container className="d-flex justify-content-evenly">
+        <Button variant="warning" onClick={() => deshablilitarCuenta(user)}>
           Deshabilitar cuenta
-        </div>
-        <div className="DeleteAccount" onClick={() => eliminarCuenta(user)}>
+        </Button>
+        <Button variant="danger" onClick={() => eliminarCuenta(user)}>
           Eliminar cuenta
-        </div>
-      </div>
-    </div>
+        </Button>
+      </Container>
+    </Container>
   );
 }

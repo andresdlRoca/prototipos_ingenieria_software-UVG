@@ -1,16 +1,11 @@
-import BarraLateral from './components/BarraLateral';
-import BuscadorMain from './components/BuscadorMain';
-import Header from './components/Header';
-//import MiPerfil from "./components/MiPerfil";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Login from './components/Login/Login';
 import Bandeja_Entrada from './components/Bandeja_Entrada/Bandeja_Entrada';
 import Ajustes from './components/Ajustes/Ajustes';
 import Reportar_Problema from './components/ReportarProblema/Reportar_Problema';
 import Singup from './components/Signup/Singup';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MiPerfil from './components/MiPerfil';
-//import Login from "./components/Login/Login";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import MiPerfil from './components/MiPerfil/MiPerfil';
 import Ayuda from './components/Ayuda/Ayuda';
 import NavBar from './components/new-nav-bar/NavBar';
 import NewSideBar from './components/new-side-bar/NewSideBar';
@@ -30,7 +25,9 @@ import Pregunta6 from './components/Preguntas/Pregunta6';
 import Pregunta7 from './components/Preguntas/Pregunta7';
 import Pregunta8 from './components/Preguntas/Pregunta8';
 import Pregunta9 from './components/Preguntas/Pregunta9';
-import RegistroOrg from './components/Registro_Org/RegistroOrg';
+import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
