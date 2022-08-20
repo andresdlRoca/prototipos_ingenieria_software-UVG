@@ -28,6 +28,8 @@ import Pregunta9 from './components/Preguntas/Pregunta9';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
+import AgregarProducto from './components/Mis_Ventas/AgregarProducto';
 
 function App() {
   return (
@@ -169,6 +171,17 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <Cards_Ventas title="Articulos" />
+              <FloatingAgregar/>
+              <NewSideBar />
+            </div>
+          }
+        />
+        <Route
+          path="/publicar-articulos"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <AgregarProducto title="Articulos" />
               <NewSideBar />
             </div>
           }
