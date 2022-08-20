@@ -45,6 +45,7 @@ const AgregarProducto = (props) => {
                 <button type="sumbit" className='buttonSumbit'>Continuar</button>
             </form>
         </Fragment>
+        
     )
 
 }
