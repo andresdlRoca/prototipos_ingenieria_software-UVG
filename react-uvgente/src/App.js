@@ -171,7 +171,7 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <Cards_Ventas title="Articulos" />
-              <FloatingAgregar/>
+              <FloatingAgregar />
               <NewSideBar />
             </div>
           }

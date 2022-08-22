@@ -1,14 +1,14 @@
 //<div></div>
-import React, { useState } from "react";
-import withReactContent from "sweetalert2-react-content";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 const ProductoForm = ({ handleClick }) => {
   const MySwal = withReactContent(Swal);
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+  const [nombre, setNombre] = useState('');
+  const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState(0.01);
-  const [foto, setFoto] = useState("");
+  const [foto, setFoto] = useState('');
 
   const handleSubmit = ($event) => {
     $event.preventDefault();
@@ -16,29 +16,29 @@ const ProductoForm = ({ handleClick }) => {
       nombre: nombre,
       descripcion: descripcion,
       precio: precio,
-      form: "producto",
+      form: 'producto',
     });
-    fetch("http://localhost:8080/vender", {
-      method: "POST",
-      mode: "cors",
+    fetch('http://localhost:8080/vender', {
+      method: 'POST',
+      mode: 'cors',
       body: product,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      referrerPolicy: "no-referrer",
+      referrerPolicy: 'no-referrer',
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.msg === "El producto fue registrado con exito") {
+        if (data.msg === 'El producto fue registrado con exito') {
           MySwal.fire({
-            icon: "success",
-            title: "Registro",
+            icon: 'success',
+            title: 'Registro',
             text: data.msg,
           });
         } else {
           MySwal.fire({
-            icon: "warning",
-            title: "Ups...",
+            icon: 'warning',
+            title: 'Ups...',
             text: data.msg,
           });
         }
