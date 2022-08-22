@@ -7,6 +7,7 @@ import "./Producto_Comprar.css"
 import carrito from "../../media/carrito.png"
 
 const CardVenta = (props) => {
+  const { id, name, rate } = props.user
   const { title, description, prod_rate, price, state } = props.product
   return (
     <div className="card-item-on-ventaArt">
@@ -33,6 +34,16 @@ const CardVenta = (props) => {
         <div className="item-product-titleArt">{title}</div>
         <div className="item-product-descriptionArt">{description}</div>
         <div className="state-item-card-spaceArt">Estado: {state}</div>
+        <div className="seller-info-wrapper4">
+          <div className="pp-for-seller-space">
+            <img
+              src={DefaultImageUser}
+              className="seller-profile-pic-on-card-sell"
+            />
+          </div>
+          <div className="name-space-for-seller">{name}</div>
+        </div>
+        <br></br>
         <div className="state-item-button-spaceArt">
           Añadir al carrito
           <img src={carrito} className="cart" />
