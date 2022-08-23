@@ -16,20 +16,12 @@ import NewPaginaPrincipal from './components/NewPaginaPrincipal/NewPaginaPrincip
 import Favorites from './components/Favoritos/Favorites';
 import Cards_Ventas from './components/Mis_Ventas/Cards_Ventas';
 import OpcionesDeVenta from './components/opciones_de_venta/OpcionesDeVenta';
-import Pregunta1 from './components/Preguntas/Pregunta1';
-import Pregunta2 from './components/Preguntas/Pregunta2';
-import Pregunta3 from './components/Preguntas/Pregunta3';
-import Pregunta4 from './components/Preguntas/Pregunta4';
-import Pregunta5 from './components/Preguntas/Pregunta5';
-import Pregunta6 from './components/Preguntas/Pregunta6';
-import Pregunta7 from './components/Preguntas/Pregunta7';
-import Pregunta8 from './components/Preguntas/Pregunta8';
-import Pregunta9 from './components/Preguntas/Pregunta9';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
 import AgregarProducto from './components/Mis_Ventas/AgregarProducto';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 function App() {
   return (
@@ -202,96 +194,6 @@ function App() {
             <div className="all-wrapper">
               <NavBar />
               <OpcionesDeVenta />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta1"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta1 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta2"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta2 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta3"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta3 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta4"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta4 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta5"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta5 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta6"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta6 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta7"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta7 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta8"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta8 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta9"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta9 />
               <NewSideBar />
             </div>
           }

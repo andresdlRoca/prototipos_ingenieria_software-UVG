@@ -1,13 +1,7 @@
-.Ajusteswrap {
-  /* margin-left: min(50px, 20%); */
-}
-
 .DataEntryWrap {
   background-color: whitesmoke;
   border: solid 3px whitesmoke;
   border-radius: 25px;
-  margin-bottom: 25px;
-  margin-top: 25px;
 }
 
 .infotextAyuda {
@@ -51,11 +45,4 @@
   width: 100%;
   left: 25%;
   margin-block: 2%;
-}
-
-.tituloAjustes {
-  font-size: 25px;
-  font-family: 'Bebas Neue';
-  text-align: center;
-  margin-top: 5px;
 }

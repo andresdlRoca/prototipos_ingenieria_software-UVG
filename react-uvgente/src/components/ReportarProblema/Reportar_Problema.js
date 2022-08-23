@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import Container from 'react-bootstrap/esm/Container';
+import Button from 'react-bootstrap/esm/Button';
+import Form from 'react-bootstrap/esm/Form';
 
 const MySwal = withReactContent(Swal);
 
@@ -40,25 +43,18 @@ function Reportar_Problema() {
   }
 
   return (
-    <div className="problemas">
-      <br />
-      <br />
-      <br />
-      <h1 className="reportar-fix-titulo">Reportar Un Problema</h1>
-      <br />
-      <br />
-      <h2>¿En que podemos mejorar?</h2>
-      <select id="opciones" name="opciones">
+    <Container>
+      <h1 className="titulos">Reportar Un Problema</h1>
+      <p>¿En que podemos mejorar?</p>
+      <Form.Select id="opciones" name="opciones">
         <option value="Autenticación">Problema de autenticación</option>
         <option value="Usuario">Reportar un usuario</option>
         <option value="Producto">Problemas con un producto</option>
         <option value="Servicio">Problemas con el servicio</option>
         <option value="Web">Error en la página web</option>
         <option value="Otro">Otro</option>
-      </select>
-      <br />
-      <br />
-      <h2>Detalles</h2>
+      </Form.Select>
+      <p>Detalles</p>
       <textarea
         id="message"
         name="message"
@@ -67,12 +63,10 @@ function Reportar_Problema() {
         resize="none"
         placeholder="Por favor incluir la mayor información posible"
       ></textarea>
-      <br />
-      <br />
-      <button id="Enviar" onClick={() => sendReport()}>
+      <Button id="Enviar" onClick={() => sendReport()}>
         Enviar
-      </button>
-    </div>
+      </Button>
+    </Container>
   );
 }
 export default Reportar_Problema;

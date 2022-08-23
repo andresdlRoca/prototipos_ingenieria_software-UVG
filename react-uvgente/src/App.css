@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.titulos {
+  font-size: 25px;
+  font-family: 'Bebas Neue';
+  text-align: center;
+  padding: 15px 0 15px 0;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
