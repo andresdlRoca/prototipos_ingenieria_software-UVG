@@ -62,10 +62,8 @@ function RegistroOrg() {
   };
 
   return (
-    <Container className="mt-4">
-      <h1 className="text-center mb-4">
-        Formulario de registro de organizacion
-      </h1>
+    <Container>
+      <h1 className="titulos">Formulario de registro de organizacion</h1>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>Nombre de la organizacion</Form.Label>

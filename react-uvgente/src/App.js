@@ -4,7 +4,7 @@ import Login from './components/Login/Login';
 import Bandeja_Entrada from './components/Bandeja_Entrada/Bandeja_Entrada';
 import Ajustes from './components/Ajustes/Ajustes';
 import Reportar_Problema from './components/ReportarProblema/Reportar_Problema';
-import Singup from './components/Signup/Singup';
+import Signup from './components/Signup/Singup';
 import MiPerfil from './components/MiPerfil/MiPerfil';
 import Ayuda from './components/Ayuda/Ayuda';
 import NavBar from './components/new-nav-bar/NavBar';
@@ -32,7 +32,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Singup />
+              <Signup />
             </div>
           }
         />

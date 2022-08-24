@@ -9,6 +9,12 @@
   padding: 15px 0 15px 0;
 }
 
+.our_container_style {
+  background-color: whitesmoke;
+  border: solid 3px whitesmoke;
+  border-radius: 25px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -3,6 +3,7 @@ import './Ajustes.css';
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/esm/Button';
 import AjusteField from './AjusteField';
+import { MdOutlineSettings } from 'react-icons/md';
 
 export default function Ajustes() {
   const user = 'ye';
@@ -17,8 +18,11 @@ export default function Ajustes() {
 
   return (
     <Container>
+      <Container className="mt-4 text-center">
+        <MdOutlineSettings size={50} />
+      </Container>
       <p className="titulos">Ajustes de cuenta</p>
-      <Container className="DataEntryWrap">
+      <Container className="our_container_style">
         <AjusteField content="Username" variable_content="userRandom" />
         <AjusteField content="Nombre" variable_content="nombreee" />
         <AjusteField content="Apellido" variable_content="apellidoXDS" />

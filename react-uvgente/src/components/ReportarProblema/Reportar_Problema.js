@@ -5,6 +5,8 @@ import withReactContent from 'sweetalert2-react-content';
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Form';
+import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+import { GoReport } from 'react-icons/go';
 
 const MySwal = withReactContent(Swal);
 
@@ -35,37 +37,55 @@ function Reportar_Problema() {
     } else {
       MySwal.fire({
         icon: 'warning',
-        title: 'Report',
-        text: 'El campo de texto está vacio',
-        footer: 'Por favor escribir un reporte antes de enviar.',
+        title: 'Hubo un problema',
+        text: 'El campo de texto está vacio o hubo un problema al enviar el reporte.',
+        footer: 'Por favor intenalo de nuevo o contacta soporte.',
       });
     }
   }
 
   return (
     <Container>
+      <Container className="mt-4 mb-2 text-center">
+        <GoReport size={50} />
+      </Container>
       <h1 className="titulos">Reportar Un Problema</h1>
-      <p>¿En que podemos mejorar?</p>
-      <Form.Select id="opciones" name="opciones">
-        <option value="Autenticación">Problema de autenticación</option>
-        <option value="Usuario">Reportar un usuario</option>
-        <option value="Producto">Problemas con un producto</option>
-        <option value="Servicio">Problemas con el servicio</option>
-        <option value="Web">Error en la página web</option>
-        <option value="Otro">Otro</option>
-      </Form.Select>
-      <p>Detalles</p>
-      <textarea
-        id="message"
-        name="message"
-        rows="4"
-        cols="50"
-        resize="none"
-        placeholder="Por favor incluir la mayor información posible"
-      ></textarea>
-      <Button id="Enviar" onClick={() => sendReport()}>
-        Enviar
-      </Button>
+      <Container className="our_container_style">
+        <p className="mt-3">¿En que podemos mejorar?</p>
+        <Form.Select id="opciones" name="opciones">
+          <option value="Autenticación">Problema de autenticación</option>
+          <option value="Usuario">Reportar un usuario</option>
+          <option value="Producto">Problemas con un producto</option>
+          <option value="Servicio">Problemas con el servicio</option>
+          <option value="Web">Error en la página web</option>
+          <option value="Otro">Otro</option>
+        </Form.Select>
+        <p className="mt-3">Por favor, proporciona detalles del problema</p>
+        <FloatingLabel
+          controlId="floatingTextarea"
+          label="Cuentanos todo..."
+          className="mb-3"
+        >
+          <Form.Control
+            as="textarea"
+            id="message"
+            name="message"
+            rows="4"
+            cols="50"
+            resize="none"
+            placeholder="Por favor incluir la mayor información posible"
+          />
+        </FloatingLabel>
+      </Container>
+
+      <Container className="d-flex justify-content-evenly mt-4 mb-4">
+        <Button variant="warning" href="/login">
+          Cancelar
+        </Button>
+        <Button variant="success" id="Enviar" onClick={() => sendReport()}>
+          Enviar
+        </Button>
+      </Container>
     </Container>
   );
 }

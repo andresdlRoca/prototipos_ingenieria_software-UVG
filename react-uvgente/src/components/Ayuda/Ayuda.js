@@ -1,14 +1,14 @@
 import React from 'react';
-import emailicon from '../../media/mail_icon.png';
 import Container from 'react-bootstrap/esm/Container';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import Accordion from 'react-bootstrap/esm/Accordion';
 import './Ayuda.css';
+import { AiOutlinePhone, AiOutlineMail } from 'react-icons/ai';
 
 export default function Ayuda() {
   return (
-    <Container className="mt-3">
+    <Container>
       <Row>
         <Col className="text-center mt-4 mb-4">
           <Container className="faq">
@@ -126,9 +126,10 @@ export default function Ayuda() {
           <Container className="faq">
             <p className="titulos">Contactar a Soporte</p>
             <Container>
+              <AiOutlineMail size={30} />
               <p>Correo Electronico</p>
               <p className="highlighted">uvgente@soporte.edu.gt</p>
-              <img src={emailicon} alt="Email"></img>
+              <AiOutlinePhone size={30} />
               <p>Contactos</p>
               <p className="highlighted">+502 8005 6598</p>
               <p className="highlighted">+502 7852 6245</p>
