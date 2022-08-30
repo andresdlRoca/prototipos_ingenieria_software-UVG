@@ -10,7 +10,7 @@ import { GoReport } from 'react-icons/go';
 
 const MySwal = withReactContent(Swal);
 
-function Reportar_Problema() {
+function ReportarProblema() {
   function sendReport() {
     let mensaje = document.getElementById('message').value;
     let tipo = document.getElementById('opciones').value;
@@ -89,4 +89,4 @@ function Reportar_Problema() {
     </Container>
   );
 }
-export default Reportar_Problema;
+export default ReportarProblema;

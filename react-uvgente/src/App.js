@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Login from './components/Login/Login';
-import Bandeja_Entrada from './components/Bandeja_Entrada/Bandeja_Entrada';
+import BandejaEntrada from './components/Bandeja_Entrada/BandejaEntrada'; // esta
 import Ajustes from './components/Ajustes/Ajustes';
-import Reportar_Problema from './components/ReportarProblema/Reportar_Problema';
+import ReportarProblema from './components/ReportarProblema/ReportarProblema'; // esta
 import Signup from './components/Signup/Singup';
 import MiPerfil from './components/MiPerfil/MiPerfil';
 import Ayuda from './components/Ayuda/Ayuda';
@@ -14,7 +14,7 @@ import NewCompra from './components/Compras/NewCompra';
 import NewServicio from './components/Servicio/NewServicio';
 import NewPaginaPrincipal from './components/NewPaginaPrincipal/NewPaginaPrincipal';
 import Favorites from './components/Favoritos/Favorites';
-import Cards_Ventas from './components/Mis_Ventas/Cards_Ventas';
+import CardsVentas from './components/Mis_Ventas/CardsVentas'; // esta
 import OpcionesDeVenta from './components/opciones_de_venta/OpcionesDeVenta';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
 import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
@@ -90,7 +90,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Reportar_Problema />
+              <ReportarProblema />
               <NewSideBar />
             </div>
           }
@@ -100,7 +100,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Bandeja_Entrada />
+              <BandejaEntrada />
               <NewSideBar />
             </div>
           }
@@ -162,7 +162,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Cards_Ventas title="Articulos" />
+              <CardsVentas title="Articulos" />
               <FloatingAgregar />
               <NewSideBar />
             </div>
