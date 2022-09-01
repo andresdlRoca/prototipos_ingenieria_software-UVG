@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import Login from './components/Login/Login';
 import Bandeja_Entrada from './components/Bandeja_Entrada/Bandeja_Entrada';
@@ -28,9 +28,8 @@ import Pregunta9 from './components/Preguntas/Pregunta9';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
 import EditarProductos from './components/Mis_Ventas/EditarProducto';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
-import AgregarProducto from './components/Mis_Ventas/AgregarProducto';
+import FloatingAgregar from "./components/Mis_Ventas/FloatingAgregar"
+import AgregarProducto from "./components/Mis_Ventas/AgregarProducto"
 
 function App() {
   return (
@@ -40,11 +39,31 @@ function App() {
           path="/signup"
           element={
             <div className="all-wrapper">
-              <NavBar />
               <Singup />
             </div>
           }
         />
+        <Route
+          path="/login"
+          element={
+            <div className="all-wrapper">
+              <Login />
+            </div>
+          }
+        />
+        <Route element={<PrivateRoute />}>
+          {" "}
+          <Route
+            path="/"
+            element={
+              <div className="all-wrapper">
+                <NavBar />
+                <NewPaginaPrincipal />
+                <NewSideBar />
+              </div>
+            }
+          />
+        </Route>
         <Route
           path="/top-servicios"
           element={
@@ -65,25 +84,7 @@ function App() {
             </div>
           }
         />
-        <Route
-          path="/login"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Login />
-            </div>
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <NewPaginaPrincipal />
-              <NewSideBar />
-            </div>
-          }
-        />
+
         <Route
           path="/profile"
           element={
@@ -320,7 +321,7 @@ function App() {
         />
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

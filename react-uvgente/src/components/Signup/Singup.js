@@ -4,7 +4,7 @@ import banner from "../../media/register_banner.png"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 //import  { Navigate, Link } from 'react-router-dom'
-
+import PrivateRoute from "../PrivateRoute"
 const MySwal = withReactContent(Swal)
 
 class Singup extends Component {
@@ -72,6 +72,7 @@ class Singup extends Component {
               text: data.msg,
               footer: "ok",
             })
+            PrivateRoute.auth.token = true
             window.location = "/"
           } else {
             MySwal.fire({
