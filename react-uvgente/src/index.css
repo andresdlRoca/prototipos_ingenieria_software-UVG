@@ -116,21 +116,6 @@ footer {
   display: flex;
 }
 
-.container_main_content {
-  max-height: 580px;
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  margin-left: 20px;
-  padding: 0px;
-  background: whitesmoke;
-}
-
-#profile_page_main {
-  display: flex;
-  padding-left: 40px;
-}
-
 #lateral_profile_page_main {
   position: relative;
   width: 30%;
