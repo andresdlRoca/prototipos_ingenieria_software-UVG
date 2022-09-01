@@ -1,32 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-import PrivateRoute from "./components/PrivateRoute"
-import Login from "./components/Login/Login"
-import Bandeja_Entrada from "./components/Bandeja_Entrada/Bandeja_Entrada"
-import Ajustes from "./components/Ajustes/Ajustes"
-import Reportar_Problema from "./components/ReportarProblema/Reportar_Problema"
-import Singup from "./components/Signup/Singup"
-import MiPerfil from "./components/MiPerfil/MiPerfil"
-import Ayuda from "./components/Ayuda/Ayuda"
-import NavBar from "./components/new-nav-bar/NavBar"
-import NewSideBar from "./components/new-side-bar/NewSideBar"
-import NewVentas from "./components/Ventas/NewVentas"
-import NewCompra from "./components/Compras/NewCompra"
-import NewServicio from "./components/Servicio/NewServicio"
-import NewPaginaPrincipal from "./components/NewPaginaPrincipal/NewPaginaPrincipal"
-import Favorites from "./components/Favoritos/Favorites"
-import Cards_Ventas from "./components/Mis_Ventas/Cards_Ventas"
-import OpcionesDeVenta from "./components/opciones_de_venta/OpcionesDeVenta"
-import Pregunta1 from "./components/Preguntas/Pregunta1"
-import Pregunta2 from "./components/Preguntas/Pregunta2"
-import Pregunta3 from "./components/Preguntas/Pregunta3"
-import Pregunta4 from "./components/Preguntas/Pregunta4"
-import Pregunta5 from "./components/Preguntas/Pregunta5"
-import Pregunta6 from "./components/Preguntas/Pregunta6"
-import Pregunta7 from "./components/Preguntas/Pregunta7"
-import Pregunta8 from "./components/Preguntas/Pregunta8"
-import Pregunta9 from "./components/Preguntas/Pregunta9"
-import RegistroOrg from "./components/RegistroOrganizacion/RegistroOrg"
+import Login from './components/Login/Login';
+import Bandeja_Entrada from './components/Bandeja_Entrada/Bandeja_Entrada';
+import Ajustes from './components/Ajustes/Ajustes';
+import Reportar_Problema from './components/ReportarProblema/Reportar_Problema';
+import Singup from './components/Signup/Singup';
+import MiPerfil from './components/MiPerfil/MiPerfil';
+import Ayuda from './components/Ayuda/Ayuda';
+import NavBar from './components/new-nav-bar/NavBar';
+import NewSideBar from './components/new-side-bar/NewSideBar';
+import NewVentas from './components/Ventas/NewVentas';
+import NewCompra from './components/Compras/NewCompra';
+import NewServicio from './components/Servicio/NewServicio';
+import NewPaginaPrincipal from './components/NewPaginaPrincipal/NewPaginaPrincipal';
+import Favorites from './components/Favoritos/Favorites';
+import Cards_Ventas from './components/Mis_Ventas/Cards_Ventas';
+import OpcionesDeVenta from './components/opciones_de_venta/OpcionesDeVenta';
+import Pregunta1 from './components/Preguntas/Pregunta1';
+import Pregunta2 from './components/Preguntas/Pregunta2';
+import Pregunta3 from './components/Preguntas/Pregunta3';
+import Pregunta4 from './components/Preguntas/Pregunta4';
+import Pregunta5 from './components/Preguntas/Pregunta5';
+import Pregunta6 from './components/Preguntas/Pregunta6';
+import Pregunta7 from './components/Preguntas/Pregunta7';
+import Pregunta8 from './components/Preguntas/Pregunta8';
+import Pregunta9 from './components/Preguntas/Pregunta9';
+import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
+import EditarProductos from './components/Mis_Ventas/EditarProducto';
 
 import FloatingAgregar from "./components/Mis_Ventas/FloatingAgregar"
 import AgregarProducto from "./components/Mis_Ventas/AgregarProducto"
@@ -186,6 +186,17 @@ function App() {
               <AgregarProducto title="Articulos" />
               <NewSideBar />
             </div>
+          }
+        />
+        <Route
+          path='/editar-articulo'
+          element = {
+            <div className="all-wrapper">
+              fdsafdsafdsa
+            <NavBar />
+            <EditarProductos title="Edicion Articulos" />
+            <NewSideBar />
+          </div>
           }
         />
         <Route
