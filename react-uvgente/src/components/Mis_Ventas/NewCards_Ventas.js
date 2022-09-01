@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { FaQuestion } from 'react-icons/fa'
 import { useImage } from 'react-image'
 import DefaultImageUser from '../../media/cat_pp.jpg'
-import dots from '../../media/dot.png'
+import pen from '../../media/pen.png'
+import { Link } from 'react-router-dom'
 import "./Cards_Ventas.css"
 
 const CardVenta = (props) => {
@@ -26,7 +27,9 @@ const CardVenta = (props) => {
                 <div className='state-item-card-spaceArt'>
                     Estado: {state}
                 </div>
-                <img src={dots} alt="dot" className="dotArt" />
+                <Link to="/editar-articulo">
+                    <img src={pen} alt="dot" className="dotArt" />
+                </Link>
             </div>
         </div>
 

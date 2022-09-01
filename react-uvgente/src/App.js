@@ -26,6 +26,7 @@ import Pregunta7 from './components/Preguntas/Pregunta7';
 import Pregunta8 from './components/Preguntas/Pregunta8';
 import Pregunta9 from './components/Preguntas/Pregunta9';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
+import EditarProductos from './components/Mis_Ventas/EditarProducto';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
@@ -184,6 +185,17 @@ function App() {
               <AgregarProducto title="Articulos" />
               <NewSideBar />
             </div>
+          }
+        />
+        <Route
+          path='/editar-articulo'
+          element = {
+            <div className="all-wrapper">
+              fdsafdsafdsa
+            <NavBar />
+            <EditarProductos title="Edicion Articulos" />
+            <NewSideBar />
+          </div>
           }
         />
         <Route
