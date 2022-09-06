@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Login from './components/Login/Login';
-import Bandeja_Entrada from './components/Bandeja_Entrada/Bandeja_Entrada';
+import BandejaEntrada from './components/Bandeja_Entrada/BandejaEntrada'; // esta
 import Ajustes from './components/Ajustes/Ajustes';
-import Reportar_Problema from './components/ReportarProblema/Reportar_Problema';
-import Singup from './components/Signup/Singup';
+import ReportarProblema from './components/ReportarProblema/ReportarProblema'; // esta
+import Signup from './components/Signup/Singup';
 import MiPerfil from './components/MiPerfil/MiPerfil';
 import Ayuda from './components/Ayuda/Ayuda';
 import NavBar from './components/new-nav-bar/NavBar';
@@ -14,22 +14,14 @@ import NewCompra from './components/Compras/NewCompra';
 import NewServicio from './components/Servicio/NewServicio';
 import NewPaginaPrincipal from './components/NewPaginaPrincipal/NewPaginaPrincipal';
 import Favorites from './components/Favoritos/Favorites';
-import Cards_Ventas from './components/Mis_Ventas/Cards_Ventas';
+import CardsVentas from './components/Mis_Ventas/CardsVentas'; // esta
 import OpcionesDeVenta from './components/opciones_de_venta/OpcionesDeVenta';
-import Pregunta1 from './components/Preguntas/Pregunta1';
-import Pregunta2 from './components/Preguntas/Pregunta2';
-import Pregunta3 from './components/Preguntas/Pregunta3';
-import Pregunta4 from './components/Preguntas/Pregunta4';
-import Pregunta5 from './components/Preguntas/Pregunta5';
-import Pregunta6 from './components/Preguntas/Pregunta6';
-import Pregunta7 from './components/Preguntas/Pregunta7';
-import Pregunta8 from './components/Preguntas/Pregunta8';
-import Pregunta9 from './components/Preguntas/Pregunta9';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
-import EditarProductos from './components/Mis_Ventas/EditarProducto';
+import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
+import AgregarProducto from './components/Mis_Ventas/AgregarProducto';
 
-import FloatingAgregar from "./components/Mis_Ventas/FloatingAgregar"
-import AgregarProducto from "./components/Mis_Ventas/AgregarProducto"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 function App() {
   return (
@@ -39,31 +31,11 @@ function App() {
           path="/signup"
           element={
             <div className="all-wrapper">
-              <Singup />
+              <NavBar />
+              <Signup />
             </div>
           }
         />
-        <Route
-          path="/login"
-          element={
-            <div className="all-wrapper">
-              <Login />
-            </div>
-          }
-        />
-        <Route element={<PrivateRoute />}>
-          {" "}
-          <Route
-            path="/"
-            element={
-              <div className="all-wrapper">
-                <NavBar />
-                <NewPaginaPrincipal />
-                <NewSideBar />
-              </div>
-            }
-          />
-        </Route>
         <Route
           path="/top-servicios"
           element={
@@ -84,7 +56,25 @@ function App() {
             </div>
           }
         />
-
+        <Route
+          path="/login"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <Login />
+            </div>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <div className="all-wrapper">
+              <NavBar />
+              <NewPaginaPrincipal />
+              <NewSideBar />
+            </div>
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -100,7 +90,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Reportar_Problema />
+              <ReportarProblema />
               <NewSideBar />
             </div>
           }
@@ -110,7 +100,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Bandeja_Entrada />
+              <BandejaEntrada />
               <NewSideBar />
             </div>
           }
@@ -172,7 +162,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
-              <Cards_Ventas title="Articulos" />
+              <CardsVentas title="Articulos" />
               <FloatingAgregar />
               <NewSideBar />
             </div>
@@ -186,17 +176,6 @@ function App() {
               <AgregarProducto title="Articulos" />
               <NewSideBar />
             </div>
-          }
-        />
-        <Route
-          path='/editar-articulo'
-          element = {
-            <div className="all-wrapper">
-              fdsafdsafdsa
-            <NavBar />
-            <EditarProductos title="Edicion Articulos" />
-            <NewSideBar />
-          </div>
           }
         />
         <Route
@@ -220,96 +199,6 @@ function App() {
           }
         />
         <Route
-          path="/Pregunta1"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta1 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta2"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta2 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta3"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta3 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta4"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta4 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta5"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta5 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta6"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta6 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta7"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta7 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta8"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta8 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
-          path="/Pregunta9"
-          element={
-            <div className="all-wrapper">
-              <NavBar />
-              <Pregunta9 />
-              <NewSideBar />
-            </div>
-          }
-        />
-        <Route
           path="/registrar-organizaciones"
           element={
             <div className="all-wrapper">
@@ -321,7 +210,7 @@ function App() {
         />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

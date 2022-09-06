@@ -23,9 +23,7 @@ router.post('/register', (req, response) => {
           return response
             .status(500)
             .json({ msg: 'An unexpected error ocurred', error });
-        return response
-          .status(201)
-          .json({ msg: 'El usuario fue registrado correctamente!!' });
+        return response.status(201).json();
       }
     );
   });
@@ -44,6 +42,9 @@ router.post('/vender', (req, res) => {
               msg: error,
               error,
             });
+            {
+              msg: 'El usuario fue registrado correctamente!!';
+            }
           }
           return res.status(201).json({
             msg: 'El producto fue registrado con exito',
