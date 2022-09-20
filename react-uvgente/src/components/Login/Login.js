@@ -3,12 +3,13 @@ import './Login_style.css';
 import Swal from 'sweetalert2';
 import banner from '../../media/register_banner.png';
 import withReactContent from 'sweetalert2-react-content';
-import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import Col from 'react-bootstrap/esm/Col';
-import Form from 'react-bootstrap/esm/Form';
-import Button from 'react-bootstrap/esm/Button';
+import { Link, Router, Route, Routes } from 'react-router-dom';
+import Singup from '../Signup/Singup';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const MySwal = withReactContent(Swal);
 
@@ -136,12 +137,13 @@ class Login extends Component {
                   </Button>
                   <br />
                   <br />
-                  <Link to="/signup">¿Aun no estas registrado?</Link>
-                  <br />
-                  <br />
-                  <Link to="/registrar-organizaciones">
-                    Registrar organizacion
-                  </Link>
+                  <Router>
+                    <Routes>
+                      <Route path="/signup" element={<Singup />} />
+                      <br />
+                      <br />
+                    </Routes>
+                  </Router>
                 </Container>
               </Form>
             </Container>
