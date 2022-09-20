@@ -22,6 +22,7 @@ import AgregarProducto from './components/Mis_Ventas/AgregarProducto';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import NewBottomBar from './components/new-side-bar/NewBottomBar';
 
 function App() {
   return (
@@ -209,6 +210,7 @@ function App() {
           }
         />
       </Routes>
+      {/* <NewBottomBar /> */}
     </Router>
   );
 }
