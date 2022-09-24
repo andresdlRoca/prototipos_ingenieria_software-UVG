@@ -5,3 +5,5 @@
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
 import 'bootstrap/dist/css/bootstrap.css';
+import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/extend-expect";
