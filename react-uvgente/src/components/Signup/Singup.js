@@ -3,10 +3,10 @@ import './sign_up_style.css';
 import banner from '../../media/register_banner.png';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import Container from 'react-bootstrap/esm/Container';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import Button from 'react-bootstrap/esm/Button';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 
 const MySwal = withReactContent(Swal);
 

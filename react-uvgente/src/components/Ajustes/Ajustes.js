@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Ajustes.css';
-import Container from 'react-bootstrap/esm/Container';
-import Button from 'react-bootstrap/esm/Button';
 import AjusteField from './AjusteField';
 import { MdOutlineSettings } from 'react-icons/md';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 export default function Ajustes() {
   const user = 'ye';

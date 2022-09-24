@@ -1,8 +1,8 @@
 import React from 'react';
-import Container from 'react-bootstrap/esm/Container';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import Accordion from 'react-bootstrap/esm/Accordion';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Accordion from 'react-bootstrap/Accordion';
 import './Ayuda.css';
 import { AiOutlinePhone, AiOutlineMail } from 'react-icons/ai';
 

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import Container from 'react-bootstrap/esm/Container';
-import Button from 'react-bootstrap/esm/Button';
-import Form from 'react-bootstrap/esm/Form';
-import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+import { Container } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap';
 import { GoReport } from 'react-icons/go';
 
 const MySwal = withReactContent(Swal);
