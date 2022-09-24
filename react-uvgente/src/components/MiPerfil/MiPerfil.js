@@ -1,10 +1,10 @@
-import Container from 'react-bootstrap/esm/Container';
+import Container from 'react-bootstrap/Container';
 import profile_pic from '../../media/cat_pp.jpg';
 import five_stars_image from '../../media/five_stars_rate.png';
-import Row from 'react-bootstrap/esm/Row';
-import Col from 'react-bootstrap/esm/Col';
-import Form from 'react-bootstrap/esm/Form';
-import Button from 'react-bootstrap/esm/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const MiPerfil = () => {
   return (

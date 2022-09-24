@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Row from 'react-bootstrap/esm/Row';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function AjusteField({ content, variable_content }) {
   const [entryState, setEntry] = useState('');
