@@ -19,7 +19,7 @@ import OpcionesDeVenta from './components/opciones_de_venta/OpcionesDeVenta';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
 import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
 import AgregarProducto from './components/Mis_Ventas/AgregarProducto';
-
+import EditarProductos from "./components/Mis_Ventas/EditarProducto";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
