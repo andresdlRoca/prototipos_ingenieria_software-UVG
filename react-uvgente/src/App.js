@@ -179,6 +179,17 @@ function App() {
           }
         />
         <Route
+          path='/editar-articulo'
+          element = {
+            <div className="all-wrapper">
+              fdsafdsafdsa
+            <NavBar />
+            <EditarProductos title="Edicion Articulos" />
+            <NewSideBar />
+          </div>
+          }
+        />
+        <Route
           path="/favorites"
           element={
             <div className="all-wrapper">
