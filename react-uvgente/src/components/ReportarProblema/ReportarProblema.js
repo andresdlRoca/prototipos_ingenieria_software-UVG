@@ -5,7 +5,7 @@ import withReactContent from 'sweetalert2-react-content';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap';
+import {FloatingLabel} from 'react-bootstrap';
 import { GoReport } from 'react-icons/go';
 
 const MySwal = withReactContent(Swal);
