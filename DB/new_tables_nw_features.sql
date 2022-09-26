@@ -23,6 +23,8 @@ CREATE TABLE Organizacion(
     linkedin TEXT, 
     descripcion TEXT, 
     isActive BOOLEAN, 
+    tiempo_transaccion_promedio TIMESTAMP, 
+    ventas BIGINT,
     FOREIGN KEY (id_usuario_lider) REFERENCES Usuario(id)
 );
 CREATE TABLE Organizacion_Colaborador(
@@ -40,3 +42,27 @@ CREATE TABLE Insgnia_Organizacion(
     FOREIGN KEY (id_insignia) REFERENCES Insignia(id_insignia) ON DELETE CASCADE, 
     FOREIGN KEY (id_organizacion) REFERENCES Organizacion(id_organizacion) ON DELETE CASCADE
 );
+
+CREATE TABLE bitacora_ventas(
+    id BIGSERIAL PRIMARY KEY, 
+    id_venta BIGINT, 
+    fecha TIMESTAMP,
+    tipo_de_transaccion VARCHAR(100), 
+    detalles TEXT,
+    FOREIGN KEY (id_venta) REFERENCES Venta(id)
+);
+
+ALTER TABLE Vendedor 
+ADD COLUMN id_organizacion BIGINT; 
+
+ALTER TABLE Vendedor 
+ADD CONSTRAINT rel_organicacion_vendedor FOREIGN KEY (id_organizacion) REFERENCES Organizacion(id_organizacion);
+
+ALTER TABLE Vendedor
+ADD COLUMN ventas BIGINT; 
+
+ALTER TABLE Vendedor 
+ADD COLUMN media_tiempo_venta NUMERIC;
+
+ALTER TABLE Venta
+ADD COLUMN ventas_iniciadas NUMERIC; 
