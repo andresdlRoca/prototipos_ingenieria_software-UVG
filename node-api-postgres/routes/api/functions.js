@@ -275,6 +275,32 @@ router.get('/get-tutor-class/:id', (req, res) => {
   );
 });
 /* 
+ALTER TABLE Organizacion_Colaborador ADD CONSTRAINT unique_rel_org_colab UNIQUE(id_organizacion, id_usuario)
+*/
+router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
+  const id_usuario = parseInt(req.params.id_u);
+  const id_organizacion = parseInt(req.params.id_o);
+  const rol = req.params.rol
+  pool.query('INSERT INTO Organizacion_Colaborador(id_organizacion, id_usuario, rol) VALUES ($1, $2, $3)', [id_organizacion, id_usuario, rol], 
+  (error, result) =>{
+    if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+    return res.status(200).json({msg: 'Colaborador ligado a organizador correctamente', result})
+  }
+  )
+})
+
+router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
+    const id = parseInt(req.params.id)
+    pool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
+    [id], (error, results) => {
+      if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      if (!results.rowCount) return res.status(200).json({msg: 'No se encontraron colaboradores para dicha organizacion'})
+      return res.status(200).json(results.rows)
+    })
+})
+  
+
+/* 
 
 Protected routes
 
