@@ -1,11 +1,13 @@
 const bcrypt = require('bcrypt');
-const pool = require('../../db-pg-config');
+const {pool, pool_test} = require('../../db-pg-config');
+const {NODE_ENV} = process.env
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { response } = require('express');
 const secretKey = 'wowMissawow';
 const saltRounds = 10;
+const myPool = (NODE_ENV== 'test ' || NODE_ENV== 'development ')? pool_test: pool
 
 router.post('/register', (req, response) => {
   let { username, email, password } = req.body;
@@ -15,7 +17,7 @@ router.post('/register', (req, response) => {
       .send('No se han llenado los campos necesarios para el registro');
   bcrypt.hash(password, saltRounds, (err, hash) => {
     if (err) return response.status(500).json({ msg: 'DB error ocurred', err });
-    pool.query(
+    myPool.query(
       'INSERT INTO usuario (username,email, password) VALUES ($1, $2, $3)',
       [username, email, hash],
       (error, result) => {
@@ -33,7 +35,7 @@ router.post('/vender', (req, res) => {
   let { nombre, descripcion, precio, form } = req.body;
   if (precio && nombre && descripcion) {
     if (form == 'producto') {
-      pool.query(
+      myPool.query(
         'INSERT INTO Producto (nombre, precio, disponible, descripcion, id_vendedor) VALUES ($1, $2, true, $3, 2) RETURNING *',
         [nombre, precio, descripcion],
         (error, results) => {
@@ -53,7 +55,7 @@ router.post('/vender', (req, res) => {
         }
       );
     } else {
-      // pool.query(
+      // myPool.query(
       //   "INSERT INTO Producto (nombre, precio, disponible, descripcion, id_vendedor) VALUES ($1, $2, true, $3, 2) RETURNING *",
       //   [nombre, precio, descripcion],
       //   (error, results) => {
@@ -79,7 +81,7 @@ router.post('/new-product', (req, res) => {
   let { precio, disponible, src_img, id_vendedor, descripcion } = req.body;
   precio = precio ? 0 : precio;
   if (disponible && src_img && id_vendedor && descripcion) {
-    pool.query(
+    myPool.query(
       'INSERT INTO Producto (precio, disponible, src_img, id_vendedor, descripcion) VALUES ($1, $2, $3, $4, $5) RETURNING *',
       [precio, disponible, src_img, id_vendedor, descripcion],
       (error, results) => {
@@ -103,7 +105,7 @@ router.post('/new-product', (req, res) => {
 router.post('/registrar-organizaciones', (req, res) => {
   let { nombre, passw, correo, correoA, username, telefono, imagen } = req.body;
   if (nombre && passw && correo && correoA && username && telefono && imagen) {
-    pool.query(
+    myPool.query(
       'INSERT INTO organizacion (id_organizacion, username, password, email, alternative_email, no_telefono, profile_pic, nombre, apellido, linkedin, descripcion, isActive) VALUES (0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
       [
         username,
@@ -136,7 +138,7 @@ router.post('/registrar-organizaciones', (req, res) => {
 
 router.get('/class/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  pool.query('SELECT * FROM Clase WHERE id = $1', [id], (error, results) => {
+  myPool.query('SELECT * FROM Clase WHERE id = $1', [id], (error, results) => {
     if (error)
       res
         .status(500)
@@ -146,7 +148,7 @@ router.get('/class/:id', (req, res) => {
 });
 
 router.get('/class', (req, res) => {
-  pool.query('SELECT * FROM Clase ORDER BY id ASC', (error, results) => {
+  myPool.query('SELECT * FROM Clase ORDER BY id ASC', (error, results) => {
     if (error)
       res.status(500).json({ msg: 'An unexpected error ocurred', error });
     else res.status(200).json(results.rows);
@@ -158,7 +160,7 @@ router.post('/login', (req, res) => {
   if (!email) return res.status(404).json({ msg: 'No se ingreso un usuario' });
   if (!password)
     return res.status(404).json({ msg: 'No se ingreso contraseña' });
-  pool.query(
+  myPool.query(
     'SELECT * FROM Usuario WHERE email = $1',
     [email],
     (err, result) => {
@@ -206,7 +208,7 @@ router.post('/new-report', (req, res) => {
       .status(404)
       .json({ msg: 'No se envio el contenido del mensaje' });
 
-  pool.query(
+  myPool.query(
     'INSERT INTO reporte(detalles, categoria) VALUES ($1, $2)',
     [mensaje, tipo],
     (err, result) => {
@@ -219,7 +221,7 @@ router.post('/new-report', (req, res) => {
 });
 
 router.get('/get-products', (req, res) => {
-  pool.query(
+  myPool.query(
     'SELECT producto.nombre AS title, producto.src_img, producto.descripcion AS description, producto.calificacion AS prod_rate, producto.precio AS price, usuario.username AS name FROM producto INNER JOIN vendedor ON vendedor.id = producto.id_vendedor INNER JOIN usuario ON vendedor.id_usuario = usuario.id',
     (error, results) => {
       if (error)
@@ -233,7 +235,7 @@ router.get('/get-products', (req, res) => {
 
 router.get('/get-tutors', async (req, res) => {
   let response;
-  pool.query(
+  myPool.query(
     'SELECT tutor.id,usuario.username AS name, tutor.calificacion AS calification, tutor.iscertificado AS isVerified, profile_pic AS image, telefono AS tel FROM tutor LEFT JOIN usuario ON tutor.id_usuario = usuario.id',
     (error, results) => {
       if (error)
@@ -247,7 +249,7 @@ router.get('/get-tutors', async (req, res) => {
 
 router.get('/get-tutor-cobro/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  pool.query(
+  myPool.query(
     'SELECT forma_de_cobro FROM rel_cobro_tutor LEFT JOIN cobro ON rel_cobro_tutor.id_cobro = cobro.id WHERE id_tutor = $1 ',
     [id],
     (error, formas_de_cobro_results) => {
@@ -262,7 +264,7 @@ router.get('/get-tutor-cobro/:id', (req, res) => {
 
 router.get('/get-tutor-class/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  pool.query(
+  myPool.query(
     'SELECT clase.nombre, performance FROM tutor_clase LEFT JOIN clase ON tutor_clase.id_clase = clase.id WHERE id_tutor = $1',
     [id],
     (error, clases_results) => {
@@ -277,7 +279,7 @@ router.get('/get-tutor-class/:id', (req, res) => {
 
 router.get('/get-user/:id', (req, res) =>{
   const id = parseInt(req.params.id)
-  pool.query('SELECT * FROM usuario WHERE id = $1;', [id], (err, result) =>{
+  myPool.query('SELECT * FROM usuario WHERE id = $1;', [id], (err, result) =>{
     if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
     if (result.rowCount==0) return res.status(404).json({msg: "Not user related to that id"})
     return res.status(200).json({msg: 'Succesfully found user', user : result.rows[0]})
@@ -286,7 +288,7 @@ router.get('/get-user/:id', (req, res) =>{
 
 router.get('/get-organizacion/:id', (req, res)=>{
   const id = parseInt(req.params.id)
-  pool.query('SELECT * FROM Organizacion WHERE id = $1;', [id], (err, result) =>{
+  myPool.query('SELECT * FROM Organizacion WHERE id = $1;', [id], (err, result) =>{
     if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
     if (result.rowCount==0) return res.status(404).json({msg: "Not Organization related to that id"})
     return res.status(200).json({msg: 'Succesfully found Organization', user : result.rows[0]})
@@ -298,10 +300,10 @@ router.post('/new-organizacion', (req, res) => {
 
   if (!user_name || !id_usuario_lider || !email || !no_telefono )
     return res.status(404).json({ msg: 'Missing fields on request of creation' });
-  pool.query('SELECT * FROM usuario WHERE id = $1;', [id_usuario_lider], (err, result) =>{
+  myPool.query('SELECT * FROM usuario WHERE id = $1;', [id_usuario_lider], (err, result) =>{
       if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
       if (result.rowCount==0) return res.status(404).json({msg: "Not user related to that id"})
-      pool.query(
+      myPool.query(
         'INSERT INTO Organizacion (user_name, id_usuario_lider, email, no_telefono) VALUES ($1, $2, $3, $4);',
         [user_name, id_usuario_lider, email, no_telefono],
         (err, result) => {
@@ -315,20 +317,22 @@ router.post('/new-organizacion', (req, res) => {
 });
 
 //Se llama cada que alguien califica una organizacion
-router.get('/update-rating-organization/:id', (req, res)=>{
+router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
 
   const id = parseInt(req.params.id)
-  const { new_rate } = req.body
+  const new_rate= parseInt(req.params.new_rate)
 
-  if (!new_rate) return res.status(400).json("Missing fields: nueva calificacion")
-  pool.query('SELECT rate, times_rated FROM Organizacion WHERE id_organizacion = $1', [id], 
+  if (!new_rate) return res.status(400).json({msg: "Missing fields: nueva calificacion"})
+
+  if(!(new_rate<=5 && new_rate>=0 )) return res.status(400).json({msg: "Calificacion debe ser de 1 a 5"})
+  myPool.query('SELECT rate, times_rated FROM Organizacion WHERE id_organizacion = $1', [id], 
     (error, result) => {
       if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
       if (result.rowCount == 0) return res.status(400).json({msg: "Bad request: There's no organization related to that id"})
       console.log(result.rows[0].times_rated)
       const new_times_updated = (result.rows[0].times_rated == null || result.rows[0].times_rated == 'NaN')? ((result.rows[0].rate == null || result.rows[0].rate == 'NaN')? 1: 2): parseInt(result.rows[0].times_rated)+1
       const rate_to_set = (result.rows[0].rate == null || result.rows[0].rate == 'NaN') ? new_rate : ((new_times_updated-1)*parseFloat(result.rows[0].rate) + new_rate)/new_times_updated 
-      pool.query('UPDATE Organizacion SET rate = $1, times_rated = $2 WHERE id_organizacion = $3;', [rate_to_set, new_times_updated, id], (error, results) => {
+      myPool.query('UPDATE Organizacion SET rate = $1, times_rated = $2 WHERE id_organizacion = $3;', [rate_to_set, new_times_updated, id], (error, results) => {
         if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
         return res.status(200).json({msg: "Organizaciones actualizadas: "+results.rowCount})
       })    
@@ -338,7 +342,7 @@ router.get('/update-rating-organization/:id', (req, res)=>{
 
 router.post('/finish-venta/:id', (req, res)=>{
   const id = parseInt(req.params.id)
-  pool.query('SELECT * FROM FINISH_VENTA($1)', [id], (error, result) => {
+  myPool.query('SELECT * FROM FINISH_VENTA($1)', [id], (error, result) => {
     if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
     const queryResponse = result.rows[0]
     return res.status(parseInt(queryResponse.httpcode)).json({msg: queryResponse.details})
@@ -347,7 +351,7 @@ router.post('/finish-venta/:id', (req, res)=>{
 
 router.get('/get-position-organization-rated/:id', (req, res)=>{
   const id = req.params.id
-  pool.query('SELECT * FROM vendedor WHERE id_organizacion IS NOT NULL AND calificacion IS NOT NULL ORDER BY calificacion LIMIT 3;',[], (error, results)=>{
+  myPool.query('SELECT * FROM vendedor WHERE id_organizacion IS NOT NULL AND calificacion IS NOT NULL ORDER BY calificacion LIMIT 3;',[], (error, results)=>{
     if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
     let posicion
     for(let i = 0; i < results.rows.length; i++) if (results.rows[i].id == id) posicion = i+1
@@ -358,7 +362,7 @@ router.get('/get-position-organization-rated/:id', (req, res)=>{
 
 router.get('/is-the-fastest-organization/:id', (req, res)=>{
   const id = parseInt(req.params.id)
-  pool.query(
+  myPool.query(
     'SELECT * FROM IS_THE_FASTEST_ORGANIZATION($1)', [id], 
     (error, results) => {
       if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
@@ -372,7 +376,7 @@ router.get('/update-insignias/:id', (req, res)=>{
 
 }) */
 router.put('/update-porcentajes-insignias', (req, res) => {
-  pool.query('CALL calculate_porcentajes_rareza()', [], (err, results) =>{
+  myPool.query('CALL calculate_porcentajes_rareza()', [], (err, results) =>{
     if (err) return res.status(500).json({ msg: 'An error ocurred while making the query', err });  })
     return res.status(200).json({msg: 'Procedure executed correctly'})
 })
@@ -383,7 +387,7 @@ router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
   const id_usuario = parseInt(req.params.id_u);
   const id_organizacion = parseInt(req.params.id_o);
   const rol = req.params.rol
-  pool.query('INSERT INTO Organizacion_Colaborador(id_organizacion, id_usuario, rol) VALUES ($1, $2, $3)', [id_organizacion, id_usuario, rol], 
+  myPool.query('INSERT INTO Organizacion_Colaborador(id_organizacion, id_usuario, rol) VALUES ($1, $2, $3)', [id_organizacion, id_usuario, rol], 
   (error, result) =>{
     if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
     return res.status(200).json({msg: 'Colaborador ligado a organizador correctamente', result})
@@ -393,7 +397,7 @@ router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
 
 router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     const id = parseInt(req.params.id)
-    pool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
+    myPool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
     [id], (error, results) => {
       if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
       if (!results.rowCount) return res.status(200).json({msg: 'No se encontraron colaboradores para dicha organizacion'})
