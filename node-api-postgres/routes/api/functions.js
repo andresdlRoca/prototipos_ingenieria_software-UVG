@@ -274,7 +274,7 @@ router.get('/get-tutor-class/:id', (req, res) => {
     }
   );
 });
-
+//Se llama cada que alguien califica una organizacion
 router.get('/update-rating-organization/:id', (req, res)=>{
 
   const id = parseInt(req.params.id)
@@ -295,11 +295,30 @@ router.get('/update-rating-organization/:id', (req, res)=>{
     }
   )
 })
-/* router.get('/is-the-fastest-organization', (req, res)=>{
 
+router.post('/finish-venta/:id', (req, res)=>{
+  const id = parseInt(req.params.id)
+  pool.query('SELECT * FROM FINISH_VENTA($1)', [id], (error, result) => {
+    if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+    const queryResponse = result.rows[0]
+    return res.status(parseInt(queryResponse.httpcode)).json({msg: queryResponse.details})
+  })
+})
+//
+//router.get('')
+
+router.get('/is-the-fastest-organization/:id', (req, res)=>{
+  const id = parseInt(req.params.id)
+  pool.query(
+    'SELECT * FROM IS_THE_FASTEST_ORGANIZATION($1)', [id], 
+    (error, results) => {
+      if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+      return res.status(200).json(results.rows[0])
+    }
+    )
 })
 
-
+/* 
 router.get('/update-insignias/:id', (req, res)=>{
 
 }) */
