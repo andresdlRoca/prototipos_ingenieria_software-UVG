@@ -274,6 +274,12 @@ router.get('/get-tutor-class/:id', (req, res) => {
     }
   );
 });
+
+router.put('/update-porcentajes-insignias', (req, res) => {
+  pool.query('CALL calculate_porcentajes_rareza()', [], (err, results) =>{
+    if (err) return res.status(500).json({ msg: 'An error ocurred while making the query', err });  })
+    return res.status(200).json({msg: 'Procedure executed correctly'})
+})
 /* 
 
 Protected routes
