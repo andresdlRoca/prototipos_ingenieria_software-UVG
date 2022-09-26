@@ -44,6 +44,7 @@ function App() {
               <NavBar />
               <NewServicio title="Top tutores" />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -54,6 +55,7 @@ function App() {
               <NavBar />
               <NewServicio title="Tutores" />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -73,6 +75,7 @@ function App() {
               <NavBar />
               <NewPaginaPrincipal />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -83,6 +86,7 @@ function App() {
               <NavBar />
               <MiPerfil />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -93,6 +97,7 @@ function App() {
               <NavBar />
               <ReportarProblema />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -103,6 +108,7 @@ function App() {
               <NavBar />
               <BandejaEntrada />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -113,6 +119,7 @@ function App() {
               <NavBar />
               <NewCompra />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -123,6 +130,7 @@ function App() {
               <NavBar />
               <Ajustes />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -133,6 +141,7 @@ function App() {
               <NavBar />
               <Ayuda />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -145,6 +154,7 @@ function App() {
                 <NewVentas title="Top Ventas" />
               </div>
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -155,6 +165,7 @@ function App() {
               <NavBar />
               <NewVentas title="Ventas" />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -166,6 +177,7 @@ function App() {
               <CardsVentas title="Articulos" />
               <FloatingAgregar />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -176,6 +188,7 @@ function App() {
               <NavBar />
               <AgregarProducto title="Articulos" />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -186,6 +199,7 @@ function App() {
               <NavBar />
               <Favorites />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -196,6 +210,7 @@ function App() {
               <NavBar />
               <OpcionesDeVenta />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
@@ -206,11 +221,11 @@ function App() {
               <NavBar />
               <RegistroOrg />
               <NewSideBar />
+              <NewBottomBar />
             </div>
           }
         />
       </Routes>
-      {/* <NewBottomBar /> */}
     </Router>
   );
 }
