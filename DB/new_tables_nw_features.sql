@@ -5,11 +5,15 @@ CREATE TABLE Insignia(
     rareza_en_porcentaje NUMERIC,
     tipo VARCHAR(44), 
     nivel VARCHAR(44), 
-    imagen TEXT 
+    imagen TEXT, 
+    id_organizacion BIGINT, 
+    FOREIGN KEY (id_organizacion) REFERENCES Organizacion(id_organizacion) ON DELETE CASCADE
 );  
 CREATE TABLE Organizacion(
     id_organizacion BIGSERIAL PRIMARY KEY, 
     user_name VARCHAR(100), 
+    rate NUMERIC, 
+    times_rated NUMERIC, 
     id_usuario_lider BIGINT, 
     password TEXT, 
     email VARCHAR(200), 
