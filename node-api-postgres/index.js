@@ -39,4 +39,6 @@ app.use(express.json());
 app.use('/', require('./routes/api/functions'))
 
 
-app.listen(port, () => console.log(`App running on port ${port}.`))
+const server = app.listen(port, () => console.log(`App running on port ${port}.`))
+
+module.exports = {app, server}
