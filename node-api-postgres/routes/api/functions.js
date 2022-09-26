@@ -304,8 +304,17 @@ router.post('/finish-venta/:id', (req, res)=>{
     return res.status(parseInt(queryResponse.httpcode)).json({msg: queryResponse.details})
   })
 })
-//
-//router.get('')
+
+router.get('/get-position-organization-rated/:id', (req, res)=>{
+  const id = req.params.id
+  pool.query('SELECT * FROM vendedor WHERE id_organizacion IS NOT NULL AND calificacion IS NOT NULL ORDER BY calificacion LIMIT 3;',[], (error, results)=>{
+    if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+    let posicion
+    for(let i = 0; i < results.rows.length; i++) if (results.rows[i].id == id) posicion = i+1
+    if (posicion) return res.status(200).json({msg:'La organizacion esta en el top 3', posicion})
+    return res.status(200).json({msg: 'La organizacion no esta en el top 3 o no ingreso el id de un vendedor organizacion'})
+  })
+})
 
 router.get('/is-the-fastest-organization/:id', (req, res)=>{
   const id = parseInt(req.params.id)
