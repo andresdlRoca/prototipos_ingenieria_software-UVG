@@ -35,7 +35,11 @@ const NavBar = () => {
                 </div>
                 <div id="nav-bar-user-info">
                   <Link id="container-nav-bar-profile-pic" to="/profile">
-                    <img src={DefaultImageUser} id="nav-bar-profile-pic" />
+                    <img
+                      src={DefaultImageUser}
+                      id="nav-bar-profile-pic"
+                      alt="logo"
+                    />
                   </Link>
                   {userLogged && <p>userLogged.username</p>}
                   {!userLogged && (

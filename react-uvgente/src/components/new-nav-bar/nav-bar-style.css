@@ -21,9 +21,13 @@
   background-color: #002800;
   padding: 0px 20px;
 }
+#logo-container {
+  width: 10%;
+  margin: 0 5px 0 5px;
+}
 #logo-in-navbar {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
 }
 .new-button {
   display: auto;
@@ -191,5 +195,9 @@
   }
   #nav-bar-searcher-container {
     width: 100%;
+  }
+  #logo-container {
+    margin-bottom: 1%;
+    width: 5%;
   }
 }
