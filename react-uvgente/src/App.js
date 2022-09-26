@@ -19,6 +19,7 @@ import OpcionesDeVenta from './components/opciones_de_venta/OpcionesDeVenta';
 import RegistroOrg from './components/RegistroOrganizacion/RegistroOrg';
 import FloatingAgregar from './components/Mis_Ventas/FloatingAgregar';
 import AgregarProducto from './components/Mis_Ventas/AgregarProducto';
+import MobileNavBar from './components/new-nav-bar/MobileNavBar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -33,6 +34,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <Signup />
             </div>
           }
@@ -42,6 +44,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <NewServicio title="Top tutores" />
               <NewSideBar />
               <NewBottomBar />
@@ -53,6 +56,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <NewServicio title="Tutores" />
               <NewSideBar />
               <NewBottomBar />
@@ -64,6 +68,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <Login />
             </div>
           }
@@ -73,6 +78,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <NewPaginaPrincipal />
               <NewSideBar />
               <NewBottomBar />
@@ -84,6 +90,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <MiPerfil />
               <NewSideBar />
               <NewBottomBar />
@@ -95,6 +102,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <ReportarProblema />
               <NewSideBar />
               <NewBottomBar />
@@ -106,6 +114,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <BandejaEntrada />
               <NewSideBar />
               <NewBottomBar />
@@ -117,6 +126,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <NewCompra />
               <NewSideBar />
               <NewBottomBar />
@@ -128,6 +138,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <Ajustes />
               <NewSideBar />
               <NewBottomBar />
@@ -139,6 +150,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <Ayuda />
               <NewSideBar />
               <NewBottomBar />
@@ -150,6 +162,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <div id="page-main-content">
                 <NewVentas title="Top Ventas" />
               </div>
@@ -163,6 +176,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <NewVentas title="Ventas" />
               <NewSideBar />
               <NewBottomBar />
@@ -174,6 +188,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <CardsVentas title="Articulos" />
               <FloatingAgregar />
               <NewSideBar />
@@ -186,6 +201,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <AgregarProducto title="Articulos" />
               <NewSideBar />
               <NewBottomBar />
@@ -197,6 +213,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <Favorites />
               <NewSideBar />
               <NewBottomBar />
@@ -208,6 +225,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <OpcionesDeVenta />
               <NewSideBar />
               <NewBottomBar />
@@ -219,6 +237,7 @@ function App() {
           element={
             <div className="all-wrapper">
               <NavBar />
+              <MobileNavBar />
               <RegistroOrg />
               <NewSideBar />
               <NewBottomBar />
