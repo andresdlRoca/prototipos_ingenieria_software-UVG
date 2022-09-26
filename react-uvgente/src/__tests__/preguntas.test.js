@@ -9,7 +9,6 @@ import Pregunta6 from '../components/Preguntas/Pregunta6';
 import Pregunta7 from '../components/Preguntas/Pregunta7';
 import Pregunta8 from '../components/Preguntas/Pregunta8';
 import Pregunta9 from '../components/Preguntas/Pregunta9';
-import Pregunta10 from '../components/Preguntas/Pregunta10';
 
 test('renders Pregunta1', () => {
   render(<Pregunta1 />);
@@ -47,6 +46,3 @@ test('renders Pregunta9', () => {
   render(<Pregunta9 />);
 });
 
-test('renders Pregunta10', () => {
-  render(<Pregunta10 />);
-});
