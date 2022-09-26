@@ -314,6 +314,63 @@ router.post('/new-organizacion', (req, res) => {
     })
 });
 
+//Se llama cada que alguien califica una organizacion
+router.get('/update-rating-organization/:id', (req, res)=>{
+
+  const id = parseInt(req.params.id)
+  const { new_rate } = req.body
+
+  if (!new_rate) return res.status(400).json("Missing fields: nueva calificacion")
+  pool.query('SELECT rate, times_rated FROM Organizacion WHERE id_organizacion = $1', [id], 
+    (error, result) => {
+      if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+      if (result.rowCount == 0) return res.status(400).json({msg: "Bad request: There's no organization related to that id"})
+      console.log(result.rows[0].times_rated)
+      const new_times_updated = (result.rows[0].times_rated == null || result.rows[0].times_rated == 'NaN')? ((result.rows[0].rate == null || result.rows[0].rate == 'NaN')? 1: 2): parseInt(result.rows[0].times_rated)+1
+      const rate_to_set = (result.rows[0].rate == null || result.rows[0].rate == 'NaN') ? new_rate : ((new_times_updated-1)*parseFloat(result.rows[0].rate) + new_rate)/new_times_updated 
+      pool.query('UPDATE Organizacion SET rate = $1, times_rated = $2 WHERE id_organizacion = $3;', [rate_to_set, new_times_updated, id], (error, results) => {
+        if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+        return res.status(200).json({msg: "Organizaciones actualizadas: "+results.rowCount})
+      })    
+    }
+  )
+})
+
+router.post('/finish-venta/:id', (req, res)=>{
+  const id = parseInt(req.params.id)
+  pool.query('SELECT * FROM FINISH_VENTA($1)', [id], (error, result) => {
+    if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+    const queryResponse = result.rows[0]
+    return res.status(parseInt(queryResponse.httpcode)).json({msg: queryResponse.details})
+  })
+})
+
+router.get('/get-position-organization-rated/:id', (req, res)=>{
+  const id = req.params.id
+  pool.query('SELECT * FROM vendedor WHERE id_organizacion IS NOT NULL AND calificacion IS NOT NULL ORDER BY calificacion LIMIT 3;',[], (error, results)=>{
+    if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+    let posicion
+    for(let i = 0; i < results.rows.length; i++) if (results.rows[i].id == id) posicion = i+1
+    if (posicion) return res.status(200).json({msg:'La organizacion esta en el top 3', posicion})
+    return res.status(200).json({msg: 'La organizacion no esta en el top 3 o no ingreso el id de un vendedor organizacion'})
+  })
+})
+
+router.get('/is-the-fastest-organization/:id', (req, res)=>{
+  const id = parseInt(req.params.id)
+  pool.query(
+    'SELECT * FROM IS_THE_FASTEST_ORGANIZATION($1)', [id], 
+    (error, results) => {
+      if (error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+      return res.status(200).json(results.rows[0])
+    }
+    )
+})
+
+/* 
+router.get('/update-insignias/:id', (req, res)=>{
+
+}) */
 /* 
 
 Protected routes

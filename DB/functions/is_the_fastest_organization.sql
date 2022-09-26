@@ -1,0 +1,16 @@
+CREATE OR REPLACE FUNCTION IS_THE_FASTEST_ORGANIZATION(
+    id_p BIGINT
+)
+RETURNS TABLE (isAtTheTop BOOLEAN)
+LANGUAGE PLPGSQL    
+AS $$
+DECLARE 
+    id_top BIGINT; 
+    is_it_top BOOLEAN;
+BEGIN 
+    SELECT id INTO id_top FROM Vendedor WHERE id_organizacion IS NOT NULL ORDER BY media_tiempo_venta ASC LIMIT 1;
+    IF (id_top IS NULL) THEN
+    RETURN QUERY SELECT FALSE;
+    ELSE RETURN QUERY SELECT id_top=id_p;
+    END IF; 
+END;$$
