@@ -1,4 +1,3 @@
-
 import { Component } from 'react';
 import './Login_style.css';
 import Swal from 'sweetalert2';
@@ -11,9 +10,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
-const MySwal = withReactContent(Swal);
-
 
 class Login extends Component {
   constructor() {
@@ -55,7 +51,7 @@ class Login extends Component {
         .then((data) => {
           console.log(data);
           if (data.msg === 'Login Succes') {
-            MySwal.fire({
+            Swal.fire({
               icon: 'success',
               title: 'Registro',
               text: data.msg,
@@ -64,7 +60,7 @@ class Login extends Component {
             // eslint-disable-next-line no-restricted-globals
             window.location = '/';
           } else {
-            MySwal.fire({
+            Swal.fire({
               icon: 'warning',
               title: 'Ups...',
               text: data.msg,
@@ -73,7 +69,7 @@ class Login extends Component {
           }
         });
     } else {
-      MySwal.fire({
+      Swal.fire({
         icon: 'warning',
         title: 'Ups...',
         text: 'Parece que olvido llenar todos los campos',
@@ -123,6 +119,7 @@ class Login extends Component {
                   <Form.Control
                     type="password"
                     id="password"
+                    placeholder="Contraseña"
                     value={this.state.password}
                     onChange={this.changePassword}
                   />
@@ -131,24 +128,19 @@ class Login extends Component {
                 <Container>
                   <Button
                     id="Entrada"
+                    data-testid="Entrada"
                     className="mt-2"
                     variant="success"
                     onClick={this.enviar}
                   >
                     Iniciar Sesión
+                    <Link to="/signup">Signup</Link>
+                    <Link to="/registrar-organizaciones">
+                      Registrar organizacion
+                    </Link>
                   </Button>
                   <br />
                   <br />
-                  <Router>
-                    <Routes>
-                      <Route path="/signup" element={<Singup />} />
-                      <br />
-                      <br />
-                      <Link to="/registrar-organizaciones">
-                        Registrar organizacion
-                      </Link>
-                    </Routes>
-                  </Router>
                 </Container>
               </Form>
             </Container>
@@ -158,5 +150,5 @@ class Login extends Component {
     );
   }
 }
-export default Login;
 
+export default Login;
