@@ -1,4 +1,3 @@
-
 import { Component } from 'react';
 import './sign_up_style.css';
 import banner from '../../media/register_banner.png';
@@ -8,9 +7,6 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-
-const MySwal = withReactContent(Swal);
-
 class Singup extends Component {
   constructor() {
     super();
@@ -27,11 +23,6 @@ class Singup extends Component {
     this.enviar = this.enviar.bind(this);
   }
 
-  changeUsername($event) {
-    const newValue = $event.target.value;
-    this.setState({ username: newValue });
-  }
-
   changeEmail($event) {
     const newValue = $event.target.value;
     this.setState({ email: newValue });
@@ -40,6 +31,11 @@ class Singup extends Component {
   changePassword($event) {
     const newValue = $event.target.value;
     this.setState({ password: newValue });
+  }
+
+  changeUsername($event) {
+    const newValue = $event.target.value;
+    this.setState({ username: newValue });
   }
 
   changeText4($event) {
@@ -70,7 +66,7 @@ class Singup extends Component {
         .then((data) => {
           console.log(data);
           if (data.msg === 'El usuario fue registrado correctamente!!') {
-            MySwal.fire({
+            Swal.fire({
               icon: 'success',
               title: 'Registro',
               text: data.msg,
@@ -78,7 +74,7 @@ class Singup extends Component {
             });
             window.location = '/';
           } else {
-            MySwal.fire({
+            Swal.fire({
               icon: 'warning',
               title: 'Usuario ya registrado',
               text: 'Este nombre ya esta usado. Ingrese otro nombre',
@@ -87,7 +83,7 @@ class Singup extends Component {
           }
         });
     } else {
-      MySwal.fire({
+      Swal.fire({
         icon: 'warning',
         title: 'Ups...',
         text: 'Parece que olvido llenar todos los campos',
@@ -125,6 +121,7 @@ class Singup extends Component {
                     <input
                       type="text"
                       id="username"
+                      data-testid="username"
                       className="form-control"
                       value={this.state.username}
                       onChange={this.changeUsername}
@@ -140,6 +137,7 @@ class Singup extends Component {
                     <input
                       type="email"
                       id="email-r"
+                      data-testid="email"
                       className="form-control"
                       value={this.state.email}
                       onChange={this.changeEmail}
@@ -155,6 +153,7 @@ class Singup extends Component {
                     <input
                       type="password"
                       id="password-r"
+                      data-testid="password"
                       className="form-control"
                       value={this.state.password}
                       onChange={this.changePassword}
@@ -170,6 +169,7 @@ class Singup extends Component {
                     <input
                       type="password"
                       id="confirm-password"
+                      data-testid="confirm-password"
                       className="form-control"
                       value={this.state.text4}
                       onChange={this.changeText4}
@@ -192,6 +192,7 @@ class Singup extends Component {
                       type="button"
                       className="btn btn-primary"
                       id="green_bar_tt"
+                      data-testid="Enviar"
                       onClick={this.enviar}
                     >
                       Registrarse
@@ -206,5 +207,5 @@ class Singup extends Component {
     );
   }
 }
-export default Singup;
 
+export default Singup;

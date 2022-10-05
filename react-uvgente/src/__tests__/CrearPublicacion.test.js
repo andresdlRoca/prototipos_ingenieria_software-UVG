@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-import CardVenta from '../components/Crear_publicacion/CardVenta';
+import CardVenta from '../components/Crear_publicacion/NewCards_Ventas';
 import CrearPublicacion from '../components/Crear_publicacion/CrearPublicacion';
 import FloatingAgregar from '../components/Crear_publicacion/FloatingAgregar';
 import Cards_Ventas from '../components/Crear_publicacion/Cards_Ventas';
-import React from "react"
+import { MemoryRouter } from 'react-router-dom';
 
 test('renders the cards de ventas', () => {
   render(<CardVenta />);
@@ -15,7 +15,7 @@ test('renders the crear publicacion page', () => {
 });
 
 test('renders the floating agregar page', () => {
-  render(<FloatingAgregar />);
+  render(<FloatingAgregar />, { wrapper: MemoryRouter });
 });
 
 test('renders the new cards page', () => {
