@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import router from '../../../node-api-postgres/routes/api/functions.js';
 import pool from '../../../node-api-postgres/db-pg-config.js';
+import { MemoryRouter } from 'react-router-dom';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
@@ -25,11 +26,11 @@ beforeEach(() => {
 });
 
 test('renders the Login page', () => {
-  render(<Login />);
+  render(<Login />, { wrapper: MemoryRouter });
 });
 
 test('Change Email', () => {
-  render(<Login />);
+  render(<Login />, { wrapper: MemoryRouter });
   const test = screen.getByPlaceholderText('name@example.com');
   expect(test.value).toBe('');
 
@@ -38,7 +39,7 @@ test('Change Email', () => {
 });
 
 test('Change Password', () => {
-  render(<Login />);
+  render(<Login />, { wrapper: MemoryRouter });
   const test1 = screen.getByPlaceholderText('Contraseña');
   expect(test1.value).toBe('');
 
@@ -47,7 +48,7 @@ test('Change Password', () => {
 });
 
 test('Miss2', () => {
-  render(<Login />);
+  render(<Login />, { wrapper: MemoryRouter });
   const colorButton = screen.getByTestId('Entrada');
   userEvent.type(screen.getByPlaceholderText('Contraseña'), 'roberto');
   expect(screen.getByPlaceholderText('Contraseña').value).toBe('roberto');
@@ -57,7 +58,7 @@ test('Miss2', () => {
 });
 
 test('Miss', () => {
-  render(<Login />);
+  render(<Login />, { wrapper: MemoryRouter });
   const colorButton = screen.getByTestId('Entrada');
   expect(screen.getByPlaceholderText('Contraseña').value).toBe('');
   fireEvent.click(colorButton);
