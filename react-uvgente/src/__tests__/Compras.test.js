@@ -2,11 +2,16 @@ import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import CardCompra from '../components/Compras/CardCompra';
 import NewCompra from '../components/Compras/NewCompra';
+import React from "react"
 
-test('renders the cardcompra page', () => {
-  render(<CardCompra />);
-});
+describe("Renders compras" , ()=> {
+  
+  it('renders the cardcompra page', () => {
+    render(<CardCompra />);
+  });
+  
+  it('renders the new compra page', () => {
+    render(<NewCompra />);
+  });
 
-test('renders the new compra page', () => {
-  render(<NewCompra />);
-});
+})

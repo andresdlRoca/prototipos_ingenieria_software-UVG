@@ -1,5 +1,6 @@
 
 import { Component } from 'react';
+import React from 'react';
 import './Login_style.css';
 import Swal from 'sweetalert2';
 import banner from '../../media/register_banner.png';

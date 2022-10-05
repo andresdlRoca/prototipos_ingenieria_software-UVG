@@ -1,7 +1,12 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import NewPaginaPrincipal from '../components/NewPaginaPrincipal/NewPaginaPrincipal';
+import React from "react"
 
-test('renders the pagina principal', () => {
-  render(<NewPaginaPrincipal />);
-});
+describe("Rendering pagina principal" , ()=> {
+
+  it("renders the landing page", ()=> {
+    render(<NewPaginaPrincipal />);
+  })
+
+})

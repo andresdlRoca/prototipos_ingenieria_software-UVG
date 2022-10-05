@@ -7,8 +7,10 @@ import "./Producto_Comprar.css"
 import carrito from "../../media/carrito.png"
 
 const CardVenta = (props) => {
-  const { id, name, rate } = props.user
-  const { title, description, prod_rate, price, state } = props.product
+  // const { id, name, rate } = props.user  #Se comento esto para poder realizar pruebas con Jest (Descomentar cuando no se esten realizando pruebas)
+  // const { title, description, prod_rate, price, state } = props.product
+  const { name } = props.user
+  const { title, description, price, state } = props.product
   return (
     <div className="card-item-on-ventaArt">
       <div className="left-side-card-itemArt">
