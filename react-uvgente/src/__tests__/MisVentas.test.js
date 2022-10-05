@@ -5,23 +5,28 @@ import CardsVentas from '../components/Mis_Ventas/CardsVentas';
 import EditarProductos from '../components/Mis_Ventas/EditarProducto';
 import FloatingAgregar from '../components/Mis_Ventas/FloatingAgregar';
 import CardVenta from '../components/Mis_Ventas/NewCards_Ventas';
+import React from "react"
 
-test('renders the AgregarProducto page', () => {
-  render(<AgregarProducto />);
-});
+describe("Rendering pagina de ajustes" , ()=> {
 
-test('renders the CardsVentas page', () => {
-  render(<CardsVentas />);
-});
+  it("renders the AgregarProducto page", ()=> {
+    render(<AgregarProducto />);
+  })
 
-test('renders the EditarProducto page', () => {
-  render(<EditarProductos />);
-});
+  it('renders the CardsVentas page', () => {
+    render(<CardsVentas title="Articulos" />);
+  })
+  
+  it('renders the EditarProducto page', () => {
+    render(<EditarProductos />);
+  })
+  
+  it('renders the FlaotingAgregar page', () => {
+    render(<FloatingAgregar />);
+  })
+  
+  it('renders the NewCards_Ventas page', () => {
+    render(<CardVenta />);
+  })
 
-test('renders the FlaotingAgregar page', () => {
-  render(<FloatingAgregar />);
-});
-
-test('renders the NewCards_Ventas page', () => {
-  render(<CardVenta />);
-});
+})

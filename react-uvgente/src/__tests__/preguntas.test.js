@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
+import React from "react"
 import Pregunta1 from '../components/Preguntas/Pregunta1';
 import Pregunta2 from '../components/Preguntas/Pregunta2';
 import Pregunta3 from '../components/Preguntas/Pregunta3';
