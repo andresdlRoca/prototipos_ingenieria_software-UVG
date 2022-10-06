@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const {pool, pool_test} = require('../../db-pg-config');
+const {pool, pool_test} = require('../../pg-conection-local');//require('../../db-pg-config');
 const {NODE_ENV} = process.env
 const express = require('express');
 const router = express.Router();
@@ -14,7 +14,7 @@ router.post('/register', (req, response) => {
   if (!(username && email && password))
     return response
       .status(400)
-      .send('No se han llenado los campos necesarios para el registro');
+      .json({msg: 'No se han llenado los campos necesarios para el registro'});
   bcrypt.hash(password, saltRounds, (err, hash) => {
     if (err) return response.status(500).json({ msg: 'DB error ocurred', err });
     myPool.query(
@@ -24,8 +24,8 @@ router.post('/register', (req, response) => {
         if (error)
           return response
             .status(500)
-            .json({ msg: 'An unexpected error ocurred', error });
-        return response.status(201).json();
+            .json({  msg: "Error on query",  code: error.code ,details: error.details });
+        return response.status(201).json({msg: 'Registro realizado con exito'});
       }
     );
   });
@@ -154,7 +154,9 @@ router.get('/class', (req, res) => {
     else res.status(200).json(results.rows);
   });
 });
+router.post('/create-departamento/:nombre', (req, res)=>{
 
+})
 router.post('/login', (req, res) => {
   let { email, password } = req.body;
   if (!email) return res.status(404).json({ msg: 'No se ingreso un usuario' });
@@ -315,7 +317,11 @@ router.post('/new-organizacion', (req, res) => {
       ); 
     })
 });
+/* 
 
+DONE TESTING
+
+*/
 //Se llama cada que alguien califica una organizacion
 router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
 
@@ -359,7 +365,9 @@ router.get('/get-position-organization-rated/:id', (req, res)=>{
     return res.status(200).json({msg: 'La organizacion no esta en el top 3 o no ingreso el id de un vendedor organizacion'})
   })
 })
-
+/* 
+DONE TESTING
+*/
 router.get('/is-the-fastest-organization/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query(
@@ -394,7 +402,9 @@ router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
   }
   )
 })
-
+/* 
+DONE TESTING
+*/
 router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     const id = parseInt(req.params.id)
     myPool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
@@ -405,34 +415,13 @@ router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     })
 })
   
-
-/* 
-
-Protected routes
-
-*/
-router.get('/main', verifyLoginToken, (req, res) => {
-  jwt.verify(req.token, secretKey, (err, authData) => {
-    if (err) return res.sendStatus(403);
-    return res.status(200).json({ msg: 'Pagina principal', authData });
-  });
-});
-/* 
-FUNCTION
-Token exists in header verifier
-*/
-function verifyLoginToken(req, res, next) {
-  const bearerHeader = req.headers['authorization'];
-
-  if (typeof bearerHeader !== 'undefined') {
-    const bearer = bearerHeader.split(' ');
-    const bearerToken = bearer[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    //Forbidden
-    return res.sendStatus(403);
-  }
-}
+router.put('/delete-user-by-username/:username', (req, res)=>{
+  const username = req.params.username
+  myPool.query('DELETE FROM usuario WHERE username = $1', [username], (error, result)=>{
+    if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+    if (result.rowCount===0) res.status(400).json({msg: 'No existe ningun usuario con ese nombre'})
+    return res.status(200).json({msg: 'Usuarios eliminados', count : result.rowCount })
+  })
+})
 
 module.exports = router;
