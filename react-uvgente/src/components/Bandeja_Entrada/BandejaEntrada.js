@@ -35,7 +35,11 @@ export default function BandejaEntrada() {
             <img src={mail_icon} alt="mailiconinbox" className="inboxIcon" />
           </div>
           <div className="inboxMessages">
-            <div className="Messages" onClick={() => abrirChat('Fulanito')}>
+            <div
+              className="Messages"
+              data-testid="Message2"
+              onClick={() => abrirChat('Fulanito')}
+            >
               <img
                 id="profileImg"
                 src={fulano_pfp}
@@ -51,7 +55,11 @@ export default function BandejaEntrada() {
                 ultricies.{' '}
               </p>
             </div>
-            <div className="Messages" onClick={() => abrirChat('Maria')}>
+            <div
+              className="Messages"
+              data-testid="Message1"
+              onClick={() => abrirChat('Maria')}
+            >
               <img
                 id="profileImg"
                 src={gato_pfp}
