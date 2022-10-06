@@ -13,17 +13,9 @@ import withReactContent from 'sweetalert2-react-content';
 import router from '../../../node-api-postgres/routes/api/functions.js';
 import pool from '../../../node-api-postgres/db-pg-config.js';
 import { MemoryRouter } from 'react-router-dom';
+import fetchMock from 'jest-fetch-mock';
 
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () =>
-      Promise.resolve({ msg: 'Error interno en la busqueda del usuario' }),
-  })
-);
-
-beforeEach(() => {
-  fetch.mockClear();
-});
+fetchMock.enableMocks();
 
 test('renders the Login page', () => {
   render(<Login />, { wrapper: MemoryRouter });
@@ -47,8 +39,42 @@ test('Change Password', () => {
   expect(screen.getByPlaceholderText('Contraseña').value).toBe('rober');
 });
 
+test('Hit', () => {
+  render(<Login />, { wrapper: MemoryRouter });
+  const req = jest.fn(),
+    res = { redirect: jest.fn() },
+    next = jest.fn();
+  global.fetch = jest.fn().mockImplementation(() => {
+    return new Promise((resolve) =>
+      resolve({
+        json: () => {
+          return { msg: 'Login Succes' };
+        },
+      })
+    );
+  });
+  const colorButton = screen.getByTestId('Entrada');
+  userEvent.type(screen.getByPlaceholderText('Contraseña'), 'roberto');
+  expect(screen.getByPlaceholderText('Contraseña').value).toBe('roberto');
+  userEvent.type(screen.getByPlaceholderText('name@example.com'), 'roberto');
+  expect(screen.getByPlaceholderText('name@example.com').value).toBe('roberto');
+  fireEvent.click(colorButton);
+});
+
 test('Miss2', () => {
   render(<Login />, { wrapper: MemoryRouter });
+  const req = jest.fn(),
+    res = { redirect: jest.fn() },
+    next = jest.fn();
+  global.fetch = jest.fn().mockImplementation(() => {
+    return new Promise((resolve) =>
+      resolve({
+        json: () => {
+          return { msg: 'Login Succs' };
+        },
+      })
+    );
+  });
   const colorButton = screen.getByTestId('Entrada');
   userEvent.type(screen.getByPlaceholderText('Contraseña'), 'roberto');
   expect(screen.getByPlaceholderText('Contraseña').value).toBe('roberto');
