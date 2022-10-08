@@ -4,7 +4,6 @@ const {NODE_ENV} = process.env
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const { response } = require('express');
 const secretKey = 'wowMissawow';
 const saltRounds = 10;
 const myPool = (NODE_ENV== 'test ' || NODE_ENV== 'development ')? pool_test: pool
@@ -154,9 +153,11 @@ router.get('/class', (req, res) => {
     else res.status(200).json(results.rows);
   });
 });
+
 router.post('/create-departamento/:nombre', (req, res)=>{
 
 })
+
 router.post('/login', (req, res) => {
   let { email, password } = req.body;
   if (!email) return res.status(404).json({ msg: 'No se ingreso un usuario' });
@@ -317,11 +318,8 @@ router.post('/new-organizacion', (req, res) => {
       ); 
     })
 });
-/* 
 
-DONE TESTING
-
-*/
+//DONE TESTING
 //Se llama cada que alguien califica una organizacion
 router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
 
@@ -365,9 +363,8 @@ router.get('/get-position-organization-rated/:id', (req, res)=>{
     return res.status(200).json({msg: 'La organizacion no esta en el top 3 o no ingreso el id de un vendedor organizacion'})
   })
 })
-/* 
-DONE TESTING
-*/
+ 
+//DONE TESTING
 router.get('/is-the-fastest-organization/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query(
@@ -379,18 +376,12 @@ router.get('/is-the-fastest-organization/:id', (req, res)=>{
     )
 })
 
-/* 
-router.get('/update-insignias/:id', (req, res)=>{
-
-}) */
 router.put('/update-porcentajes-insignias', (req, res) => {
   myPool.query('CALL calculate_porcentajes_rareza()', [], (err, results) =>{
     if (err) return res.status(500).json({ msg: 'An error ocurred while making the query', err });  })
     return res.status(200).json({msg: 'Procedure executed correctly'})
 })
-/* 
-ALTER TABLE Organizacion_Colaborador ADD CONSTRAINT unique_rel_org_colab UNIQUE(id_organizacion, id_usuario)
-*/
+
 router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
   const id_usuario = parseInt(req.params.id_u);
   const id_organizacion = parseInt(req.params.id_o);
@@ -402,9 +393,8 @@ router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
   }
   )
 })
-/* 
-DONE TESTING
-*/
+ 
+// DONE TESTING
 router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     const id = parseInt(req.params.id)
     myPool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
@@ -423,5 +413,34 @@ router.put('/delete-user-by-username/:username', (req, res)=>{
     return res.status(200).json({msg: 'Usuarios eliminados', count : result.rowCount })
   })
 })
+
+router.put('/clean-users-table', (req, res)=>{
+  myPool.query('DELETE FROM usuario;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  })
+})
+
+router.put('/clean-organizacion-table', (req, res)=>{
+  myPool.query('DELETE FROM organizacion;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  })
+})
+
+router.put('/clean-vendedor-table', (req, res)=>{
+  myPool.query('DELETE FROM vendedor;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  })
+})
+
+router.put('/clean-bitacora_ventas-table', (req, res)=>{
+  myPool.query('DELETE FROM bitacora_ventas;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  })
+})
+
 
 module.exports = router;
