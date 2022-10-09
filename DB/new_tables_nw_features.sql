@@ -66,3 +66,6 @@ ADD COLUMN media_tiempo_venta NUMERIC;
 
 ALTER TABLE Venta
 ADD COLUMN ventas_iniciadas NUMERIC; 
+
+ALTER TABLE tutor_clase
+ADD CONSTRAINT unique_relation UNIQUE(id_clase, id_tutor);
