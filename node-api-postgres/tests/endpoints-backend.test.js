@@ -488,6 +488,23 @@ describe('Relate form of payment and tutor', ()=>{
 
 })
 
+describe('Get tutor cobro', ()=>{
+
+    test('Succesfull request', async()=>{
+        const responseCobro = await api.post('/create-form-of-pamyment').send({'forma_de_cobro': 'Tarjeta de credito'}).expect(201)
+        const responseCobro2 = await api.post('/create-form-of-pamyment').send({'forma_de_cobro': 'Tarjeta de credito'}).expect(201)
+        const id_cobro = responseCobro.body.result.id
+        const id_cobro2 = responseCobro2.body.result.id
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseNewTutor = await api.post('/create-tutor/'+id).expect(201)
+        const id_tutor = parseInt(responseNewTutor.body.result.id)
+        await api.post('/relate-form-of-payment-and-tutor').send({ "id_tutor": id_tutor, "id_cobro": id_cobro }).expect(200)
+        await api.post('/relate-form-of-payment-and-tutor').send({ "id_tutor": id_tutor, "id_cobro": id_cobro2 }).expect(200)
+        const response = await api.get('/get-tutor-cobro/'+id_tutor)
+        expect(response.body).toHaveLength(2)
+    })
+})
 
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{

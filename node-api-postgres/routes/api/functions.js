@@ -212,7 +212,7 @@ router.post('/create-form-of-pamyment', (req, res)=>{
     return res.status(201).json({msg: 'Form of payment succesfully created', result: result.rows[0]})
   })
 })
-
+//Tests done
 router.post('/relate-form-of-payment-and-tutor', (req, res)=>{
   const { id_tutor, id_cobro } = req.body
   if (!id_tutor) return res.status(400).json({msg: 'Must include a tutor id'})
@@ -223,6 +223,7 @@ router.post('/relate-form-of-payment-and-tutor', (req, res)=>{
     return res.status(200).json({msg: 'Related correctly', result: result.rows[0]})
   })
 })
+//Test done
 router.get('/get-tutor-cobro/:id', (req, res) => {
   const id = parseInt(req.params.id);
   myPool.query('SELECT forma_de_cobro FROM rel_cobro_tutor LEFT JOIN cobro ON rel_cobro_tutor.id_cobro = cobro.id WHERE id_tutor = $1 ', [id],
