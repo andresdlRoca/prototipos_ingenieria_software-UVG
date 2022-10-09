@@ -610,6 +610,52 @@ describe('Get classes on tutor', ()=>{
         expect(response.body).toHaveLength(2)
     })
 })
+
+describe('Get user by id', ()=>{
+    beforeEach(async()=> await api.put('/clean-users-table'))
+    afterAll(async()=> await api.put('/clean-users-table'))
+    test('Existing id', async()=>{
+        const username = 'new_user'
+        const respNewUser = await api.post('/register').send({'username': username, 'email': 'new_user@email.com', 'password': 'superSecretPassword'}).expect(201)
+        const id_user = respNewUser.body.result.id
+        const response = await api.get('/get-user/'+id_user).expect(200)
+        expect(response.body.msg).toBe('Succesfully found user')
+        expect(response.body.user.username).toBe(username)
+    } )
+
+    test('Unexisting id', async()=>{
+        const response = await api.get('/get-user/1').expect(400)
+        expect(response.body.msg).toBe("Not user related to that id")
+    })
+})
+
+describe('Get organizacion by id', ()=>{
+    beforeEach(async()=> {
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')   
+    })
+    afterAll(async()=> {
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')   
+    })
+
+    test('Existing id', async()=>{
+        const descripcion = "aaaaa"
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseOrganiz = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": descripcion,"no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201) 
+        const id_organizacion = responseOrganiz.body.result.id_organizacion
+        const response = await api.get('/get-organizacion/'+id_organizacion).expect(200)
+        expect(response.body.msg).toBe('Succesfully found Organization')
+        expect(response.body.user.descripcion).toBe(descripcion)
+    } )
+
+    test('Unexisting id', async()=>{
+        const response = await api.get('/get-organizacion/1').expect(400)
+        expect(response.body.msg).toBe("Not Organization related to that id")
+    })
+})
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
