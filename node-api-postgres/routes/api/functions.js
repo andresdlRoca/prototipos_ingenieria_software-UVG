@@ -184,32 +184,51 @@ router.get('/get-products', (req, res) => {
     }
   );
 });
-
-router.get('/get-tutors', async (req, res) => {
-  let response;
+//Tests done
+router.post('/create-tutor/:id', (req, res)=>{
+  const id = parseInt(req.params.id)
+  myPool.query('INSERT INTO tutor (id_usuario) VALUES ($1) RETURNING id;', [id], (error, result)=>{
+    if(error) return res.status(500).json({msg: 'An error ocurred while making the query', error})
+    return res.status(201).json({msg: 'Tutor created succesfully', result: result.rows[0]})
+  })
+})
+//Tests done
+router.get('/get-tutors',  (req, res) => {
   myPool.query(
     'SELECT tutor.id,usuario.username AS name, tutor.calificacion AS calification, tutor.iscertificado AS isVerified, profile_pic AS image, telefono AS tel FROM tutor LEFT JOIN usuario ON tutor.id_usuario = usuario.id',
     (error, results) => {
-      if (error)
-        return res
-          .status(500)
-          .json({ msg: 'An error ocurred while making the query', error });
-      else return res.status(200).json(results.rows);
+      if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      return res.status(200).json(results.rows);
     }
   );
 });
+//Tests done
+router.post('/create-form-of-pamyment', (req, res)=>{
+  const { forma_de_cobro } = req.body
+  if (!forma_de_cobro) return res.status(400).json({msg: 'Missing fields on request'})
+  myPool.query('INSERT INTO cobro (forma_de_cobro) VALUES ($1) RETURNING id', [forma_de_cobro], 
+  (error, result)=>{
+    if(error) res.status(500).json({msg: 'An error ocurred while making the query.'})
+    return res.status(201).json({msg: 'Form of payment succesfully created', result: result.rows[0]})
+  })
+})
 
+router.post('/relate-form-of-payment-and-tutor', (req, res)=>{
+  const { id_tutor, id_cobro } = req.body
+  if (!id_tutor) return res.status(400).json({msg: 'Must include a tutor id'})
+  if (!id_cobro) return res.status(400).json({msg: 'Must include a form of payment id'})
+  myPool.query('INSERT INTO rel_cobro_tutor (id_cobro, id_tutor) VALUES ($1, $2) RETURNING id', [parseInt(id_cobro), parseInt(id_tutor)], 
+  (error, result)=>{
+    if (error) return res.status(500).json({msg: "An error ocurred while making the query.", error})
+    return res.status(200).json({msg: 'Related correctly', result: result.rows[0]})
+  })
+})
 router.get('/get-tutor-cobro/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  myPool.query(
-    'SELECT forma_de_cobro FROM rel_cobro_tutor LEFT JOIN cobro ON rel_cobro_tutor.id_cobro = cobro.id WHERE id_tutor = $1 ',
-    [id],
+  myPool.query('SELECT forma_de_cobro FROM rel_cobro_tutor LEFT JOIN cobro ON rel_cobro_tutor.id_cobro = cobro.id WHERE id_tutor = $1 ', [id],
     (error, formas_de_cobro_results) => {
-      if (error)
-        return res
-          .status(500)
-          .json({ msg: 'An error ocurred while making the query', error });
-      else return res.status(200).json(formas_de_cobro_results.rows);
+      if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      return res.status(200).json(formas_de_cobro_results.rows);
     }
   );
 });
@@ -435,6 +454,27 @@ router.put('/clean-clase', (req, res)=>{
 
 router.put('/clean-reports', (req, res)=>{
   myPool.query('DELETE FROM reporte;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  }) 
+})
+
+router.put('/clean-tutor', (req, res)=>{
+  myPool.query('DELETE FROM tutor;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  }) 
+})
+
+router.put('/clean-cobro', (req, res)=>{
+  myPool.query('DELETE FROM cobro', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  })
+})
+
+router.put('/clean-rel_cobro_tutor', (req, res)=>{
+  myPool.query('DELETE FROM rel_cobro_tutor', [], (error, results)=>{
     if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
