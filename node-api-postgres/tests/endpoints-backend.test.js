@@ -588,6 +588,28 @@ describe('Relate tutor and class', ()=>{
         expect(response.body.result.id).toBeDefined()
     })
 })
+
+describe('Get classes on tutor', ()=>{
+    test('Succesful case', async() => {
+        //Setup tables
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const id_dep = parseInt(responseDepartment.body.result.id)
+        const responseClass = await api.post('/create-class').send({"id_departamento": id_dep,"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(201)
+        const responseClass2 = await api.post('/create-class').send({"id_departamento": id_dep,"nombre": "Matea", "descripcion": "Mates"}).expect(201)
+        const class_id1 = responseClass.body.result.id
+        const class_id2 = responseClass2.body.result.id
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const idNewUser = parseInt(responseNewUser.body.result.id)
+        const responseNewTutor = await api.post('/create-tutor/'+idNewUser).expect(201)
+        const id_tutor = responseNewTutor.body.result.id
+        await api.post('/relate-tutor-and-class').send({ "id_class": class_id1, "id_tutor": id_tutor }).expect(200)
+        await api.post('/relate-tutor-and-class').send({ "id_class": class_id2, "id_tutor": id_tutor }).expect(200)
+        //Actual test
+
+        const response = await api.get('/get-tutor-class/'+id_tutor).expect(200)
+        expect(response.body).toHaveLength(2)
+    })
+})
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
@@ -672,6 +694,57 @@ describe('delete user by name', () =>{
     })
 })
 
-/* describe('Table cleaners', ()=>{
-
-}) */
+describe('Table cleaners', ()=>{
+    test('User table', async()=>{
+        const response = await api.put('/clean-users-table').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Organizacion table', async()=>{
+        const response = await api.put('/clean-organizacion-table').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Vendedor table', async()=>{
+        const response = await api.put('/clean-vendedor-table').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Bitacora ventas table', async()=>{
+        const response = await api.put('/clean-bitacora_ventas-table').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Ventas table', async()=>{
+        const response = await api.put('/clean-ventas').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Producto table', async()=>{
+        const response = await api.put('/clean-producto').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Departamento table', async()=>{
+        const response = await api.put('/clean-departamento').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Clase table', async()=>{
+        const response = await api.put('/clean-clase').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Reportes table', async()=>{
+        const response = await api.put('/clean-reports').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Tutor table', async()=>{
+        const response = await api.put('/clean-tutor').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Cobro table', async()=>{
+        const response = await api.put('/clean-cobro').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Relacion Cobro y tutor table', async()=>{
+        const response = await api.put('/clean-rel_cobro_tutor').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Relacion Tutor y clase table', async()=>{
+        const response = await api.put('/clean-tutor_clase').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+})
