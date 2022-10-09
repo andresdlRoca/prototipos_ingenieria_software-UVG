@@ -38,9 +38,9 @@ describe('Register user', () => {
         const response = await api.post('/register').expect(400)
         expect(response.body.msg).toBe('No se han llenado los campos necesarios para el registro')
     })
- })
+})
 
- describe('New product', () => {
+describe('New product', () => {
     beforeEach(async()=>{
         await api.put('/clean-producto')
         await api.put('/clean-vendedor-table')
@@ -216,11 +216,64 @@ describe('Create class', () => {
 })
 
 describe('Get class by ID', ()=>{
+    beforeEach(async()=> {
+        await api.put('/clean-clase')
+        await api.put('/clean-departamento')
+    })
     afterAll(async()=>{ 
+        await api.put('/clean-clase')
+        await api.put('/clean-departamento')
         server.close()
     })
+
+    test('Get existing class', async()=>{
+        const nombre = "Algoritmos"
+        const descripcion = "Algoritmos y programacion basica para todas las ingenierias."
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        let id = parseInt(responseDepartment.body.result.id)
+        const responseClass = await api.post('/create-class').send({"id_departamento": id,"nombre": nombre, "descripcion": descripcion}).expect(201)
+        id = responseClass.body.result.id
+        const response = await api.get('/class/'+id).expect(200)
+        expect(response.body.class.nombre).toBe(nombre)
+        expect(response.body.class.descripcion).toBe(descripcion)
+        expect(response.body.count).toBe(1)
+    })
+
+    test('Get unexsiting class', async()=>{
+        const response = await api.get('/class/'+12).expect(200)
+        expect(response.body.class).toBe(undefined)    
+        expect(response.body.count).toBe(0)
+    
+    })
+
 })
 
+describe('Get all classes', ()=>{
+    beforeEach(async()=> {
+        await api.put('/clean-clase')
+        await api.put('/clean-departamento')
+    })
+    afterAll(async()=>{ 
+        await api.put('/clean-clase')
+        await api.put('/clean-departamento')
+        server.close()
+    })
+
+    test('Succesful data request', async()=>{
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const id = parseInt(responseDepartment.body.result.id)
+        await api.post('/create-class').send({"id_departamento": id,"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(201)
+        await api.post('/create-class').send({"id_departamento": id,"nombre": "Matematica", "descripcion": "Mate y ya. "}).expect(201)
+        const response = await api.get('/class').expect(200)
+        expect(response.body).toHaveLength(2)    
+    })
+
+    test('Gets no data', async()=>{
+        const response = await api.get('/class').expect(200)
+        expect(response.body).toHaveLength(0)  
+
+    })
+})
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')

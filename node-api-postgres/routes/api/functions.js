@@ -59,7 +59,7 @@ router.post('/registrar-organizaciones', (req, res) => {
   );
   })
 });
-
+//Tests done
 router.post('/create-departamento', (req, res)=>{
   const { nombre, descripcion } = req.body;
   if (!nombre) return res.status(400).json({msg: 'Departamento must have a name'})
@@ -72,7 +72,7 @@ router.post('/create-departamento', (req, res)=>{
   })
 
 })
-
+//Tests done
 router.post('/create-class', (req, res)=>{
   const { nombre, descripcion, id_departamento } = req.body;
   if (!id_departamento) return res.status(400).json({msg: 'Must have the id of the department it belongs'})
@@ -87,15 +87,15 @@ router.post('/create-class', (req, res)=>{
   
 
 })
-
+//Tests done
 router.get('/class/:id', (req, res) => {
   const id = parseInt(req.params.id);
   myPool.query('SELECT * FROM Clase WHERE id = $1', [id], (error, results) => {
     if (error)
       res
         .status(500)
-        .json({ msg: 'An unexpected error ocurred', error: error });
-    else res.status(200).json(results.rows);
+        .json({ msg: 'An unexpected error ocurred', error });
+    else res.status(200).json({class: results.rows[0], count: results.rowCount});
   });
 });
 
