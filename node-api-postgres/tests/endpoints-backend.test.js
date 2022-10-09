@@ -318,6 +318,27 @@ describe('Login', ()=>{
     })
 })
 
+describe('New report', ()=>{
+    beforeAll(async()=> await api.put('/clean-reports'))
+    afterAll(async()=> await api.put('/clean-reports'))
+
+    test('No indica tipo', async()=>{
+        const response = await api.post('/new-report').expect(404)
+        expect(response.body.msg).toBe('No se indico el tipo de mensaje')
+    })
+
+    test('No indica mensaje', async()=>{
+        const response = await api.post('/new-report').send({"tipo": "Reclamo"}).expect(404)
+        expect(response.body.msg).toBe('No se envio el contenido del mensaje')
+    })
+
+    test('Succesful case', async()=>{
+        const response = await api.post('/new-report').send({"tipo": "Reclamo", "mensaje": "El libro estaba dañado"}).expect(200)
+        expect(response.body.rowCount).toBe(1)
+
+    })
+})
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
