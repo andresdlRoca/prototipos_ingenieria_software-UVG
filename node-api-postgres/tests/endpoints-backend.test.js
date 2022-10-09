@@ -1,5 +1,6 @@
 const {app, server} = require('../index')
 const supertest = require('supertest')
+const { parse } = require('pg-protocol')
 const api = supertest(app)
 
 describe('Register user', () => {
@@ -149,6 +150,77 @@ describe('Register organization', ()=>{
     })
 })
 
+describe('Create department', () => { 
+    beforeAll(async () => await api.put('/clean-departamento'))
+    afterAll(async () => await api.put('/clean-departamento'))
+
+    test('Succesfull with description', async()=>{
+        const response = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const body = response.body
+        expect(body.msg).toBe('Departamento creado')
+        expect(body.result).toBeDefined()
+    })
+
+    test('Succesfull WITHOUT description', async()=>{
+        const response = await api.post('/create-departamento').send({"nombre": "Computacion"}).expect(201)
+        const body = response.body
+        expect(body.msg).toBe('Departamento creado sin descripcion')
+        expect(body.result).toBeDefined()
+    })
+
+    test('No name, missing fields', async()=>{
+        const response = await api.post('/create-departamento').expect(400)
+        expect(response.body.msg).toBe('Departamento must have a name')
+  
+    })
+})
+
+describe('Create class', () => {
+    
+    beforeEach(async()=>{
+        await api.put('/clean-clase')
+        await api.put('/clean-departamento')
+    })
+    
+    afterAll(async()=>{
+        await api.put('/clean-clase')
+        await api.put('/clean-departamento')
+    })
+
+    test('Succesful create class', async()=>{
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const id = parseInt(responseDepartment.body.result.id)
+        const response = await api.post('/create-class').send({"id_departamento": id,"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(201)
+        const body = response.body
+        expect(body.msg).toBe('Clase creada')
+        expect(body.result).toBeDefined()
+    })
+
+    test('Misses id_departamento', async()=>{
+        const response = await api.post('/create-class').send({"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(400)
+        expect(response.body.msg).toBe('Must have the id of the department it belongs')
+    })
+
+    test('Misses name', async()=>{
+        const response = await api.post('/create-class').send({"id_departamento": 100, "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(400)
+        expect(response.body.msg).toBe('Must have a name')
+    })
+
+    test('Wrong id departamento', async()=>{
+        const response = await api.post('/create-class').send({"nombre": "Algoritmos","id_departamento": 100, "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(500)
+        expect(response.body.msg).toBe('An error occured while making the query')
+        const error = response.body.error
+        expect(error.code).toBe('23503')
+        expect(error.detail).toBe('La llave (id_departamento)=(100) no está presente en la tabla «departamento».')
+    })
+})
+
+describe('Get class by ID', ()=>{
+    afterAll(async()=>{ 
+        server.close()
+    })
+})
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
@@ -210,12 +282,6 @@ describe('Update rate organization', () => {
     test('Actualiza organizacion correcta y calificacion correcta', async () =>{
         const response = await api.get('/update-rating-organization/1/5').expect(200).expect('Content-Type', /\application\/json/)
         expect(response.body.msg).toBe("Organizaciones actualizadas: 1")
-    })
-})
-
-describe('get all classes', ()=>{
-    afterAll(async()=>{ 
-        server.close()
     })
 })
 
