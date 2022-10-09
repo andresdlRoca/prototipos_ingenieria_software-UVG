@@ -339,6 +339,28 @@ describe('New report', ()=>{
     })
 })
 
+describe('Get all products', ()=>{
+    afterAll(async()=> {
+        await api.put('/clean-producto')
+        await api.put('/clean-vendedor-table')
+        await api.put('/clean-organizacion-table')      
+        await api.put('/clean-users-table')   
+    })
+    test('Succesfull case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
+        id = parseInt(responseNewVendedor.body.result.id)
+        
+        await api.post('/new-product').send({"nombre": "Goma", "precio": 2, "disponible": true, "id_vendedor": id, "descripcion": "Pues para pegar" }).expect(201)
+        await api.post('/new-product').send({"nombre": "Tijeras", "precio": 5, "disponible": true, "id_vendedor": id, "descripcion": "Pues para pegar" }).expect(201)
+        
+        const response = await api.get('/get-products').expect(200)
+        const body = response.body
+        expect(body).toHaveLength(2)
+
+    })
+})
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')

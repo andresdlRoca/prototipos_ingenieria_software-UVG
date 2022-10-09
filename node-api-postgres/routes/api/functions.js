@@ -150,7 +150,7 @@ router.post('/login', (req, res) => {
     }
   );
 });
-
+//Tests done
 router.post('/new-report', (req, res) => {
   let { tipo, mensaje } = req.body;
   if (!tipo)
@@ -171,7 +171,7 @@ router.post('/new-report', (req, res) => {
     }
   );
 });
-
+//Tests done
 router.get('/get-products', (req, res) => {
   myPool.query(
     'SELECT producto.nombre AS title, producto.src_img, producto.descripcion AS description, producto.calificacion AS prod_rate, producto.precio AS price, usuario.username AS name FROM producto INNER JOIN vendedor ON vendedor.id = producto.id_vendedor INNER JOIN usuario ON vendedor.id_usuario = usuario.id',
