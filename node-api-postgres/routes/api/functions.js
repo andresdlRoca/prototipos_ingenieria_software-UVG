@@ -42,16 +42,16 @@ router.post('/new-product', (req, res) => {
       return res.status(201).json({ msg: 'El producto fue registrado con exito', result: results.rows[0]})
     });
 });
-
+//Tests done
 router.post('/registrar-organizaciones', (req, res) => {
-  let { username, password, email, descripcion, no_telefono } = req.body;
+  let { username, password, email, descripcion, no_telefono, id_lider } = req.body;
   if (!(username && password && email && descripcion && no_telefono )) 
-  return res.status(404).json({ msg: 'Hubo un error, revise los campos' });
+  return res.status(404).json({ msg: 'Missing fields' });
   bcrypt.hash(password, saltRounds, (err, hash) => {
     if (err) return res.status(500).json({msg: "An unexpected error ocurred while hashing password"})
     myPool.query(
-      'INSERT INTO organizacion (user_name, password, email, no_telefono, descripcion, isActive) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id_organizacion ',
-      [username, hash, email, no_telefono, descripcion, true],
+      'INSERT INTO organizacion (user_name, password, email, no_telefono, descripcion, isActive, id_usuario_lider) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id_organizacion ',
+      [username, hash, email, no_telefono, descripcion, true, id_lider],
       (error, results) => {
         if (error) return res.status(500).json({msg: 'An error occured while making the query',error});
         return res.status(201).json({msg: 'La organizacion registrado con exito', result: results.rows[0]});
