@@ -4,8 +4,8 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import {FloatingLabel} from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { GoReport } from 'react-icons/go';
 
 const MySwal = withReactContent(Swal);
@@ -17,9 +17,10 @@ function ReportarProblema() {
     if (mensaje) {
       axios
         .post('http://localhost:8080/new-report', { tipo, mensaje })
-        .then((res) => {
-          console.log(res.status);
-          if (res.status !== 200) {
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.status);
+          if (data.status !== 200) {
             MySwal.fire({
               icon: 'error',
               title: 'Report',
@@ -53,7 +54,9 @@ function ReportarProblema() {
       <Container className="our_container_style">
         <p className="mt-3">¿En que podemos mejorar?</p>
         <Form.Select id="opciones" name="opciones">
-          <option value="Autenticación">Problema de autenticación</option>
+          <option data-testid="Test" value="Autenticación">
+            Problema de autenticación
+          </option>
           <option value="Usuario">Reportar un usuario</option>
           <option value="Producto">Problemas con un producto</option>
           <option value="Servicio">Problemas con el servicio</option>
@@ -82,7 +85,12 @@ function ReportarProblema() {
         <Button variant="warning" href="/login">
           Cancelar
         </Button>
-        <Button variant="success" id="Enviar" onClick={() => sendReport()}>
+        <Button
+          variant="success"
+          id="Enviar"
+          data-testid="Enviar"
+          onClick={() => sendReport()}
+        >
           Enviar
         </Button>
       </Container>
