@@ -268,7 +268,7 @@ router.get('/get-user/:id', (req, res) =>{
     return res.status(200).json({msg: 'Succesfully found user', user : result.rows[0]})
   })
 })
-
+//Test done
 router.get('/get-organizacion/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query('SELECT * FROM Organizacion WHERE id_organizacion = $1;', [id], (err, result) =>{
@@ -277,27 +277,6 @@ router.get('/get-organizacion/:id', (req, res)=>{
     return res.status(200).json({msg: 'Succesfully found Organization', user : result.rows[0]})
   })
 })
-
-router.post('/new-organizacion', (req, res) => {
-  let { user_name, id_usuario_lider, email, no_telefono } = req.body;
-
-  if (!user_name || !id_usuario_lider || !email || !no_telefono )
-    return res.status(404).json({ msg: 'Missing fields on request of creation' });
-  myPool.query('SELECT * FROM usuario WHERE id = $1;', [id_usuario_lider], (err, result) =>{
-      if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
-      if (result.rowCount==0) return res.status(404).json({msg: "Not user related to that id"})
-      myPool.query(
-        'INSERT INTO Organizacion (user_name, id_usuario_lider, email, no_telefono) VALUES ($1, $2, $3, $4);',
-        [user_name, id_usuario_lider, email, no_telefono],
-        (err, result) => {
-          if (err) return res.status(500).json({ msg: 'Error in query', err });
-          else {
-            return res.status(200).json({"Total insertados": result.rowCount});
-          }
-        }
-      ); 
-    })
-});
 
 router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
 
