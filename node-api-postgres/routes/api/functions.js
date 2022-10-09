@@ -234,6 +234,17 @@ router.get('/get-tutor-cobro/:id', (req, res) => {
   );
 });
 
+router.post('/relate-tutor-and-class', (req, res)=>{
+  const { id_class, id_tutor } = req.body
+  if (!id_class) return res.status(400).json({msg: "Missing id_class"})
+  if (!id_tutor) return res.status(400).json({msg: "Missing id_tutor"})
+  myPool.query('INSERT INTO tutor_clase (id_clase, id_tutor) VALUES ($1, $2) RETURNING id', [id_class, id_tutor], 
+  (error, result)=>{
+    if (error) return res.status(500).json({msg: 'An error ocurred while making the query', error})
+    return res.status(200).json({msg: 'Relation succesfullt created', result: result.rows[0]})
+  })
+})
+
 router.get('/get-tutor-class/:id', (req, res) => {
   const id = parseInt(req.params.id);
   myPool.query(
@@ -476,6 +487,13 @@ router.put('/clean-cobro', (req, res)=>{
 
 router.put('/clean-rel_cobro_tutor', (req, res)=>{
   myPool.query('DELETE FROM rel_cobro_tutor', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  }) 
+})
+
+router.put('/clean-tutor_clase', (req, res)=>{
+  myPool.query('DELETE FROM tutor_clase', [], (error, results)=>{
     if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 

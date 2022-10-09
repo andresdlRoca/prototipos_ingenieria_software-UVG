@@ -506,6 +506,88 @@ describe('Get tutor cobro', ()=>{
     })
 })
 
+describe('Relate tutor and class', ()=>{
+
+    beforeEach(async()=>{
+        await api.put('/clean-tutor_clase')
+        await api.put('/clean-tutor')
+        await api.put('/cleant-cobro')
+        await api.put('/clean-users-table')
+    })
+    
+    afterAll(async()=>{
+        await api.put('/clean-tutor_clase')
+        await api.put('/clean-tutor')
+        await api.put('/cleant-cobro')
+        await api.put('/clean-users-table')
+    })
+
+    test('Missing fields: No id_class', async()=>{
+        const response = await api.post('/relate-tutor-and-class').send({"id_tutor": 1}).expect(400)
+        expect(response.body.msg).toBe("Missing id_class")
+    })
+
+    test('Missing fields: No id_tutor', async()=>{
+        const response = await api.post('/relate-tutor-and-class').send({"id_class": 8}).expect(400)
+        expect(response.body.msg).toBe("Missing id_tutor")
+    })
+
+    test('Wrong id_tutor', async()=>{
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const id_dep = parseInt(responseDepartment.body.result.id)
+        const responseClass = await api.post('/create-class').send({"id_departamento": id_dep,"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(201)
+        const id_class = parseInt(responseClass.body.result.id)
+        const response = await api.post('/relate-tutor-and-class').send({ "id_class": id_class, "id_tutor": 1 }).expect(500)
+        expect(response.body.msg).toBe('An error ocurred while making the query')
+        const error = response.body.error
+        expect(error.detail).toBe('La llave (id_tutor)=(1) no está presente en la tabla «tutor».')
+        expect(error.code).toBe('23503')
+    })
+
+    test('Wrong id_class', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseNewTutor = await api.post('/create-tutor/'+id).expect(201)
+        const id_tutor = responseNewTutor.body.result.id
+        const response = await api.post('/relate-tutor-and-class').send({ "id_class": 1, "id_tutor": id_tutor }).expect(500)
+        expect(response.body.msg).toBe('An error ocurred while making the query')
+        const error = response.body.error
+        expect(error.detail).toBe('La llave (id_clase)=(1) no está presente en la tabla «clase».')
+        expect(error.code).toBe('23503')
+
+    })
+
+    test('Relation already made', async()=>{
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const id_dep = parseInt(responseDepartment.body.result.id)
+        const responseClass = await api.post('/create-class').send({"id_departamento": id_dep,"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(201)
+        const id_class = parseInt(responseClass.body.result.id)
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseNewTutor = await api.post('/create-tutor/'+id).expect(201)
+        const id_tutor = responseNewTutor.body.result.id
+        await api.post('/relate-tutor-and-class').send({ "id_class": id_class, "id_tutor": id_tutor }).expect(200)
+        const response = await api.post('/relate-tutor-and-class').send({ "id_class": id_class, "id_tutor": id_tutor }).expect(500)
+        expect(response.body.msg).toBe('An error ocurred while making the query')
+        const error = response.body.error
+        expect(error.detail).toBe('Ya existe la llave (id_clase, id_tutor)=('+id_class+', '+id_tutor+').')
+        expect(error.code).toBe('23505')
+    })
+
+    test('Succesful case', async()=>{
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const id_dep = parseInt(responseDepartment.body.result.id)
+        const responseClass = await api.post('/create-class').send({"id_departamento": id_dep,"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(201)
+        const id_class = parseInt(responseClass.body.result.id)
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseNewTutor = await api.post('/create-tutor/'+id).expect(201)
+        const id_tutor = responseNewTutor.body.result.id
+        const response = await api.post('/relate-tutor-and-class').send({ "id_class": id_class, "id_tutor": id_tutor }).expect(200)
+        expect(response.body.msg).toBe('Relation succesfullt created')
+        expect(response.body.result.id).toBeDefined()
+    })
+})
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
