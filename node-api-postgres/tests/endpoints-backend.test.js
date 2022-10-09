@@ -39,6 +39,81 @@ describe('Register user', () => {
     })
  })
 
+ describe('New product', () => {
+    beforeEach(async()=>{
+        await api.put('/clean-producto')
+        await api.put('/clean-vendedor-table')
+        await api.put('/clean-users-table')
+        await api.put('/clean-organizacion-table')         
+    })
+    beforeAll(async()=> {
+        await api.put('/clean-vendedor-table')
+        await api.put('/clean-users-table')   
+        await api.put('/clean-organizacion-table')         })
+    
+    afterAll(async()=>{
+        await api.put('/clean-producto')
+        await api.put('/clean-vendedor-table')
+        await api.put('/clean-users-table')   
+        await api.put('/clean-organizacion-table')      
+        server.close()
+    })
+
+    test('Succesful case organization vendedor', async()=>{
+        const responseNewOrganization = await api.post('/registrar-organizaciones').send({"descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewOrganization.body.result.id_organizacion)
+        const responseNewVendedor = await api.post('/create-vendedor-on-organizacion/'+id)
+        id = parseInt(responseNewVendedor.body.result.id)
+
+        const response = await api.post('/new-product').send({"nombre": "Goma", "precio": 2, "disponible": true, "id_vendedor": id, "descripcion": "Pues para pegar" }).expect(201)
+        expect(response.body.msg).toBe('El producto fue registrado con exito')
+        expect(response.body.result).toBeDefined()
+    })
+    test('Succesful case user vendedor', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
+        console.log(responseNewVendedor.body)
+        id = parseInt(responseNewVendedor.body.result.id)
+        
+        const response = await api.post('/new-product').send({"nombre": "Goma", "precio": 2, "disponible": true, "id_vendedor": id, "descripcion": "Pues para pegar" }).expect(201)
+        expect(response.body.msg).toBe('El producto fue registrado con exito')
+        expect(response.body.result).toBeDefined()
+    })
+    
+    test('Succesful case with no price', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
+        id = parseInt(responseNewVendedor.body.result.id)
+        
+        const response = await api.post('/new-product').send({"nombre": "Goma", "disponible": true, "id_vendedor": id, "descripcion": "Pues para pegar" }).expect(201)
+        expect(response.body.msg).toBe('El producto fue registrado con exito')
+        expect(response.body.result).toBeDefined()
+    })
+
+
+    test('Unvalid id_vendedor', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
+        id = parseInt(responseNewVendedor.body.result.id)+1
+        
+        const response = await api.post('/new-product').send({"nombre": "Goma", "disponible": true, "id_vendedor": id, "descripcion": "Pues para pegar" }).expect(500)
+        expect(response.body.error).toBeDefined()
+        const error = response.body.error
+        expect(error.detail).toBe('La llave (id_vendedor)=('+id+') no está presente en la tabla «vendedor».')
+        expect(error.code).toBe('23503')
+    })
+
+    test('Missing fields', async()=>{
+        const response = await api.post('/new-product').expect(404)
+        expect(response.body.msg).toBe('No se completaron campos suficientes')
+    })
+
+
+})
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
