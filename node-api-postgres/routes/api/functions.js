@@ -433,4 +433,11 @@ router.put('/clean-clase', (req, res)=>{
   }) 
 })
 
+router.put('/clean-reports', (req, res)=>{
+  myPool.query('DELETE FROM reporte;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  }) 
+})
+
 module.exports = router;
