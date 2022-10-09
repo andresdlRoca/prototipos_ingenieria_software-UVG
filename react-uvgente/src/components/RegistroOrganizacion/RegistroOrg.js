@@ -83,7 +83,7 @@ function RegistroOrg() {
           <Form.Control
             required
             type="password"
-            placeholder="Departamento"
+            placeholder="password"
             onChange={($event) => {
               setPassw($event.target.value);
             }}
@@ -108,7 +108,7 @@ function RegistroOrg() {
           <Form.Label>Correo alterno</Form.Label>
           <Form.Control
             type="email"
-            placeholder="usuario@uvg.edu.gt"
+            placeholder="usuario2@uvg.edu.gt"
             onChange={($event) => {
               setCorreoA($event.target.value);
             }}
@@ -162,6 +162,7 @@ function RegistroOrg() {
           <Form.Control
             type="file"
             name="imagen"
+            data-testid="Hello"
             onChange={($event) => {
               setImagen($event.target.value);
             }}
@@ -178,7 +179,9 @@ function RegistroOrg() {
             </Button>
           </Col>
           <Col>
-            <Button type="submit">Hecho</Button>
+            <Button data-testid="Hey" type="submit">
+              Hecho
+            </Button>
           </Col>
         </Row>
       </Form>
