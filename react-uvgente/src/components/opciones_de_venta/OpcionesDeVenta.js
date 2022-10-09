@@ -1,7 +1,7 @@
-import OpcionDeVenta from "./opcionDeVenta";
-import { React, useState, useEffect } from "react";
-import ProductoForm from "../productoForm/ProductoForm";
-import ServicioForm from "../productoForm/ServicioForm";
+import OpcionDeVenta from './opcionDeVenta';
+import { React, useState, useEffect } from 'react';
+import ProductoForm from '../productoForm/ProductoForm';
+import ServicioForm from '../productoForm/ServicioForm';
 
 const OpcionesDeVenta = () => {
   const [visible1, setVisible1] = useState(false);
@@ -13,11 +13,13 @@ const OpcionesDeVenta = () => {
         <OpcionDeVenta
           opcion="Producto"
           icono="FaBoxOpen"
+          data-testid="Opcion1"
           handleClick={() => setVisible1(!visible1)}
         />
         <OpcionDeVenta
           opcion="Servicio"
           icono="FaChalkboardTeacher"
+          data-testid="Opcion2"
           handleClick={() => setVisible2(!visible2)}
         />
       </div>
