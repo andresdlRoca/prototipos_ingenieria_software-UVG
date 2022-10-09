@@ -259,21 +259,21 @@ router.get('/get-tutor-class/:id', (req, res) => {
     }
   );
 });
-
+//Test done
 router.get('/get-user/:id', (req, res) =>{
   const id = parseInt(req.params.id)
   myPool.query('SELECT * FROM usuario WHERE id = $1;', [id], (err, result) =>{
     if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
-    if (result.rowCount==0) return res.status(404).json({msg: "Not user related to that id"})
+    if (result.rowCount==0) return res.status(400).json({msg: "Not user related to that id"})
     return res.status(200).json({msg: 'Succesfully found user', user : result.rows[0]})
   })
 })
 
 router.get('/get-organizacion/:id', (req, res)=>{
   const id = parseInt(req.params.id)
-  myPool.query('SELECT * FROM Organizacion WHERE id = $1;', [id], (err, result) =>{
+  myPool.query('SELECT * FROM Organizacion WHERE id_organizacion = $1;', [id], (err, result) =>{
     if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
-    if (result.rowCount==0) return res.status(404).json({msg: "Not Organization related to that id"})
+    if (result.rowCount==0) return res.status(400).json({msg: "Not Organization related to that id"})
     return res.status(200).json({msg: 'Succesfully found Organization', user : result.rows[0]})
   })
 })
@@ -409,91 +409,91 @@ router.post('/create-vendedor-on-user/:id', (req, res)=>{
 //Test done
 router.put('/clean-users-table', (req, res)=>{
   myPool.query('DELETE FROM usuario;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 //Test done
 router.put('/clean-organizacion-table', (req, res)=>{
   myPool.query('DELETE FROM organizacion;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 //Test done
 router.put('/clean-vendedor-table', (req, res)=>{
   myPool.query('DELETE FROM vendedor;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 //Test done
 router.put('/clean-bitacora_ventas-table', (req, res)=>{
   myPool.query('DELETE FROM bitacora_ventas;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 //Test done
 router.put('/clean-ventas', (req, res)=>{
   myPool.query('DELETE FROM bitacora_ventas;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 //Test done
 router.put('/clean-producto', (req, res)=>{
   myPool.query('DELETE FROM producto;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
 //Test done
 router.put('/clean-departamento', (req, res)=>{
   myPool.query('DELETE FROM departamento;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
 //Test done
 router.put('/clean-clase', (req, res)=>{
   myPool.query('DELETE FROM clase;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
 //Test done
 router.put('/clean-reports', (req, res)=>{
   myPool.query('DELETE FROM reporte;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
 //Test done
 router.put('/clean-tutor', (req, res)=>{
   myPool.query('DELETE FROM tutor;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
 //Test done
 router.put('/clean-cobro', (req, res)=>{
   myPool.query('DELETE FROM cobro', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 //Test done
 router.put('/clean-rel_cobro_tutor', (req, res)=>{
   myPool.query('DELETE FROM rel_cobro_tutor', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
-    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
 //Test done
 router.put('/clean-tutor_clase', (req, res)=>{
   myPool.query('DELETE FROM tutor_clase', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
