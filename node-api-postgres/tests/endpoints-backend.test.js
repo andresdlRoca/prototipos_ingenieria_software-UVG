@@ -274,6 +274,50 @@ describe('Get all classes', ()=>{
 
     })
 })
+
+describe('Login', ()=>{
+
+    beforeEach(async()=> await api.put('/clean-users-table'))
+    afterAll(async()=> await api.put('/clean-users-table') )
+    
+    test('No ingreso contraseña', async()=>{
+        const response = await api.post('/login').send({"email": 'email@email.com'}).expect(404)
+        expect(response.body.msg).toBe('No se ingreso contraseña')
+    })
+
+    test('No ingreso email', async()=>{
+        const response = await api.post('/login').expect(404)
+        expect(response.body.msg).toBe('No se ingreso un usuario')
+    })
+
+    test('No encontro usuario con email ingresado', async()=>{
+        const response = await api.post('/login').send({"email": 'email@email.com', 'password': 'a'}).expect(401)
+        expect(response.body.msg).toBe('Usuario no encontrado')
+    })
+
+    //test('Email invalido', async())//Aun no se como hacer esto pero es para que de error en la query del get con email
+
+    test('Succesfull', async()=>{
+        const email = 'new_user@email.com'
+        const password = 'superSecretPassword'
+        await api.post('/register').send({'username': 'new_user', 'email': email, 'password': password}).expect(201)
+        const response = await api.post('/login').send({"email": email, 'password': password}).expect(200)
+        const body = response.body
+        expect(body.msg).toBe('Login Succes')
+        expect(body.token).toBeDefined()
+
+    })
+
+    test('Contraseña o usuario incorrecto', async()=>{
+        const email = 'new_user@email.com'
+        const password = 'superSecretPassword'
+        await api.post('/register').send({'username': 'new_user', 'email': email, 'password': password}).expect(201)
+        const response = await api.post('/login').send({"email": email, 'password': 'a'}).expect(401)
+        expect(response.body.msg).toBe('Usuario o Contraseña Incorrecta')
+
+    })
+})
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')

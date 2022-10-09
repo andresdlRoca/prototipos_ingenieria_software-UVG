@@ -98,7 +98,7 @@ router.get('/class/:id', (req, res) => {
     else res.status(200).json({class: results.rows[0], count: results.rowCount});
   });
 });
-
+//Tests done
 router.get('/class', (req, res) => {
   myPool.query('SELECT * FROM Clase ORDER BY id ASC', (error, results) => {
     if (error)
@@ -106,7 +106,7 @@ router.get('/class', (req, res) => {
     else res.status(200).json(results.rows);
   });
 });
-
+//Tests done
 router.post('/login', (req, res) => {
   let { email, password } = req.body;
   if (!email) return res.status(404).json({ msg: 'No se ingreso un usuario' });
@@ -146,7 +146,7 @@ router.post('/login', (req, res) => {
               .status(401)
               .json({ msg: 'Usuario o Contraseña Incorrecta' });
         });
-      } else res.status(401).json({ msg: 'Usuario o Contraseña Incorrecta' });
+      } else res.status(401).json({ msg: 'Usuario no encontrado' });
     }
   );
 });
