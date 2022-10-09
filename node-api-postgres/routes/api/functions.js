@@ -30,28 +30,17 @@ router.post('/register', (req, response) => {
     );
   });
 });
-
+//Tests done
 router.post('/new-product', (req, res) => {
-  let { precio, disponible, src_img, id_vendedor, descripcion } = req.body;
+  let { nombre, precio, disponible, id_vendedor, descripcion } = req.body;
   precio = precio ? 0 : precio;
-  if (disponible && src_img && id_vendedor && descripcion) {
-    myPool.query(
-      'INSERT INTO Producto (precio, disponible, src_img, id_vendedor, descripcion) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [precio, disponible, src_img, id_vendedor, descripcion],
-      (error, results) => {
-        if (error)
-          return res.status(500).json({
-            msg: 'Algo salio mal, no se pudo guardar el producto',
-            error,
-          });
-        return res.status(201).json({
-          msg: 'El producto fue registrado con exito',
-          product_id: results.rows.id,
-        });
-      }
-    );
-  } else
-    return res.status(404).json({ msg: 'No se completaron campos suficientes' });
+  if (!(nombre && disponible && id_vendedor && descripcion)) 
+  return res.status(404).json({ msg: 'No se completaron campos suficientes' });
+  myPool.query('INSERT INTO Producto (nombre, precio, disponible, id_vendedor, descripcion) VALUES ($1, $2, $3, $4, $5) RETURNING id',[nombre, precio, disponible, id_vendedor, descripcion],
+    (error, results) => {
+      if (error) return res.status(500).json({msg: 'An error occured while making the query', error});
+      return res.status(201).json({ msg: 'El producto fue registrado con exito', result: results.rows[0]})
+    });
 });
 
 router.post('/registrar-organizaciones', (req, res) => {
@@ -69,9 +58,6 @@ router.post('/registrar-organizaciones', (req, res) => {
       }
   );
   })
-
-  
-    
 });
 
 router.get('/class/:id', (req, res) => {
@@ -344,7 +330,7 @@ router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     })
 })
   
-router.put('/delete-user-by-username/:username', (req, res)=>{
+router.post('/delete-user-by-username/:username', (req, res)=>{
   const username = req.params.username
   myPool.query('DELETE FROM usuario WHERE username = $1', [username], (error, result)=>{
     if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
@@ -353,19 +339,19 @@ router.put('/delete-user-by-username/:username', (req, res)=>{
   })
 })
 
-router.put('/create-vendedor-on-organizacion/:id', (req, res)=>{
+router.post('/create-vendedor-on-organizacion/:id', (req, res)=>{
   const id = parseInt(req.params.id)
-  myPool.query('INSERT INTO vendedor (id_organizacion) VALUES ($1)', [id], (error, result)=>{
+  myPool.query('INSERT INTO vendedor (id_organizacion) VALUES ($1) RETURNING id', [id], (error, result)=>{
     if (error) return res.status(500).json({msg: "Error durign query", error})
-    return res.status(200).json({msg: 'Vendedor creado exitosamente'})
+    return res.status(200).json({msg: 'Vendedor creado exitosamente', result: result.rows[0]})
   })
 })
 
-router.put('/create-vendedor-on-user/:id', (req, res)=>{
+router.post('/create-vendedor-on-user/:id', (req, res)=>{
   const id = parseInt(req.params.id)
-  myPool.query('INSERT INTO vendedor (id_usuario) VALUES ($1)', [id], (error, result)=>{
+  myPool.query('INSERT INTO vendedor (id_usuario) VALUES ($1) RETURNING id', [id], (error, result)=>{
     if (error) return res.status(500).json({msg: "Error durign query", error})
-    return res.status(200).json({msg: 'Vendedor creado exitosamente'})
+    return res.status(200).json({msg: 'Vendedor creado exitosamente', result: result.rows[0]})
   })
 })
 
@@ -402,6 +388,13 @@ router.put('/clean-ventas', (req, res)=>{
     if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
+})
+
+router.put('/clean-producto', (req, res)=>{
+  myPool.query('DELETE FROM producto;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  }) 
 })
 
 module.exports = router;
