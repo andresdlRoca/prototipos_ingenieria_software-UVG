@@ -1,6 +1,5 @@
 const {app, server} = require('../index')
 const supertest = require('supertest')
-const { parse } = require('pg-protocol')
 const api = supertest(app)
 
 describe('Register user', () => {
@@ -361,6 +360,135 @@ describe('Get all products', ()=>{
 
     })
 })
+
+describe('Create tutor on user', ()=>{
+    
+    beforeEach(async()=>{
+        await api.put('/clean-tutor')
+        await api.put('/clean-users-table')
+    })
+
+    afterAll(async()=>{
+        await api.put('/clean-tutor')
+        await api.put('/clean-users-table')
+    })
+
+    test('Creating over unvalid user id', async()=>{
+        const response = await api.post('/create-tutor/1').expect(500)
+        expect(response.body.msg).toBe('An error ocurred while making the query')
+        const error = response.body.error
+        expect(error.code).toBe('23503')
+        expect(error.detail).toBe('La llave (id_usuario)=(1) no está presente en la tabla «usuario».')
+    })
+
+    test('Created tutor on already registred user', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        await api.post('/create-tutor/'+id).expect(201)
+        const response = await api.post('/create-tutor/'+id).expect(500)
+        expect(response.body.msg).toBe('An error ocurred while making the query')
+        const error = response.body.error
+        expect(error.code).toBe('23505')
+        expect(error.detail).toBe('Ya existe la llave (id_usuario)=('+id+').')
+    })
+
+    test('Succesful case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        const response = await api.post('/create-tutor/'+id).expect(201)
+        const body = response.body
+        expect(body.msg).toBe('Tutor created succesfully')
+        expect(body.result.id).toBeDefined()
+    })
+})
+
+describe('Get all tutors', ()=>{
+    test('Succesful case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        await api.post('/create-tutor/'+id).expect(201)
+        const responseNewUser2 = await api.post('/register').send({'username': 'new_user_1', 'email': 'new_user1@email.com', 'password': 'superSecretPassword'})
+        const id2 = parseInt(responseNewUser2.body.result.id)
+        await api.post('/create-tutor/'+id2).expect(201)
+        const response = await api.get('/get-tutors')
+        expect(response.body).toHaveLength(2)
+        
+    })
+})
+
+describe('Create form of payment', ()=>{
+
+    afterAll(async()=> await api.put('/clean-cobro'))
+    test('Succefull case', async()=>{
+        const response = await api.post('/create-form-of-pamyment').send({'forma_de_cobro': 'Tarjeta de credito'}).expect(201)
+        expect(response.body.msg).toBe('Form of payment succesfully created')
+        expect(response.body.result.id).toBeDefined()
+    })
+    
+})
+
+describe('Relate form of payment and tutor', ()=>{
+    
+    beforeEach(async()=>{
+        await api.put('/clean-rel_cobro_tutor')
+        await api.put('/clean-tutor')
+        await api.put('/cleant-cobro')
+        await api.put('/clean-users-table')
+    })
+    
+    afterAll(async()=>{
+        await api.put('/clean-rel_cobro_tutor')
+        await api.put('/clean-tutor')
+        await api.put('/cleant-cobro')
+        await api.put('/clean-users-table')
+    })
+
+    test('Missing id_tutor', async()=>{
+        const response = await api.post('/relate-form-of-payment-and-tutor').send({ "id_cobro": 1 }).expect(400)
+        expect(response.body.msg).toBe('Must include a tutor id')
+    })
+
+    test('Missing id_cobro', async()=>{
+        const response = await api.post('/relate-form-of-payment-and-tutor').send({ "id_tutor": 1 }).expect(400)
+        expect(response.body.msg).toBe('Must include a form of payment id')
+    })
+
+    test('Wrong id_tutor', async()=>{
+        const responseCobro = await api.post('/create-form-of-pamyment').send({'forma_de_cobro': 'Tarjeta de credito'}).expect(201)
+        const id_cobro = responseCobro.body.result.id
+        const response = await api.post('/relate-form-of-payment-and-tutor').send({ "id_tutor": 1, "id_cobro": id_cobro }).expect(500)
+        const error = response.body.error
+        expect(error.code).toBe('23503')
+        expect(error.detail).toBe('La llave (id_tutor)=(1) no está presente en la tabla «tutor».')
+    })
+
+    test('Wrong id_cobro', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseNewTutor = await api.post('/create-tutor/'+id).expect(201)
+        const id_tutor = parseInt(responseNewTutor.body.result.id)
+        const response = await api.post('/relate-form-of-payment-and-tutor').send({ "id_tutor": id_tutor, "id_cobro": 1 }).expect(500)
+        const error = response.body.error
+        expect(error.code).toBe('23503')
+        expect(error.detail).toBe('La llave (id_cobro)=(1) no está presente en la tabla «cobro».')
+
+    })
+
+    test('Succesful case', async()=>{
+        const responseCobro = await api.post('/create-form-of-pamyment').send({'forma_de_cobro': 'Tarjeta de credito'}).expect(201)
+        const id_cobro = responseCobro.body.result.id
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseNewTutor = await api.post('/create-tutor/'+id).expect(201)
+        const id_tutor = parseInt(responseNewTutor.body.result.id)
+        const response = await api.post('/relate-form-of-payment-and-tutor').send({ "id_tutor": id_tutor, "id_cobro": id_cobro }).expect(200)
+        expect(response.body.msg).toBe('Related correctly')
+        expect(response.body.result.id).toBeDefined()
+    })
+
+})
+
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
@@ -445,3 +573,6 @@ describe('delete user by name', () =>{
     })
 })
 
+/* describe('Table cleaners', ()=>{
+
+}) */
