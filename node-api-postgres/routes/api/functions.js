@@ -60,6 +60,34 @@ router.post('/registrar-organizaciones', (req, res) => {
   })
 });
 
+router.post('/create-departamento', (req, res)=>{
+  const { nombre, descripcion } = req.body;
+  if (!nombre) return res.status(400).json({msg: 'Departamento must have a name'})
+  const query = descripcion ? 'INSERT INTO departamento (nombre, descripcion) VALUES ($1, $2) RETURNING id': 'INSERT INTO departamento (nombre) VALUES ($1) RETURNING id' 
+  const parameters = descripcion ? [nombre, descripcion]: [nombre]
+  const msg  = descripcion ? 'Departamento creado': 'Departamento creado sin descripcion'
+  myPool.query(query, parameters, (error, result)=>{
+    if (error) return res.status(500).json({msg: 'Erro while making query', error})
+    return res.status(201).json({msg, result: result.rows[0]})
+  })
+
+})
+
+router.post('/create-class', (req, res)=>{
+  const { nombre, descripcion, id_departamento } = req.body;
+  if (!id_departamento) return res.status(400).json({msg: 'Must have the id of the department it belongs'})
+  if (!nombre) return res.status(400).json({msg: 'Must have a name'})
+  const query = descripcion ? 'INSERT INTO clase (nombre, descripcion, id_departamento ) VALUES ($1, $2, $3) RETURNING id': 'INSERT INTO clase (nombre, id_departamento) VALUES ($1, $2) RETURNING id' 
+  const parameters = descripcion ? [nombre, descripcion, id_departamento]: [nombre, id_departamento]
+  const msg  = descripcion ? 'Clase creada': 'Clase creado sin descripcion'
+  myPool.query(query, parameters, (error, result) =>{
+    if (error) return res.status(500).json({msg: 'An error occured while making the query', error})
+    return res.status(201).json({msg, result: result.rows[0]})
+  })
+  
+
+})
+
 router.get('/class/:id', (req, res) => {
   const id = parseInt(req.params.id);
   myPool.query('SELECT * FROM Clase WHERE id = $1', [id], (error, results) => {
@@ -78,10 +106,6 @@ router.get('/class', (req, res) => {
     else res.status(200).json(results.rows);
   });
 });
-
-router.post('/create-departamento/:nombre', (req, res)=>{
-
-})
 
 router.post('/login', (req, res) => {
   let { email, password } = req.body;
@@ -244,8 +268,7 @@ router.post('/new-organizacion', (req, res) => {
     })
 });
 
-//DONE TESTING
-//Se llama cada que alguien califica una organizacion
+
 router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
 
   const id = parseInt(req.params.id)
@@ -289,7 +312,6 @@ router.get('/get-position-organization-rated/:id', (req, res)=>{
   })
 })
  
-//DONE TESTING
 router.get('/is-the-fastest-organization/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query(
@@ -357,42 +379,56 @@ router.post('/create-vendedor-on-user/:id', (req, res)=>{
 
 router.put('/clean-users-table', (req, res)=>{
   myPool.query('DELETE FROM usuario;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 
 router.put('/clean-organizacion-table', (req, res)=>{
   myPool.query('DELETE FROM organizacion;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 
 router.put('/clean-vendedor-table', (req, res)=>{
   myPool.query('DELETE FROM vendedor;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 
 router.put('/clean-bitacora_ventas-table', (req, res)=>{
   myPool.query('DELETE FROM bitacora_ventas;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 
 router.put('/clean-ventas', (req, res)=>{
   myPool.query('DELETE FROM bitacora_ventas;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
 })
 
 router.put('/clean-producto', (req, res)=>{
   myPool.query('DELETE FROM producto;', [], (error, results)=>{
-    if(error) return res.status(500).json({msg: 'An error happend while making the query.', code: error.code, details: error.details})
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  }) 
+})
+
+router.put('/clean-departamento', (req, res)=>{
+  myPool.query('DELETE FROM departamento;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  }) 
+})
+
+router.put('/clean-clase', (req, res)=>{
+  myPool.query('DELETE FROM clase;', [], (error, results)=>{
+    if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   }) 
 })
