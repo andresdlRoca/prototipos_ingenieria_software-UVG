@@ -21,9 +21,10 @@ router.post('/register', (req, response) => {
       [username, email, hash],
       (error, result) => {
         if (error)
-          return response
+          {
+            return response
             .status(500)
-            .json({  msg: "Error on query",  code: error.code ,details: error.details });
+            .json({  msg: "Error on query",  error});}
         return response.status(201).json({msg: 'Registro realizado con exito'});
       }
     );
