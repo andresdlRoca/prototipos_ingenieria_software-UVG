@@ -1,4 +1,3 @@
-
 import { Component } from 'react';
 import './Login_style.css';
 import Swal from 'sweetalert2';
@@ -13,7 +12,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const MySwal = withReactContent(Swal);
-
 
 class Login extends Component {
   constructor() {
@@ -159,4 +157,3 @@ class Login extends Component {
   }
 }
 export default Login;
-
