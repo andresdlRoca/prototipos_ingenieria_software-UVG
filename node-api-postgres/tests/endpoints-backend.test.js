@@ -43,25 +43,27 @@ describe('Register user', () => {
     beforeEach(async()=>{
         await api.put('/clean-producto')
         await api.put('/clean-vendedor-table')
-        await api.put('/clean-users-table')
         await api.put('/clean-organizacion-table')         
+        await api.put('/clean-users-table')
     })
     beforeAll(async()=> {
         await api.put('/clean-vendedor-table')
+        await api.put('/clean-organizacion-table')     
         await api.put('/clean-users-table')   
-        await api.put('/clean-organizacion-table')         })
-    
+    })
     afterAll(async()=>{
         await api.put('/clean-producto')
         await api.put('/clean-vendedor-table')
-        await api.put('/clean-users-table')   
         await api.put('/clean-organizacion-table')      
+        await api.put('/clean-users-table')   
         server.close()
     })
 
     test('Succesful case organization vendedor', async()=>{
-        const responseNewOrganization = await api.post('/registrar-organizaciones').send({"descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
-        let id = parseInt(responseNewOrganization.body.result.id_organizacion)
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewOrganization = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        id = parseInt(responseNewOrganization.body.result.id_organizacion)
         const responseNewVendedor = await api.post('/create-vendedor-on-organizacion/'+id)
         id = parseInt(responseNewVendedor.body.result.id)
 
@@ -73,7 +75,6 @@ describe('Register user', () => {
         const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
         let id = parseInt(responseNewUser.body.result.id)
         const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
-        console.log(responseNewVendedor.body)
         id = parseInt(responseNewVendedor.body.result.id)
         
         const response = await api.post('/new-product').send({"nombre": "Goma", "precio": 2, "disponible": true, "id_vendedor": id, "descripcion": "Pues para pegar" }).expect(201)
@@ -112,6 +113,40 @@ describe('Register user', () => {
     })
 
 
+})
+
+describe('Register organization', ()=>{
+    beforeEach(async()=>{
+        await api.put('/clean-organizacion-table')         
+        await api.put('/clean-users-table')
+    })
+    beforeAll(async()=> {
+        await api.put('/clean-organizacion-table')     
+        await api.put('/clean-users-table')   
+    })
+    afterAll(async()=>{
+        await api.put('/clean-organizacion-table')      
+        await api.put('/clean-users-table')   
+        server.close()
+    })
+    test('Succesful case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const response = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201) 
+        
+    })
+    test('Unvalid user leader id', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)+1
+        const response = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(500) 
+        const error = response.body.error
+        expect(error.detail).toBe('La llave (id_usuario_lider)=('+id+') no está presente en la tabla «usuario».')
+        expect(error.code).toBe('23503')
+    })
+    test('Missing fields', async()=>{
+        const response = await api.post('/registrar-organizaciones').expect(404)
+        expect(response.body.msg).toBe('Missing fields')
+    })
 })
 
 describe('Organizacion y colaboradores', () => {
