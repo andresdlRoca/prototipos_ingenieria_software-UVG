@@ -30,6 +30,9 @@
     "supertest": "^6.2.4"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node", 
+    "testPathIgnorePatterns": [
+      "node-api-postgres/node_modules"
+    ]
   }
 }
