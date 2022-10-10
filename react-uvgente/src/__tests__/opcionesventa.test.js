@@ -1,12 +1,18 @@
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import OpcionDeVenta from '../components/opciones_de_venta/opcionDeVenta';
-import React from "react"
+import OpcionesDeVenta from '../components/opciones_de_venta/OpcionesDeVenta';
+import userEvent from '@testing-library/user-event';
 
 test('renders the opcion_de_venta', () => {
   render(<OpcionDeVenta />);
 });
 
 test('renders the opciones_de_venta', () => {
-  render(<OpcionDeVenta />);
+  render(<OpcionesDeVenta />);
+});
+
+test('testoption1', () => {
+  render(<OpcionesDeVenta />);
+  const object1 = screen.getByTestId('Opcion1');
 });
