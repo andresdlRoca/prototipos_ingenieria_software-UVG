@@ -780,6 +780,51 @@ describe('Finish venta', ()=>{
 
 })
 
+describe('Create vendedor on user', ()=>{
+    afterAll(async()=>{
+        await api.put('/clean-vendedor-table')
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')
+    })
+    test('Unvalid id_vendedor', async()=>{
+        const response = await api.post('/create-vendedor-on-user/1').expect(500)
+        expect(response.body.msg).toBe("Error durign query")
+        expect(response.body.error.code).toBe('23503')
+        expect(response.body.error.detail).toBe('La llave (id_usuario)=(1) no está presente en la tabla «usuario».')
+    })
+    test('Succesfull case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const response = await api.post('/create-vendedor-on-user/'+id).expect(200)
+        expect(response.body.msg).toBe('Vendedor creado exitosamente')
+        expect(response.body.result.id).toBeDefined()
+
+    })
+})
+
+describe('Create vendedor on organizacion', ()=>{
+    afterAll(async()=>{
+        await api.put('/clean-vendedor-table')
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')
+    })
+    test('Unvalid id_vendedor', async()=>{
+        const response = await api.post('/create-vendedor-on-organizacion/1').expect(500)
+        expect(response.body.msg).toBe("Error durign query")
+        expect(response.body.error.code).toBe('23503')
+        expect(response.body.error.detail).toBe('La llave (id_organizacion)=(1) no está presente en la tabla «organizacion».')
+    })
+    test('Succesfull case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewOrganization = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        id = parseInt(responseNewOrganization.body.result.id_organizacion)
+        const response = await api.post('/create-vendedor-on-organizacion/'+id)
+        expect(response.body.msg).toBe('Vendedor creado exitosamente')
+        expect(response.body.result.id).toBeDefined()
+
+    })
+})
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')

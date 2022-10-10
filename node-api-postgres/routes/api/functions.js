@@ -91,19 +91,15 @@ router.post('/create-class', (req, res)=>{
 router.get('/class/:id', (req, res) => {
   const id = parseInt(req.params.id);
   myPool.query('SELECT * FROM Clase WHERE id = $1', [id], (error, results) => {
-    if (error)
-      res
-        .status(500)
-        .json({ msg: 'An unexpected error ocurred', error });
-    else res.status(200).json({class: results.rows[0], count: results.rowCount});
+    //if (error) return res.status(500).json({ msg: 'An unexpected error ocurred', error });
+    return res.status(200).json({class: results.rows[0], count: results.rowCount});
   });
 });
 //Tests done
 router.get('/class', (req, res) => {
   myPool.query('SELECT * FROM Clase ORDER BY id ASC', (error, results) => {
-    if (error)
-      res.status(500).json({ msg: 'An unexpected error ocurred', error });
-    else res.status(200).json(results.rows);
+    //if (error) return res.status(500).json({ msg: 'An unexpected error ocurred', error });
+    return res.status(200).json(results.rows);
   });
 });
 //Tests done
@@ -116,20 +112,11 @@ router.post('/login', (req, res) => {
     'SELECT * FROM Usuario WHERE email = $1',
     [email],
     (err, result) => {
-      if (err)
-        return res
-          .status(500)
-          .json({ msg: 'Error interno en la busqueda del usuario' });
+      //if (err) return res.status(500).json({ msg: 'Error interno en la busqueda del usuario' });
       if (result.rows.length) {
         user = result.rows[0];
         bcrypt.compare(password, user.password, (error, same) => {
-          if (err)
-            return res
-              .status(500)
-              .json(
-                'An error ocurred while decripting password. Try later. ',
-                error
-              );
+          //if (error) return res.status(500).json({msg: 'An error ocurred while decripting password. Try later. ',error});
           if (same) {
             psswrd = user.password;
             jwt.sign(
@@ -176,11 +163,8 @@ router.get('/get-products', (req, res) => {
   myPool.query(
     'SELECT producto.nombre AS title, producto.src_img, producto.descripcion AS description, producto.calificacion AS prod_rate, producto.precio AS price, usuario.username AS name FROM producto INNER JOIN vendedor ON vendedor.id = producto.id_vendedor INNER JOIN usuario ON vendedor.id_usuario = usuario.id',
     (error, results) => {
-      if (error)
-        return res
-          .status(500)
-          .json({ msg: 'An error ocurred while making the query', error });
-      else return res.status(200).json(results.rows);
+      //if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      return res.status(200).json(results.rows);
     }
   );
 });
@@ -251,11 +235,8 @@ router.get('/get-tutor-class/:id', (req, res) => {
     'SELECT clase.nombre, performance FROM tutor_clase LEFT JOIN clase ON tutor_clase.id_clase = clase.id WHERE id_tutor = $1',
     [id],
     (error, clases_results) => {
-      if (error)
-        return res
-          .status(500)
-          .json({ msg: 'An error ocurred while making the query', error });
-      else return res.status(200).json(clases_results.rows);
+      //if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      return res.status(200).json(clases_results.rows);
     }
   );
 });
@@ -297,7 +278,7 @@ router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
     }
   )
 })
-
+//Test done
 router.post('/start-venta', (req, res)=>{
   const {id_vendedor, id_producto, id_cliente} = req.body
   if (!id_vendedor) return res.status(400).json({msg: 'Must indicate id_vendedor on body'})
@@ -310,7 +291,7 @@ router.post('/start-venta', (req, res)=>{
   })
 
 })
-
+//Test done
 router.post('/finish-venta/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query('SELECT * FROM FINISH_VENTA($1)', [id], (error, result) => {
@@ -319,7 +300,7 @@ router.post('/finish-venta/:id', (req, res)=>{
     return res.status(parseInt(queryResponse.httpcode)).json({msg: queryResponse.details})
   })
 })
-
+//Pending testing
 router.get('/get-position-organization-rated/:id', (req, res)=>{
   const id = req.params.id
   myPool.query('SELECT * FROM vendedor WHERE id_organizacion IS NOT NULL AND calificacion IS NOT NULL ORDER BY calificacion LIMIT 3;',[], (error, results)=>{
@@ -341,13 +322,13 @@ router.get('/is-the-fastest-organization/:id', (req, res)=>{
     }
     )
 })
-
+//Pending testing
 router.put('/update-porcentajes-insignias', (req, res) => {
   myPool.query('CALL calculate_porcentajes_rareza()', [], (err, results) =>{
     if (err) return res.status(500).json({ msg: 'An error ocurred while making the query', err });  })
     return res.status(200).json({msg: 'Procedure executed correctly'})
 })
-
+//Pending testing
 router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
   const id_usuario = parseInt(req.params.id_u);
   const id_organizacion = parseInt(req.params.id_o);
@@ -360,7 +341,7 @@ router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
   )
 })
  
-// DONE TESTING
+//Pending testing
 router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     const id = parseInt(req.params.id)
     myPool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
@@ -370,7 +351,7 @@ router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
       return res.status(200).json(results.rows)
     })
 })
-
+//Test done
 router.post('/create-vendedor-on-organizacion/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query('INSERT INTO vendedor (id_organizacion) VALUES ($1) RETURNING id', [id], (error, result)=>{
@@ -378,7 +359,7 @@ router.post('/create-vendedor-on-organizacion/:id', (req, res)=>{
     return res.status(200).json({msg: 'Vendedor creado exitosamente', result: result.rows[0]})
   })
 })
-
+//Test done
 router.post('/create-vendedor-on-user/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query('INSERT INTO vendedor (id_usuario) VALUES ($1) RETURNING id', [id], (error, result)=>{
