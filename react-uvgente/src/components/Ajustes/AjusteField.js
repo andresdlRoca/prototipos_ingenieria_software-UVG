@@ -17,7 +17,11 @@ function AjusteField({ content, variable_content }) {
           {variable_content}
         </Container>
 
-        <Container className="editentry" onClick={() => setEntry(content)}>
+        <Container
+          className="editentry"
+          data-testid="EDIT"
+          onClick={() => setEntry(content)}
+        >
           Editar
         </Container>
       </Col>
