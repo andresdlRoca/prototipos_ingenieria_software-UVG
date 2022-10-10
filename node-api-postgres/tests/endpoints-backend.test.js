@@ -703,7 +703,6 @@ describe('Start venta', ()=>{
     })
     test('Missing field: No id_vendedor', async()=>{
         const response = await api.post('/start-venta').expect(400)
-        console.log(response.bo)
         expect(response.body.msg).toBe('Must indicate id_vendedor on body')
     })
     test('Missing field: No id_producto',async()=>{
@@ -714,13 +713,73 @@ describe('Start venta', ()=>{
         const response = await api.post('/start-venta').send({"id_vendedor": 22, "id_producto": 12}).expect(400)
         expect(response.body.msg).toBe('Must indicate id_cliente on body')
     })
-/*     test('Wrong id, failed insert on foreign key')
-    test('Succesfull case') */
+    test('Succesfull case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
+        const id_vendedor = parseInt(responseNewVendedor.body.result.id)
+        const responseProduct = await api.post('/new-product').send({"nombre": "Goma", "precio": 2, "disponible": true, "id_vendedor": id_vendedor, "descripcion": "Pues para pegar" }).expect(201)
+        const id_producto = parseInt(responseProduct.body.result.id)
+        const responseNewUser1 = await api.post('/register').send({'username': 'new_user_1', 'email': 'new_user@email.com', 'password': 'superSecretPassword'})
+        const id_cliente = parseInt(responseNewUser1.body.result.id)
+        const response = await api.post('/start-venta').send({"id_vendedor":id_vendedor,"id_producto": id_producto, "id_cliente": id_cliente})
+        expect(response.body.msg).toBe('Succesfully started venta')
+        expect(response.body.result.id).toBeDefined()
+
+    })
+    test('Wrong id, failed insert on foreign key', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
+        const id_vendedor = parseInt(responseNewVendedor.body.result.id)
+        const responseProduct = await api.post('/new-product').send({"nombre": "Goma", "precio": 2, "disponible": true, "id_vendedor": id_vendedor, "descripcion": "Pues para pegar" }).expect(201)
+        const id_producto = parseInt(responseProduct.body.result.id)
+        const response = await api.post('/start-venta').send({"id_vendedor":id_vendedor,"id_producto": id_producto, "id_cliente": id+1}).expect(500)
+        const body = response.body
+        expect(body.msg).toBe("An error ocurred while making the query")
+        expect(body.error.code).toBe('23503')
+        expect(body.error.detail).toBe('La llave (id_cliente)=('+(id+1)+') no está presente en la tabla «usuario».')           
+    })
 
 })
-/* describe('Finish venta', ()=>{
 
-}) */
+describe('Finish venta', ()=>{
+    beforeEach(async()=>{
+        await api.put('/clean-bitacora_ventas-table')//
+        await api.put('/clean-ventas')//Venta
+        await api.put('/clean-vendedor-table')//Vendedor
+        await api.put('/clean-users-table')//Usuario
+        await api.put('/clean-producto')//Producto
+    })
+    afterAll(async()=>{
+        await api.put('/clean-bitacora_ventas-table')//
+        await api.put('/clean-ventas')//Venta
+        await api.put('/clean-vendedor-table')//Vendedor
+        await api.put('/clean-users-table')//Usuario
+        await api.put('/clean-producto')//Producto
+    })
+    test('Unexisting venta', async()=>{
+        const response = await api.post('/finish-venta/1').expect(400)
+        expect(response.body.msg).toBe("ID de venta no encontrado")
+    })
+    
+    test('Succesful case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewVendedor = await api.post('/create-vendedor-on-user/'+id)
+        const id_vendedor = parseInt(responseNewVendedor.body.result.id)
+        const responseProduct = await api.post('/new-product').send({"nombre": "Goma", "precio": 2, "disponible": true, "id_vendedor": id_vendedor, "descripcion": "Pues para pegar" }).expect(201)
+        const id_producto = parseInt(responseProduct.body.result.id)
+        const responseNewUser1 = await api.post('/register').send({'username': 'new_user_1', 'email': 'new_user@email.com', 'password': 'superSecretPassword'})
+        const id_cliente = parseInt(responseNewUser1.body.result.id)
+        const responseVenta = await api.post('/start-venta').send({"id_vendedor":id_vendedor,"id_producto": id_producto, "id_cliente": id_cliente})
+        const id_venta = parseInt(responseVenta.body.result.id)
+        const response = await api.post('/finish-venta/'+id_venta).expect(200)
+        expect(response.body.msg).toBe("Proceso de finalizacion de venta completado")
+    })
+
+})
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
@@ -761,7 +820,6 @@ describe('Insignias', () => {
     })
         
 })
-
 
 describe('delete user by name', () =>{
     beforeEach(async()=>{
