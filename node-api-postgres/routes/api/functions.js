@@ -15,7 +15,7 @@ router.post('/register', (req, response) => {
       .status(400)
       .json({msg: 'No se han llenado los campos necesarios para el registro'});
   bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) return response.status(500).json({ msg: 'DB error ocurred', err });
+    // if (err) return response.status(500).json({ msg: 'DB error ocurred', err });
     myPool.query(
       'INSERT INTO usuario (username,email, password) VALUES ($1, $2, $3) RETURNING id',
       [username, email, hash],
@@ -48,7 +48,7 @@ router.post('/registrar-organizaciones', (req, res) => {
   if (!(username && password && email && descripcion && no_telefono )) 
   return res.status(404).json({ msg: 'Missing fields' });
   bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) return res.status(500).json({msg: "An unexpected error ocurred while hashing password"})
+    //if (err) return res.status(500).json({msg: "An unexpected error ocurred while hashing password"})
     myPool.query(
       'INSERT INTO organizacion (user_name, password, email, no_telefono, descripcion, isActive, id_usuario_lider) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id_organizacion ',
       [username, hash, email, no_telefono, descripcion, true, id_lider],
@@ -67,7 +67,7 @@ router.post('/create-departamento', (req, res)=>{
   const parameters = descripcion ? [nombre, descripcion]: [nombre]
   const msg  = descripcion ? 'Departamento creado': 'Departamento creado sin descripcion'
   myPool.query(query, parameters, (error, result)=>{
-    if (error) return res.status(500).json({msg: 'Erro while making query', error})
+    //if (error) return res.status(500).json({msg: 'Erro while making query', error})
     return res.status(201).json({msg, result: result.rows[0]})
   })
 
@@ -124,7 +124,7 @@ router.post('/login', (req, res) => {
               secretKey,
               { expiresIn: '2 days' },
               (err, token) => {
-                if (err) return res.status(500).send(err);
+                // if (err) return res.status(500).send(err);
                 return res.status(200).json({ msg: 'Login Succes', token });
               }
             );
@@ -151,10 +151,9 @@ router.post('/new-report', (req, res) => {
     'INSERT INTO reporte(detalles, categoria) VALUES ($1, $2)',
     [mensaje, tipo],
     (err, result) => {
-      if (err) return res.status(500).json({ msg: 'Error in query', err });
-      else {
-        return res.status(200).json(result);
-      }
+      //if (err) return res.status(500).json({ msg: 'Error in query', err });
+      return res.status(200).json(result);
+      
     }
   );
 });
