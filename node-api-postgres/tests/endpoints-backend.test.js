@@ -656,6 +656,71 @@ describe('Get organizacion by id', ()=>{
     })
 })
 
+describe('Update rate organization', () => {
+    afterAll(async()=>{
+        await api.put('/clean-organizacion-table') 
+        server.close()
+        
+    })
+    test('Intenta actualizar a una organizacion inexistente calificaion correcta', async () =>{
+        const response = await api.get('/update-rating-organization/4/4').expect(400).expect('Content-Type', /\application\/json/)
+        expect(response.body.msg).toBe("Bad request: There's no organization related to that id")
+    })
+    test('Actualiza organizacion correcta calificacion erronea', async () =>{
+        const response = await api.get('/update-rating-organization/1/55').expect(400).expect('Content-Type', /\application\/json/)
+        expect(response.body.msg).toBe("Calificacion debe ser de 1 a 5")
+    })
+    test('Actualiza organizacion incorrecta y calificacion incorrecta', async () =>{
+        const response = await api.get('/update-rating-organization/8/55').expect(400).expect('Content-Type', /\application\/json/)
+        expect(response.body.msg).toBe("Calificacion debe ser de 1 a 5")
+    })
+
+    test('Actualiza organizacion correcta y calificacion correcta', async () =>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        let id = parseInt(responseNewUser.body.result.id)
+        const responseNewOrg = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201) 
+        const id_organizacion = responseNewOrg.body.result.id_organizacion
+        const response = await api.get('/update-rating-organization/'+id_organizacion+'/5').expect(200).expect('Content-Type', /\application\/json/)
+        expect(response.body.msg).toBe("Organizaciones actualizadas: 1")
+    })
+
+})
+
+describe('Start venta', ()=>{
+    beforeEach(async()=>{
+        await api.put('/clean-bitacora_ventas-table')//
+        await api.put('/clean-ventas')//Venta
+        await api.put('/clean-vendedor-table')//Vendedor
+        await api.put('/clean-users-table')//Usuario
+        await api.put('/clean-producto')//Producto
+    })
+    afterAll(async()=>{
+        await api.put('/clean-bitacora_ventas-table')//
+        await api.put('/clean-ventas')//Venta
+        await api.put('/clean-vendedor-table')//Vendedor
+        await api.put('/clean-users-table')//Usuario
+        await api.put('/clean-producto')//Producto
+    })
+    test('Missing field: No id_vendedor', async()=>{
+        const response = await api.post('/start-venta').expect(400)
+        console.log(response.bo)
+        expect(response.body.msg).toBe('Must indicate id_vendedor on body')
+    })
+    test('Missing field: No id_producto',async()=>{
+        const response = await api.post('/start-venta').send({"id_vendedor": 1}).expect(400)
+        expect(response.body.msg).toBe('Must indicate id_producto on body')
+    })
+    test('Missing field: No id_cliente', async()=>{
+        const response = await api.post('/start-venta').send({"id_vendedor": 22, "id_producto": 12}).expect(400)
+        expect(response.body.msg).toBe('Must indicate id_cliente on body')
+    })
+/*     test('Wrong id, failed insert on foreign key')
+    test('Succesfull case') */
+
+})
+/* describe('Finish venta', ()=>{
+
+}) */
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
@@ -697,28 +762,6 @@ describe('Insignias', () => {
         
 })
 
-describe('Update rate organization', () => {
-    afterAll(async()=>{ 
-        server.close()
-    })
-    test('Intenta actualizar a una organizacion inexistente calificaion correcta', async () =>{
-        const response = await api.get('/update-rating-organization/4/4').expect(400).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("Bad request: There's no organization related to that id")
-    })
-    test('Actualiza organizacion correcta calificacion erronea', async () =>{
-        const response = await api.get('/update-rating-organization/1/55').expect(400).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("Calificacion debe ser de 1 a 5")
-    })
-    test('Actualiza organizacion incorrecta y calificacion incorrecta', async () =>{
-        const response = await api.get('/update-rating-organization/8/55').expect(400).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("Calificacion debe ser de 1 a 5")
-    })
-
-    test('Actualiza organizacion correcta y calificacion correcta', async () =>{
-        const response = await api.get('/update-rating-organization/1/5').expect(200).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("Organizaciones actualizadas: 1")
-    })
-})
 
 describe('delete user by name', () =>{
     beforeEach(async()=>{

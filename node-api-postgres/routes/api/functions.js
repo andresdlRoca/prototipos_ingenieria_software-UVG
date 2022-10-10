@@ -277,13 +277,11 @@ router.get('/get-organizacion/:id', (req, res)=>{
     return res.status(200).json({msg: 'Succesfully found Organization', user : result.rows[0]})
   })
 })
-
+//Paths pendings
 router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
 
   const id = parseInt(req.params.id)
   const new_rate= parseInt(req.params.new_rate)
-
-  if (!new_rate) return res.status(400).json({msg: "Missing fields: nueva calificacion"})
 
   if(!(new_rate<=5 && new_rate>=0 )) return res.status(400).json({msg: "Calificacion debe ser de 1 a 5"})
   myPool.query('SELECT rate, times_rated FROM Organizacion WHERE id_organizacion = $1', [id], 
@@ -299,6 +297,19 @@ router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
       })    
     }
   )
+})
+
+router.post('/start-venta', (req, res)=>{
+  const {id_vendedor, id_producto, id_cliente} = req.body
+  if (!id_vendedor) return res.status(400).json({msg: 'Must indicate id_vendedor on body'})
+  if (!id_producto) return res.status(400).json({msg: 'Must indicate id_producto on body'})
+  if (!id_cliente) return res.status(400).json({msg: 'Must indicate id_cliente on body'})
+  myPool.query('INSERT INTO venta (id_vendedor, id_producto, id_cliente, fecha_inicio) VALUES ($1, $2, $3, NOW()) RETURNING id;', [id_vendedor, id_producto, id_cliente],
+  (error, result)=>{
+    if(error) return res.status(500).json({msg: "An error ocurred while making the query", error})
+    return res.status(200).json({msg: 'Succesfully started venta', result: result.rows[0]})
+  })
+
 })
 
 router.post('/finish-venta/:id', (req, res)=>{
@@ -359,15 +370,6 @@ router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
       if (!results.rowCount) return res.status(200).json({msg: 'No se encontraron colaboradores para dicha organizacion'})
       return res.status(200).json(results.rows)
     })
-})
-  
-router.post('/delete-user-by-username/:username', (req, res)=>{
-  const username = req.params.username
-  myPool.query('DELETE FROM usuario WHERE username = $1', [username], (error, result)=>{
-    if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
-    if (result.rowCount===0) res.status(400).json({msg: 'No existe ningun usuario con ese nombre'})
-    return res.status(200).json({msg: 'Usuarios eliminados', count : result.rowCount })
-  })
 })
 
 router.post('/create-vendedor-on-organizacion/:id', (req, res)=>{
