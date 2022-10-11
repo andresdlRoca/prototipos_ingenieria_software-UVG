@@ -825,6 +825,7 @@ describe('Create vendedor on organizacion', ()=>{
 
     })
 })
+
 describe('Organizacion y colaboradores', () => {
     beforeAll(async()=>{
         await api.post('/new-organizacion')
