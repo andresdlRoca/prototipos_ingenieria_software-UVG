@@ -176,7 +176,7 @@ router.get('/get-tutors',  (req, res) => {
   myPool.query(
     'SELECT tutor.id,usuario.username AS name, tutor.calificacion AS calification, tutor.iscertificado AS isVerified, profile_pic AS image, telefono AS tel FROM tutor LEFT JOIN usuario ON tutor.id_usuario = usuario.id',
     (error, results) => {
-      if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      //if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
       return res.status(200).json(results.rows);
     }
   );
@@ -187,7 +187,7 @@ router.post('/create-form-of-pamyment', (req, res)=>{
   if (!forma_de_cobro) return res.status(400).json({msg: 'Missing fields on request'})
   myPool.query('INSERT INTO cobro (forma_de_cobro) VALUES ($1) RETURNING id', [forma_de_cobro], 
   (error, result)=>{
-    if(error) res.status(500).json({msg: 'An error ocurred while making the query.'})
+    //if(error) res.status(500).json({msg: 'An error ocurred while making the query.'})
     return res.status(201).json({msg: 'Form of payment succesfully created', result: result.rows[0]})
   })
 })
@@ -207,7 +207,7 @@ router.get('/get-tutor-cobro/:id', (req, res) => {
   const id = parseInt(req.params.id);
   myPool.query('SELECT forma_de_cobro FROM rel_cobro_tutor LEFT JOIN cobro ON rel_cobro_tutor.id_cobro = cobro.id WHERE id_tutor = $1 ', [id],
     (error, formas_de_cobro_results) => {
-      if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      //if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
       return res.status(200).json(formas_de_cobro_results.rows);
     }
   );
@@ -239,7 +239,7 @@ router.get('/get-tutor-class/:id', (req, res) => {
 router.get('/get-user/:id', (req, res) =>{
   const id = parseInt(req.params.id)
   myPool.query('SELECT * FROM usuario WHERE id = $1;', [id], (err, result) =>{
-    if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
+    //if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
     if (result.rowCount==0) return res.status(400).json({msg: "Not user related to that id"})
     return res.status(200).json({msg: 'Succesfully found user', user : result.rows[0]})
   })
@@ -248,27 +248,42 @@ router.get('/get-user/:id', (req, res) =>{
 router.get('/get-organizacion/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query('SELECT * FROM Organizacion WHERE id_organizacion = $1;', [id], (err, result) =>{
-    if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
+    //if (err) return res.status(500).json({msg: 'An error ocurred while making the query', err})
     if (result.rowCount==0) return res.status(400).json({msg: "Not Organization related to that id"})
     return res.status(200).json({msg: 'Succesfully found Organization', user : result.rows[0]})
   })
 })
 //Paths pendings
-router.get('/update-rating-organization/:id/:new_rate', (req, res)=>{
+router.put('/update-rating-organization/:id/:new_rate', (req, res)=>{
 
   const id = parseInt(req.params.id)
   const new_rate= parseInt(req.params.new_rate)
 
-  if(!(new_rate<=5 && new_rate>=0 )) return res.status(400).json({msg: "Calificacion debe ser de 1 a 5"})
+  if (isNaN(id)) return res.status(400).json({msg: 'La id de la organizacion debe ser un numero'})
+  if (isNaN(new_rate)) return res.status(400).json({msg: 'La nueva calificacion debe ser un numero'})
+
+  if(!(new_rate<=5 && new_rate>=0 )) return res.status(400).json({msg: "Calificacion debe ser de 0 a 5"})
+
   myPool.query('SELECT rate, times_rated FROM Organizacion WHERE id_organizacion = $1', [id], 
     (error, result) => {
-      if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+      //if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
       if (result.rowCount == 0) return res.status(400).json({msg: "Bad request: There's no organization related to that id"})
-      const new_times_updated = (result.rows[0].times_rated == null || result.rows[0].times_rated == 'NaN')? ((result.rows[0].rate == null || result.rows[0].rate == 'NaN')? 1: 2): parseInt(result.rows[0].times_rated)+1
-      const rate_to_set = (result.rows[0].rate == null || result.rows[0].rate == 'NaN') ? new_rate : ((new_times_updated-1)*parseFloat(result.rows[0].rate) + new_rate)/new_times_updated 
-      myPool.query('UPDATE Organizacion SET rate = $1, times_rated = $2 WHERE id_organizacion = $3;', [rate_to_set, new_times_updated, id], (error, results) => {
-        if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
-        return res.status(200).json({msg: "Organizaciones actualizadas: "+results.rowCount})
+      let times_rated = result.rows[0].times_rated
+      let rate_to_set = result.rows[0].rate
+
+      if (times_rated == null) 
+      {
+        rate_to_set = new_rate
+        times_rated = 1
+      }
+      else
+      {
+        times_rated++
+        rate_to_set = (rate_to_set*(times_rated-1)+new_rate)/(times_rated)
+      }
+      myPool.query('UPDATE Organizacion SET rate = $1, times_rated = $2 WHERE id_organizacion = $3;', [rate_to_set, times_rated, id], (error, results) => {
+        //if(error) return res.status(500).json({msg: "An error ocurred while making the query", error});
+        return res.status(200).json({msg: "Organizaciones actualizadas: "+results.rowCount, calificacion: rate_to_set})
       })    
     }
   )
@@ -347,7 +362,7 @@ router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     const id = parseInt(req.params.id)
     myPool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
     [id], (error, results) => {
-      if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+      //if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
       if (!results.rowCount) return res.status(200).json({msg: 'No se encontraron colaboradores para dicha organizacion'})
       return res.status(200).json(results.rows)
     })
