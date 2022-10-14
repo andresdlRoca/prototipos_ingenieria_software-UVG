@@ -20,11 +20,7 @@ router.post('/register', (req, response) => {
       'INSERT INTO usuario (username,email, password) VALUES ($1, $2, $3) RETURNING id',
       [username, email, hash],
       (error, result) => {
-        if (error)
-          {
-            return response
-            .status(500)
-            .json({  msg: "Error on query",  error});}
+        if (error) return response.status(500).json({  msg: "Error on query",  error})
         return response.status(201).json({msg: 'Registro realizado con exito', result: result.rows[0]});
       }
     );
@@ -310,7 +306,7 @@ router.get('/get-position-organization-rated/:id', (req, res)=>{
     return res.status(200).json({msg: 'La organizacion no esta en el top 3 o no ingreso el id de un vendedor organizacion'})
   })
 })
- 
+//Pending testing 
 router.get('/is-the-fastest-organization/:id', (req, res)=>{
   const id = parseInt(req.params.id)
   myPool.query(
@@ -327,20 +323,26 @@ router.put('/update-porcentajes-insignias', (req, res) => {
     if (err) return res.status(500).json({ msg: 'An error ocurred while making the query', err });  })
     return res.status(200).json({msg: 'Procedure executed correctly'})
 })
-//Pending testing
-router.get('/ligar-organizacion-colaborador/:id_o/:id_u/:rol', (req, res) => {
+//Test done
+router.post('/ligar-organizacion-colaborador/:id_o/:id_u', (req, res) => {
   const id_usuario = parseInt(req.params.id_u);
   const id_organizacion = parseInt(req.params.id_o);
-  const rol = req.params.rol
-  myPool.query('INSERT INTO Organizacion_Colaborador(id_organizacion, id_usuario, rol) VALUES ($1, $2, $3)', [id_organizacion, id_usuario, rol], 
+  const rol = req.body.rol
+  if (isNaN(id_usuario)) return res.status(400).json({msg: 'El id del usuario debe ser un numero'})
+  if (isNaN(id_organizacion)) return res.status(400).json({msg: 'La id de la organizacion debe ser un numero'})
+  if (rol==null) return res.status(400).json({msg: 'No se indico el rol del nuevo colaborador'})
+  myPool.query('INSERT INTO Organizacion_Colaborador(id_organizacion, id_usuario, rol) VALUES ($1, $2, $3) RETURNING id_relacion_organizacion_colaborador', [id_organizacion, id_usuario, rol], 
   (error, result) =>{
-    if (error) return res.status(500).json({ msg: 'An error ocurred while making the query', error });
-    return res.status(200).json({msg: 'Colaborador ligado a organizador correctamente', result})
+    if (error) {
+      if (error.constraint == 'unique_relation_on_oc') return res.status(400).json({ msg: 'Esta relacion entre este usuario y organizaciones ya existian', error});
+      return res.status(500).json({ msg: 'An error ocurred while making the query', error });
+    }
+    return res.status(200).json({msg: 'Colaborador ligado a organizador correctamente', result: result.rows[0]})
   }
   )
 })
  
-//Pending testing
+//Test done
 router.get('/get-colaboradores-of-organization/:id', (req, res)=>{
     const id = parseInt(req.params.id)
     myPool.query('SELECT usuario.id, usuario.username, usuario.email, usuario.nombre, usuario.apellido, usuario.id_tutor, usuario.id_vendedor, usuario.descripcion FROM Organizacion_Colaborador INNER JOIN usuario ON id_usuario = usuario.id WHERE Organizacion_Colaborador.id_organizacion = $1;',
@@ -376,6 +378,12 @@ router.put('/clean-users-table', (req, res)=>{
 //Test done
 router.put('/clean-organizacion-table', (req, res)=>{
   myPool.query('DELETE FROM organizacion;', [], (error, results)=>{
+    //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
+    return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
+  })
+})
+router.put('/clean-organizacion_colaborador-table', (req, res)=>{
+  myPool.query('DELETE FROM Organizacion_Colaborador;', [], (error, results)=>{
     //if(error) return res.status(500).json({msg: 'An error happend while making the query.', error})
     return res.status(200).json({msg: 'Deletion completed', count: results.rowCount})
   })
