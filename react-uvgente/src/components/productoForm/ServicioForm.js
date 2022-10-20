@@ -63,18 +63,6 @@ const ServicioForm = ({ handleClick }) => {
         <label htmlFor="descripcion_del_Servicio">
           Descripcion del Servicio:
         </label>
-        <input
-          type="text"
-          id="descripcion_del_Servicio"
-          name="descripcion_del_Servicio"
-          minLength="10"
-          maxLength="50"
-          placeholder="Agregue una descripcion"
-          required
-          onChange={($event) => {
-            setDescripcion($event.target.value);
-          }}
-        />
         <label htmlFor="precio_del_Servicio">Precio: (en quetzales)</label>
         <input
           type="number"
