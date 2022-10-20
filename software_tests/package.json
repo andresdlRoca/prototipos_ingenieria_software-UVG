@@ -1,0 +1,14 @@
+{
+  "name": "software_tests",
+  "version": "1.0.0",
+  "description": "test using selenium",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lp-dev",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.5.0"
+  }
+}
