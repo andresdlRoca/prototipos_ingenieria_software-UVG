@@ -1,12 +1,12 @@
 //<div></div>
-import React, { useState } from "react";
-import withReactContent from "sweetalert2-react-content";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 const ServicioForm = ({ handleClick }) => {
   const MySwal = withReactContent(Swal);
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+  const [nombre, setNombre] = useState('');
+  const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState(0.01);
 
   const handleSubmit = ($event) => {
@@ -15,29 +15,29 @@ const ServicioForm = ({ handleClick }) => {
       nombre: nombre,
       descripcion: descripcion,
       precio: precio,
-      form: "servicio",
+      form: 'servicio',
     });
-    fetch("http://localhost:8080/vender", {
-      method: "POST",
-      mode: "cors",
+    fetch('http://localhost:8080/vender', {
+      method: 'POST',
+      mode: 'cors',
       body: product,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      referrerPolicy: "no-referrer",
+      referrerPolicy: 'no-referrer',
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.msg === "El producto fue registrado con exito") {
+        if (data.msg === 'El producto fue registrado con exito') {
           MySwal.fire({
-            icon: "success",
-            title: "Registro",
+            icon: 'success',
+            title: 'Registro',
             text: data.msg,
           });
         } else {
           MySwal.fire({
-            icon: "warning",
-            title: "Ups...",
+            icon: 'warning',
+            title: 'Ups...',
             text: data.msg,
           });
         }
@@ -63,18 +63,6 @@ const ServicioForm = ({ handleClick }) => {
         <label htmlFor="descripcion_del_Servicio">
           Descripcion del Servicio:
         </label>
-        <input
-          type="text"
-          id="descripcion_del_Servicio"
-          name="descripcion_del_Servicio"
-          minLength="10"
-          maxLength="50"
-          placeholder="Agregue una descripcion"
-          required
-          onChange={($event) => {
-            setDescripcion($event.target.value);
-          }}
-        />
         <label htmlFor="precio_del_Servicio">Precio: (en quetzales)</label>
         <input
           type="number"
@@ -100,6 +88,7 @@ const ServicioForm = ({ handleClick }) => {
         <input
           type="text"
           id="descripcion_del_Servicio"
+          data-testid="descripcion_del_Servicio"
           name="descripcion_del_Servicio"
           minLength="10"
           maxLength="20"
@@ -118,6 +107,7 @@ const ServicioForm = ({ handleClick }) => {
           />
           <input
             type="submit"
+            data-testid="submitServicioForm"
             id="submitServicioForm"
             value="Siguiente"
             className="botonPublicar"
