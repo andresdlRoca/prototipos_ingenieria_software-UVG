@@ -74,6 +74,19 @@ const CardsVentas = () => {
         state: '-',
       },
     },
+    {
+      user: {
+        id: 1,
+        name: 'Luis Gomez',
+      },
+      product: {
+        title: 'Servicio 2',
+        description:
+          'Fugiat do reprehenderit elit sit deserunt ad irure anim quis tempor. ',
+        price: 500,
+        state: '-',
+      },
+    },
   ]);
   return (
     <div id="main-container-articulos">
@@ -88,6 +101,10 @@ const CardsVentas = () => {
                 productImage={src}
               />
             );
+          })}
+          {cardsVentasInfo.map((venta) => {
+            let src = venta.user.id === 10 ? libro2 : null;
+            return <CardVenta product={venta.product} user={venta.user} />;
           })}
         </div>
       </div>
