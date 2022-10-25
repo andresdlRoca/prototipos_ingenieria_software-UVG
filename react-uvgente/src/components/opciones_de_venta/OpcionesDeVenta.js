@@ -10,24 +10,38 @@ const OpcionesDeVenta = () => {
   return (
     <div className="opcionesDeVenta">
       <div className="innerOpcionesDeVenta">
-        <OpcionDeVenta
-          opcion="Producto"
-          icono="FaBoxOpen"
+        <div
+          role="button"
           data-testid="Opcion1"
-          handleClick={() => setVisible1(!visible1)}
-        />
-        <OpcionDeVenta
-          opcion="Servicio"
-          icono="FaChalkboardTeacher"
+          onClick={() => setVisible1(!visible1)}
+        >
+          <OpcionDeVenta opcion="Producto" icono="FaBoxOpen" />
+        </div>
+        <div
+          role="button"
           data-testid="Opcion2"
-          handleClick={() => setVisible2(!visible2)}
-        />
+          onClick={() => setVisible2(!visible2)}
+        >
+          <OpcionDeVenta opcion="Servicio" icono="FaChalkboardTeacher" />
+        </div>
       </div>
       {visible1 ? (
-        <ProductoForm handleClick={() => setVisible1(!visible1)} />
+        <div
+          role="button"
+          onClick={() => setVisible1(!visible1)}
+          data-testid="Opcion3"
+        >
+          <ProductoForm />
+        </div>
       ) : null}
       {visible2 ? (
-        <ServicioForm handleClick={() => setVisible2(!visible2)} />
+        <div
+          role="button"
+          onClick={() => setVisible2(!visible2)}
+          data-testid="Opcion4"
+        >
+          <ServicioForm />
+        </div>
       ) : null}
     </div>
   );
