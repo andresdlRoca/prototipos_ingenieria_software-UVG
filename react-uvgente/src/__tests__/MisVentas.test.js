@@ -34,7 +34,7 @@ test('renders the EditarProducto page', () => {
 
 test('renders the FlaotingAgregar page', () => {
   render(<FloatingAgregar />, { wrapper: MemoryRouter });
-  const test1 = screen.getByTestId('Hello');
+  const test1 = screen.getByTestId('floatingagregar-test');
   fireEvent.click(test1);
 });
 
