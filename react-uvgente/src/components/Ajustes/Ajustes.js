@@ -41,10 +41,18 @@ export default function Ajustes() {
       </Container>
 
       <Container className="d-flex justify-content-evenly mt-4 mb-4">
-        <Button variant="warning" onClick={() => deshablilitarCuenta(user)}>
+        <Button
+          variant="warning"
+          data-testid="warning"
+          onClick={() => deshablilitarCuenta(user)}
+        >
           Deshabilitar cuenta
         </Button>
-        <Button variant="danger" onClick={() => eliminarCuenta(user)}>
+        <Button
+          variant="danger"
+          data-testid="danger"
+          onClick={() => eliminarCuenta(user)}
+        >
           Eliminar cuenta
         </Button>
       </Container>

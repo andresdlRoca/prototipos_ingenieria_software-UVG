@@ -6,6 +6,10 @@ import AjusteField from '../components/Ajustes/AjusteField';
 
 test('renders the ajustes page', () => {
   render(<Ajustes />);
+  const test = screen.getByTestId('warning');
+  fireEvent.click(test);
+  const test1 = screen.getByTestId('danger');
+  fireEvent.click(test1);
 });
 
 test('renders the Ajuste Field page', () => {
