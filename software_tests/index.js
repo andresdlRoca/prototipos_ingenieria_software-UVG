@@ -6,7 +6,6 @@ async function example() {
     await driver.findElement(By.name('q')).sendKeys('hola', Key.RETURN);
 
 }
-const startDriver = async () =>{ return await new Builder().forBrowser(Browser.CHROME).build();}
 
 
 example()
