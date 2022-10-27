@@ -42,7 +42,7 @@ const CrearPublicacion = (props) => {
                 <div className='pregunta'>
                     <input type="text" placeholder="Descripcion" className="formInput" onChange={handleChange} name="descripcion"></input>
                 </div>
-                <button type="sumbit" className='buttonSumbit'>Continuar</button>
+                <button type="sumbit" className='buttonSumbit' data-testid="Submit">Continuar</button>
             </form>
         </Fragment>
         
