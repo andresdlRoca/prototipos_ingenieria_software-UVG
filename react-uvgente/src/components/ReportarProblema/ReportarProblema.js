@@ -15,11 +15,18 @@ function ReportarProblema() {
     let mensaje = document.getElementById('message').value;
     let tipo = document.getElementById('opciones').value;
     if (mensaje) {
-      axios
-        .post('http://localhost:8080/new-report', { tipo, mensaje })
+      let message = JSON.stringify({ tipo: tipo, mensaje: mensaje });
+      fetch('http://localhost:8080/new-report', {
+        method: 'POST',
+        mode: 'cors',
+        body: message,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        referrerPolicy: 'no-referrer',
+      })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.status);
           if (data.status !== 200) {
             MySwal.fire({
               icon: 'error',
