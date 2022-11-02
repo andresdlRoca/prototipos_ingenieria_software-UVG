@@ -33,7 +33,7 @@ test('Hit', () => {
     return new Promise((resolve) =>
       resolve({
         json: () => {
-          return { status: 'Login Succes' };
+          return { status: 'a' };
         },
       })
     );
@@ -53,7 +53,7 @@ test('Miss', () => {
     return new Promise((resolve) =>
       resolve({
         json: () => {
-          return { status: '200' };
+          return { status: 200 };
         },
       })
     );
