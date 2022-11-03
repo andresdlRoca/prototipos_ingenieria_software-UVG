@@ -9,6 +9,7 @@
     "start": "SET NODE_ENV=production & nodemon index.js",
     "dev": "SET NODE_ENV=development & nodemon index.js",
     "go": "node index.js",
+    "start:test": "SET NODE_ENV=test & nodemon index.js",
     "coverage": "SET NODE_ENV=test & jest --coverage"
   },
   "keywords": [],
