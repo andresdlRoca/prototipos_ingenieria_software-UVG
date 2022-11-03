@@ -1,5 +1,9 @@
 
 ## Comandos utiles
+### Iniciar test
+```
+npx playwright test
+```
 ### Generacion de codigo automatico
 ```
 npx playwright codegen google.com
