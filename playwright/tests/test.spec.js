@@ -57,6 +57,47 @@ test.describe("Signups",()=>{
     await expect(page.locator('#swal2-html-container')).toHaveText('Parece que olvido llenar todos los campos')
     await page.getByRole('button', { name: 'OK' }).click();
   });
+  test('Failed signup: User email already used', async ({ page }) => {
+    const name = chance.name()
+    const email = chance.email()
+    const password = 'password'
 
+    /**
+     * First signup
+     */
+     await page.getByRole('link', { name: 'Log in' }).click();
+     await expect(page).toHaveURL('http://localhost:3000/login');
+     await page.getByRole('link', { name: 'Signup' }).click();
+     await expect(page).toHaveURL('http://localhost:3000/signup');
+     await page.getByTestId('username').click();
+     await page.getByTestId('username').fill(name);
+     await page.getByTestId('username').press('Tab');
+     await page.getByTestId('email').fill(email);
+     await page.getByTestId('email').press('Tab');
+     await page.getByTestId('password').fill(password);
+     await page.getByTestId('password').press('Tab');
+     await page.getByTestId('confirm-password').fill(password);
+     await page.getByTestId('Enviar').click();
+     await page.waitForURL('http://localhost:3000/')
+     console.log(name)
+    /**
+     * Second signup
+     */
+     await page.getByRole('link', { name: 'Log in' }).click();
+     await expect(page).toHaveURL('http://localhost:3000/login');
+     await page.getByRole('link', { name: 'Signup' }).click();
+     await expect(page).toHaveURL('http://localhost:3000/signup');
+     await page.getByTestId('username').click();
+     await page.getByTestId('username').fill(name);
+     await page.getByTestId('username').press('Tab');
+     await page.getByTestId('email').fill(email);
+     await page.getByTestId('email').press('Tab');
+     await page.getByTestId('password').fill(password);
+     await page.getByTestId('password').press('Tab');
+     await page.getByTestId('confirm-password').fill(password);
+     await page.getByTestId('Enviar').click();
+     await expect(page.locator('h2#swal2-title')).toHaveText('Usuario ya registrado')
+
+  });
 
 })
