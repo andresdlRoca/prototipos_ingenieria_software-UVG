@@ -65,7 +65,7 @@ class Singup extends Component {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          if (data.msg === 'El usuario fue registrado correctamente!!') {
+          if (data.msg === 'Registro realizado con exito') {
             Swal.fire({
               icon: 'success',
               title: 'Registro',
