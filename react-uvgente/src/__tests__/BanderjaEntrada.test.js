@@ -7,6 +7,7 @@ import {
   screen,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 import BandejaEntrada from '../components/Bandeja_Entrada/BandejaEntrada';
 import MensajeUI from '../components/Bandeja_Entrada/BandejaEntrada';
 

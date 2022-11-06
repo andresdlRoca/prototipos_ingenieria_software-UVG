@@ -6,6 +6,7 @@ import CardsVentas from '../components/Mis_Ventas/CardsVentas';
 import EditarProductos from '../components/Mis_Ventas/EditarProducto';
 import FloatingAgregar from '../components/Mis_Ventas/FloatingAgregar';
 import CardVenta from '../components/Mis_Ventas/NewCards_Ventas';
+import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 test('renders the AgregarProducto page', () => {

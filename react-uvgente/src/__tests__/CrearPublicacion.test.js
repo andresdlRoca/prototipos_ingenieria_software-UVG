@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import '@testing-library/jest-dom';
 import CardVenta from '../components/Crear_publicacion/NewCards_Ventas';
 import CrearPublicacion from '../components/Crear_publicacion/CrearPublicacion';
