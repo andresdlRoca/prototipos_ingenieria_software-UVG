@@ -1,107 +1,122 @@
-import React from "react"
-import { FaFilter } from "react-icons/fa"
-import CardServicios from "./CardServicios"
-import "./new-servicio-style.css"
-import cat1 from "../../media/cat_pp.jpg"
-import cat2 from "../../media/cat2.png"
-import cat3 from "../../media/cat3.jpg"
-import cat4 from "../../media/cat4.jpg"
-import cat5 from "../../media/cat5.jpg"
-import cat6 from "../../media/cat6.jpg"
+import React from 'react';
+import { FaFilter } from 'react-icons/fa';
+import CardServicios from './CardServicios';
+import './new-servicio-style.css';
+import cat1 from '../../media/cat_pp.jpg';
+import cat2 from '../../media/cat2.png';
+import cat3 from '../../media/cat3.jpg';
+import cat4 from '../../media/cat4.jpg';
+import cat5 from '../../media/cat5.jpg';
+import cat6 from '../../media/cat6.jpg';
 
 const NewServicio = (props) => {
   const tutores = [
     {
       id: 1,
-      name: "Juan",
+      name: 'Juan',
       carne: 20012,
       calification: 5,
       isVerified: true,
       topPerformance: {
         Matemática: 5,
         Física: 4,
-        "Química G.": 3,
+        'Química G.': 3,
       },
-      cobro: ["Horas Beca"],
+      cobro: ['Horas Beca'],
       image: cat1,
-      tel: "4444-4444",
+      tel: '4444-4444',
     },
     {
       id: 2,
-      name: "MariLuz",
+      name: 'MariLuz',
       carne: 18011,
       calification: 2,
       isVerified: true,
       topPerformance: {
         Matemática: 5,
         Física: 4,
-        "Química G.": 3,
+        'Química G.': 3,
       },
-      cobro: ["Horas Beca"],
+      cobro: ['Horas Beca'],
       image: cat2,
-      tel: "4444-4449",
+      tel: '4444-4449',
     },
     {
       id: 3,
-      name: "Juana",
+      name: 'Juana',
       carne: 20007,
       calification: 4,
       isVerified: false,
       topPerformance: {
         Matemática: 5,
         Física: 4,
-        "Química G.": 3,
+        'Química G.': 3,
       },
-      cobro: ["Horas Beca"],
+      cobro: ['Horas Beca'],
       image: cat3,
-      tel: "4444-4445",
+      tel: '4444-4445',
     },
     {
       id: 4,
-      name: "Gerardo",
+      name: 'Gerardo',
       carne: 19012,
-      calification: 4,
+      calification: 4.5,
       isVerified: false,
       topPerformance: {
         Matemática: 5,
         Física: 4,
-        "Química G.": 3,
+        'Química G.': 3,
       },
-      cobro: ["Horas Beca"],
+      cobro: ['Horas Beca'],
       image: cat4,
-      tel: "4444-4446",
+      tel: '4444-4446',
     },
     {
       id: 5,
-      name: "MariLuz",
+      name: 'MariLuz',
       carne: 20003,
       calification: 4,
       isVerified: false,
       topPerformance: {
         Matemática: 5,
         Física: 4,
-        "Química G.": 3,
+        'Química G.': 3,
       },
-      cobro: ["Horas Beca"],
+      cobro: ['Horas Beca'],
       image: cat5,
-      tel: "4444-4447",
+      tel: '4444-4447',
     },
     {
       id: 6,
-      name: "Lourdes",
+      name: 'Lourdes',
       carne: 20017,
-      calification: 5,
+      calification: -1,
       isVerified: true,
       topPerformance: {
         Matemática: 5,
         Física: 4,
-        "Química G.": 3,
+        'Química G.': 3,
       },
-      cobro: ["Horas Beca"],
+      cobro: ['Horas Beca'],
       image: cat6,
-      tel: "4444-4448",
+      tel: '4444-4448',
     },
-  ]
+    {
+      id: 7,
+      name: 'Carlos',
+      carne: 20020,
+      calification: 0,
+      isVerified: true,
+      topPerformance: {
+        Matemática: 5,
+        Física: 4,
+        'Química G.': 3,
+      },
+      cobro: ['Horas Beca'],
+
+      tel: '4444-4448',
+    },
+  ];
   return (
     <div id="main-container-new-servicios">
       <div className="title-and-filters-wrapper">
@@ -114,12 +129,12 @@ const NewServicio = (props) => {
       <div id="servicios-main-container-wrapper">
         <div id="servicios-main-container">
           {tutores.map((tutor) => {
-            return <CardServicios tutor={tutor} />
+            return <CardServicios tutor={tutor} />;
           })}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NewServicio
+export default NewServicio;
