@@ -97,16 +97,35 @@ const NewPaginaPrincipal = () => {
   ];
 
   useEffect(() => {
-    axios
-      .get('http://localhost:8080/get-products')
-      .then((res) => setProduts(res.data));
-    axios
-      .get('http://localhost:8080/get-tutors')
-      .then((res) => {
-        setTutors(res.data);
+    const fetchProducts = async () => {
+      const data = await fetch('http://localhost:8080/get-products', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        referrerPolicy: 'no-referrer',
       })
-      .then(console.log(tutors));
+        .then((res) => res.json())
+        .catch((error) => console.log(error));
+      setProduts(Array(data));
+    };
+    fetchProducts();
 
+    const fetchTutors = async () => {
+      const data = await fetch('http://localhost:8080/get-tutors', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        referrerPolicy: 'no-referrer',
+      })
+        .then((res) => res.json())
+        .catch((error) => console.log(error));
+      setTutors(Array(data));
+    };
+    fetchTutors();
     /*     const fetchData = async ()=>{
       const tutoresFetch =  await axios.get('http://localhost:8080/get-tutors').then(async res => {
         res.data.map(async tutor => {
