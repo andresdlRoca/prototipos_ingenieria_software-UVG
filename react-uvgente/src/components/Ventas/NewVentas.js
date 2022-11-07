@@ -28,14 +28,20 @@ const NewVentas = (props) => {
     },
   ]);
   useEffect(() => {
-    fetch('http://localhost:8080/get-products', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      referrerPolicy: 'no-referrer',
-    });
+    const fetchProducts = async () => {
+      const data = await fetch('http://localhost:8080/get-products', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        referrerPolicy: 'no-referrer',
+      })
+        .then((res) => res.json())
+        .catch((error) => console.log(error));
+      setProduts(Array(data));
+    };
+    fetchProducts();
   });
   return (
     <div id="main-container-new-ventas">
