@@ -6,10 +6,10 @@ test.describe("Signups",()=>{
   test.beforeEach(async ({ page, request }) => {
     // Go to the starting url before each test.
     await page.goto("http://localhost:3000");
-    await request.put('http://localhost:8080/clean-users-table')
+    //await request.put('http://localhost:8080/clean-users-table')
   });
   test.afterAll(async({request})=>{
-    await request.put('http://localhost:8080/clean-users-table')
+    //await request.put('http://localhost:8080/clean-users-table')
   })
   test('Usual Signup and redirect', async ({ page }) => {
 
@@ -79,7 +79,6 @@ test.describe("Signups",()=>{
      await page.getByTestId('confirm-password').fill(password);
      await page.getByTestId('Enviar').click();
      await page.waitForURL('http://localhost:3000/')
-     console.log(name)
     /**
      * Second signup
      */
@@ -99,5 +98,35 @@ test.describe("Signups",()=>{
      await expect(page.locator('h2#swal2-title')).toHaveText('Usuario ya registrado')
 
   });
+
+})
+
+test.describe('Log in', ()=>{
+  const username = chance.name()
+  const email = chance.email()
+  const password = 'password'
+  
+  test.beforeAll(async({request})=>{
+    const response = await request.post('http://localhost:8080/register', {data: {username, email, password}})
+  })
+  
+  test.afterAll(async({request})=>{
+    await request.put('http://localhost:8080/clean-users-table')
+  })
+
+  test('Succesfull login', async({page})=>{
+
+    await page.goto('http://localhost:3000/');
+    await page.getByRole('link', { name: 'Log in' }).click();
+    await expect(page).toHaveURL('http://localhost:3000/login');
+    await page.getByPlaceholder('name@example.com').click();
+    await page.getByPlaceholder('name@example.com').fill(email);
+    await page.getByPlaceholder('Contraseña').click();
+    await page.getByPlaceholder('Contraseña').fill(password);  
+    await page.getByTestId('Entrada').click();
+    await page.waitForURL('http://localhost:3000/')
+
+  })
+
 
 })
