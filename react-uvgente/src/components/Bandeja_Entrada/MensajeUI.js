@@ -19,9 +19,6 @@ export default function MensajeUI({
       msgsource = messages;
       msgsource.push(mensajeEnviado);
       setMessages([...msgsource]);
-      setTimeout(() => {
-        internalUI.current.scrollTop = internalUI.current.scrollHeight;
-      }, 100);
     }
   };
 

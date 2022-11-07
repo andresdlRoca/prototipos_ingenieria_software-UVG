@@ -41,7 +41,7 @@ const NavBar = () => {
                       alt="logo"
                     />
                   </Link>
-                  {userLogged && <p>userLogged.username</p>}
+                  {userLogged}
                   {!userLogged && (
                     <Link
                       className="subtitle-gray"

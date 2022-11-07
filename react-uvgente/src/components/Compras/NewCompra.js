@@ -48,6 +48,13 @@ function NewCompra() {
         state: 'Usado',
       },
     },
+    {
+      user: {
+        id: 10,
+        name: 'Mauricio Gomez',
+        rate: 5,
+      },
+    },
   ]);
   return (
     <div id="main-container-new-ventas">

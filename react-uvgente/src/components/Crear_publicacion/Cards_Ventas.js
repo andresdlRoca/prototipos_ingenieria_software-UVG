@@ -63,7 +63,7 @@ const Cards_Ventas = () => {
     },
     {
       user: {
-        id: 10,
+        id: 1,
         name: 'Luis Gomez',
       },
       product: {

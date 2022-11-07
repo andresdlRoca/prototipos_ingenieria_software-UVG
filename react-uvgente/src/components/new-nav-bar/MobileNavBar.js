@@ -57,6 +57,8 @@ const MobileNavBar = () => {
                         aria-controls="menu-appbar"
                         aria-haspopup="true"
                         onClick={handleOpenNavMenu}
+                        id="OpenNav"
+                        data-testid="OpenNav"
                         color="inherit"
                       >
                         <AiOutlineBars />
@@ -94,6 +96,7 @@ const MobileNavBar = () => {
                         <Button
                           key={page}
                           onClick={handleCloseNavMenu}
+                          data-testid={page}
                           sx={{ my: 2, color: 'white', display: 'block' }}
                         >
                           {page}
@@ -113,7 +116,11 @@ const MobileNavBar = () => {
 
                     <Box sx={{ flexGrow: 0 }}>
                       <Tooltip title="Open settings">
-                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <IconButton
+                          data-testid="OpenMenu"
+                          onClick={handleOpenUserMenu}
+                          sx={{ p: 0 }}
+                        >
                           <Avatar
                             alt="Remy Sharp"
                             src="/static/images/avatar/2.jpg"
@@ -137,7 +144,11 @@ const MobileNavBar = () => {
                         onClose={handleCloseUserMenu}
                       >
                         {settings.map((setting) => (
-                          <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                          <MenuItem
+                            key={setting}
+                            onClick={handleCloseUserMenu}
+                            data-testid={setting}
+                          >
                             <Typography textAlign="center">
                               {setting}
                             </Typography>

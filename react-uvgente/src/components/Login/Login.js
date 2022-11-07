@@ -134,13 +134,13 @@ class Login extends Component {
                     onClick={this.enviar}
                   >
                     Iniciar Sesión
-
+                    <Link to="/signup">Signup</Link>
+                    <Link to="/registrar-organizaciones">
+                      Registrar organizacion
+                    </Link>
                   </Button>
-
                   <br />
-                  <Link to="/signup">Signup</Link>
                   <br />
-                  <Link to="/registrar-organizaciones"> Registrar organizacion</Link>
                 </Container>
               </Form>
             </Container>
