@@ -63,7 +63,7 @@ const Cards_Ventas = () => {
     },
     {
       user: {
-        id: 10,
+        id: 1,
         name: 'Luis Gomez',
       },
       product: {
@@ -79,14 +79,29 @@ const Cards_Ventas = () => {
     <div id="main-container-articulos">
       <div id="articulos-main-container-wrapper">
         <div id="articulos-main-container">
+          <CardVenta
+            product={{
+              title: 'Servicio 2',
+              description:
+                'Fugiat do reprehenderit elit sit deserunt ad irure anim quis tempor. ',
+              price: 500,
+              state: '-',
+            }}
+            user={{
+              id: 100,
+              name: 'Luis Gomez',
+            }}
+          />
           {cardsVentasInfo.map((venta) => {
             let src = venta.user.id === 10 ? libro2 : null;
             return (
-              <CardVenta
-                product={venta.product}
-                user={venta.user}
-                productImage={src}
-              />
+              <>
+                <CardVenta
+                  product={venta.product}
+                  user={venta.user}
+                  productImage={src}
+                />
+              </>
             );
           })}
         </div>

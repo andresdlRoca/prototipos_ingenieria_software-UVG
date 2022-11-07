@@ -3,8 +3,8 @@ import { FaQuestion } from 'react-icons/fa';
 import { useImage } from 'react-image';
 
 const ProductButton = (props) => {
-  const { id, name, rate } = props.user;
-  const { title, description, status, price, state } = props.product;
+  const { id, name, rate } = props;
+  const { title, description, status, price, state } = props;
   return (
     <div>
       <a class="btn btn-primary" role="button">

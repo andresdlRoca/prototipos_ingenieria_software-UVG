@@ -9,6 +9,7 @@ import {
 import userEvent from '@testing-library/user-event';
 import NewSideBar from '../components/new-side-bar/NewSideBar';
 import { MemoryRouter } from 'react-router-dom';
+import React from 'react';
 
 window.matchMedia =
   window.matchMedia ||

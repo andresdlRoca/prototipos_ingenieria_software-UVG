@@ -194,7 +194,14 @@ describe('Create class', () => {
         expect(body.msg).toBe('Clase creada')
         expect(body.result).toBeDefined()
     })
-
+    test('Succesful create class with no description', async()=>{
+        const responseDepartment = await api.post('/create-departamento').send({"nombre": "Computacion", "descripcion": "Dedicada al estudio de algoritmos y lenguajes de programacion en busqueda de la implementacion de soluciones."}).expect(201)
+        const id = parseInt(responseDepartment.body.result.id)
+        const response = await api.post('/create-class').send({"id_departamento": id,"nombre": "Algoritmos"}).expect(201)
+        const body = response.body
+        expect(body.msg).toBe('Clase creado sin descripcion')
+        expect(body.result).toBeDefined()
+    })
     test('Misses id_departamento', async()=>{
         const response = await api.post('/create-class').send({"nombre": "Algoritmos", "descripcion": "Algoritmos y programacion basica para todas las ingenierias."}).expect(400)
         expect(response.body.msg).toBe('Must have the id of the department it belongs')
@@ -423,6 +430,10 @@ describe('Create form of payment', ()=>{
         const response = await api.post('/create-form-of-pamyment').send({'forma_de_cobro': 'Tarjeta de credito'}).expect(201)
         expect(response.body.msg).toBe('Form of payment succesfully created')
         expect(response.body.result.id).toBeDefined()
+    })
+    test('Missing field forma de cobro', async()=>{
+        const response = await api.post('/create-form-of-pamyment').expect(400)
+        expect(response.body.msg).toBe('Missing fields on request')
     })
     
 })
@@ -657,33 +668,56 @@ describe('Get organizacion by id', ()=>{
 })
 
 describe('Update rate organization', () => {
-    afterAll(async()=>{
-        await api.put('/clean-organizacion-table') 
-        server.close()
-        
+    beforeEach(async()=>{
+        await api.put('/clean-organizacion_colaborador-table')
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')
     })
-    test('Intenta actualizar a una organizacion inexistente calificaion correcta', async () =>{
-        const response = await api.get('/update-rating-organization/4/4').expect(400).expect('Content-Type', /\application\/json/)
+    afterAll(async()=>{
+        await api.put('/clean-organizacion_colaborador-table')
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')
+    })
+    test('Not number id_organizacion', async()=>{
+        const response = await api.put('/update-rating-organization/a/1').expect(400)
+        expect(response.body.msg).toBe('La id de la organizacion debe ser un numero')
+    })
+    test('Not number calificacion', async()=>{
+        const response = await api.put('/update-rating-organization/1/a').expect(400)
+        expect(response.body.msg).toBe('La nueva calificacion debe ser un numero')
+    })
+    test('Rate out of range', async()=>{
+        const response = await api.put('/update-rating-organization/1/9').expect(400)
+        expect(response.body.msg).toBe("Calificacion debe ser de 0 a 5")
+    })
+    test('Unexisting organization', async()=>{
+        const response = await api.put('/update-rating-organization/1/4').expect(400)
         expect(response.body.msg).toBe("Bad request: There's no organization related to that id")
     })
-    test('Actualiza organizacion correcta calificacion erronea', async () =>{
-        const response = await api.get('/update-rating-organization/1/55').expect(400).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("Calificacion debe ser de 1 a 5")
-    })
-    test('Actualiza organizacion incorrecta y calificacion incorrecta', async () =>{
-        const response = await api.get('/update-rating-organization/8/55').expect(400).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("Calificacion debe ser de 1 a 5")
-    })
-
-    test('Actualiza organizacion correcta y calificacion correcta', async () =>{
+    test('First calification', async()=>{
+        const rate = 5
         const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
-        let id = parseInt(responseNewUser.body.result.id)
-        const responseNewOrg = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201) 
-        const id_organizacion = responseNewOrg.body.result.id_organizacion
-        const response = await api.get('/update-rating-organization/'+id_organizacion+'/5').expect(200).expect('Content-Type', /\application\/json/)
+        const id_usuario = parseInt(responseNewUser.body.result.id)
+        const responseOrganizacion = await api.post('/registrar-organizaciones').send({"id_lider": id_usuario, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)  
+        const id_organizacion = parseInt(responseOrganizacion.body.result.id_organizacion)
+        const response = await api.put('/update-rating-organization/'+id_organizacion+'/'+rate).expect(200)
         expect(response.body.msg).toBe("Organizaciones actualizadas: 1")
-    })
+        expect(parseFloat(response.body.calificacion)).toBe(parseFloat(rate))
 
+
+    })
+    test('Not first time with calification', async()=>{
+        const rate = 5
+        const next_rate = 4
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id_usuario = parseInt(responseNewUser.body.result.id)
+        const responseOrganizacion = await api.post('/registrar-organizaciones').send({"id_lider": id_usuario, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)  
+        const id_organizacion = parseInt(responseOrganizacion.body.result.id_organizacion)
+        await api.put('/update-rating-organization/'+id_organizacion+'/'+rate).expect(200)
+        const response = await api.put('/update-rating-organization/'+id_organizacion+'/'+next_rate).expect(200)
+        expect(response.body.msg).toBe("Organizaciones actualizadas: 1")
+        expect(parseFloat(response.body.calificacion)).toBe(4.5)
+    })
 })
 
 describe('Start venta', ()=>{
@@ -825,66 +859,98 @@ describe('Create vendedor on organizacion', ()=>{
 
     })
 })
-describe('Organizacion y colaboradores', () => {
-    beforeAll(async()=>{
-        await api.post('/new-organizacion')
-    })
-    afterAll(async()=>{ 
-        server.close()
-    })  
-    test('Obtiene colaboradores de una organizacion sin colaboradores', async () =>{
-        const response = await api.get('/get-colaboradores-of-organization/2').expect(200).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("No se encontraron colaboradores para dicha organizacion")
-    })
-    test('Obtiene colaboradores de una organizacion con un colaborador', async () =>{
-        const response = await api.get('/get-colaboradores-of-organization/1').expect(200).expect('Content-Type', /\application\/json/)
-        expect(response.body).toHaveLength(1)
-    })
-    test('Obtiene colaboradores de una que no existe', async () =>{
-        const response = await api.get('/get-colaboradores-of-organization/4').expect(200).expect('Content-Type', /\application\/json/)
-        expect(response.body.msg).toBe("No se encontraron colaboradores para dicha organizacion")
-    })
-  
-})  
 
-describe('Insignias', () => {
-    afterAll(async()=>{ 
-        server.close()
-    })
-    test('Revisa si una organizacion que no es la mas rapida, lo es', async () =>{
-        const response = await api.get('/is-the-fastest-organization/1').expect(200).expect('Content-Type', /\application\/json/)
-        expect(response.body.isatthetop).toBe(false)
-    })
-    test('Revisa si una organizacion que no existe en la mas rapida', async () =>{
-        const response = await api.get('/is-the-fastest-organization/8').expect(200).expect('Content-Type', /\application\/json/)
-        expect(response.body.isatthetop).toBe(false)
-    })
-    test('Revisa si la organizacion mas rapida lo es', async () =>{
-        const response = await api.get('/is-the-fastest-organization/4').expect(200).expect('Content-Type', /\application\/json/)
-        expect(response.body.isatthetop).toBe(true)
-    })
-        
-})
-
-describe('delete user by name', () =>{
+describe('Ligar organizacion a colaborador',()=>{
     beforeEach(async()=>{
+        await api.put('/clean-organizacion_colaborador-table')
+        await api.put('/clean-organizacion-table')
         await api.put('/clean-users-table')
     })
     afterAll(async()=>{
-        await api.put('/clean-users-table')         
-        server.close()
-    })
-    beforeAll(async()=>{
+        await api.put('/clean-organizacion_colaborador-table')
+        await api.put('/clean-organizacion-table')
         await api.put('/clean-users-table')
     })
-    test('succesfull delete', async()=>{
-        await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)
-        const response = await api.put('/delete-user-by-username/new_user_5')
+    test('Wrong type id_usuario', async()=>{
+        const response = await api.post('/ligar-organizacion-colaborador/-/b').expect(400)
+        expect(response.body.msg).toBe('El id del usuario debe ser un numero')
     })
-    test('try to delete based on unexistent username', async()=>{
+    test('Wrong type id_organizacion', async()=>{
+        const response = await api.post('/ligar-organizacion-colaborador/b/1').expect(400)
+        expect(response.body.msg).toBe('La id de la organizacion debe ser un numero')
+    })
+    test('Missing field: Rol', async()=>{
+        const response = await api.post('/ligar-organizacion-colaborador/1/1').expect(400)
+        expect(response.body.msg).toBe('No se indico el rol del nuevo colaborador')
+    })
+    test('Create on unexisting organizacion', async()=>{
+        const response = await api.post('/ligar-organizacion-colaborador/1/1/').send({'rol': 'Socio'}).expect(500)
+        expect(response.body.msg).toBe('An error ocurred while making the query')
+    })
+    test('Existing relation', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id_usuario = parseInt(responseNewUser.body.result.id)
+        const responseOrganizacion = await api.post('/registrar-organizaciones').send({"id_lider": id_usuario, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)  
+        const id_organizacion = parseInt(responseOrganizacion.body.result.id_organizacion)
 
+        const responseNewUserSocio = await api.post('/register').send({'username': 'socio', 'email': 'socio@email.com', 'password': 'superSecretPassword'})
+        const id_usuario_socio = parseInt(responseNewUserSocio.body.result.id)
+
+        await api.post('/ligar-organizacion-colaborador/'+id_organizacion+'/'+id_usuario_socio).send({'rol': 'Socio'}).expect(200)
+        const response = await api.post('/ligar-organizacion-colaborador/'+id_organizacion+'/'+id_usuario_socio).send({'rol': 'Socio'}).expect(400)
+
+        
+        expect(response.body.msg).toBe('Esta relacion entre este usuario y organizaciones ya existian')
+        expect(response.body.error.constraint).toBe('unique_relation_on_oc')
     })
+    test('Succesfull case', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id_usuario = parseInt(responseNewUser.body.result.id)
+        const responseOrganizacion = await api.post('/registrar-organizaciones').send({"id_lider": id_usuario, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201)  
+        const id_organizacion = parseInt(responseOrganizacion.body.result.id_organizacion)
+
+        const responseNewUserSocio = await api.post('/register').send({'username': 'socio', 'email': 'socio@email.com', 'password': 'superSecretPassword'})
+        const id_usuario_socio = parseInt(responseNewUserSocio.body.result.id)
+
+        const response = await api.post('/ligar-organizacion-colaborador/'+id_organizacion+'/'+id_usuario_socio).send({'rol': 'Socio'}).expect(200)
+        expect(response.body.msg).toBe('Colaborador ligado a organizador correctamente')
+        expect(response.body.result.id_relacion_organizacion_colaborador).toBeDefined()
+    })
+
 })
+
+describe('Get colaboradores of organizacion', () => {
+    beforeEach(async()=>{
+        await api.put('/clean-organizacion_colaborador-table')
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')
+    })
+    afterAll(async()=>{
+        await api.put('/clean-organizacion_colaborador-table')
+        await api.put('/clean-organizacion-table')
+        await api.put('/clean-users-table')
+    })
+    test('No hay colaboradores', async()=>{
+        const response = await api.get('/get-colaboradores-of-organization/8').expect(200)
+        expect(response.body.msg).toBe('No se encontraron colaboradores para dicha organizacion')     
+    })
+    test('Hay colaboradores', async()=>{
+        const responseNewUser = await api.post('/register').send({'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'})
+        const id = parseInt(responseNewUser.body.result.id)
+        const responseOrganizacion = await api.post('/registrar-organizaciones').send({"id_lider": id, "descripcion": "aaaaa","no_telefono": "1000", 'username': 'new_user_5', 'email': 'new_user2@email.com', 'password': 'superSecretPassword'}).expect(201) 
+        const id_organizacion = parseInt(responseOrganizacion.body.result.id_organizacion)
+        
+        const responseNewUserSocio = await api.post('/register').send({'username': 'socio', 'email': 'socio@email.com', 'password': 'superSecretPassword'})
+        const id_usuario_socio = parseInt(responseNewUserSocio.body.result.id)
+
+        await api.post('/ligar-organizacion-colaborador/'+id_organizacion+'/'+id_usuario_socio).send({'rol': 'Socio'}).expect(200)
+        const response = await api.get('/get-colaboradores-of-organization/'+id_organizacion).expect(200)
+        expect(response.body.msg).toBeUndefined()
+        expect(response.body).toHaveLength(1)    
+    })   
+  
+})  
+
 
 describe('Table cleaners', ()=>{
     test('User table', async()=>{
@@ -893,6 +959,10 @@ describe('Table cleaners', ()=>{
     })
     test('Organizacion table', async()=>{
         const response = await api.put('/clean-organizacion-table').expect(200)
+        expect(response.body.msg).toBe('Deletion completed')
+    })
+    test('Organizacion_Colaborador table', async()=>{
+        const response = await api.put('/clean-organizacion_colaborador-table').expect(200)
         expect(response.body.msg).toBe('Deletion completed')
     })
     test('Vendedor table', async()=>{

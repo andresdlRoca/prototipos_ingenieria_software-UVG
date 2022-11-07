@@ -69,3 +69,6 @@ ADD COLUMN ventas_iniciadas NUMERIC;
 
 ALTER TABLE tutor_clase
 ADD CONSTRAINT unique_relation UNIQUE(id_clase, id_tutor);
+
+ALTER TABLE Organizacion_Colaborador
+ADD CONSTRAINT unique_relation_on_oc UNIQUE(rol, id_organizacion, id_usuario);

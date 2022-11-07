@@ -19,6 +19,8 @@ test('renders the Navbar', () => {
   render(<NavBar />);
 });
 
+describe("render navbar test", () => {
+
   it('renders the Navbar', () => {
     render(<NavBar />);
   })

@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import { render, fireEvent, screen } from '@testing-library/react';
 import RegistroOrg from '../components/RegistroOrganizacion/RegistroOrg';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 
 test('renders the Registro organización page', () => {
   render(<RegistroOrg />);

@@ -50,6 +50,7 @@ export default function NewBottomBar() {
                     icon={<FaInbox />}
                     LinkComponent={Link}
                     to={'/bandeja-de-entrada'}
+                    data-testid="hola"
                   />
                   <BottomNavigationAction
                     label="Guardados"

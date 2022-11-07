@@ -19,7 +19,7 @@ function RegistroOrg() {
 
   const handleSubmit = ($event) => {
     const form = $event.currentTarget;
-    if (form.checkValidity() === false) {
+    if (validated === false) {
       $event.preventDefault();
       $event.stopPropagation();
 

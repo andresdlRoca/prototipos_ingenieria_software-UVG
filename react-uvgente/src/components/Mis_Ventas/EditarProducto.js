@@ -64,7 +64,7 @@ const EditarProductos = (props) => {
             name="descripcion"
           ></input>
         </div>
-        <button type="sumbit" className="buttonSumbit">
+        <button type="sumbit" className="buttonSumbit" data-testid="Submit">
           Continuar
         </button>
       </form>

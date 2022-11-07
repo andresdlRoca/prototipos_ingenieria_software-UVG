@@ -1,39 +1,41 @@
-import React from "react"
-import DefaultImageUser from "../../media/fulano.jpg"
+import React from 'react';
+import DefaultImageUser from '../../media/fulano.jpg';
 import {
   TiStarFullOutline,
   TiStarHalfOutline,
   TiStarOutline,
-} from "react-icons/ti"
+} from 'react-icons/ti';
 const CardServicios = (props) => {
   const { name, calification, isVerified, topPerformance, cobro, image, tel } =
-    props.tutor
-  const starsCalificationItems = []
-  let cal = calification
+    props.tutor;
+  const starsCalificationItems = [];
+  let cal = calification;
   for (var i = 1; i <= 5; i++) {
-    if (cal >= 1)
-      starsCalificationItems.push(<TiStarFullOutline className="star" />)
-    else if (cal > 0)
-      starsCalificationItems.push(<TiStarHalfOutline className="star" />)
-    else if (cal <= 0)
-      starsCalificationItems.push(<TiStarOutline className="star" />)
-    cal = cal - 1
+    console.log(i);
+    if (cal >= 1) {
+      starsCalificationItems.push(<TiStarFullOutline className="star" />);
+    } else if (cal > 0) {
+      starsCalificationItems.push(<TiStarHalfOutline className="star" />);
+    } else {
+      starsCalificationItems.push(<TiStarOutline className="star" />);
+    }
+    cal = cal - 1;
   }
 
   return (
     <div
       className="card-item-servicio"
-      style={isVerified ? { border: "4px solid #efdb00" } : {}}
+      style={isVerified ? { border: '4px solid #efdb00' } : {}}
     >
       <div className="left-side-card-servicio">
         <div
           className="card-item-image-space-service"
           style={
             image
-              ? { backgroundImage: `url(${image})`, backgroundSize: "cover" }
+              ? { backgroundImage: `url(${image})`, backgroundSize: 'cover' }
               : {
                   backgroundImage: `url(${DefaultImageUser})`,
-                  backgroundSize: "cover",
+                  backgroundSize: 'cover',
                 }
           }
         />
@@ -45,12 +47,12 @@ const CardServicios = (props) => {
                 <div
                   className="progress-fill"
                   style={{
-                    height: "100%",
+                    height: '100%',
                     width: `${(100 * topPerformance[key]) / 5}%`,
                   }}
                 />
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -60,18 +62,18 @@ const CardServicios = (props) => {
 
         <div className="calification-space">
           {starsCalificationItems.map((icon) => {
-            return icon
+            return icon;
           })}
         </div>
         <div>Cobra:</div>
         <ul>
           {cobro.map((modo) => {
-            return <li>{modo}</li>
+            return <li>{modo}</li>;
           })}
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CardServicios
+export default CardServicios;

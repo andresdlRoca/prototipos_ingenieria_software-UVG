@@ -52,6 +52,7 @@ const ProductoForm = ({ handleClick }) => {
         <input
           type="text"
           id="nombre_del_producto"
+          data-testid="nombre_del_producto"
           name="nombre_del_producto"
           minLength="5"
           maxLength="20"
@@ -85,7 +86,6 @@ const ProductoForm = ({ handleClick }) => {
           id="precio_del_producto"
           min="0.01"
           max="9999.99"
-          step="0.01"
           placeholder="100.00"
           required
           value={precio}
@@ -100,6 +100,7 @@ const ProductoForm = ({ handleClick }) => {
           required
           accept="image/png, image/jpeg"
           className="custom-file-input"
+          data-testid="file"
           value={foto}
           onChange={($event) => {
             setFoto($event.target.value);
@@ -115,6 +116,7 @@ const ProductoForm = ({ handleClick }) => {
           <input
             type="submit"
             id="submitProductoForm"
+            data-testid="submitProductoForm"
             value="Siguiente"
             className="botonPublicar"
           />
