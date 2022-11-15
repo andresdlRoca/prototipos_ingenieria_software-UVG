@@ -25,9 +25,47 @@ test.describe('Log in', ()=>{
     await page.getByPlaceholder('Contraseña').click();
     await page.getByPlaceholder('Contraseña').fill(password);  
     await page.getByTestId('Entrada').click();
-    if (browserName!=='webkit') {await page.waitForURL('http://localhost:3000/')}
-    else {console.log(browserName)}
+
   })
 
 
+
+
+  test('Missing fields', async ({ page }) => {
+
+    await page.goto('http://localhost:3000/');
+
+    await page.getByRole('link', { name: 'Log in' }).click();
+    await expect(page).toHaveURL('http://localhost:3000/login');
+
+    await page.getByTestId('Entrada').click();
+
+    await expect(page.locator('#swal2-html-container')).toHaveText('Parece que olvido llenar todos los campos')
+    
+  });
+
+  test('wrong password', async ({ page }) => {
+
+    await page.goto('http://localhost:3000/');
+    await page.getByRole('link', { name: 'Log in' }).click();
+    await expect(page).toHaveURL('http://localhost:3000/login');
+    await page.getByPlaceholder('name@example.com').fill(email);
+    await page.getByPlaceholder('Contraseña').fill(password+'1');
+    await page.getByTestId('Entrada').click();
+    await expect(page.locator('#swal2-html-container')).toHaveText('Usuario o Contraseña Incorrecta')
+
+
+  });
+  test('wrong email', async ({ page }) => {
+
+    await page.goto('http://localhost:3000/');
+    await page.getByRole('link', { name: 'Log in' }).click();
+    await expect(page).toHaveURL('http://localhost:3000/login');
+    await page.getByPlaceholder('name@example.com').fill(email+'1');
+    await page.getByPlaceholder('Contraseña').fill(password);
+    await page.getByTestId('Entrada').click();
+    await expect(page.locator('#swal2-html-container')).toHaveText('Usuario no encontrado')
+
+
+  });
 })
