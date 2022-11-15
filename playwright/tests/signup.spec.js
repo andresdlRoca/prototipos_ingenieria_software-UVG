@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 const Chance = require('chance')
 const chance = new Chance()
+
 test.describe("Signups",()=>{
 
   test.beforeEach(async ({ page, request }) => {
@@ -9,7 +10,7 @@ test.describe("Signups",()=>{
     //await request.put('http://localhost:8080/clean-users-table')
   });
   test.afterAll(async({request})=>{
-    //await request.put('http://localhost:8080/clean-users-table')
+    await request.put('http://localhost:8080/clean-users-table')
   })
   test('Usual Signup and redirect', async ({ page }) => {
 
@@ -37,7 +38,7 @@ test.describe("Signups",()=>{
 
     await page.getByTestId('Enviar').click();
 
-    await page.waitForURL('http://localhost:3000/')
+    await page.goto('http://localhost:3000/')
 
     //await expect(page).toHaveProperty()
 
@@ -78,7 +79,7 @@ test.describe("Signups",()=>{
      await page.getByTestId('password').press('Tab');
      await page.getByTestId('confirm-password').fill(password);
      await page.getByTestId('Enviar').click();
-     await page.waitForURL('http://localhost:3000/')
+     await page.goto('http://localhost:3000/')
     /**
      * Second signup
      */
@@ -101,32 +102,3 @@ test.describe("Signups",()=>{
 
 })
 
-test.describe('Log in', ()=>{
-  const username = chance.name()
-  const email = chance.email()
-  const password = 'password'
-  
-  test.beforeAll(async({request})=>{
-    const response = await request.post('http://localhost:8080/register', {data: {username, email, password}})
-  })
-  
-  test.afterAll(async({request})=>{
-    await request.put('http://localhost:8080/clean-users-table')
-  })
-
-  test('Succesfull login', async({page})=>{
-
-    await page.goto('http://localhost:3000/');
-    await page.getByRole('link', { name: 'Log in' }).click();
-    await expect(page).toHaveURL('http://localhost:3000/login');
-    await page.getByPlaceholder('name@example.com').click();
-    await page.getByPlaceholder('name@example.com').fill(email);
-    await page.getByPlaceholder('Contraseña').click();
-    await page.getByPlaceholder('Contraseña').fill(password);  
-    await page.getByTestId('Entrada').click();
-    await page.waitForURL('http://localhost:3000/')
-
-  })
-
-
-})
