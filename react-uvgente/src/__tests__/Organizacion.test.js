@@ -1,11 +1,13 @@
 import '@testing-library/jest-dom';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, getByTestId } from '@testing-library/react';
 import RegistroOrg from '../components/RegistroOrganizacion/RegistroOrg';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 test('renders the Registro organización page', () => {
   render(<RegistroOrg />);
+  const hello = screen.getByTestId('Hey');
+  fireEvent.click(hello);
 });
 
 test('tests inputs', () => {
@@ -27,7 +29,10 @@ test('tests inputs', () => {
   userEvent.type(screen.getByPlaceholderText('telefono'), 'asbf');
   expect(screen.getByPlaceholderText('telefono').value).toBe('asbf');
   userEvent.type(screen.getByPlaceholderText('telefono'), '12345678');
-  userEvent.type(screen.getByTestId('Hello'), 'roberto');
+  const fileInput = screen.getByTestId('Hello');
+  userEvent.upload(fileInput, 'a');
+  const send = screen.getByTestId('Hey');
+  fireEvent.click(send);
 });
 
 test('succesful send', () => {
@@ -48,6 +53,8 @@ test('succesful send', () => {
   userEvent.type(screen.getByPlaceholderText('Username'), 'roberto');
   userEvent.type(screen.getByPlaceholderText('telefono'), 'asbf');
   userEvent.type(screen.getByPlaceholderText('telefono'), '12345678');
+  const fileInput = screen.getByTestId('Hello');
+  userEvent.upload(fileInput, 'a');
   const send = screen.getByTestId('Hey');
   fireEvent.click(send);
 });
@@ -73,13 +80,4 @@ test('not succesful send', () => {
   const send = screen.getByTestId('Hey');
   fireEvent.click(send);
   fireEvent.click(send);
-});
-
-test('fail sent', () => {
-  render(<RegistroOrg />);
-  const send = screen.getByTestId('Hey');
-  userEvent.type(screen.getByPlaceholderText('telefono'), 'asbf');
-  fireEvent.click(send);
-  const hello = screen.getByTestId('Hey');
-  fireEvent.click(hello);
 });

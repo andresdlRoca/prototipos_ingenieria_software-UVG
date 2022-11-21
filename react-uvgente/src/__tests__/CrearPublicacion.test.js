@@ -8,10 +8,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-test('renders the cards de ventas', () => {
-  render(<CardVenta />);
-});
-
 test('renders the crear publicacion page', () => {
   render(<CrearPublicacion />);
   userEvent.type(screen.getByPlaceholderText('Título'), 'rober');

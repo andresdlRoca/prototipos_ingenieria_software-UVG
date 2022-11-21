@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "e2e": "npx playwright test & npx playwright show-report"
+    "e2e": "npx playwright test"
   },
   "keywords": [],
   "author": "",
