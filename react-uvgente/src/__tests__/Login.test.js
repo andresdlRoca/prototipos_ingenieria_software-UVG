@@ -10,12 +10,7 @@ import userEvent from '@testing-library/user-event';
 import Login from '../components/Login/Login';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import router from '../../../node-api-postgres/routes/api/functions.js';
-import pool from '../../../node-api-postgres/db-pg-config.js';
 import { MemoryRouter } from 'react-router-dom';
-import fetchMock from 'jest-fetch-mock';
-
-fetchMock.enableMocks();
 
 test('renders the Login page', () => {
   render(<Login />, { wrapper: MemoryRouter });

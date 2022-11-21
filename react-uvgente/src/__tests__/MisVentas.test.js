@@ -38,7 +38,3 @@ test('renders the FlaotingAgregar page', () => {
   const test1 = screen.getByTestId('floatingagregar-test');
   fireEvent.click(test1);
 });
-
-test('renders the NewCards_Ventas page', () => {
-  render(<CardVenta />);
-});

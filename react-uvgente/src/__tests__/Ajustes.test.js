@@ -23,9 +23,3 @@ test('Edit ajustefield', () => {
   const test = screen.getByTestId('EDIT');
   fireEvent.click(test);
 });
-
-test('Edit ajustefields', () => {
-  render(<AjusteField />);
-  const test = screen.getByTestId('EDIT');
-  fireEvent.click(test);
-});

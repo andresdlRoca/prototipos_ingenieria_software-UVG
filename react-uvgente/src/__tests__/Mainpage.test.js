@@ -1,14 +1,8 @@
-import axios, { AxiosResponse } from 'axios';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import NewPaginaPrincipal from '../components/NewPaginaPrincipal/NewPaginaPrincipal';
 import { MemoryRouter } from 'react-router-dom';
-import { renderHook } from '@testing-library/react-hooks';
-import { resolveComponentProps } from '@mui/base';
-import fetchMock from 'jest-fetch-mock';
-
-fetchMock.enableMocks();
 
 window.matchMedia =
   window.matchMedia ||

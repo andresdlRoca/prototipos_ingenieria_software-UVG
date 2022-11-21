@@ -6,13 +6,8 @@ import NewNavBarItem from '../components/new-nav-bar/NewNavBarItem';
 import MobileNavBar from '../components/new-nav-bar/MobileNavBar';
 import React from 'react';
 import mediaQuery from 'css-mediaquery';
-import { createShallow, createMount } from '@material-ui/core/test-utils';
-import Enzyme from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import IconButton from '@mui/material/IconButton';
 import { MemoryRouter } from 'react-router-dom';
 
-Enzyme.configure({ adapter: new Adapter() });
 
 window.matchMedia =
   window.matchMedia ||
@@ -73,21 +68,20 @@ const createMatchMedia = (width) => (query) => ({
 test('renders the Navbar', () => {
   window.matchMedia = createMatchMedia(600);
 
-  render(<NavBar />);
+  render(<NavBar />, { wrapper: MemoryRouter });
 });
 
 test('renders the Navbar mobile', () => {
   window.matchMedia = createMatchMedia(600);
-  render(<MobileNavBar />);
-  fireEvent.click(screen.getByTestId('OpenNav'));
+  render(<MobileNavBar />, { wrapper: MemoryRouter });
 });
 
 describe('render navbar test', () => {
   it('renders the Navbar', () => {
-    render(<NavBar />);
+    render(<NavBar />, { wrapper: MemoryRouter });
   });
 
   it('renders the newnavbaritem', () => {
-    render(<NewNavBarItem />);
+    render(<NewNavBarItem />, { wrapper: MemoryRouter });
   });
 });

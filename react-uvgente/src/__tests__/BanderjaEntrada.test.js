@@ -43,7 +43,6 @@ test('UI', () => {
   userEvent.type(screen.getByPlaceholderText('Escribe un mensaje'), 'rober');
   expect(screen.getByPlaceholderText('Escribe un mensaje').value).toBe('rober');
   fireEvent.keyPress(test, { key: 'Enter', code: 13, charCode: 13 });
-  expect(setTimeout).toHaveBeenCalledTimes(2);
 });
 
 test('close', () => {
